@@ -1,0 +1,80 @@
+<html>
+<head>
+<title>{gooraye:$set['title']}|在线订购</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<link href="{gooraye::RES}/css/style/css/hotels.css" rel="stylesheet" type="text/css">
+</head>
+
+<body id="" >
+<div class="qiandaobanner"> 
+  <if condition="$set['ppicurl'] neq false">
+   <img src="{gooraye:$set['ppicurl']}"  />  
+  <else />
+    <img src="{gooraye::RES}/css/style/images/default.jpg"  />  
+ </if>
+ </div>
+<div class="cardexplain"> 
+
+  <!--普通用户登录时显示-->
+     
+
+<!--商家房价及类型-->
+<ul class="round">
+<li class="title"><span class="none">{gooraye:$set['title']}</span></li>
+            
+ <volist name="list" id="vo">            
+<li class="dandanb"> <!--订房-->
+<a href="index.php?g=Wap&m=Host&a=lists&token={gooraye:$vo.token}&id={gooraye:$vo.id}&wecha_id={gooraye:$Think.get.wecha_id}&hid={gooraye:$set['id']}"><span>
+<table class="jiagebiao" width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td><div>{gooraye:$vo.type}</div>
+<div><img src="{gooraye:$vo.picurl}" class="showimg">
+<p>{gooraye:$vo.typeinfo}</p>
+<p>原价：<a class="yuanjia">￥{gooraye:$vo.price}</a></p>
+<p>优惠价：<a class="youhuijia">￥{gooraye:$vo.yhprice}</a></p></td>
+</tr>
+</table>
+</span></a>
+</li>
+</volist>  
+</ul>
+
+<!--后台可控制是否显示-->
+<ul class="round">
+<li class="title"><span class="none">订单说明</span></li>
+<li>
+<div class="text">
+{gooraye:$set['info2']}
+</div>
+</li>
+</ul>
+
+<!--后台可控制是否显示-->
+<ul class="round">
+<li class="addr"><a href="?g=Wap&m=Company&a=map&token={gooraye:$Think.get.token}&wecha_id={gooraye:$Think.get.wecha_id}"><span>{gooraye:$set['address']}</span></a></li>
+<li class="tel"><a href="tel://{gooraye:$set['tel2']}"><span>{gooraye:$set['tel2']} 电话预订</span></a></li>
+<if condition="$set['tel'] neq false">
+<li class="tel"><a href="tel://{gooraye:$set['tel']}"><span>{gooraye:$set['tel']} 电话预订</span></a></li>
+</if>
+<li class="detail"><a href="index.php?g=Wap&m=Host&a=companyDetail&token={gooraye:$Think.get.token}&wecha_id={gooraye:$Think.get.wecha_id}&hid={gooraye:$Think.get.hid}"><span>查看商家详情</span></a></li>
+</ul>
+</div>
+
+
+<script type="text/javascript">
+window.shareData = {  
+            "moduleName":"Host",
+            "moduleID":"0",
+            "imgUrl": "", 
+            "sendFriendLink": "{gooraye:$f_siteUrl}{gooraye::U('Host/index',array('token'=>$token))}",
+            "tTitle": "{gooraye:$set['title']}",
+            "tContent": "{gooraye:$set['title']}"
+};
+</script>
+{gooraye:$shareScript}
+</body>
+</html>
