@@ -1,0 +1,6 @@
+更改记录
+
+1.tpl/user/default/alipay_add.html  删除
+2.tpl/user/default/alipay_index.html  删除
+3.tpl/user/default/alipay_vip.html  删除
+4.tpl/user/default/index_index.html 修改
