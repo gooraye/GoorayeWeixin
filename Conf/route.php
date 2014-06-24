@@ -1,8 +1,6 @@
 <?php
 /**
  *网站路由配置
- *@package gooraye
- *@author gooraye
  **/
 return array(
 	/*路由设置*/

@@ -23,7 +23,7 @@ function selectall(name) {
               <div class="searchbar right">
 <form method="post" action="">
 <input type="text" id="msgSearchInput" class="txt left" placeholder="输入昵称搜索" name="keyword" value="">
-<input type="submit" value="搜索" id="msgSearchBtn" href="" class="btnGrayS" title="搜索">
+<input type="submit" value="搜索" id="msgSearchBtn" href="" class="btnGrayS  btn btn-small" title="搜索">
 </form>
 </div>
               <div class="clr"></div>
@@ -64,11 +64,11 @@ function selectall(name) {
           <div style="float:right;width:25%;text-align:right">
           <form method="post" action="">
 <input type="text" id="msgSearchInput" class="px" placeholder="输入昵称搜索" name="keyword" value="">
-<input type="submit" value="搜索" id="msgSearchBtn" href="" class="btnGrayS" title="搜索">
+<input type="submit" value="搜索" id="msgSearchBtn" href="" class="btnGrayS btn btn-small" title="搜索">
 </form>
 </div>
 <form method="post" action="{gooraye::U('User/Wechat_group/setGroup')}" id="info">
-          <div style="width:70%;float:left">将选中粉丝转移到分组中 <select name="wechatgroupid"><goorayelist array="groups" foreach="g"><option value="{gooraye:$g.wechatgroupid}">{gooraye:$g.name}</option></goorayelist></select> <input type="submit" value="转移" id="msgSearchBtn" href="" class="btnGrayS" title="转移">&nbsp;&nbsp;按分组查看粉丝：<select id="wechatgroupid" onchange="location.href='?g=User&m=Wechat_group&a=index&token={gooraye:$token}&wechatgroupid='+this.value"><goorayelist array="groups" foreach="g"><option value="{gooraye:$g.wechatgroupid}"<?php if ($_GET['wechatgroupid']==$g['wechatgroupid']){echo ' selected';}?>>{gooraye:$g.name}</option></goorayelist></select>
+          <div style="width:70%;float:left">将选中粉丝转移到分组中 <select name="wechatgroupid"><goorayelist array="groups" foreach="g"><option value="{gooraye:$g.wechatgroupid}">{gooraye:$g.name}</option></goorayelist></select> <input type="submit" value="转移" id="msgSearchBtn" href="" class="btnGrayS  btn btn-small" title="转移">&nbsp;&nbsp;按分组查看粉丝：<select id="wechatgroupid" onchange="location.href='?g=User&m=Wechat_group&a=index&token={gooraye:$token}&wechatgroupid='+this.value"><goorayelist array="groups" foreach="g"><option value="{gooraye:$g.wechatgroupid}"<?php if ($_GET['wechatgroupid']==$g['wechatgroupid']){echo ' selected';}?>>{gooraye:$g.name}</option></goorayelist></select>
           </div>
           
 <div style="clear:both"></div>
@@ -102,7 +102,7 @@ function selectall(name) {
                   <td>
 					
 					<div class="cateimg">
-						<a href="?g=User&m=Wechat_group&a=showExternalPic&url={gooraye:$list.headimgurl}&token={gooraye:$token}&wecha_id={gooraye:$list.openid}" target="_blank"><?php if (strlen($list['smallheadimgurl'])){?><img src="?g=User&m=Wechat_group&a=showExternalPic&url={gooraye:$list.smallheadimgurl}&token={gooraye:$token}&wecha_id={gooraye:$list.openid}" class="cateimg_small"  /><?php }?></a></div>
+						<a href="?g=User&m=Wechat_group&a=showExternalPic&url={gooraye:$list.headimgurl}&token={gooraye:$token}&wecha_id={gooraye:$list.openid}" target="_blank"><?php if (strlen($list['smallheadimgurl'])){?><img src="{gooraye:$list.smallheadimgurl}" class="cateimg_small"  /><?php }?></a></div>
 					</td>
                   <td>{gooraye:$list.subscribe_time|date='Y-m-d',###} </td>
                   <td class="norightborder">

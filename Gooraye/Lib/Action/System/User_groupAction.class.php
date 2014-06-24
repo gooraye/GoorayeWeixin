@@ -47,8 +47,10 @@
 		public function del(){
 			$id=$this->_get('id','intval',0);
 			if($id==0)$this->error('非法操作');
-			$info = D('User_group')->delete($id);
-			if($info==false){
+			$map['id'] = $id; 
+			$info = M('User_group')->where($map)->delete();
+			
+			if($info !== false){
 				$this->success('操作成功');		
 			}else{
 				$this->error('操作失败');

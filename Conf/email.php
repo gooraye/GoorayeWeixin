@@ -1,12 +1,12 @@
 <?php 
-return array (
+return array ( 
   'email' => 'false',
-  'email_server' => '',
-  'email_port' => '',
-  'email_user' => '',
-  'email_pwd' => '',
-  'email_form' => 'aaa',
-  'reg_email_title' => '注册成功',
+  'email_server' => 'smtp.126.com',
+  'email_port' => '465',
+  'email_user' => 'gooraye@126.com',
+  'email_pwd' => '136799711',
+  'email_form' => '古睿信息科技有限公司',
+  'reg_email_title' => '来自古睿的邮件',
   'reg_email_content' => '尊敬的用户{username}:
        感谢您在{time}注册了gooraye微分享系统演示站,现在开始验证邮箱!
 

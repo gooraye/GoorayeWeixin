@@ -2,19 +2,20 @@
 class IndexAction extends UserAction{
 	//公众帐号列表
 	public function index(){
-		if (class_exists('demoImport')){
-			$this->assign('demo',1);
-			//
-			$token=$this->get_token();
-			$wxinfo=M('wxuser')->where(array('uid'=>intval(session('uid'))))->find();
-			if (!$wxinfo){
-				$demoImport=new demoImport(session('uid'),$token);
-			}
-			$wxinfo=M('wxuser')->where(array('uid'=>intval(session('uid'))))->find();
-			$this->assign('wxinfo',$wxinfo);
-			//
-			$this->assign('token',$token);
-		}
+		
+		// if (class_exists('demoImport')){
+		// 	$this->assign('demo',1);
+		// 	//
+		// 	$token=$this->get_token();
+		// 	$wxinfo=M('wxuser')->where(array('uid'=>intval(session('uid'))))->find();
+		// 	if (!$wxinfo){
+		// 		$demoImport=new demoImport(session('uid'),$token);
+		// 	}
+		// 	$wxinfo=M('wxuser')->where(array('uid'=>intval(session('uid'))))->find();
+		// 	$this->assign('wxinfo',$wxinfo);
+		// 	//
+		// 	$this->assign('token',$token);
+		// }
 		//
 		$where['uid']=session('uid');
 		$group=D('User_group')->select();
@@ -73,16 +74,16 @@ class IndexAction extends UserAction{
 		$this->assign('tokenvalue',$tokenvalue);
 		$this->assign('email',time().'@yourdomain.com');
 		//地理信息
-		if (C('baidu_map_api')){
-			//$locationInfo=json_decode(file_get_contents('http://api.map.baidu.com/location/ip?ip='.$_SERVER['REMOTE_ADDR'].'&coor=bd09ll&ak='.C('baidu_map_api')),1);
-			///$this->assign('province',$locationInfo['content']['address_detail']['province']);
-			//$this->assign('city',$locationInfo['content']['address_detail']['city']);
-			//var_export($locationInfo);
+		if (C('baidu.ak')){
+			$locationInfo=json_decode(file_get_contents('http://api.map.baidu.com/location/ip?ip='.$_SERVER['REMOTE_ADDR'].'&coor=bd09ll&ak='.C('baidu.ak')),1);
+			$this->assign('province',$locationInfo['content']['address_detail']['province']);
+			$this->assign('city',$locationInfo['content']['address_detail']['city']);
+			// var_export($locationInfo);
 		}
-	
-		
+				
 		$this->display();
 	}
+	
 	public function edit(){
 		$id=$this->_get('id','intval');
 		$where['uid']=session('uid');

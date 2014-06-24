@@ -4,6 +4,7 @@ class UsersAction extends BaseAction{
 		header("Location: /");
 	}
 	public function companylogin() {
+		
 		$dbcom = D('Company');
 		$where['username'] = $this->_post('username','trim');
 		$cid = $where['id'] = $this->_post('cid', 'intval');

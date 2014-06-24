@@ -8,7 +8,7 @@ class SystemAction extends BackAction{
         parent :: _initialize();
         $this -> server_url = trim(C('server_url'));
         if (!$this -> server_url){
-            $this -> server_url = 'http://up.gooraye.cn/';
+            $this -> server_url = 'http://up.gooraye.net/';
         }
         $this -> key = trim(C('server_key'));
         $this -> topdomain = trim(C('server_topdomain'));

@@ -1,9 +1,4 @@
-/*
-	[Discuz!] (C)2001-2009 Comsenz Inc.
-	This is NOT a freeware, use is subject to license terms
 
-	$Id: common.js 30758 2012-06-18 06:48:59Z chenmengshu $
-*/
 
 var BROWSER = {};
 var USERAGENT = navigator.userAgent.toLowerCase();

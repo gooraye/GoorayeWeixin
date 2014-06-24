@@ -5,7 +5,8 @@
 <title>登陆与注册－{gooraye:$f_siteTitle}</title>
 <meta name="keywords" content="微通汇，微信帮手 微信公众账号 微信公众平台 微信公众账号开发 微信二次开发 微信接口开发 微信托管服务 微信营销 微信公众平台接口开发"/>
 <meta name="description" content="微通汇，微信公众平台接口开发、托管、营销活动、二次开发"/>
-<include file="$includeHeaderPath"/>
+</head>
+<body>
 <div class="banner gbanner"></div>
 <div class="main">
 <style>
@@ -75,90 +76,15 @@ a:hover{ text-decoration: underline; }
                             <input class="submit" type="submit" value="登录">
                         </td>
                     </tr>
-					<tr>
-                        <th>&nbsp;</th>
-                        <td>&nbsp;
-                            
-                        </td>
-                    </tr><tr>
-                        <th>&nbsp;</th>
-                        <td>&nbsp;
-                            
-                        </td>
-                    </tr>
-					   <tr>
-                        <th>帐号审核：</th>
-                        <td>
-                            QQ:{gooraye:$f_qq}
-                        </td>
-                    </tr>
-                </tbody></table>
+                    
+                </tbody>
+            </table>
             </form>
         </div>
     </div>
-    <div class="login-other">
-          <div class="head">
-            <strong style="font-weight: normal;font-size: 30px;vertical-align: bottom;color: #323232;">用户注册</strong>
-		　</div>
-        <div class="body think-form ">
-            <form action="{gooraye::U('Users/checkreg')}" method="post" class="login">
-                <table>
-                    <tbody><tr>
-                        <th>用户名</th>
-                        <td>
-                            <input class="text" required="" value="请输入用户名" onclick="if(this.value=='请输入用户名'){this.value=''}" onblur="if(this.value==''){this.value='请输入用户名'}" type="text" name="username">
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>密　码</th>
-                        <td>
-                            <input class="text" type="password" name="password">
-                        </td>
-                    </tr>
-					 <tr>
-                        <th>重复密码</th>
-                        <td>
-                            <input class="text" type="password" name="repassword">
-                        </td>
-                    </tr>
-                    <php>if($f_regNeedMp){</php>
-                    <tr>
-                        <th>手　机</th>
-                        <td>
-                            <input class="text" type="text" name="mp" />
-                        </td>
-                    </tr>
-                    <php>}</php>
-					<tr>
-                        <th>邮　箱</th>
-                        <td>
-                            <input class="text" type="text" name="email" value="" onclick="if(this.value=='请输入电子邮箱'){this.value=''}" onblur="if(this.value==''){this.value=''}">
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>&nbsp;</th>
-                        <td><input class="text" type="hidden" name="invitecode" value="<?php echo $_GET['invitecode'];?>">
-                            <input class="submit" type="submit" value="注册">
-                        </td>
-                    </tr>
-					<tr>
-                        <th>&nbsp;</th>
-                        <td>&nbsp;
-                            
-                        </td>
-                    </tr>
-					   <tr>
-                        <th>帐号审核：</th>
-                        <td>
-                            QQ:{gooraye:$f_qq}
-                        </td>
-                    </tr>
-                </tbody></table>
-            </form>
-        </div>
-    </div>
+
 </div>
 </div>
     </div>
-<script type="text/javascript">try{Dd('webpage_6').className='left_menu_on';}catch(e){}</script>
-<include file="$includeFooterPath"/>
+</body>
+</html>

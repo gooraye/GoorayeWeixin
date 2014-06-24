@@ -19,7 +19,7 @@ return array (
   'baidu_map_api' => 'u8UAepm7wNYKh2ypXDTrn3o8',
   'site_email' => 'admin@gooraye.com',
   'keyword' => '古睿，微通汇，微信营销系统,微网站,微信营销,微网站开发,微网站代理,微网站制作,微信网站,微信3G网站,微信APP,企业微信,企业微网站,微信公众号,微信互动',
-  'content' => '微通汇是由绍兴古睿信息科技有限公司研发的一款基于微信营销的产品，可以帮助企业快速通过微信获得生意，推广企业品牌。">',
-  'countsz' => '',
+  'content' => '微通汇是由绍兴古睿信息科技有限公司研发的一款基于微信营销的产品，可以帮助企业快速通过微信获得生意，推广企业品牌。',
+  'countsz' => 'dmFyIF9iZGhtUHJvdG9jb2wgPSAoKCZxdW90O2h0dHBzOiZxdW90OyA9PSBkb2N1bWVudC5sb2NhdGlvbi5wcm90b2NvbCkgPyAmcXVvdDsgaHR0cHM6Ly8mcXVvdDsgOiAmcXVvdDsgaHR0cDovLyZxdW90Oyk7DQpkb2N1bWVudC53cml0ZSh1bmVzY2FwZSgmcXVvdDslM0NzY3JpcHQgc3JjPScmcXVvdDsgKyBfYmRobVByb3RvY29sICsgJnF1b3Q7aG0uYmFpZHUuY29tL2guanMlM0YyZGY5MDA5OGIxNzRmNmQxZDA4YzJkNDY3OGNjNDU5NycgdHlwZT0ndGV4dC9qYXZhc2NyaXB0JyUzRSUzQy9zY3JpcHQlM0UmcXVvdDspKTs=',
   'copyright' => 'Copyright © 2013-2014 gooraye 版权所有',
 );

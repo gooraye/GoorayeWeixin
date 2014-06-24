@@ -45,7 +45,7 @@
                     <td><a href="{gooraye:$vo['www']}" target="_blank">{gooraye:$vo['www']}</a></td>
                     <td>{gooraye:$vo['sort']}</td>
                     <td class="input-medium">
-                        <a  href="{gooraye::U('Car/brand_edit',array('token'=>$vo['token'],'bid'=>$vo['id']))}" title="编辑">编辑</a>
+                        <a  class="btn" href="{gooraye::U('Car/brand_edit',array('token'=>$vo['token'],'bid'=>$vo['id']))}" title="编辑">编辑</a>
                     <a class="btn" onclick="return(confirm('确定要删除吗？'))" href="{gooraye::U('Car/brand_del',array('token'=>$vo['token'],'bid'=>$vo['id']))}" title="删除"  >删除</a></td>
                     </tr>
                 </volist>
