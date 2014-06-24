@@ -16,7 +16,7 @@ function fixedMenu(selector,offsetTop){
 	selector = selector || ".fixedMenu";
 	offsetTop = offsetTop || 100;
 	$fixedMenu = $(selector);
-	console.log($fixedMenu);
+	// console.log($fixedMenu);
 	$(window).scroll(function () {     //浏览器滚动条滚动时触发的事件
 	     	//设置你的导航条相对定位于顶部即可   
 	     	$fixedMenu;

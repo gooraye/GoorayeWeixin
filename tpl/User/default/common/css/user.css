@@ -125,6 +125,7 @@ border-right: 0px solid #D3D3D3 !important;
 float: left;
 padding: 0 0 10px 0;
 width: auto;
+padding-top: 20px;
 }
 .tableContent {
 background: none repeat scroll 0 0 #fff;
@@ -301,6 +302,7 @@ color:#fff;
 	width:100%;
 }
 .sideBar{
+
 	width:20%;
 }
 .content{

@@ -28,7 +28,8 @@
     <if condition="$_SESSION[uid]==false">
       <else/>
       你好,<a href="/#" hidefocus="true"  ><span style="color:#f40">{gooraye:$Think.session.uname}</span></a>（uid:{gooraye:$Think.session.uid}）
-      <a href="/#" onclick="Javascript:window.open('{gooraye::U('System/Admin/logout')}','_self')" >退出</a>
+     
+      <a class="btn btn-small btn-inverse" href="{gooraye::U('System/Admin/logout')}" >退出</a>
   </if> 
   </div>
 </div> 

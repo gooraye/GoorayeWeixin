@@ -2,7 +2,8 @@
 class IndexAction extends BaseAction{
 	public $includePath;
 	 public function _empty($name){
-            	$this->display($this->home_theme.':Index:login');
+		$this->setBg();
+            	$this->display($this->home_theme.':Index:loginv2');
        	}
 	protected function _initialize(){
 		parent::_initialize();
@@ -21,14 +22,24 @@ class IndexAction extends BaseAction{
 		$this->assign('k', $k);
 		$this->display($this->home_theme.':Index:'.ACTION_NAME);
 	}
+	
+
+	public function setBg(){
+			
+		list($msec, $sec) = explode(' ', microtime());
+		//播下随机数发生器种子，用srand函数调用seed函数的返回结果
+		srand((float)$sec);
+		$this->assign("bgindex",rand(1,4));
+	}
 	//
 	public function index(){
 		// $this->login();
+		
 		if(session('?uid') && session('?gid')){
 			$this->redirect(U('User/Index/index',array('cid' => $cid)));
 		}
-
-		$this->display($this->home_theme.':Index:login');
+		$this->setBg();
+		$this->display($this->home_theme.':Index:loginv2');
 		
 		// $this->display($this->home_theme.':Index:clogin');
 		// $where['status']=1;
