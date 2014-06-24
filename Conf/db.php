@@ -6,7 +6,7 @@ return array(
 	'DB_NAME'=>'lib_pcms',
 	'DB_USER'=>'root',
 	'DB_PWD'=>'1',
-	'DB_PREFIX'=>'pigcms_',
+	'DB_PREFIX'=>'gooraye_',
 );
 // return array(
 // 	'DB_TYPE'=>'mysql',

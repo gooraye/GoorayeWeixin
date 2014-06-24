@@ -22,9 +22,16 @@ class IndexAction extends WapAction{
 		}		
 		//父类信息
 		$allClasses=M('Classify')->where(array('token'=>$this->_get('token'),'status'=>1))->order('sorts desc')->select();
+
+		// var_dump($this->_get('token'));
+		// var_dump($allClasses);
+
+
 		$allClasses=$this->convertLinks($allClasses);//加外链等信息
+		
 		$info=array();
-			if ($allClasses){
+
+		if ($allClasses){
 			$classByID=array();
 			$firstGradeCatCount=0;
 			foreach ($allClasses as $c){

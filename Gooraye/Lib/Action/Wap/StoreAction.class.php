@@ -1,7 +1,7 @@
 <?php
 class StoreAction extends WapAction{
 	public $token;
-	public $wecha_id = 'gh_aab60b4c5a39';
+	public $wecha_id = 'gh_b5ffd9df92d7 ';
 	public $product_model;
 	public $product_cat_model;
 	public $session_cart_name;

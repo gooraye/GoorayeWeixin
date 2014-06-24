@@ -52,12 +52,14 @@ class UpyunAction extends UserAction{
 			}
 			
 		}elseif ($this->upload_type=='local'){
+
 			if (!function_exists('imagecreate')){
 				exit('php不支持gd库，请配置后再使用');
 			}
 			if (IS_POST){
 				$return=$this->localUpload();
-				echo '<script>location.href="/index.php?g=User&m=Upyun&a=upload&error='.$return['error'].'&msg='.$return['msg'].'";</script>';
+				$jumpURL = U('User/Upyun/upload?error='.$return['error'].'&msg='.$return['msg']);
+				echo '<script>location.href="'.$jumpURL.'";</script>';
 			}else {
 				if (!isset($_GET['from'])){
 					$this->display('local');
@@ -421,41 +423,51 @@ class UpyunAction extends UserAction{
 		$upload->autoSub=1;
 		if (isset($_POST['width'])&&intval($_POST['width'])){
 			$upload->thumb = true;
+			//最大宽度以及高度
+			//author 贝贝 <hebiduhebi@163.com>
 			$upload->thumbMaxWidth=$_POST['width'];
 			$upload->thumbMaxHeight=$_POST['height'];
-			//$upload->thumbPrefix='';
 			$thumb=1;
 		}
 		$upload->thumbRemoveOrigin=true;
 		//
 		$firstLetter=substr($this->token,0,1);
-		$upload->savePath =  './uploads/'.$firstLetter.'/'.$this->token.'/';// 设置附件上传目录
+		$root = $_SERVER['DOCUMENT_ROOT'].__ROOT__;
+		$upload->savePath =  $root.'/uploads/'.$firstLetter.'/'.$this->token.'/';// 设置附件上传目录
 		//
-		if (!file_exists($_SERVER['DOCUMENT_ROOT'].'/uploads')||!is_dir($_SERVER['DOCUMENT_ROOT'].'/uploads')){
-			mkdir($_SERVER['DOCUMENT_ROOT'].'/uploads',0777);
+		if (!file_exists($root.'/uploads')||!is_dir($root.'/uploads')){
+			mkdir($root.'/uploads',0777);
 		}
-		$firstLetterDir=$_SERVER['DOCUMENT_ROOT'].'/uploads/'.$firstLetter;
+		$firstLetterDir=$root.'/uploads/'.$firstLetter;
 		if (!file_exists($firstLetterDir)||!is_dir($firstLetterDir)){
 			mkdir($firstLetterDir,0777);
 		}
 		if (!file_exists($firstLetterDir.'/'.$this->token)||!is_dir($firstLetterDir.'/'.$this->token)){
-			mkdir($firstLetterDir.'/'.$this->token,0777);
+			var_dump(mkdir($firstLetterDir.'/'.$this->token,0777));
 		}
+		
+		$tmpPath = __ROOT__.'/uploads/'.$firstLetter.'/'.$this->token.'/';
+
+		// $msg = $upload->savePath;
 		//
-		$upload->hashLevel=4;
+		$upload->hashLevel=0;
 		if(!$upload->upload()) {// 上传错误提示错误信息
 			$error=1;
-			$msg=$upload->getErrorMsg();
+			  $msg=$upload->getErrorMsg();
 		}else{// 上传成功 获取上传文件信息
 			$error=0;
 			$info =  $upload->getUploadFileInfo();
-			
+			// var_dump($info);
+
+			// $tmpPath = $tmpPath.$info['savename'];
+
 			if ($thumb==1){
-				$paths=explode('/',$info[0]['savename']);
-				$fileName=$paths[count($paths)-1];
-				$msg=C('site_url').substr($upload->savePath,1).str_replace($fileName,'thumb_'.$fileName,$info[0]['savename']);
+				// $paths=explode('/',$info[0]['savename']);
+				// $fileName=$paths[count($paths)-1];
+				$msg = C('site_url').$tmpPath.'thumb_'.$info[0]['savename'];
+				// $msg=C('site_url').substr($upload->savePath,1).str_replace($fileName,'thumb_'.$fileName,$info[0]['savename']);
 			}else {
-				$msg=C('site_url').substr($upload->savePath,1).$info[0]['savename'];
+				$msg=C('site_url').$info['savename'].$info[0]['savename'];
 			}
 			M('Users')->where(array('id'=>$this->user['id']))->setInc('attachmentsize',intval($info[0]['size']));
 			M('Files')->add(array('token'=>$this->token,'size'=>intval($info[0]['size']),'time'=>time(),'type'=>$info[0]['extension'],'url'=>$msg));

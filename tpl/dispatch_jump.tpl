@@ -18,7 +18,7 @@ body{ background: #fff; font-family: '微软雅黑'; color: #333; font-size: 16p
 .system-message .detail{ font-size: 12px; line-height: 20px; margin-top: 12px; display:none}
 .btn
 {	border: none;
-	background: #bdc3c7;
+	background: #4d4d4d;
 	color: #ffffff;
 	padding: 9px 12px 10px;
 	line-height: 22px;
@@ -56,7 +56,7 @@ transition: 0.25s;
 	</div>
 <p class="detail"></p>
 <div class="jump" style="padding-right:5px;text-align:center;">
-<a id="href" class="btn"  href="<?php echo($jumpUrl); ?>">跳转（ <b id="wait"><?php echo($waitSecond); ?></b> ）</a> 
+<a id="href" class="btn"  href="<?php echo($jumpUrl); ?>" style="color:#fff;">跳转（ <b id="wait"><?php echo($waitSecond); ?></b> ）</a> 
 </div>
 </div>
 <script type="text/javascript">
