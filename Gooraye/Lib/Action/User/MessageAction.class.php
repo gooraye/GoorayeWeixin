@@ -26,6 +26,13 @@ class MessageAction extends UserAction{
         $this -> assign('info', $info);
         $this -> display();
     }
+    //删除
+    public function del(){
+        $map['id'] = $this->_get("id");;
+        M('Send_message')->where($map)->delete();
+        $this->success("删除成功！" ,  U('Message/sendHistory') );
+//        $this -> sendHistory();
+    }
     public function index(){
         $wechat_group_db = M('Wechat_group');
         $groups = $wechat_group_db -> where(array('token' => $this -> token)) -> order('id ASC') -> select();
@@ -107,20 +114,31 @@ class MessageAction extends UserAction{
             }else{
                 $this -> error('获取access_token发生错误：错误代码' . $json -> errcode . ',微信返回错误信息：' . $json -> errmsg);
             }
+            session('msg_imgids',implode(",", $imgids));
             $this -> success('图片素材上传完毕，现在开始发送信息', U('Message/tosendAll', array('imgids' => $imgids, 'wechatgroupid' => $wechatgroupid, 'mediaids' => $mediaids)));
         }
     }
     public function tosendAll(){
-        if (IS_POST){
+        // if (IS_POST){
             $row = array();
             $row['msgtype'] = 'news';
             $row['imgids'] = $this -> _get('imgids');
+            // var_dump($row['imgids']);
+            
+            if(empty($row['imgids'])){
+                $row['imgids'] = session('msg_imgids');
+                // session('msg_imgids',null);
+            }
+            
             $row['token'] = $this -> token;
             $row['time'] = time();
             $mediaids = explode(',', $_GET['mediaids']);
             $url_get = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=' . $this -> thisWxUser['appid'] . '&secret=' . $this -> thisWxUser['appsecret'];
             $json = json_decode($this -> curlGet($url_get));
-            if (!$json -> errmsg){
+             // var_dump($mediaids);
+             // var_dump($json);
+             // var_dump($json-> errmsg);
+            if (empty($json -> errmsg)){
                 $postMedia = array();
                 $postMedia['access_token'] = $json -> access_token;
                 $imgidsArr = explode(',', $row['imgids']);
@@ -144,7 +162,7 @@ class MessageAction extends UserAction{
                         if ($img['url']){
                         }else{
                         }
-                        $str .= $comma . '{"thumb_media_id":"' . $mediaids[$i] . '","author":"","title":"' . $img['title'] . '","content_source_url":"","content":"' . $img['info'] . '","digest":"' . $img['text'] . '"}';
+                        $str .= $comma . '{"thumb_media_id":"' . $mediaids[$i] . '","author":"","title":"' . $img['title'] . '","content_source_url":"","content":"' . htmlspecialchars($img['info']) . '","digest":"' . $img['text'] . '"}';
                         $comma = ',';
                         $i++;
                     }
@@ -152,6 +170,7 @@ class MessageAction extends UserAction{
                 }else{
                     $this -> error('请选择图文消息', U('Message/index'));
                 }
+                // var_dump($str);
                 $rt = $this -> curlPost('https://api.weixin.qq.com/cgi-bin/media/uploadnews?access_token=' . $postMedia['access_token'], $str);
                 if($rt['rt'] == false){
                     $this -> error('操作失败,curl_error:' . $rt['errorno']);
@@ -159,6 +178,8 @@ class MessageAction extends UserAction{
                     $media_id = $rt['media_id'];
                     $row['mediaid'] = $media_id;
                 }
+                // var_dump($rt);
+
             }else{
                 $this -> error('获取access_token发生错误：错误代码' . $json -> errcode . ',微信返回错误信息：' . $json -> errmsg);
             }
@@ -171,7 +192,7 @@ class MessageAction extends UserAction{
                 M('Send_message') -> where(array('id' => $id)) -> save(array('msg_id' => $msg_id));
                 $this -> success('发送任务已经启动，群发可能会在20分钟左右完成，您可以关闭该页面了', U('Message/sendHistory'));
             }
-        }
+        // }
     }
     public function item(){
         if (isset($_GET['id'])){

@@ -57,18 +57,35 @@ transition: 0.25s;
 <p class="detail"></p>
 <div class="jump" style="padding-right:5px;text-align:center;">
 <a id="href" class="btn"  href="<?php echo($jumpUrl); ?>" style="color:#fff;">跳转（ <b id="wait"><?php echo($waitSecond); ?></b> ）</a> 
+<a id="cancel" class="btn"  href="#" style="color:#f40;" onclick="cancel();">取消</a> 
 </div>
 </div>
 <script type="text/javascript">
-(function(){
-var wait = document.getElementById('wait'),href = document.getElementById('href').href;
-var interval = setInterval(function(){
+var timer = {};
+//取消跳转
+function cancel(){
+
+	if(!isNaN(timer.interval)){
+		clearInterval(timer.interval );
+	}
+
+}
+
+function start(){
+	var wait = document.getElementById('wait'),href = document.getElementById('href').href;
+
+	timer.interval = setInterval(function(){
 	var time = --wait.innerHTML;
 	if(time == 0) {
-		location.href = href;
-		clearInterval(interval);
+		location.href = href; 
+		cancel();
 	};
-}, 1000);
+	
+	}, 1000);
+
+}
+(function(){
+	start();
 })();
 </script>
 </body>

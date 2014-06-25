@@ -229,5 +229,25 @@ function getUnicodeFromUTF8($word) {
 	//return dechex(bindec($bin_str)); //如想返回十六进制4f60，用这句 
 } 
 
+/*
+* 返回模块名称
+*  author 贝贝 <hebiduhebi@163.com>
+*/
+function getWXModuleCate($cate){
+	$moduleName = '';
+	switch ($cate) {
+		case '1':
+			$moduleName = "查询模块";
+			break;
+		case '2':
+			$moduleName = "功能模块";
+			break;		
+		default:
+			# code...
+			break;
+	}
+
+	return $moduleName;
+}
 
 ?>

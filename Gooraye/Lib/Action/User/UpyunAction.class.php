@@ -443,7 +443,7 @@ class UpyunAction extends UserAction{
 			mkdir($firstLetterDir,0777);
 		}
 		if (!file_exists($firstLetterDir.'/'.$this->token)||!is_dir($firstLetterDir.'/'.$this->token)){
-			var_dump(mkdir($firstLetterDir.'/'.$this->token,0777));
+			mkdir($firstLetterDir.'/'.$this->token,0777);
 		}
 		
 		$tmpPath = __ROOT__.'/uploads/'.$firstLetter.'/'.$this->token.'/';

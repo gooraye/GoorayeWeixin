@@ -35,6 +35,7 @@ class SystemAction extends BackAction{
         $where['status'] = 1;
         $order['sort'] = 'asc';
         $nav = M('node') -> where($where) -> order($order) -> select();
+        // var_dump($nav);
         $this -> assign('nav', $nav);
         $this -> display();
     }

@@ -1,19 +1,20 @@
 <include file="Public:head"/>
 <div class="content">
 <div class="cLineB">
-  <h4 class="left">已经开发的功能 <span class="FAQ">请勾选你要开启的功能</span></h4>
+  <h4 class="left">可用的功能 <span class="FAQ">请勾选你要关闭的功能</span></h4>
  </div>
 <div class="msgWrap">
  <volist id="fun" name="fun">
  <fieldset>
 	<legend>
-		<span class="vipimgbig vip-iconbig<php>echo $i-1;</php>"></span> VIP<php>echo $i-1;</php>可以使用的功能
+		<span class="vipimgbig vip-iconbig<php>echo $i-1;</php>"></span> VIP
 	</legend>
 	<ul class="changeapp">
 	<volist name="fun" id="list" key="b">
 	  <li>
 		  <label> 
 			<input  type="checkbox" <if condition="in_array($list['funname'],$check)">checked="checked"</if> <if condition="$list['gid'] gt session('gid')"> disabled="disabled" </if> onchange="changeapp(this,'{gooraye:$Think.session.token}','{gooraye:$list.id}')"  value="{gooraye:$list.id}"/> {gooraye:$list.name}
+
 		  </label>
 		  <div>查询例子:<br> {gooraye:$list.info}</div>
 		</li>
@@ -21,8 +22,8 @@
 	</ul>   
    </fieldset>
 </volist>
-            
-               </div>
+</div>
+
 <!-- <div class="cLineB">
   <h4 class="left">待开发待的功能 <span class="FAQ">正在开发中，敬请期待！</span></h4>
  </div>

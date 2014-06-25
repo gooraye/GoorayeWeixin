@@ -1,7 +1,6 @@
 <include file="Index:header" />
 <script src="/tpl/static/artDialog/jquery.artDialog.js?skin=default"></script>
 <script src="/tpl/static/artDialog/plugins/iframeTools.js"></script>
-<link rel="stylesheet" type="text/css" href="{gooraye::Common}/default_user_com.css" media="all">
 <script language="JavaScript">
 if (window.top != self){
 	window.top.location = self.location;
@@ -13,7 +12,7 @@ if (window.top != self){
   <div class="usercontent">
     <ul>
 
-    <li class="addli"><a class="btn btn-large btn-danger" title="添加微信公众号" onclick="location.href='{gooraye::U('Index/add')}';">添加微信公众号</a>
+    <li class="addli"><a class="btn btn-large  btn-inverse" title="添加微信公众号" onclick="location.href='{gooraye::U('Index/add')}';">添加微信公众号</a>
     </li>
 
     </ul>
@@ -42,15 +41,15 @@ if (window.top != self){
           <TR>
             <TD><p><a href="{gooraye::U('Function/index',array('id'=>$vo['id'],'token'=>$vo['token']))}" title="点击进入功能管理"><img src="{gooraye:$vo.headerpic}" width="40" height="40"></a></p><p>{gooraye:$vo.wxname}</p></TD>
             <!-- <TD align="center">{gooraye:$thisGroup.name}</TD> -->
-            <TD>{gooraye:$viptime|date="Y-m-d",###} <a href="###" onclick="alert('请联系经销商')" id="smemberss" class="green"><em>我要续费</em></a></Td>
+            <TD>{gooraye:$viptime|date="Y-m-d",###} <a href="###" onclick="alert('请联系经销商')" id="smemberss" class=" btn btn-small btn-inverse"><em>我要续费</em></a></Td>
            <!--  <TD><p>图文：<php>echo $_SESSION['diynum'].'/'.$group[$_SESSION['gid']]['did'];</php></p></TD> -->
             <!--  <TD><p>总请求数:<php>echo $_SESSION['connectnum']</php></p><p> 本月请求数:<php>echo $group[$_SESSION['gid']]['cid'];</php></p></TD> -->
             <td>
               {gooraye:$f_siteUrl}/index.php/api/{gooraye::$vo['token']}
             </td>
             <TD class="norightborder">　
-            <a class="btn btn-large btn-primary" href="{gooraye::U('Function/index',array('id'=>$vo['id'],'token'=>$vo['token']))}" class="btnGreens" >进入管理</a>
-            <a  href="{gooraye::U('Index/edit',array('id'=>$vo['id']))}">编辑</a>　<a   href="javascript:drop_confirm('您确定要删除吗?', '{gooraye::U('Index/del',array('id'=>$vo['id']))}');">删除</a>　
+            <a  class=" btn btn-small btn-inverse" href="{gooraye::U('Index/edit',array('id'=>$vo['id']))}">编辑</a>　<a   href="javascript:drop_confirm('您确定要删除吗?', '{gooraye::U('Index/del',array('id'=>$vo['id']))}');" class=" btn btn-small btn-inverse">删除</a>　
+            <a class="btn btn-large btn-inverse" href="{gooraye::U('Function/index',array('id'=>$vo['id'],'token'=>$vo['token']))}" class="btnGreens" >进入管理</a>
        <!--      <a class="btn btn-large btn-primary" href="{gooraye::U('Home/Index/help',array('id'=>$vo['id'],'token'=>$vo['token']))}" class="btnGreens" >接口配置</a> -->
             </TD>
           </TR>
@@ -71,13 +70,15 @@ if (window.top != self){
           </div>
           <!-- 分页 END-->
 </div>        
-<div class="clr"></div>
 <!-- 右边内容 END -->
-</div>
-<!-- developer 块 END -->
+<div class="clr"></div>
  </div>
-<!-- wp 块 END -->
-<div id="wp" class="wp">
+<!-- developer 块 END -->
+</div>
 <!-- contentmanage 块 END -->
+</div>
+<!-- wp 块 END -->
+</div>
+<!-- topbg 块 END -->
 
-<include file="Public:footer"/>	
+</body></html>

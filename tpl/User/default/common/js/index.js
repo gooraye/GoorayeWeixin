@@ -1,5 +1,6 @@
 function initComponent(){
-	fixedMenu(".fixedMenu",100);
+	// fixedMenu(".fixedMenu",100);
+	alertRewrite();
 }
 
 /*返回顶部js*/
@@ -9,6 +10,34 @@ function totop(){
 /* alert 样式js */
 function alertRewrite(){
 	/* TODO */
+window.alert = function (cont){
+	cont = cont || argument[0];
+      if(!$(".goorayealert") || $(".goorayealert").length == 0){
+         $alert = "<div class='mask'><div class='goorayealert'><span class='alertcontent'>警告</span><button type='button' class='close' >×</button></div></div>";
+        $("body").append($alert);
+        $(".mask").css("width",$(window).width());
+        $(".mask").click(function(ev){
+                if(ev.target && ev.target.className.indexOf("mask") == -1){
+                          return ;
+                }
+                $(".mask").hide();
+                $alert.slideUp(800);
+        });
+        $(".goorayealert .close").click(function(ev){
+                $(".mask").hide();
+                $alert.slideUp(800);
+                ev.stopPropagation();
+        });
+       $(".goorayealert .alertcontent").text(cont);
+        $alert = $(".goorayealert");
+        $alert.slideDown(800);
+
+      }else{
+      	$(".goorayealert .alertcontent").text(cont);
+          $(".mask").show();
+          $(".goorayealert").slideDown(800);
+      }
+    }
 }
 
 /* 固定菜单 */
