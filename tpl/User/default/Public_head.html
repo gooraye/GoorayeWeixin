@@ -30,17 +30,18 @@
       <a href="{gooraye::U('User/Index/index')}">
        <img class="logo" src="{gooraye::RES}/images/logo.png">
       </a>
-       <a class="logout" title="退出系统" href="{gooraye::U('System/Admin/logout')}" ><i class="fa fa-sign-out fa-lg"></i></a>
+       <a class="logout" title="退出系统" href="{gooraye::U('System/Admin/logout')}" ><i class="fa fa-power-off fa-lg"></i></a>
     <div class="dropdown" >
       <a href="#" class="">
         <img class="avator" src="{gooraye:$wecha.headerpic}">
-        <span>{gooraye:$wecha.wxname}</span>
+        <span>{gooraye:$wecha.wxname} （{gooraye:$Think.session.uname}）</span>
         
         <i class="fa fa-sort-desc fa-lg" style="padding: 15px 0px;vertical-align: top;"></i>
         
         </a>
-         <ul class="dropdownmenu" >         
+         <ul class="dropdownmenu" >
            <li><a href="{gooraye::U('User/Index/index')}" ><i class="fa fa-exchange"></i>切换公众号</a>
+           <li><a href="{gooraye::U('User/Index/useredit')}" ><i class="fa fa-key"></i>修改密码</a>
           </li>
            <!-- <li><a href="{gooraye::U('User/Index/index')}" >更改密码</a> -->
           </li>
@@ -120,7 +121,7 @@ array('name'=>'回答不上来的配置','link'=>U('Other/index',array('token'=>
 )),
 
 array(
-'name'=>'3G网站设置',
+'name'=>'微网站设置',
 'display'=>0,
 'subs'=>array(
 array('name'=>'首页回复配置','link'=>U('Home/set',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Home','g'=>'User','a'=>'set')),
@@ -129,9 +130,9 @@ array('name'=>'模板管理','link'=>U('Tmpls/index',array('token'=>$token)),'ne
 array('name'=>'首页幻灯片','link'=>U('Flash/index',array('token'=>$token,'tip'=>1)),'new'=>0,'selectedCondition'=>array('m'=>'Flash','tip'=>1)),
 array('name'=>'轮播背景图','link'=>U('Flash/index',array('token'=>$token,'tip'=>2)),'new'=>0,'selectedCondition'=>array('m'=>'Flash','tip'=>2)),
 array('name'=>'底部导航菜单','link'=>U('Catemenu/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Catemenu')),
-array('name'=>'自定义菜单','link'=>U('Diymen/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Diymen')),
 array('name'=>'留言板','link'=>U('Reply/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Reply')),
 array('name'=>'微论坛','link'=>U('Forum/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Forum')),
+array('name'=>'自定义菜单','link'=>U('Diymen/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Diymen')),
 )),
 
 array(
@@ -172,7 +173,7 @@ array(
 'subs'=>array(
 array('name'=>'粉丝管理','link'=>U('Wechat_group/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Wechat_group','a'=>'index')),
 array('name'=>'分组管理','link'=>U('Wechat_group/groups',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Wechat_group','a'=>'groups')),
-array('name'=>'粉丝行为分析','link'=>U('Wechat_behavior/statistics',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Wechat_behavior','a'=>'statistics')),
+// array('name'=>'粉丝行为分析','link'=>U('Wechat_behavior/statistics',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Wechat_behavior','a'=>'statistics')),
 array('name'=>'渠道二维码','link'=>U('Recognition/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Recognition')),
 array('name'=>'人工客服','link'=>U('ServiceUser/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'ServiceUser')),
 array('name'=>'群发消息','link'=>U('Message/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Message')),
@@ -225,17 +226,7 @@ if ($parms1){
     $parmsArr[$parms2[0]]=$parms2[1];
   }
 }
-/*
-ksort($parmsArr);
-$newParmStr='';
-if ($parmsArr){
-  $comma='';
-  foreach ($parmsArr as $k=>$v){
-    $newParmStr.=$comma.$k.'='.$v;
-    $comma='&';
-  }
-}
-*/
+
 //
 $subMenus=array();
 $t=0;
@@ -246,17 +237,7 @@ foreach ($menus as $m){
   if ($m['subs']){
     $st=0;
     foreach ($m['subs'] as $s){
-      /*
-      $conditionParmStr='';
-      ksort($s['selectedCondition']);
-      if ($s['selectedCondition']){
-        $comma='';
-        foreach ($s['selectedCondition'] as $k=>$v){
-          $conditionParmStr.=$comma.$k.'='.$v;
-          $comma='&';
-        }
-      }
-      */
+     
       $includeArr=1;
       if ($s['selectedCondition']){
         foreach ($s['selectedCondition'] as $condition){
@@ -276,11 +257,7 @@ foreach ($menus as $m){
           }
         }
       }
-      /*
-      if ($t==1&&$st==4){
-        echo $conditionParmStr;
-      }
-      */
+    
       //
       if ($includeArr){
         $currentMenuID=$st;

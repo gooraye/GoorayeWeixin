@@ -18,7 +18,8 @@ a:hover{
 }
 .sideBar .catalogList ul .nav-header {
 	/*background-color: #4d4d4d;*/
-	background-color: #646262;
+	/*background-color: #646262;*/
+	background-color:#686767;
 }
 .sideBar{
 	border:0px;
@@ -316,7 +317,8 @@ color:#fff;
 	background-color: #f40;
 }
 .sideBar .catalogList ul .nav-header{	
-	background-color: #f40;
+	/*background-color: #f40;*/
+	background-color: #C0550D;
 }
 
 /* 百分比宽度*/
@@ -391,14 +393,20 @@ ul.dropdownmenu{
 	top: 50px;
 	right: 0px;
 	background: #686767;
-	padding: 2px 8px;
 	/* color: #000; */
 	width: 160px;
 	text-align: left;
 	font-size: 14px;
+	z-index:9999;
 }
 ul.dropdownmenu a i{
 	margin-right: 5px;
+}
+ul.dropdownmenu li{
+	padding: 0px 10px;
+}
+ul.dropdownmenu li:hover{
+	background-color:#5d5d5d;
 }
 
 /* alert 重写后的样式 */

@@ -184,9 +184,9 @@ class IndexAction extends UserAction{
 			$data['password']=md5($pwd);
 			$data['id']=$_SESSION['uid'];
 			if(M('Users')->save($data)){
-				$this->success('密码修改成功！',U('Index/index'));
+				$this->success('密码修改成功！',U('User/Index/index'));
 			}else{
-				$this->error('密码修改失败！',U('Index/index'));
+				$this->error('密码修改失败！',U('User/Index/index'));
 			}
 		}else{
 			$this->error('密码不能为空!',U('Index/useredit'));

@@ -53,20 +53,26 @@ class WeixinAction extends Action{
             $data['Content'] = $this -> getRecognition($data['EventKey']);
             $this -> data['Content'] = $data['Content'];
         }elseif($data['Event'] == 'MASSSENDJOBFINISH'){
+            //群发任务结束
             M('Send_message') -> where(array('msg_id' => $data['msg_id'])) -> save(array('reachcount' => $data['SentCount']));
+
         }elseif('subscribe' == $data['Event']){
+            //关注时回复
             $this -> behaviordata('follow', '1');
             $this -> requestdata('follownum');
             $follow_data = M('Areply') -> field('home,keyword,content') -> where(array('token' => $this -> token)) -> find();
             if(!(strpos($data['EventKey'], 'qrscene_') === FALSE)){
+                //如果是二维码关注
                 $follow_data['keyword'] = $this -> getRecognition(str_replace('qrscene_', '', $data['EventKey']));
             }
+
             if($follow_data['home'] == 1){
                 if(trim($follow_data['keyword']) == '首页' || $follow_data['keyword'] == 'home'){
                     return $this -> shouye();
                 }elseif(trim($follow_data['keyword']) == '我要上网'){
                     return $this -> wysw();
                 }
+                addWeixinLog($follow_data,'subscribe关注时');
                 return $this -> keyword($follow_data['keyword']);
             }else{
                 return array(html_entity_decode($follow_data['content']), 'text');
@@ -284,7 +290,7 @@ class WeixinAction extends Action{
                 return array('请发送您所在的位置', 'text');
             }
 
-        addWeixinLog($key,"用户发送来的文本内容");
+        // addWeixinLog($key,"用户发送来的文本内容");
         switch($key){
             
             case '首页': case 'home': return $this -> home();
@@ -478,6 +484,7 @@ class WeixinAction extends Action{
         $url = rtrim(C('site_url'), '/') . U('Wap/Lottery/index', array('type' => 1, 'token' => $this -> token, 'id' => $data['id'], 'wecha_id' => $this -> data['FromUserName']));
         return array(array(array($data['title'], $data['info'], $pic, $url)), 'news');
     }
+
     //根据关键词进行处理
     private function keyword($key){
         $like['keyword'] = array('like', '%' . $key . '%');
@@ -761,6 +768,8 @@ private function shouye($name){
     }else{
         $imgurl = $home['picurl'];
         if($home['apiurl'] == false){
+            
+            //第三方接口不存在时
             if (!$home['advancetpl']){
                 $url = rtrim(C('site_url'), '/') . '/index.php?g=Wap&m=Index&a=index&token=' . $this -> token . '&wecha_id=' . $this -> data['FromUserName'] . '&sgssz=mp.weixin.qq.com';
             }else{
@@ -1207,7 +1216,7 @@ private function chat($name){
 
     $str = chat_robot($name);
 
-    addWeixinLog($str,"chat_robot");
+    // addWeixinLog($str,"chat_robot");
 
     return $str;
 }
@@ -1218,7 +1227,7 @@ private function fistMe($data){
 }
 private function help(){
     $this -> behaviordata('help', '', '1');
-    $data = M('Areply') -> where(array('token' => $this -> token)) -> find();
+    $data = M('Areply') -> where(array('token' => $this -> token,'home' => '0')) -> find();
     return array(preg_replace("/(\015\012)|(\015)|(\012)/", "\n", $data['content']), 'text');
 }
 private function error_msg($data){
@@ -1261,6 +1270,7 @@ private function requestdata($field){
         $mysql -> where($data) -> setInc($field);
     }
 }
+//记录用户的行为
 private function behaviordata($field, $id = '', $type = ''){
     $data['date'] = date('Y-m-d', time());
     $data['token'] = $this -> token;
@@ -1287,6 +1297,8 @@ private function behaviordata($field, $id = '', $type = ''){
         $mysql -> where($data) -> setInc('num');
     }
 }
+//更新用户操作的最后时间
+//类似Session
 private function updateMemberEndTime($openid){
     $mysql = M('Wehcat_member_enddate');
     $id = $mysql -> field('id') -> where(array('openid' => $openid)) -> find();
@@ -1300,6 +1312,7 @@ private function updateMemberEndTime($openid){
         $mysql -> save($data);
     }
 }
+
 private function selectService(){
     if (!C('without_chat')){
         $this -> behaviordata('chat', '');
@@ -1335,9 +1348,10 @@ private function selectService(){
         }
     }
 }
+//百科
 private function baike($name){
     $name = implode('', $name);
-    if($name == 'gooraye'){
+    if($name == '古睿'){
         return '世界上最牛B的微信营销系统，两天前被腾讯收购，当然这只是一个笑话';
     }
     $name_gbk = iconv('utf-8', 'gbk', $name);
@@ -1355,6 +1369,7 @@ private function baike($name){
         return "抱歉，没有找到与“" . $name . "”相关的百科结果。";
     }
 }
+//识别二维码扫描场景事件
 private function getRecognition($id){
     $GetDb = D('Recognition');
     $data = $GetDb -> field('keyword') -> where(array('id' => $id, 'status' => 0)) -> find();
