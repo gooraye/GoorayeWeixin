@@ -10,8 +10,9 @@ class BaseAction extends Action{
     public $agentid;
     public $adminMp;
     protected function _initialize(){
-        define('RES', THEME_PATH . 'common');
-        define('STATICS', TMPL_PATH . 'static');
+        define('RES', __ROOT__.'/tpl/'.GROUP_NAME.'/'.C('DEFAULT_THEME').'/common');
+        // define('RES', THEME_PATH . 'common');
+        define('STATICS',  TMPL_PATH. 'static');
         $this -> assign('action', $this -> getActionName());
         $this -> isAgent = 0;
         if (C('agent_version')){

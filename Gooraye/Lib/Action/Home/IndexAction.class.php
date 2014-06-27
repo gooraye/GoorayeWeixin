@@ -67,6 +67,7 @@ class IndexAction extends BaseAction{
 		$this->assign('uid',$uid);
 		$this->display($this->home_theme.':Index:'.ACTION_NAME);
 	}
+	
 	// public function fc(){
 	// 	$this->display($this->home_theme.':Index:'.ACTION_NAME);
 	// }

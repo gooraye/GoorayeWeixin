@@ -1,0 +1,9 @@
+#sidebar ul.ds-recent-comments li a {
+	padding: 0;
+	display: inline;
+	background-color:transparent;
+	border:none;
+}
+#sidebar ul.ds-recent-comments .ds-avatar{
+	line-height: 1em;
+}
