@@ -284,7 +284,8 @@ function getMenu($vipid)
 }
 //所有功能
 function getMenu1(){
-
+	$token = $_GET['token'];
+	
 	return array(
 	        array(
 	        'name'=>'基础设置',
