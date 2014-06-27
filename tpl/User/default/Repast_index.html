@@ -26,7 +26,7 @@
 </div>
 <!--tab end-->
 <div class="cLine">
-<div class="pageNavigator left"> <a href="{gooraye::U('Repast/add',array('token' => $token,'cid'=>$cid))}" title="添加" class="btnGrayS vm bigbtn"><img src="{gooraye::RES}/images/product/add.png" width="16" class="vm">添加桌台</a></div>
+<div class="pageNavigator left"> <a href="{gooraye::U('Repast/add',array('token' => $token,'cid'=>$cid))}" title="添加" class="btnGrayS vm bigbtn"><i class="fa fa-plus"></i>添加桌台</a></div>
 <div class="clr"></div>
 </div>
 <div class="msgWrap">
@@ -52,8 +52,8 @@
 		<td>{gooraye:$tablelist.num}</td>
 
 		<td class="norightborder">
-			<a href="{gooraye::U('Repast/add', array('id' => $tablelist['id'], 'token' => $token,'cid' => $tablelist['cid']))}">修改</a> 
-			<a href="javascript:drop_confirm('您确定要删除吗?', '{gooraye::U('Repast/del',array('id' => $tablelist['id'], 'token' => $token,'cid' => $tablelist['cid']))}');">删除</a>
+			<a class="btn btn-small btn-inverse" href="{gooraye::U('Repast/add', array('id' => $tablelist['id'], 'token' => $token,'cid' => $tablelist['cid']))}">修改</a> 
+			<a class="btn btn-small btn-inverse" href="javascript:drop_confirm('您确定要删除吗?', '{gooraye::U('Repast/del',array('id' => $tablelist['id'], 'token' => $token,'cid' => $tablelist['cid']))}');">删除</a>
 		</td>
 	</tr>
 </volist>

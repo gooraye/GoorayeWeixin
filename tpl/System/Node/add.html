@@ -14,9 +14,12 @@
 				type:'POST',
 				url:'{gooraye::U("Node/add")}',
 				data:forms,
-				success:function(msg){
-					msg=eval('('+msg+')');
-					alert(msg.info);
+				success:function(data){
+					data=eval('('+data+')');
+					alert(data.info);
+					if(data.url){
+						window.location.href = data.url;
+					}
 				}
 			});
 		})
@@ -52,6 +55,7 @@
 		<input type="radio" name="level" value="0" class="ipt" />应用
 		<input type="radio" name="level" value="2" class="ipt" />模块
 		<input type="radio" name="level" value="3" class="ipt" checked />方法
+		<input type="radio" name="level" value="4" class="ipt" />链接
 	  </td>
     </tr>
 	<tr> 
@@ -60,7 +64,6 @@
 		<input type="radio" name="display" value="0" class="ipt" />隐藏
 		<input type="radio" name="display" value="1" class="ipt" />导航显示
 		<input type="radio" name="display" value="2" class="ipt" checked />菜单显示
-		<input type="radio" name="display" value="3" class="ipt" checked />前台导航菜单
 	  </td>
     </tr>
 	<tr> 
@@ -73,7 +76,8 @@
     </tr>
 	<input type="hidden" name="dosubmit" />
     <tr> 
-      <td height="48" colspan="2"><div id="addkey"></div><div class="fabu"><img src="{gooraye::RES}/images/main/addwz.gif" id="submit" /> <img src="{gooraye::RES}/images/main/addqx.gif" /></div></td>
+      <td height="48" colspan="2"><div id="addkey"></div><div class="fabu">
+      <button id="submit" type="button" >保存</button></div></td>
     </tr>
 </table>
 </form>

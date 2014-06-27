@@ -7,7 +7,7 @@
           </div>
           <div class="cLine">
             <div class="pageNavigator left">
-  <a href='{gooraye::U('LuckyFruit/add',array('token'=>$token))}' title='新增{gooraye:$lotteryTypeName}活动' class='btnGrayS vm bigbtn'><img src="{gooraye::RES}/images/img/activity-scratch-card.png" class="vm" />新增{gooraye:$lotteryTypeName}活动</a>
+  <a href='{gooraye::U('LuckyFruit/add',array('token'=>$token))}' title='新增{gooraye:$lotteryTypeName}活动' class='btnGrayS vm bigbtn'><i class="fa fa-plus"></i>新增{gooraye:$lotteryTypeName}活动</a>
               
             </div>
           
@@ -43,18 +43,15 @@
 				  
 				 </TD>
                    <TD class="norightborder">
-				   <a href="index.php?g=User&m=Lottery&a=sn&id={gooraye:$list.id}&type=4">SN码管理</a> 
-				   <a href="index.php?g=User&m=LuckyFruit&a=edit&id={gooraye:$list.id}">编辑</a>  
-				   <a href="index.php?g=User&m=Lottery&a=cheat&id={gooraye:$list.id}">作弊</a> 
+				   <a class="btn btn-small btn-inverse" href="index.php?g=User&m=Lottery&a=sn&id={gooraye:$list.id}&type=4">SN码管理</a> 
+				   <a class="btn btn-small btn-inverse" href="index.php?g=User&m=LuckyFruit&a=edit&id={gooraye:$list.id}">编辑</a>  
+				   <a class="btn btn-small btn-inverse" href="index.php?g=User&m=Lottery&a=cheat&id={gooraye:$list.id}">作弊</a> 
 	
-				   <a href="
+				   <a class="btn btn-small btn-inverse" href="#" onclick="
 				   <if condition="$list['status'] eq 1">				   
 				   javascript:drop_confirm('你确定要结束活动吗，结束后不可再开启本活动!', 'index.php?g=User&m=LuckyFruit&a=endLottery&id={gooraye:$list.id}');<else/>index.php?g=User&m=LuckyFruit&a=startLottery&id={gooraye:$list.id}   
-				   </if>">
-				   <if condition="$list['status'] eq 0">开始<else/>结束</if>				   
-				   </a>
-				  
-				   <a href="index.php?g=User&m=LuckyFruit&a=del&id={gooraye:$list.id}">删除</a></TD>
+				   </if>;return false;"><if condition="$list['status'] eq 0">开始<else/>结束</if></a>				  
+				   <a class="btn btn-small btn-inverse" href="index.php?g=User&m=LuckyFruit&a=del&id={gooraye:$list.id}">删除</a></TD>
                 </TR>
 				</volist>
               </TBODY>

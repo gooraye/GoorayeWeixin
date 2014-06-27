@@ -1,8 +1,8 @@
 <?php
 /**
  *网站后台
- *@package YiCms
- *@author YiCms
+ *@package Gooraye
+ *@author Gooraye
  **/
 class NodeAction extends BackAction{
 	public function _initialize() {
@@ -115,7 +115,7 @@ class NodeAction extends BackAction{
 			if($NodeDB->create()){
 				if($NodeDB->save()){
 					$this->assign("jumpUrl",U('Node/index'));
-    				$this->success('编辑成功！');
+    					$this->success('编辑成功！',U('Node/index'));
 				}else{
 					 $this->error('编辑失败!');
 				}

@@ -11,7 +11,7 @@ class ServiceUserAction extends UserAction{
         $this -> token = session('token');
         $this -> data = D('Service_user');
     }
-    public function wechatService(){
+    public function index(){
         if (IS_POST){
             D('Wxuser') -> where(array('token' => $this -> token)) -> save(array('transfer_customer_service' => intval($_POST['transfer_customer_service'])));
             S('wxuser_' . $this -> token, NULL);
@@ -26,7 +26,8 @@ class ServiceUserAction extends UserAction{
             $this -> display();
         }
     }
-    public function index(){
+    //wechatService
+    public function index_del(){
         $where['token'] = session('token');
         $count = $this -> data -> where($where) -> count();
         $page = new Page($count, 25);

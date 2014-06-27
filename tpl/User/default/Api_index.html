@@ -10,14 +10,15 @@
                   <input type="hidden" name="id" value="9878">
                   <input type="hidden" name="wxid" value="gh_423dwjkewad">
                  
-                  <input type="submit" value="搜索" id="msgSearchBtn" href="javascript:;" class="btnGrayS" title="搜索">
+                  <input type="submit" value="搜索" id="msgSearchBtn" href="javascript:;" class=" btn btn-small btn-inverse" title="搜索">
                   </form>
                   </div>
               <div class="clr"></div>
           </div>
           <div class="cLine">
             <div class="pageNavigator left">
-				<a href="{gooraye::U('Api/add')}" title="新增接口" class="btnGrayS vm bigbtn"><img src="/tpl/User/default/common/images/api.png" class="vm">新增接口</a>　
+				<a href="{gooraye::U('Api/add')}" title="新增接口" class="btnGrayS vm bigbtn">
+          <i class="fa fa-plus "></i>新增接口</a>　
 
               
             </div>
@@ -63,7 +64,6 @@
 					<if condition="$api['status'] eq 1">
 						<a href="{gooraye::U('Api/setInc',array('id'=>$api['id'],'type'=>2))}" title="">关闭</a>
 					<else/>
-						
 						<a href="{gooraye::U('Api/setInc',array('id'=>$api['id'],'type'=>1))}" title="">启用</a> 
 					</if>
 					<a href="{gooraye::U('Api/edit',array('id'=>$api['id']))}" title="">编辑</a> 
@@ -75,7 +75,7 @@
 						<input type="checkbox" id="chkall" name="chkall" onclick="checkAll(this.form, 'del_id')">
 						<label for="checkallBottom">全选</label>
 						<input type="radio" name="optype" checked="checked" value="1">删除
-						<a  class="btnGreens" ><span>确定</span></a>
+						<a  class="btnGreens btn btn-small" ><span>确定</span></a>
 					</td>
                 </tr>
               </tbody>

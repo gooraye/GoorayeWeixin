@@ -15,7 +15,7 @@
           <div class="cLine">
             <div class="pageNavigator left">
                 <a href="{gooraye::U('Car/carbrand',array('token'=>$token))}" class="btnGrayS vm bigbtn">
-                    <img src="tpl/User/default/common/images/pic.png" class="vm">添加品牌
+                   <i class="fa fa-plus"></i>添加品牌
                 </a>
             </div>
             <div class="clr"></div>
@@ -45,8 +45,8 @@
                     <td><a href="{gooraye:$vo['www']}" target="_blank">{gooraye:$vo['www']}</a></td>
                     <td>{gooraye:$vo['sort']}</td>
                     <td class="input-medium">
-                        <a  class="btn" href="{gooraye::U('Car/brand_edit',array('token'=>$vo['token'],'bid'=>$vo['id']))}" title="编辑">编辑</a>
-                    <a class="btn" onclick="return(confirm('确定要删除吗？'))" href="{gooraye::U('Car/brand_del',array('token'=>$vo['token'],'bid'=>$vo['id']))}" title="删除"  >删除</a></td>
+                        <a  class="btn btn-small btn-inverse" href="{gooraye::U('Car/brand_edit',array('token'=>$vo['token'],'bid'=>$vo['id']))}" title="编辑">编辑</a>
+                    <a class="btn btn-small btn-inverse" onclick="return(confirm('确定要删除吗？'))" href="{gooraye::U('Car/brand_del',array('token'=>$vo['token'],'bid'=>$vo['id']))}" title="删除"  >删除</a></td>
                     </tr>
                 </volist>
                  <tr>

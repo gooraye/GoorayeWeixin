@@ -95,7 +95,7 @@ function selectall(name) {
 <!-- <td><if condition="$o.handled eq 1"><span style="color:green">已处理</span><else/><span style="color:red">未处理</span></if></td> -->
 <td>{gooraye:$o.time|date="Y-m-d H:i:s",###}</td>
 <td>{gooraye:$o.reservetime|date="Y-m-d H:i:s",###}</td> 
-<td class="norightborder"><a href="###" onclick="showIntroDetail({gooraye:$o.id})">详细</a> <a href="javascript:drop_confirm('您确定要删除吗?', '{gooraye::U('Repast/deleteOrder',array('token'=>$token,'id'=>$o['id']))}');">删除</a></td>
+<td class="norightborder"><a class="btn btn-small btn-inverse" href="###" onclick="showIntroDetail({gooraye:$o.id})">详细</a> <a class="btn btn-small btn-inverse" href="javascript:drop_confirm('您确定要删除吗?', '{gooraye::U('Repast/deleteOrder',array('token'=>$token,'id'=>$o['id']))}');">删除</a></td>
 </tr>
 </volist>
 </tbody>

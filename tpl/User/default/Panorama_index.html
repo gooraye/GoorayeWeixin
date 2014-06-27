@@ -38,7 +38,7 @@ function selectall(name) {
 <div class="msgWrap">
 <form method="post" action="" id="info">
 <div class="cLine">
-<div class="pageNavigator left"> <a href="{gooraye::U('Panorama/add',array('token'=>$token))}" title="" class="btnGrayS vm bigbtn"><img src="{gooraye::RES}/images/product/add.png" class="vm">添加360°全景</a></div>
+<div class="pageNavigator left"> <a href="{gooraye::U('Panorama/add',array('token'=>$token))}" title="" class="btnGrayS vm bigbtn"><i class="fa fa-plus"></i>添加360°全景</a></div>
 <div class="clr"></div>
 </div>
 
@@ -58,7 +58,7 @@ function selectall(name) {
 <td>{gooraye:$o.name}</td>
 <td>{gooraye:$o.keyword}</td>
 <td>全景 {gooraye:$o.id}</td>
-<td class="norightborder"><a href="{gooraye::U('Panorama/set',array('token'=>$token,'id'=>$o['id']))}">修改</a> <a href="javascript:drop_confirm('您确定要删除吗?', '{gooraye::U('Panorama/delete',array('token'=>$token,'id'=>$o['id']))}');">删除</a></td>
+<td class="norightborder"><a class="btn btn-small btn-inverse" href="{gooraye::U('Panorama/set',array('token'=>$token,'id'=>$o['id']))}">修改</a> <a class="btn btn-small btn-inverse" href="javascript:drop_confirm('您确定要删除吗?', '{gooraye::U('Panorama/delete',array('token'=>$token,'id'=>$o['id']))}');">删除</a></td>
 </tr>
 </volist>
 </tbody>

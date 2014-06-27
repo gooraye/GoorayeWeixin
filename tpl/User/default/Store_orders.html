@@ -11,7 +11,7 @@
 <input type="hidden" name="ac" value="hotels-list">
 <input type="hidden" name="id" value="9878">
 <input type="hidden" name="wxid" value="gh_423dwjkewad">
-<input type="submit" value="搜索" id="msgSearchBtn" href="" class="btnGrayS" title="搜索">
+<input type="submit" value="搜索" id="msgSearchBtn" href="" class="btnGrayS btn btn-small" title="搜索">
 <script>
 function selectall(name) {
 	var checkItems=$('.cbitem');
@@ -27,7 +27,7 @@ function selectall(name) {
 	}
 }
 </script>
-<if condition="($parentid neq  '0') and ($parentid neq '')"><a href="{gooraye::U('Store/cats',array('token'=>$token,'parentid'=>$parentCat['parentid']))}" class="btnGreen" style="margin-top:-27px">返回上</a></if>
+<if condition="($parentid neq  '0') and ($parentid neq '')"><a href="{gooraye::U('Store/cats',array('token'=>$token,'parentid'=>$parentCat['parentid']))}" class="btnGreen" style="margin-top:-27px">返回</a></if>
 </form>
 </div>
 <div class="clr"></div>
@@ -49,7 +49,7 @@ function selectall(name) {
 <div class="msgWrap">
 <form method="post" action="" id="info">
 <div class="cLine">
-<div class="pageNavigator left"> <a href="###" onclick="$('#info').submit()" title="" class="btnGrayS vm bigbtn"><img src="{gooraye::RES}/images/product/arrow_switch.png" class="vm">处理订单</a></div>
+<div class="pageNavigator left"> <a href="###" onclick="$('#info').submit()" title="" class="btnGrayS vm bigbtn"><i class="fa fa-edit"></i>处理订单</a></div>
 <div class="clr"></div>
 </div>
 

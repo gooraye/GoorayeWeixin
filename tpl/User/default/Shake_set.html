@@ -19,7 +19,7 @@
 </TR>
  <tr> 
         <th>图文回复图片：</th>
-        <td><input type="text" name="thumb" value="{gooraye:$info.thumb}" class="px" id="thumb" style="width:400px;" />  <script src="/tpl/static/upyun.js"></script><a href="###" onclick="upyunPicUpload('thumb',700,420,'{gooraye:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('thumb')">预览</a></td> 
+        <td><input type="text" name="thumb" value="{gooraye:$info.thumb}" class="px" id="thumb" style="width:400px;" />  <script src="/tpl/static/upyun.js"></script><a href="###" onclick="upyunPicUpload('thumb',700,420,'{gooraye:$token}')" class="btn btn-small btn-inverse">上传</a> <a href="###" onclick="viewImg('thumb')" class="btn btn-small btn-inverse">预览</a></td> 
        </tr>
 <tr> 
         <th><span class="red"></span>简介：</th> 
@@ -85,7 +85,7 @@
 </TR>
 <TR>
   <TH valign="top"><label for="text">大屏幕背景：</label></TH>
-  <TD><input type="input" class="px" id="background" value="{gooraye:$info.background}" name="background" style="width:250px" value="{gooraye:$info.background}" > <script src="/tpl/static/upyun.js"></script><a href="###" onclick="chooseFile('background','background')" class="a_upload">选择</a>&nbsp;&nbsp;&nbsp;<a href="###" onclick="upyunPicUpload('background',1500,1000,'{gooraye:$token}')" class="a_upload">上传</a>&nbsp;&nbsp;&nbsp;<a href="###" onclick="viewImg('background')" class="a_upload">预览</a> 
+  <TD><input type="input" class="px" id="background" value="{gooraye:$info.background}" name="background" style="width:250px" value="{gooraye:$info.background}" > <script src="/tpl/static/upyun.js"></script><a href="###"  onclick="chooseFile('background','background')" class="btn btn-small btn-inverse">选择</a>&nbsp;&nbsp;&nbsp;<a href="###" onclick="upyunPicUpload('background',1500,1000,'{gooraye:$token}')" class="btn btn-small btn-inverse">上传</a>&nbsp;&nbsp;&nbsp;<a href="###" onclick="viewImg('background')" class="btn btn-small btn-inverse">预览</a> 
  
 <input type="hidden" name="id" value="{gooraye:$info.id}" />
 </TD>
@@ -94,7 +94,7 @@
 
 <TR>
   <TH valign="top"><label for="text">大屏幕背景音乐：</label></TH>
-  <TD><input type="input" class="px" id="backgroundmusic" value="{gooraye:$info.backgroundmusic}" name="backgroundmusic" style="width:250px" value="" >  <a href="###" onclick="chooseFile('backgroundmusic','music')" class="a_upload">选择</a> 定义大屏幕背景音乐，为URL地址
+  <TD><input type="input" class="px" id="backgroundmusic" value="{gooraye:$info.backgroundmusic}" name="backgroundmusic" style="width:250px" value="" >  <a href="###" onclick="chooseFile('backgroundmusic','music')" class="btn btn-small btn-inverse">选择</a> 定义大屏幕背景音乐，为URL地址
  
 
 </TD>
@@ -102,7 +102,7 @@
 </TR>
 <TR>
   <TH valign="top"><label for="text">客户端起始音效：</label></TH>
-  <TD><input type="input" class="px" id="music" value="{gooraye:$info.music}" name="music" style="width:250px" value="" > <a href="###" onclick="chooseFile('music','music')" class="a_upload">选择</a> 提醒用户开始摇一摇的音效效果
+  <TD><input type="input" class="px" id="music" value="{gooraye:$info.music}" name="music" style="width:250px" value="" > <a href="###" onclick="chooseFile('music','music')" class="btn btn-small btn-inverse">选择</a> 提醒用户开始摇一摇的音效效果
  
 
 </TD>
@@ -110,7 +110,7 @@
 </TR>
 <TR>
   <TH valign="top"><label for="text">二维码图片地址：</label></TH>
-  <TD><input type="input" class="px" id="qrcode" value="{gooraye:$info.qrcode}" name="qrcode" style="width:250px" value="" >  <a href="###" onclick="chooseFile('qrcode','my')" class="a_upload">选择</a>&nbsp;&nbsp;&nbsp;<a href="###" onclick="upyunPicUpload('qrcode',1500,1000,'{gooraye:$token}')" class="a_upload">上传</a>&nbsp;&nbsp;&nbsp;<a href="###" onclick="viewImg('qrcode')" class="a_upload">预览</a> 大屏幕显示的二维码
+  <TD><input type="input" class="px" id="qrcode" value="{gooraye:$info.qrcode}" name="qrcode" style="width:250px" value="" >  <a href="###" onclick="chooseFile('qrcode','my')" class="btn btn-small btn-inverse">选择</a>&nbsp;&nbsp;&nbsp;<a href="###" onclick="upyunPicUpload('qrcode',1500,1000,'{gooraye:$token}')" class="btn btn-small btn-inverse">上传</a>&nbsp;&nbsp;&nbsp;<a href="###" onclick="viewImg('qrcode')" class="btn btn-small btn-inverse">预览</a> 大屏幕显示的二维码
  
 
 </TD>

@@ -87,12 +87,16 @@ $(function(){
 	}
 	function echo(){
 		var str="";
-		for(i=0;i<10;i++){
+		for(i=0;i<3;i++){
 			score=parseInt($("#ranking div:eq("+i+")").children('span').width())/anitime;
+			score = parseInt(score);
+			if(isNaN(score)){
+				score = '';
+			}
 			str += "<tr>";
 			str += "<td>第"+(i+1)+"名</td>";
 			str += "<td>"+$("#ranking div:eq("+i+")").children('span').html();+"</td>";
-			str += "<td>"+parseInt(score)+"</td>";
+			str += "<td>"+score+"</td>";
 			str += "</tr>"
 			}
 		 $("#finaltable").append(str);

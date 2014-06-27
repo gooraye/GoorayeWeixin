@@ -8,7 +8,7 @@ class NodeModel extends Model{
 		// array('display',array(0,1,2),'显示类型非法！',1,'in'),
 	// );
 	protected $_validate	=	array(
-        array('name','checkNode','节点已经存在',0,'callback'),
+        		array('name','checkNode','节点已经存在',0,'callback',Model:: MODEL_INSERT),
         );
 
     public function checkNode() {

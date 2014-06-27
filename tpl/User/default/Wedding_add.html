@@ -65,8 +65,8 @@ function setlatlng(longitude,latitude){
 			<img class="thumb_img" id="suicai1_src" src="<if condition="$wedding['coverurl'] neq false">{gooraye:$wedding.coverurl}<else />http://bcs.duapp.com/baeimgs/Tnh1ROgm93.png</if>" style="max-height: 100px;">
 			<input id="suicai1" type="text" name="coverurl" class="px hide" onchange="changpic(this,1)" value="<if condition="$wedding['coverurl'] neq false">{gooraye:$wedding.coverurl}<else />http://bcs.duapp.com/baeimgs/Tnh1ROgm93.png</if>">
 			<span class="help-inline">
-				<a href="javascript:void(0)" onclick="upyunPicUpload('suicai1',700,420,'{gooraye:$token}')" class="btnGrayS vm">上传</a>
-				<a href="###" onclick="viewImg('suicai1')" class="btnGrayS vm">预览</a>
+				<a href="javascript:void(0)" onclick="upyunPicUpload('suicai1',700,420,'{gooraye:$token}')" class="btnGrayS  btn btn-small">上传</a>
+				<a href="###" onclick="viewImg('suicai1')" class="btnGrayS btn btn-small">预览</a>
 			</span>
 			<span class="help-inline"><span class="maroon">*</span>封面默认大小720*400</span>
 		</div>
@@ -77,8 +77,8 @@ function setlatlng(longitude,latitude){
 			<img class="thumb_img" id="suicaipic2_src" src="<if condition="$wedding['openpic'] neq false">{gooraye:$wedding.openpic}<else />http://bcs.duapp.com/baeimgs/jNuxaj1cAj.jpg</if>" style="width: 180px; height: 180px;">
 			<input id="suicaipic2" type="text" name="openpic" class="px hide" onchange="changpic(this,2)" value="<if condition="$wedding['openpic'] neq false">{gooraye:$wedding.openpic}<else />http://bcs.duapp.com/baeimgs/jNuxaj1cAj.jpg</if>">
 			<span class="help-inline">
-						<a href="javascript:void(0)" onclick="upyunPicUpload('suicaipic2',700,420,'{gooraye:$token}')" class="btnGrayS vm">上传</a>
-				<a href="###" onclick="viewImg('suicaipic2')" class="btnGrayS vm">预览</a>
+						<a href="javascript:void(0)" onclick="upyunPicUpload('suicaipic2',700,420,'{gooraye:$token}')" class="btnGrayS  btn btn-small">上传</a>
+				<a href="###" onclick="viewImg('suicaipic2')" class="btnGrayS  btn btn-small">预览</a>
 			</span>
 			<span class="help-inline"> 上传400*400左右的新郎新娘合影图,用于喜帖打开时的动画中,图片大小不超过300K </span>
 			<span class="red">不想要开场动画图片地址留空即可!</span>
@@ -90,8 +90,8 @@ function setlatlng(longitude,latitude){
 			<img class="thumb_img" id="suicai3_src" src="<if condition="$wedding['openpic'] neq false">{gooraye:$wedding.openpic}<else />http://bcs.duapp.com/baeimgs/2cDQtFbl75.jpg</if>" style="width: 40px; height: 40px;">
 			<input id="suicai3" type="text" name="picurl" class="px hide" onchange="changpic(this,3)" value="<if condition="$wedding['openpic'] neq false">{gooraye:$wedding.openpic}<else />http://bcs.duapp.com/baeimgs/2cDQtFbl75.jpg</if>">
 			<span class="help-inline">
-				<a href="javascript:void(0)" onclick="upyunPicUpload('suicai3',700,420,'{gooraye:$token}')" class="btnGrayS vm">上传</a>
-				<a href="###" onclick="viewImg('suicai3')" class="btnGrayS vm">预览</a>
+				<a href="javascript:void(0)" onclick="upyunPicUpload('suicai3',700,420,'{gooraye:$token}')" class="btnGrayS  btn btn-small">上传</a>
+				<a href="###" onclick="viewImg('suicai3')" class="btnGrayS  btn btn-small">预览</a>
 			</span><span class="help-inline"><span class="maroon">*</span>默认40x40,显示在喜帖主页</span>
 		</div>
 	</div>
@@ -108,7 +108,7 @@ function setlatlng(longitude,latitude){
 			</span>
 			<span class="help-inline">
 				<span class="maroon">*</span>
-				<a target="ddd" class="btnGrayS vm" href="{gooraye::U('Photo/add')}">创建相册</a>  如果没有请创建
+				<a target="_blank" class="btnGrayS  btn btn-small" href="{gooraye::U('Photo/add')}">创建相册</a>  如果没有请创建
 			</span>
 		</div>
 	</div>
@@ -167,7 +167,7 @@ function setlatlng(longitude,latitude){
 		 <div class="controls">
 			<div id="r-result">
 				 <input type="input" class="px" id="longitude" value="{gooraye:$wedding.lng}"  name="lng" style="width:80px;">
-				 <input type="input" class="px" id="latitude" value="{gooraye:$wedding.lat}"  name="lat" style="width:80px;">  <a href="###" onclick="setlatlng($('#longitude').val(),$('#latitude').val())">在地图中查看/设置</a>
+				 <input type="input" class="px" id="latitude" value="{gooraye:$wedding.lat}"  name="lat" style="width:80px;">  <a href="###" class=" btn btn-small btn-inverse" onclick="setlatlng($('#longitude').val(),$('#latitude').val())">在地图中查看/设置</a>
 				 <input  type="hidden"  name="city" class="px" id="city" size="20" value="" /> 
 			 </div>
 			 <div id="searchResultPanel"></div>
@@ -182,7 +182,7 @@ function setlatlng(longitude,latitude){
 	<div class="control-group">
 		<label class="control-label" for="mp3url">背景音乐</label>
 		<div class="controls">
-			<input class="px" name="mp3url" value="{gooraye:$wedding.mp3url}" id="suicai4" style="width:300px" onchange="document.getElementById('plmp3').src=this.value"> <a href="###" onclick="chooseFile('suicai4','music')" class="a_upload">选择</a><br />
+			<input class="px" name="mp3url" value="{gooraye:$wedding.mp3url}" id="suicai4" style="width:300px" onchange="document.getElementById('plmp3').src=this.value"> <a href="###" onclick="chooseFile('suicai4','music')" class="a_upload  btn btn-small btn-inverse">选择</a><br />
 		
 			<audio  id="plmp3" src="" preload="none"></audio>
 		</div>
@@ -205,8 +205,8 @@ function setlatlng(longitude,latitude){
 		<div class="controls">
 			<input id="suicai6" type="text" name="qr_code" class="span4" value="{gooraye:$wedding.qr_code}">
 			<span class="help-inline">
-				<a href="javascript:void(0)" onclick="upyunPicUpload('suicai6',700,420,'{gooraye:$token}')" class="btnGrayS vm">上传</a>
-				<a href="###" onclick="viewImg('suicai6')" class="btnGrayS vm">预览</a>
+				<a href="javascript:void(0)" onclick="upyunPicUpload('suicai6',700,420,'{gooraye:$token}')" class="btnGrayS  btn btn-small">上传</a>
+				<a href="###" onclick="viewImg('suicai6')" class="btnGrayS  btn btn-small">预览</a>
 			</span>
 			<span class="help-inline">
 			<span class="maroon">*</span>默认100x100,显示在喜帖底部</span>

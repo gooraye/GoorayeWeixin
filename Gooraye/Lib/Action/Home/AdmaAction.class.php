@@ -5,12 +5,12 @@ class AdmaAction extends BaseAction{
 		if($this->_get('token')!=false){
 			$adma=M('Adma')->where(array('token'=>$this->_get('token')))->find();
 			if($adma==false){
-				$this->error('不在的宣传页',U('Home/Index/index'));
+				$this->error('不在的宣传页',U('User/Adma/index',array("token"=>$this->_get('token'))));
 			}else{
 				$this->assign('adma',$adma);
 			}
 		}else{
-			$this->error('身份验证失败',U('Home/Index/index'));
+			$this->error('身份验证失败',U('User/Adma/index',array("token"=>$this->_get('token'))));
 		}
 		$this->display();
 	}

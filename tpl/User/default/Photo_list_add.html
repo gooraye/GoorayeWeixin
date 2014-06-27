@@ -9,7 +9,7 @@
  </div>
  
  <div class="cLineB">
-<div class="pageNavigator left"><strong>此相册地址：<a href="{gooraye:$f_siteUrl}/index.php?g=Wap&m=Photo&a=plist&token={gooraye:$token}&id={gooraye:$Think.get.id}" class="green">{gooraye:$f_siteUrl}/index.php?g=Wap&m=Photo&a=plist&token={gooraye:$token}&id={gooraye:$Think.get.id}</a></strong></div>
+<div class="pageNavigator left"><strong>此相册地址：<a target="_blank" href="{gooraye:$f_siteUrl}/index.php?g=Wap&m=Photo&a=plist&token={gooraye:$token}&id={gooraye:$Think.get.id}" class="green">{gooraye:$f_siteUrl}/index.php?g=Wap&m=Photo&a=plist&token={gooraye:$token}&id={gooraye:$Think.get.id}</a></strong></div>
 <div class="clr"></div>
 </div>
  <div class="msgWrap form">
@@ -35,13 +35,13 @@
 	<td><input type="text" name="sort" value="0"  class="px" style="width:50px;" /></td>
 	<td>
 		<div class="cateimg"></div>
-		<input class="px" style="width:250px;" type="text" name="picurl" id="picurl" value=""  /> <script src="/tpl/static/upyun.js"></script><a href="###" onclick="upyunPicUpload('picurl',1500,1000,'{gooraye:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('picurl')">预览</a>
+		<input class="px" style="width:250px;" type="text" name="picurl" id="picurl" value=""  /> <script src="/tpl/static/upyun.js"></script><a href="###" onclick="upyunPicUpload('picurl',1500,1000,'{gooraye:$token}')" class="a_upload btn btn-small btn-inverse">上传</a> <a href="###" onclick="viewImg('picurl')" class="btn btn-small btn-inverse">预览</a>
 		<input type="hidden"   name="pid" value="{gooraye:$Think.get.id}"  />
 	</td>
 	<td><input class="px" type="text"  style="width:250px;"  name="info" value=""  /></td>
 	<td><input class="checkbox" type="checkbox" name="status" value="1"  checked ></td>
 	<td class="norightborder">
-		<button type="submit" id="vtype" class="btnGray vm" ><strong>添加</strong></button>　
+		<button type="submit" id="vtype" class="btnGray btn btn-small btn-inverse" >添加</button>　
 	</td>
 </tr> 
 </form>
@@ -69,16 +69,16 @@
 <tr>
 	<td><input type="text" name="title" value="{gooraye:$photo.title}"  class="px"    /></td>
 	<td><input type="text" name="sort" value="{gooraye:$photo.sort}"  class="px" style="width:50px;" /></td>
-	<td><div class="cateimg"></div><input class="px"  style="width:250px;"   type="text"   name="picurl" id="picurl{gooraye:$i}" value="{gooraye:$photo.picurl}"  /> <script src="/tpl/static/upyun.js"></script><a href="###" onclick="upyunPicUpload('picurl{gooraye:$i}',1500,1000,'{gooraye:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('picurl{gooraye:$i}')">预览</a></td>
+	<td><div class="cateimg"></div><input class="px"  style="width:250px;"   type="text"   name="picurl" id="picurl{gooraye:$i}" value="{gooraye:$photo.picurl}"  /> <script src="/tpl/static/upyun.js"></script><a href="###" onclick="upyunPicUpload('picurl{gooraye:$i}',1500,1000,'{gooraye:$token}')" class="a_upload btn btn-small btn-inverse">上传</a> <a href="###" class="btn btn-small btn-inverse" onclick="viewImg('picurl{gooraye:$i}')">预览</a></td>
 	<td><input class="px" type="text"  style="width:250px;"  name="info" value="{gooraye:$photo.info}"  /></td>
 	<td>
 		<input class="checkbox" type="checkbox" name="status" value="1"  <if condition="$list['status'] eq 1">checked</if> >
 		<input type="hidden"   name="id" value="{gooraye:$photo.id}"  /></td>
 	<td class="norightborder">
-		<button type="submit" name="edit" value="true" class="btnGreen vm" style="height:20px;font-size:12px;line-height:10px;">
-			<strong>修改</strong>
+		<button type="submit" name="edit" value="true" class="btnGreen btn btn-small btn-inverse" >
+			修改
 		</button>
-	<a href="{gooraye::U('Photo/list_del',array('id'=>$photo['id'],'token'=>session('token')))}">删除</a>
+	<a class="btn btn-small btn-inverse" href="{gooraye::U('Photo/list_del',array('id'=>$photo['id'],'token'=>session('token')))}">删除</a>
 	</td>
 </tr>
 </form>

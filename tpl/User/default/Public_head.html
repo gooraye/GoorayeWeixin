@@ -17,6 +17,15 @@
 <script type="text/javascript">
   $(function(){
       initComponent();
+      $(".topmenu a").click(function(ev){
+            $attrhref = $(this).attr("href");
+
+            $.post(  $attrhref, function( data ) {
+                
+                  // $( ".result" ).html( data );
+            });
+            ev.stopPropagation();
+      });
   })
 </script>
 </head>
@@ -25,11 +34,18 @@
 <div class="topbg">
 <div class="top">
 <div class="toplink">
-
+  
     <div class="memberinfo"  id="destoon_member">          
-      <a href="{gooraye::U('User/Index/index')}">
-       <img class="logo" src="{gooraye::RES}/images/logo.png">
+      <a class="logo" href="{gooraye::U('User/Index/index')}">
+       <img  src="{gooraye::RES}/images/logo.png">
       </a>
+
+      <div class="topmenu" style="display:none;">
+        <a href="#" onclick="alert('功能正在开发中');" >功能中心</a>
+        <a href="#" onclick="alert('功能正在开发中');">行业应用</a>
+        <a href="#" onclick="alert('功能正在开发中');">系统管理</a>
+      </div>
+
        <a class="logout" title="退出系统" href="{gooraye::U('System/Admin/logout')}" ><i class="fa fa-power-off fa-lg"></i></a>
     <div class="dropdown" >
       <a href="#" class="">
@@ -102,233 +118,13 @@
       <div class="tableContent">
         
         <!--左侧功能菜单-->
- <div  class="sideBar" id="sideBar">
-<div class="catalogList">
-<ul id="menu">
-<?php
-$menus=array(
-array(
-'name'=>'基础设置',
-'display'=>1,
-'subs'=>array(
-array('name'=>'功能管理','link'=>U('Function/index',array('token'=>$token,'id'=>session('wxid'))),'new'=>0,'selectedCondition'=>array('m'=>'Function')),
-array('name'=>'关注时回复与帮助','link'=>U('Areply/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Areply')),
-array('name'=>'微信－文本回复','link'=>U('Text/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Text')),
-array('name'=>'微信－图文回复','link'=>U('Img/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Img')),
-array('name'=>'微信－语音回复','link'=>U('Voiceresponse/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Voiceresponse')),
-array('name'=>'自定义LBS回复','link'=>U('Company/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Company')),
-array('name'=>'回答不上来的配置','link'=>U('Other/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Other')),
-)),
-
-array(
-'name'=>'微网站设置',
-'display'=>0,
-'subs'=>array(
-array('name'=>'首页回复配置','link'=>U('Home/set',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Home','g'=>'User','a'=>'set')),
-array('name'=>'分类管理','link'=>U('Classify/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Classify')),
-array('name'=>'模板管理','link'=>U('Tmpls/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Tmpls')),
-array('name'=>'首页幻灯片','link'=>U('Flash/index',array('token'=>$token,'tip'=>1)),'new'=>0,'selectedCondition'=>array('m'=>'Flash','tip'=>1)),
-array('name'=>'轮播背景图','link'=>U('Flash/index',array('token'=>$token,'tip'=>2)),'new'=>0,'selectedCondition'=>array('m'=>'Flash','tip'=>2)),
-array('name'=>'底部导航菜单','link'=>U('Catemenu/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Catemenu')),
-array('name'=>'留言板','link'=>U('Reply/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Reply')),
-array('name'=>'微论坛','link'=>U('Forum/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Forum')),
-array('name'=>'自定义菜单','link'=>U('Diymen/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Diymen')),
-)),
-
-array(
-'name'=>'行业应用',
-'display'=>0,
-'subs'=>array(
-array('name'=>'订餐（无线打印）','link'=>U('Repast/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Repast')),
-array('name'=>'360°全景','link'=>U('Panorama/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Panorama')),
-array('name'=>'婚庆喜帖','link'=>U('Wedding/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Wedding')),
-array('name'=>'3G微投票','link'=>U('Vote/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Vote')),
-array('name'=>'微汽车','link'=>U('Car/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Car')),
-array('name'=>'楼盘房产','link'=>U('Estate/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Estate')),
-array('name'=>'微教育','link'=>U('School/index',array('token'=>$token,'type'=>'semester')),'new'=>0,'selectedCondition'=>array('m'=>'School')),
-array('name'=>'微医疗','link'=>U('Medical/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Medical'),'test'=>0),
-array('name'=>'酒店宾馆','link'=>U('Hotels/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Hotels')),
-array('name'=>'万能表单,报名,留言,预约','link'=>U('Selfform/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Selfform')),
-array('name'=>'通用订单(酒吧KTV)','link'=>U('Host/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Host')),
-)),
-
-array(
-'name'=>'电商系统',
-'display'=>0,
-'subs'=>array(
-array('name'=>'在线支付设置','link'=>U('Alipay_config/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Alipay_config')),
-array('name'=>'微信团购系统','link'=>U('Groupon/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Groupon')),
-array('name'=>'微信商城系统','link'=>U('Store/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Store')),
-// array('name'=>'淘宝天猫店铺配置','link'=>U('Taobao/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Taobao')),
-
-array('name'=>'融合第三方','link'=>U('Api/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Api')),
-array('name'=>'DIY宣传页','link'=>U('Adma/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Adma')),
-array('name'=>'3G图集(相册)','link'=>U('Photo/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Photo')),
-// array('name'=>'高级模板','link'=>U('AdvanceTpl/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Photo')),
-)),
-
-array(
-'name'=>'微用户管理CRM',
-'display'=>0,
-'subs'=>array(
-array('name'=>'粉丝管理','link'=>U('Wechat_group/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Wechat_group','a'=>'index')),
-array('name'=>'分组管理','link'=>U('Wechat_group/groups',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Wechat_group','a'=>'groups')),
-// array('name'=>'粉丝行为分析','link'=>U('Wechat_behavior/statistics',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Wechat_behavior','a'=>'statistics')),
-array('name'=>'渠道二维码','link'=>U('Recognition/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Recognition')),
-array('name'=>'人工客服','link'=>U('ServiceUser/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'ServiceUser')),
-array('name'=>'群发消息','link'=>U('Message/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Message')),
-array('name'=>'分享管理','link'=>U('Share/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Share')),
-)),
-
-array(
-'name'=>'推广活动',
-'display'=>0,
-'subs'=>array(
-array('name'=>'幸运大转盘','link'=>U('Lottery/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Lottery')),
-array('name'=>'优惠券','link'=>U('Coupon/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Coupon')),
-array('name'=>'刮刮卡','link'=>U('Guajiang/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Guajiang')),
-array('name'=>'幸运水果机','link'=>U('LuckyFruit/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'LuckyFruit')),
-array('name'=>'砸金蛋','link'=>U('GoldenEgg/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'GoldenEgg')),
-array('name'=>'祝福贺卡','link'=>U('Greeting_card/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Greeting_card')),
-array('name'=>'摇一摇','link'=>U('Shake/index',array('token'=>$token)),'new'=>0,'test'=>0,'selectedCondition'=>array('m'=>'Shake')),
-array('name'=>'微信墙','link'=>U('Wall/index',array('token'=>$token)),'new'=>0,'test'=>0,'selectedCondition'=>array('m'=>'Wall')),
-array('name'=>'微路由','link'=>U('Router/index',array('token'=>$token)),'new'=>0,'test'=>0,'selectedCondition'=>array('m'=>'Router')),
-)),
-
-array(
-'name'=>'会员卡',
-'display'=>0,
-'subs'=>array(
-array('name'=>'会员卡','link'=>U('Member_card/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Member_card'),'exceptCondition'=>array('a'=>'replyInfoSet')),
-array('name'=>'回复设置','link'=>U('Member_card/replyInfoSet',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Member_card','a'=>'replyInfoSet')),
-)),
-
-array(
-'name'=>'统计分析',
-'display'=>0,
-'subs'=>array(
-array('name'=>'请求数详情','link'=>U('Requerydata/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Requerydata')),
-array('name'=>'粉丝行为分析','link'=>U('Wechat_behavior/statistics',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Wechat_behavior','a'=>'statistics')),
-)),
-
-
-);
-?>
-<?php
-$i=0;
-
-$parms=$_SERVER['QUERY_STRING'];
-$parms1=explode('&',$parms);
-$parmsArr=array();
-if ($parms1){
-  foreach ($parms1 as $p){
-    $parms2=explode('=',$p);
-    $parmsArr[$parms2[0]]=$parms2[1];
-  }
-}
-
-//
-$subMenus=array();
-$t=0;
-$currentMenuID=0;
-$currentParentMenuID=0;
-foreach ($menus as $m){
-  $loopContinue=1;
-  if ($m['subs']){
-    $st=0;
-    foreach ($m['subs'] as $s){
-     
-      $includeArr=1;
-      if ($s['selectedCondition']){
-        foreach ($s['selectedCondition'] as $condition){
-          if (!in_array($condition,$parmsArr)){
-            $includeArr=0;
-            break;
-          }
-        }
-      }
-      if ($includeArr){
-        if ($s['exceptCondition']){
-          foreach ($s['exceptCondition'] as $eptCondition){
-            if (in_array($eptCondition,$parmsArr)){
-              $includeArr=0;
-              break;
-            }
-          }
-        }
-      }
-    
-      //
-      if ($includeArr){
-        $currentMenuID=$st;
-        $currentParentMenuID=$t;
-        $loopContinue=0;
-        break;
-      }
-      $st++;
-    }
-    //
-    if ($loopContinue==0){
-      break;
-    }
-  }
-  $t++;
-}
-//
-/*
-echo $currentMenuID;
-echo $currentParentMenuID;
-*/
-//
-foreach ($menus as $m){
-  //
-  $displayStr='';
-  if ($currentParentMenuID!=0||0!=$currentMenuID){
-    $m['display']=0;
-  }
-  if (!$m['display']){
-    $displayStr=' style="display:none"';
-  }
-  if ($currentParentMenuID==$i){
-    $displayStr='';
-  }
-  $aClassStr='';
-  if ($displayStr){
-    $aClassStr=' nav-header-current';
-  }
-  echo '<a class="nav-header'.$aClassStr.'">'.$m['name'].'</a><ul class="ckit"'.$displayStr.'>';
-  if ($m['subs']){
-    $j=0;
-    foreach ($m['subs'] as $s){
-      $selectedClassStr='subCatalogList';
-      if ($currentParentMenuID==$i&&$j==$currentMenuID){
-        $selectedClassStr='selected';
-      }
-      $newStr='';
-      if ($s['test']){
-        $newStr.='<span class="test"></span>';
-      }else {
-      if ($s['new']){
-        $newStr.='<span class="new"></span>';
-      }
-      }
-      echo '<li class="'.$selectedClassStr.'"> <a href="'.$s['link'].'">'.$s['name'].'</a>'.$newStr.'</li>';
-      if ($s['name']=='模板管理'&&is_dir($_SERVER['DOCUMENT_ROOT'].'/cms')&&!strpos($_SERVER['HTTP_HOST'],'gooraye')){
-
-        echo '<li class="subCatalogList"> <a href="/cms/manage/index.php">高级模板</a><span class="new"></span></li>';
-      }
-      $j++;
-    }
-  }
-  echo '</ul>';
-  $i++;
-}
-?>
-
-
-</ul>
-</div>
-</div>
+       <div  class="sideBar" id="sideBar">
+            <div class="catalogList">
+              <ul id="menu">
+                {gooraye:$menuhtml}
+              </ul>
+            </div>
+      </div>
 <script type="text/javascript">
 $(document).ready(function(){
   $(".nav-header").mouseover(function(){

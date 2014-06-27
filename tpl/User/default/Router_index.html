@@ -12,7 +12,7 @@
 
           <div class="ftip" style="margin:25px auto 5px auto;">下面是您拥有的路由器列表</div>
           <div class="cLineC" style="line-height: 32px;">
- <a href="{gooraye::U('Router/set')}" class="btnGrayS vm bigbtn" >添加路由</a>　 
+ <a href="{gooraye::U('Router/set')}" class="btnGrayS vm bigbtn" ><i class="fa fa-plus"></i>添加路由</a>　 
 </div>
          <div class="msgWrap form">
 <div class="bdrcontent">
@@ -32,7 +32,7 @@
 <td>{gooraye:$actinfo.name}</td>
     <td>{gooraye:$actinfo.wechat}</td>
 <td class="norightborder">
-<a href="{gooraye::U('Router/lists',array('id'=>$actinfo['id'],'token'=>$_SESSION['token']))}" >在线列表</a>&nbsp;<a href="javascript:drop_confirm('您确定要删除吗?', '{gooraye::U('Router/delete',array('token'=>$token,'id'=>$actinfo['id']))}');">删除</a>
+<a class="btn btn-small btn-inverse" href="{gooraye::U('Router/lists',array('id'=>$actinfo['id'],'token'=>$_SESSION['token']))}" >在线列表</a>&nbsp;<a class="btn btn-small btn-inverse" href="javascript:drop_confirm('您确定要删除吗?', '{gooraye::U('Router/delete',array('token'=>$token,'id'=>$actinfo['id']))}');">删除</a>
 </td>
 </volist>
 </tr>

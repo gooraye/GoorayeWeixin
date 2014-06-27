@@ -24,8 +24,8 @@
 					  <td><if condition="$greeting_card['picurl'] eq ''"><else/><img id="suicaipic1" src="{gooraye:$greeting_card['picurl']}" width="200"/><br></if>
 					  <input class="px" name="picurl" value="{gooraye:$greeting_card['picurl']}" id="suicai1" style="width:280px;">
 					  <span class="help-inline">
-						<a href="javascript:void(0)" onclick="upyunPicUpload('suicai1',700,420,'{gooraye:$token}')" class="btnGrayS vm">上传</a>
-						<a href="###" onclick="viewImg('suicai1')" class="btnGrayS vm">预览</a>
+						<a href="javascript:void(0)" onclick="upyunPicUpload('suicai1',700,420,'{gooraye:$token}')" class="btn  btn-inverse btn-small">上传</a>
+						<a href="###" onclick="viewImg('suicai1')" class="btn  btn-inverse btn-small">预览</a>
 					  </span>
 					  </td>
                 </tr>
@@ -34,8 +34,8 @@
                   <td><if condition="$greeting_card['bakcground_url'] eq ''"><else/><img id="suicaipic2" src="{gooraye:$greeting_card['bakcground_url']}" width="200"><br></if>
                   <input class="px" name="bakcground_url" value="{gooraye:$greeting_card['bakcground_url']}" id="suicai2" style="width:280px;">  
 				  <span class="help-inline">
-					<a href="javascript:void(0)" onclick="upyunPicUpload('suicai2',700,420,'{gooraye:$token}')" class="btnGrayS vm">上传</a>
-					<a href="###" onclick="viewImg('suicai2')" class="btnGrayS vm">预览</a>
+					<a href="javascript:void(0)" onclick="upyunPicUpload('suicai2',700,420,'{gooraye:$token}')" class="btn  btn-inverse btn-small">上传</a>
+					<a href="###" onclick="viewImg('suicai2')" class="btn  btn-inverse btn-small">预览</a>
 				 </span>只改变选中模版的背景图!
 </td>
                 </tr>
@@ -44,7 +44,7 @@
      <td>
 	 
 	 <input class="px" name="mp3" value="{gooraye:$greeting_card['mp3']}" id="suicai3" style="width:300px" onchange="document.getElementById('plmp3').src=this.value"> 
-	 <a href="###" onclick="upyunPicUpload('suicai3',0,0,'{gooraye:$token}')" class="a_upload">上传</a>&nbsp;<a href="###" onclick="chooseFile('suicai3','music')" class="a_upload">选择</a><br />
+	 <a href="###" onclick="upyunPicUpload('suicai3',0,0,'{gooraye:$token}')" class="a_upload btn  btn-inverse btn-small">上传</a>&nbsp;<a href="###" onclick="chooseFile('suicai3','music')" class="a_upload btn  btn-inverse btn-small">选择</a><br />
 	 
 	 <audio id="plmp3" src="" preload="none"></audio><font color="#FF0000"></font></td>
     </tr>

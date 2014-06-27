@@ -4,7 +4,7 @@
   <h4>微信墙<span class="FAQ"></span></h4>
  </div>
 <div class="cLineC" style="line-height: 32px;">
- <a href="{gooraye::U('Wall/add')}" class="btnGrayS vm bigbtn" >添加活动</a>　 
+ <a href="{gooraye::U('Wall/add')}" class="btnGrayS vm bigbtn" ><i class="fa fa-plus"></i>添加活动</a>　 
 </div>
  
  <div class="msgWrap form">
@@ -27,9 +27,9 @@
     </if></td>
 <td class="norightborder">
     <if condition="$actinfo['isopen'] eq 0"> 
-    <else /><a target="_blank" href="{gooraye::U('Wall/screen',array('id'=>$actinfo['id'],'token'=>$_SESSION['token']))}">大屏幕</a> 
-    </if> <a href="{gooraye::U('Wall/prizeRecords',array('id'=>$actinfo['id'],'token'=>$_SESSION['token']))}">中奖名单</a> 
-    <a href="{gooraye::U('Wall/edit',array('id'=>$actinfo['id'],'token'=>$_SESSION['token']))}" >编辑</a>  <a href="javascript:drop_confirm('您确定要删除吗?', '{gooraye::U('Wall/del',array('token'=>$token,'id'=>$actinfo['id']))}');">删除</a>
+    <else /><a class="btn btn-small btn-inverse" target="_blank" href="{gooraye::U('Wall/screen',array('id'=>$actinfo['id'],'token'=>$_SESSION['token']))}">大屏幕</a> 
+    </if> <a class="btn btn-small btn-inverse" href="{gooraye::U('Wall/prizeRecords',array('id'=>$actinfo['id'],'token'=>$_SESSION['token']))}">中奖名单</a> 
+    <a class="btn btn-small btn-inverse" href="{gooraye::U('Wall/edit',array('id'=>$actinfo['id'],'token'=>$_SESSION['token']))}" >编辑</a>  <a class="btn btn-small btn-inverse" href="javascript:drop_confirm('您确定要删除吗?', '{gooraye::U('Wall/del',array('token'=>$token,'id'=>$actinfo['id']))}');">删除</a>
 </td>
 </volist>
 </tr>

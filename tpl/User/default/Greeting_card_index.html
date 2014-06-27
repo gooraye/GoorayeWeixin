@@ -8,13 +8,13 @@
 <input type="hidden" name="ac" value="heka-list">
 <input type="hidden" name="id" value="9878">
  
-<input type="submit" value="搜索" id="msgSearchBtn" href="" class="btnGrayS" title="搜索">
+<input type="submit" value="搜索" id="msgSearchBtn" href="" class="btn btn-small btn-inverse" title="搜索">
 </form>
 </div>
 <div class="clr"></div>
 </div>
 <div class="cLine">
-<div class="pageNavigator left"> <a href="{gooraye::U('Greeting_card/add')}" title="新增贺卡" class="btnGrayS vm bigbtn">新增贺卡</a> </div>
+<div class="pageNavigator left"> <a href="{gooraye::U('Greeting_card/add')}" title="新增贺卡" class="btnGrayS vm bigbtn"><i class="fa fa-plus"></i>新增贺卡</a> </div>
 <div class="clr"></div>
 </div>
 <div class="msgWrap">
@@ -41,9 +41,9 @@
 	<td>{gooraye:$greeting_card.num}</td>
 	<td>{gooraye:$greeting_card.click}</td>
 	<td class="norightborder">
-		<a href="{gooraye::U('Wap/Greeting_card/index',array('id'=>$greeting_card['id']))}">查看</a>　
-		<a href="{gooraye::U('Greeting_card/edit',array('id'=>$greeting_card['id']))}">编辑贺卡</a>　
-		<a href="javascript:drop_confirm('您确定要删除吗?', '{gooraye::U('Greeting_card/del',array('id'=>$greeting_card['id']))}');">删除</a>
+		<a class="btn btn-inverse btn-small" href="{gooraye::U('Wap/Greeting_card/index',array('id'=>$greeting_card['id']))}">查看</a>　
+		<a class="btn btn-inverse btn-small" href="{gooraye::U('Greeting_card/edit',array('id'=>$greeting_card['id']))}">编辑贺卡</a>　
+		<a class="btn btn-inverse btn-small" href="javascript:drop_confirm('您确定要删除吗?', '{gooraye::U('Greeting_card/del',array('id'=>$greeting_card['id']))}');">删除</a>
     </td>
 </tr>
 

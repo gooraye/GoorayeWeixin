@@ -50,7 +50,7 @@ items : [
 <img class="thumb_img" id="picurl_src" src="{gooraye:$reslist['picurl']}" style="max-height:100px;">
 </if>
 <input type="text" name="picurl" value="{gooraye:$vo.picurl}" class="px" onclick="document.getElementById('picurl_src').src=this.value;" id="picurl" style="width:300px;">
- <script src="/tpl/static/upyun.js"></script><a href="###" onclick="upyunPicUpload('picurl',700,400,'{gooraye:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('picurl')">预览</a>&nbsp;填写图片外链地址，大小为720x400</td>
+ <script src="/tpl/static/upyun.js"></script><a href="###" onclick="upyunPicUpload('picurl',700,400,'{gooraye:$token}')" class="a_upload btn btn-small btn-inverse">上传</a> <a href="###" onclick="viewImg('picurl')"  class="btn btn-small btn-inverse">预览</a>&nbsp;填写图片外链地址，大小为720x400</td>
 </tr>
 <tr>
 <th>图片显示：</th>
@@ -132,12 +132,12 @@ function delrow(obj, tbody,objid) {
 <img class="thumb_img" id="startpicurl_{gooraye:$i+50}_src" src="{gooraye:$ivo['startpicurl']}" style="max-height:100px;display: none;">
 </if>
       <input type="text" name="add[startpicurl][]" value="{gooraye:$ivo.startpicurl}" class="px" onclick="document.getElementById('startpicurl_{gooraye:$i+50}_src').src=this.value;" id="startpicurl_{gooraye:$i+50}" style="width:130px;">
-<a href="###" onclick="upyunPicUpload('startpicurl_{gooraye:$i+50}',700,400,'{gooraye:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('startpicurl_{gooraye:$i+50}')">预览</a>
+<a href="###" onclick="upyunPicUpload('startpicurl_{gooraye:$i+50}',700,400,'{gooraye:$token}')" class="a_upload btn btn-small btn-inverse">上传</a> <a href="### " class="btn btn-small btn-inverse" onclick="viewImg('startpicurl_{gooraye:$i+50}')">预览</a>
 </td>
     <td width="260"><input type="text" name="add[tourl][]" value="{gooraye:$ivo.tourl}" style="width:100px;" class="px"></td>
     </if>
 
-    <td width="50" class="norightborder"><a href="javascript:;" onclick="delrow(this, 'div_add_del_{gooraye:$i+50}',{gooraye:$ivo.id});">删除</a></td>
+    <td width="50" class="norightborder"><a class="btn btn-small btn-inverse" href="javascript:;" onclick="delrow(this, 'div_add_del_{gooraye:$i+50}',{gooraye:$ivo.id});">删除</a></td>
 </tr>
  </tbody>
 </volist>
@@ -161,14 +161,14 @@ function delrow(obj, tbody,objid) {
           <img class="thumb_img" id="startpicurl_1_src" src="" style="max-height:100px;display: none;">
           <input type="text" name="add[startpicurl][]" placeholder="图片[http://]" value="" class="px"
           onclick="document.getElementById('startpicurl_1_src').src=this.value;" id="startpicurl_1" style="width:130px;">
-          <a href="###" onclick="upyunPicUpload('startpicurl_1',700,400,'{gooraye:$token}')" class="a_upload">上传</a>
-          <a href="###" onclick="viewImg('startpicurl_1')">预览</a>
+          <a href="###" onclick="upyunPicUpload('startpicurl_1',700,400,'{gooraye:$token}')" class="a_upload btn btn-small btn-inverse">上传</a>
+          <a href="###" onclick="viewImg('startpicurl_1')" class="btn btn-small btn-inverse">预览</a>
             <!--input type="text" name="add[startpicurl][]" id="startpicurl_1" value="{gooraye:$ivo.startpicurl}" class="px"  style="width:50px;"-->
         </td>
         <td width="100"><input type="text" name="add[tourl][]" value="" class="px" style="width:100px;"></td>
          </if>
-         <td width="50" class="norightborder"><a href="javascript:;" onclick="addDeltbody(1)">删除</a>
-          <a href="javascript:;" id="add2" onclick="addTabody(2)">添加</a></td>
+         <td width="50" class="norightborder"><a href="javascript:;" class="btn btn-small btn-inverse" onclick="addDeltbody(1)">删除</a>
+          <a href="javascript:;" id="add2" onclick="addTabody(2)" class="btn btn-small btn-inverse">添加</a></td>
     </tr>
 </tbody>
 
@@ -189,14 +189,14 @@ function delrow(obj, tbody,objid) {
           <img class="thumb_img" id="startpicurl_2_src" src="" style="max-height:100px;display: none;">
           <input type="text" name="add[startpicurl][]" value="" placeholder="图片[http://]" class="px"
           onclick="document.getElementById('startpicurl_2_src').src=this.value;" id="startpicurl_2" style="width:130px;">
-          <a href="###" onclick="upyunPicUpload('startpicurl_2',700,400,'{gooraye:$token}')" class="a_upload">上传</a>
-          <a href="###" onclick="viewImg('startpicurl_2')">预览</a>
+          <a href="###" onclick="upyunPicUpload('startpicurl_2',700,400,'{gooraye:$token}')" class="a_upload btn btn-small btn-inverse">上传</a>
+          <a href="###" class="btn btn-small btn-inverse" onclick="viewImg('startpicurl_2')">预览</a>
 
         </td>
         <td width="100"><input type="text" name="add[tourl][]" value="" class="px" style="width:100px;"></td>
          </if>
-         <td width="50" class="norightborder"><a href="javascript:;" onclick="addDeltbody(2)">删除</a>
-          <a href="javascript:;" id="add3" onclick="addTabody(3)">添加</a></td>
+         <td width="50" class="norightborder"><a href="javascript:;" class="btn btn-small btn-inverse" onclick="addDeltbody(2)">删除</a>
+          <a href="javascript:;" class="btn btn-small btn-inverse" id="add3" onclick="addTabody(3)">添加</a></td>
     </tr>
 </tbody>
 
@@ -217,14 +217,14 @@ function delrow(obj, tbody,objid) {
           <img class="thumb_img" id="startpicurl_3_src" src="" style="max-height:100px;display: none;">
           <input type="text" name="add[startpicurl][]" value="" placeholder="图片外链须加[http://]" class="px"
           onclick="document.getElementById('startpicurl_3_src').src=this.value;" id="startpicurl_3" style="width:130px;">
-          <a href="###" onclick="upyunPicUpload('startpicurl_3',700,400,'{gooraye:$token}')" class="a_upload">上传</a>
-          <a href="###" onclick="viewImg('startpicurl_3')">预览</a>
+          <a href="###" onclick="upyunPicUpload('startpicurl_3',700,400,'{gooraye:$token}')" class="a_upload" class="btn btn-small btn-inverse">上传</a>
+          <a href="###" onclick="viewImg('startpicurl_3')" class="btn btn-small btn-inverse">预览</a>
 
         </td>
         <td width="100"><input type="text" name="add[tourl][]" value="" class="px" style="width:100px;"></td>
          </if>
-         <td width="50" class="norightborder"><a href="javascript:;" onclick="addDeltbody(3)">删除</a>
-          <a href="javascript:;" id="add4" onclick="addTabody(4)">添加</a></td>
+         <td width="50" class="norightborder"><a class="btn btn-small btn-inverse" href="javascript:;" onclick="addDeltbody(3)">删除</a>
+          <a href="javascript:;" id="add4" class="btn btn-small btn-inverse" onclick="addTabody(4)">添加</a></td>
     </tr>
 </tbody>
 
@@ -233,7 +233,7 @@ function delrow(obj, tbody,objid) {
     <tr >
       <input type="hidden" name="add[id][]" readonly="readonly" disabled="disabled"  value="" style="width:50px;" >
         <td width="120">
-            <input type="text" name="add[item][]" placeholder="请填写选项标题" value="" class="px" style="width:120px;">
+            <input type="text" name="add[item][]"  placeholder="请填写选项标题" value="" class="px" style="width:120px;">
         </td>
         <td>
             <input type="text" name="add[rank][]" value="" style="width:20px;" class="px">
@@ -246,14 +246,14 @@ function delrow(obj, tbody,objid) {
           <img class="thumb_img" id="startpicurl_4_src" src="" style="max-height:100px;display: none;">
           <input type="text" name="add[startpicurl][]" value=""  placeholder="图片外链须加[http://]" class="px"
           onclick="document.getElementById('startpicurl_4_src').src=this.value;" id="startpicurl_4" style="width:130px;">
-          <a href="###" onclick="upyunPicUpload('startpicurl_4',700,400,'{gooraye:$token}')" class="a_upload">上传</a>
-          <a href="###" onclick="viewImg('startpicurl_4')">预览</a>
+          <a href="###" onclick="upyunPicUpload('startpicurl_4',700,400,'{gooraye:$token}')" class="a_upload btn btn-small btn-inverse">上传</a>
+          <a href="###" onclick="viewImg('startpicurl_4')" class="btn btn-small btn-inverse">预览</a>
 
         </td>
         <td width="100"><input type="text" name="add[tourl][]" value="" class="px" style="width:100px;"></td>
          </if>
-         <td width="50" class="norightborder"><a href="javascript:;" onclick="addDeltbody(4)">删除</a>
-          <a href="javascript:;" id="add5" onclick="addTabody(5)">添加</a></td>
+         <td width="50" class="norightborder"><a class="btn btn-small btn-inverse" href="javascript:;" onclick="addDeltbody(4)">删除</a>
+          <a href="javascript:;" id="add5" class="btn btn-small btn-inverse" onclick="addTabody(5)">添加</a></td>
     </tr>
 </tbody>
 
@@ -275,14 +275,14 @@ function delrow(obj, tbody,objid) {
           <img class="thumb_img" id="startpicurl_5_src" src="" style="max-height:100px;display: none;">
           <input type="text" name="add[startpicurl][]" value="" placeholder="图片外链须加[http://]" class="px"
           onclick="document.getElementById('startpicurl_5_src').src=this.value;" id="startpicurl_5" style="width:130px;">
-          <a href="###" onclick="upyunPicUpload('startpicurl_5',700,400,'{gooraye:$token}')" class="a_upload">上传</a>
-          <a href="###" onclick="viewImg('startpicurl_5')">预览</a>
+          <a href="###" onclick="upyunPicUpload('startpicurl_5',700,400,'{gooraye:$token}')" class="a_upload btn btn-small btn-inverse">上传</a>
+          <a href="###" onclick="viewImg('startpicurl_5')"  class="btn btn-small btn-inverse"> 预览</a>
 
         </td>
         <td width="100"><input type="text" name="add[tourl][]" value="" class="px" style="width:100px;"></td>
          </if>
-         <td width="50" class="norightborder"><a href="javascript:;" onclick="addDeltbody(5)">删除</a>
-          <a href="javascript:;" id="add6" onclick="addTabody(6)">添加</a></td>
+         <td width="50" class="norightborder"><a href="javascript:;" onclick="addDeltbody(5)" class="btn btn-small btn-inverse">删除</a>
+          <a href="javascript:;" id="add6" class="btn btn-small btn-inverse" onclick="addTabody(6)">添加</a></td>
     </tr>
 </tbody>
 
@@ -303,14 +303,14 @@ function delrow(obj, tbody,objid) {
           <img class="thumb_img" id="startpicurl_6_src" src="" style="max-height:100px;display: none;">
           <input type="text" name="add[startpicurl][]" value="" placeholder="图片外链须加[http://]" class="px"
           onclick="document.getElementById('startpicurl_6_src').src=this.value;" id="startpicurl_6" style="width:130px;">
-          <a href="###" onclick="upyunPicUpload('startpicurl_6',700,400,'{gooraye:$token}')" class="a_upload">上传</a>
-          <a href="###" onclick="viewImg('startpicurl_6')">预览</a>
+          <a href="###" onclick="upyunPicUpload('startpicurl_6',700,400,'{gooraye:$token}')" class="a_upload btn btn-small btn-inverse">上传</a>
+          <a href="###" onclick="viewImg('startpicurl_6')" class="btn btn-small btn-inverse">预览</a>
 
         </td>
         <td width="100"><input type="text" name="add[tourl][]" value="" class="px" style="width:100px;"></td>
          </if>
-         <td width="50" class="norightborder"><a href="javascript:;" onclick="addDeltbody(6)">删除</a>
-          <a href="javascript:;" id="add7" onclick="addTabody(7)">添加</a></td>
+         <td width="50" class="norightborder"><a href="javascript:;" class="btn btn-small btn-inverse" onclick="addDeltbody(6)">删除</a>
+          <a href="javascript:;" class="btn btn-small btn-inverse" id="add7" onclick="addTabody(7)">添加</a></td>
     </tr>
 </tbody>
 
@@ -331,13 +331,13 @@ function delrow(obj, tbody,objid) {
           <img class="thumb_img" id="startpicurl_7_src" src="" style="max-height:100px;display: none;">
           <input type="text" name="add[startpicurl][]" value="" placeholder="图片外链须加[http://]" class="px"
           onclick="document.getElementById('startpicurl_7_src').src=this.value;" id="startpicurl_7" style="width:130px;">
-          <a href="###" onclick="upyunPicUpload('startpicurl_7',700,400,'{gooraye:$token}')" class="a_upload">上传</a>
-          <a href="###" onclick="viewImg('startpicurl_7')">预览</a>
+          <a href="###" onclick="upyunPicUpload('startpicurl_7',700,400,'{gooraye:$token}')" class="a_upload btn btn-small btn-inverse">上传</a>
+          <a href="###" class="btn btn-small btn-inverse" onclick="viewImg('startpicurl_7')">预览</a>
 
         </td>
         <td width="100"><input type="text" name="add[tourl][]" value="" class="px" style="width:100px;"></td>
          </if>
-         <td width="50" class="norightborder"><a href="javascript:;" onclick="addDeltbody(7)">删除</a>
+         <td width="50" class="norightborder"><a class="btn btn-small btn-inverse" href="javascript:;" onclick="addDeltbody(7)">删除</a>
           <a href="javascript:;" id="add8" onclick="addTabody(8)">添加</a></td>
     </tr>
 </tbody>
@@ -358,14 +358,14 @@ function delrow(obj, tbody,objid) {
           <img class="thumb_img" id="startpicurl_8_src" src="" style="max-height:100px;display: none;">
           <input type="text" name="add[startpicurl][]" value="" placeholder="图片外链须加[http://]" class="px"
           onclick="document.getElementById('startpicurl_8_src').src=this.value;" id="startpicurl_8" style="width:130px;">
-          <a href="###" onclick="upyunPicUpload('startpicurl_8',700,400,'{gooraye:$token}')" class="a_upload">上传</a>
-          <a href="###" onclick="viewImg('startpicurl_8')">预览</a>
+          <a href="###" onclick="upyunPicUpload('startpicurl_8',700,400,'{gooraye:$token}')" class="a_upload btn btn-small btn-inverse" >上传</a>
+          <a href="###" onclick="viewImg('startpicurl_8')" class="btn btn-small btn-inverse">预览</a>
 
         </td>
         <td width="100"><input type="text" name="add[tourl][]" value="" class="px" style="width:100px;"></td>
          </if>
-         <td width="50" class="norightborder"><a href="javascript:;" onclick="addDeltbody(8)">删除</a>
-          <a href="javascript:;" id="add9" onclick="addTabody(9)">添加</a></td>
+         <td width="50" class="norightborder"><a href="javascript:;" class="btn btn-small btn-inverse" onclick="addDeltbody(8)">删除</a>
+          <a href="javascript:;" id="add9" class="btn btn-small btn-inverse" onclick="addTabody(9)">添加</a></td>
     </tr>
 </tbody>
 <tbody id="div_add_del_9" name="div_add_del" style="display:none">
@@ -385,14 +385,14 @@ function delrow(obj, tbody,objid) {
           <img class="thumb_img" id="startpicurl_9_src" src="" style="max-height:100px;display: none;">
           <input type="text" name="add[startpicurl][]" value="" placeholder="图片外链须加[http://]" class="px"
           onclick="document.getElementById('startpicurl_9_src').src=this.value;" id="startpicurl_9" style="width:130px;">
-          <a href="###" onclick="upyunPicUpload('startpicurl_9',700,400,'{gooraye:$token}')" class="a_upload">上传</a>
-          <a href="###" onclick="viewImg('startpicurl_9')">预览</a>
+          <a href="###" onclick="upyunPicUpload('startpicurl_9',700,400,'{gooraye:$token}')" class="a_upload btn btn-small btn-inverse">上传</a>
+          <a href="###" onclick="viewImg('startpicurl_9')" class="btn btn-small btn-inverse">预览</a>
 
         </td>
-        <td width="100"><input type="text" name="add[tourl][]" value="" class="px" style="width:100px;"></td>
+        <td width="100"><input type="text" name="add[tourl][]" value="" class="px " style="width:100px;"></td>
          </if>
-         <td width="50" class="norightborder"><a href="javascript:;" onclick="addDeltbody(9)">删除</a>
-          <a href="javascript:;" id="add10" onclick="addTabody(10)">添加</a></td>
+         <td width="50" class="norightborder"><a href="javascript:;" class="btn btn-small btn-inverse" onclick="addDeltbody(9)">删除</a>
+          <a href="javascript:;" class="btn btn-small btn-inverse" id="add10" onclick="addTabody(10)">添加</a></td>
     </tr>
 </tbody>
 
@@ -413,13 +413,13 @@ function delrow(obj, tbody,objid) {
           <img class="thumb_img" id="startpicurl_10_src" src="" style="max-height:100px;display: none;">
           <input type="text" name="add[startpicurl][]" value="" placeholder="图片[http://]" class="px"
           onclick="document.getElementById('startpicurl_10_src').src=this.value;" id="startpicurl_10" style="width:130px;">
-          <a href="###" onclick="upyunPicUpload('startpicurl_10',700,400,'{gooraye:$token}')" class="a_upload">上传</a>
-          <a href="###" onclick="viewImg('startpicurl_10')">预览</a>
+          <a href="###" onclick="upyunPicUpload('startpicurl_10',700,400,'{gooraye:$token}')" class="a_upload btn btn-small btn-inverse">上传</a>
+          <a href="###" class="btn btn-small btn-inverse" onclick="viewImg('startpicurl_10')">预览</a>
 
         </td>
         <td width="100"><input type="text" name="add[tourl][]" value="" class="px" style="width:100px;"></td>
          </if>
-         <td width="50" class="norightborder"><a href="javascript:;" onclick="addDeltbody(10)">删除</a>
+         <td width="50" class="norightborder"><a class="btn btn-small btn-inverse" href="javascript:;" onclick="addDeltbody(10)">删除</a>
           </td>
     </tr>
 </tbody>

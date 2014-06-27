@@ -115,11 +115,11 @@ function setlatlng(longitude,latitude){
        </tr> 
        <tr> 
         <th><span class="red">*</span>Logo地址：</th> 
-        <td><input type="text" id="logourl" name="logourl" value="{gooraye:$set.logourl}" class="px require" style="width:400px;" /> <script src="/tpl/static/upyun.js"></script><a href="###" onclick="upyunPicUpload('logourl',700,420,'{gooraye:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('logourl')">预览</a></td> 
+        <td><input type="text" id="logourl" name="logourl" value="{gooraye:$set.logourl}" class="px require" style="width:400px;" /> <script src="/tpl/static/upyun.js"></script><a href="###" onclick="upyunPicUpload('logourl',700,420,'{gooraye:$token}')" class="a_upload btn btn-small btn-inverse">上传</a> <a href="###" onclick="viewImg('logourl')" class=" btn btn-small btn-inverse">预览</a></td> 
        </tr>
         <tr> 
         <th><span class="red">*</span>经纬度：</th> 
-        <td>经度 <input type="text" id="longitude"  name="longitude" size="14" class="px" value="{gooraye:$set.longitude}" /> 纬度 <input type="text"  name="latitude" size="14" id="latitude" class="px" value="{gooraye:$set.latitude}" /> <a href="###" onclick="setlatlng($('#longitude').val(),$('#latitude').val())">在地图中查看/设置</a></td> 
+        <td>经度 <input type="text" id="longitude"  name="longitude" size="14" class="px" value="{gooraye:$set.longitude}" /> 纬度 <input type="text"  name="latitude" size="14" id="latitude" class="px" value="{gooraye:$set.latitude}" /> <a href="###" onclick="setlatlng($('#longitude').val(),$('#latitude').val())" class=" btn btn-small btn-inverse">在地图中查看/设置</a></td> 
        </tr>
        <tr> 
         <th><span class="red"></span>顺序：</th> 

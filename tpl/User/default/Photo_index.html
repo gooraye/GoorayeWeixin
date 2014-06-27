@@ -64,7 +64,7 @@ width: 200px;
                             </form>
 </div>
 <div class="cLine">
-<div class="pageNavigator left"> <a href="{gooraye::U('Photo/add',array('token'=>$_SESSION['token']))}" title="创建相册" class="btn  btn-inverse"><img src="{gooraye::RES}/images/pic.png" class="vm">创建相册</a> </div>
+<div class="pageNavigator left"> <a href="{gooraye::U('Photo/add',array('token'=>$_SESSION['token']))}" title="创建相册" class="btn  btn-inverse"><i class="fa fa-photo"></i>创建相册</a> </div>
 <div class="clr"></div>
 </div>
 <div class="msgWrap">
@@ -80,8 +80,8 @@ width: 200px;
 <p class="sn">有{gooraye:$photo.num}张照片</p>
 </div>
 <div class="fr">
-<a href="{gooraye::U('Photo/list_add',array('id'=>$photo['id']))}">上传图片</a>　
-<a href="{gooraye::U('Photo/edit',array('token'=>session('token'),'id'=>$photo['id']))}">编辑</a>　<a href="javascript:drop_confirm('您确定要删除吗?', '{gooraye::U('Photo/del',array('token'=>session('token'),'id'=>$photo['id']))}');">删除</a>
+<a class="btn btn-small btn-inverse" href="{gooraye::U('Photo/list_add',array('id'=>$photo['id']))}">上传图片</a>　
+<a class="btn btn-small btn-inverse" href="{gooraye::U('Photo/edit',array('token'=>session('token'),'id'=>$photo['id']))}">编辑</a>　<a class="btn btn-small btn-inverse" href="javascript:drop_confirm('您确定要删除吗?', '{gooraye::U('Photo/del',array('token'=>session('token'),'id'=>$photo['id']))}');">删除</a>
 </div>
 </div>
 </li>

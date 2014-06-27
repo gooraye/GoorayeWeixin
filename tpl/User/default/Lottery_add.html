@@ -23,7 +23,7 @@
 		<br />
 		<input class="px"  name="starpicurl" value="<if condition="$vo['starpicurl'] eq ''">{gooraye:$f_siteUrl}/tpl/Wap/default/common/css/guajiang/images/activity-lottery-start.jpg<else/>{gooraye:$vo.starpicurl}</if>" id="pic1" style="width:363px;"  />
 		<br />
-		  <script src="/tpl/static/upyun.js"></script><a href="###" onclick="upyunPicUpload('pic1',700,420,'{gooraye:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('pic1')">预览</a>&nbsp;活动开始图片
+		  <script src="/tpl/static/upyun.js"></script><a href="###" onclick="upyunPicUpload('pic1',700,420,'{gooraye:$token}')" class="a_upload btn btn-small btn-inverse">上传</a> <a href="###" onclick="viewImg('pic1')" class="btn btn-small btn-inverse"> 预览</a>&nbsp;活动开始图片
 	  </div>
   </TD>
 </TR>
@@ -85,7 +85,7 @@
   				<td rowspan="4" valign="top"><div style="margin-left:20px"><img  id="pic2_src" src="<if condition="$vo['endpicurl'] eq ''">{gooraye:$f_siteUrl}/tpl/Wap/default/common/css/guajiang/images/activity-lottery-end.jpg<else/>{gooraye:$vo.endpicurl}</if>"  width="373px"/> <br />
   					<input class="px" id="pic2"  name="endpicurl" value="<if condition="$vo['endpicurl'] eq ''">{gooraye:$f_siteUrl}/tpl/Wap/default/common/css/guajiang/images/activity-lottery-end.jpg<else/>{gooraye:$vo.endpicurl}</if>"  style="width:363px;"  />
   					<br />
-  					  <script src="/tpl/static/upyun.js"></script><a href="###" onclick="upyunPicUpload('pic2',700,420,'{gooraye:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('pic2')">预览</a>&nbsp; 活动结束图片网址 </div></td>
+  					  <script src="/tpl/static/upyun.js"></script><a href="###" onclick="upyunPicUpload('pic2',700,420,'{gooraye:$token}')" class="a_upload btn btn-small btn-inverse">上传</a> <a href="###" onclick="viewImg('pic2')" class="btn btn-small btn-inverse">预览</a>&nbsp; 活动结束图片网址 </div></td>
   				</tr>
   			<tr>
   				<th valign="top">活动结束说明：</th>

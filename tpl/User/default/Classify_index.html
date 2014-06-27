@@ -21,7 +21,6 @@
 <th style=" width:70px;">显示顺序</th>
 <th>分类图片 <a target="999" class="tooltips" ><img src="{gooraye::RES}/images/price_help.png" align="absmiddle" /><span>
 <p>分类图片最佳尺寸：宽720高400</p>
-<p>不支持上传图片，请把图片上传到腾讯微博，再这里填写图片的外链地址。</p>
 <p>如果不填写分类图片地址系统将随机分配默认图片。</p>
 </span></a></th>
 <th>外链网站或活动 <span class="tooltips" ><img src="{gooraye::RES}/images/price_help.png" align="absmiddle" /><span>
@@ -43,9 +42,9 @@
 <td><eq name="vo.status" value="1">显示<else/>不显示</eq></td>
 <td class="norightborder" width="120">
 	<nobr><!--a target="ddd" href="{gooraye::U('Wap/Index/classify',array('token'=>$_SESSION['token']))}">查看</a-->
-	<a href="{gooraye::U('Classify/index',array('fid'=>$vo['id']))}">子分类</a>
-	<a href="<?php if ($vo['fid']==0){?>{gooraye::U('Classify/edit',array('id'=>$vo['id']))}<?php }else{?>{gooraye::U('Classify/edit',array('id'=>$vo['id'],'fid'=>$vo['fid']))}<?php }?>">编辑</a>
-	<a href="<?php if ($vo['fid']==0){?>{gooraye::U('Classify/del',array('id'=>$vo['id']))}<?php }else{?>{gooraye::U('Classify/del',array('id'=>$vo['id'],'fid'=>$vo['fid']))}<?php }?>">删除</a>
+	<a class=" btn btn-small btn-inverse"  href="{gooraye::U('Classify/index',array('fid'=>$vo['id']))}">子分类</a>
+	<a class=" btn btn-small btn-inverse" href="<?php if ($vo['fid']==0){?>{gooraye::U('Classify/edit',array('id'=>$vo['id']))}<?php }else{?>{gooraye::U('Classify/edit',array('id'=>$vo['id'],'fid'=>$vo['fid']))}<?php }?>">编辑</a>
+	<a class=" btn btn-small btn-inverse"  href="<?php if ($vo['fid']==0){?>{gooraye::U('Classify/del',array('id'=>$vo['id']))}<?php }else{?>{gooraye::U('Classify/del',array('id'=>$vo['id'],'fid'=>$vo['fid']))}<?php }?>">删除</a>
 	</nobr>
 </td>
 </tr>

@@ -14,9 +14,14 @@
 				type:'POST',
 				url:'{gooraye::U("Node/edit")}',
 				data:forms,
-				success:function(msg){
-					msg=eval('('+msg+')');
-					alert(msg.info);
+				success:function(data){
+					data=eval('('+data+')');
+					alert(data.info);
+
+					if(data.url){
+						window.location.href = data.url;
+					}
+
 				}
 			});
 		})
@@ -52,6 +57,7 @@
 		<input type="radio" name="level" value="0" class="ipt" <eq name="info.level" value="0">checked</eq> />应用
 		<input type="radio" name="level" value="2" class="ipt" <eq name="info.level" value="2">checked</eq> />模块
 		<input type="radio" name="level" value="3" class="ipt" <eq name="info.level" value="3">checked</eq> />方法
+		<input type="radio" name="level" value="4" class="ipt" <eq name="info.level" value="4">checked</eq> />链接
 	  </td>
     </tr>
 	<tr> 
@@ -73,7 +79,8 @@
       <td height="48"><input type="text" name="sort" size="45" value="0" class="ipt" /><span>注释：按照升序，值越大越往后。</span></td>
     </tr>
     <tr> 
-      <td height="48" colspan="2"><div id="addkey"></div><div class="fabu"><img src="{gooraye::RES}/images/main/addwz.gif" id="submit" /> <img src="{gooraye::RES}/images/main/addqx.gif" /></div></td>
+      <td height="48" colspan="2"><div id="addkey"></div><div class="fabu">
+      	<button id="submit" type="button" >保存</button></div></td>
     </tr>
 </table>
 </form>

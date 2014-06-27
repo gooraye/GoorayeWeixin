@@ -65,7 +65,7 @@ font-weight:bold;
           <div class="cLine">
             <div class="pageNavigator left">
 				<a href="{gooraye::U('User/Wedding/add')}" class="btnGrayS vm bigbtn">
-					<img src="tpl/User/default/common/images/text.png" class="vm">新增喜帖
+					<i class="fa fa-plus"></i>新增喜帖
 				</a>
             </div>
             <div class="clr"></div>
@@ -94,11 +94,11 @@ font-weight:bold;
                   <td>{gooraye:$wedding.keyword}</td>
                   <td>{gooraye:$wedding.man}/{gooraye:$wedding.woman}</td>
                   <td>{gooraye:$wedding.password}</td>
-                  <td><a class="green" href="{gooraye::U('Photo/list_add',array('id'=>$wedding['id']))}">喜帖图片</a> </td>
+                  <td><a class="green  btn btn-small btn-inverse" href="{gooraye::U('Photo/list_add',array('id'=>$wedding['id']))}">喜帖图片</a> </td>
                   <td class="norightborder">
-						<a href="{gooraye::U('Wedding/info',array('id'=>$wedding['id']))}">查看名单</a>　
-						<a href="{gooraye::U('User/Wedding/edit',array('id'=>$wedding['id']))}">编辑喜帖</a>　
-						<a href="javascript:drop_confirm('您确定要删除吗?', '{gooraye::U('User/Wedding/del',array('id'=>$wedding['id']))}');">删除</a>
+						<a class="btn btn-small btn-inverse" href="{gooraye::U('Wedding/info',array('id'=>$wedding['id']))}">查看名单</a>　
+						<a   class="btn btn-small btn-inverse" href="{gooraye::U('User/Wedding/edit',array('id'=>$wedding['id']))}">编辑喜帖</a>　
+						<a class="btn btn-small btn-inverse" href="javascript:drop_confirm('您确定要删除吗?', '{gooraye::U('User/Wedding/del',array('id'=>$wedding['id']))}');">删除</a>
 				   </td>
                 </tr>
       			</goorayelist>

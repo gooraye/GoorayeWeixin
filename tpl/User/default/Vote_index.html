@@ -18,10 +18,10 @@
           <div class="cLine">
             <div class="pageNavigator left">
             <if condition="$ok eq 1">
-<a href=""  title="发起文字投票" class="btnGrayS vm bigbtn"><img src="{gooraye::RES}/images/text.png" class="vm">发起文字投票</a>　
-<a href="" title="发起图片投票" class="btnGrayS vm bigbtn"><img src="{gooraye::RES}/images/pic.png" class="vm">发起图片投票</a>
+<a href=""  title="发起文字投票" class="btnGrayS vm bigbtn"><i class="fa fa-font"></i>发起文字投票</a>　
+<a href="" title="发起图片投票" class="btnGrayS vm bigbtn"><i class="fa fa-photo"></i>发起图片投票</a>
             <else/>
-            <a href="{gooraye::U('Vote/add',array('type'=>'text'))}"  title="发起文字投票" class="btnGrayS vm bigbtn"><img src="{gooraye::RES}/images/text.png" class="vm">发起文字投票</a>　<a href="{gooraye::U('Vote/add',array('type'=>'img'))}" title="发起图片投票" class="btnGrayS vm bigbtn"><img src="{gooraye::RES}/images/pic.png" class="vm">发起图片投票</a>
+            <a href="{gooraye::U('Vote/add',array('type'=>'text'))}"  title="发起文字投票" class="btnGrayS vm bigbtn"><i class="fa fa-font"></i>发起文字投票</a>　<a href="{gooraye::U('Vote/add',array('type'=>'img'))}" title="发起图片投票" class="btnGrayS vm bigbtn"><i class="fa fa-photo"></i>发起图片投票</a>
             </if>
   　　
               
@@ -53,15 +53,15 @@
                   <td>  <input type="checkbox" name="del_id[]" value="674" class="checkitem"></td>
                   <td>{gooraye:$list.keyword}</td>
                   <td>{gooraye:$list.title}</td>
-                  <td><if condition="$list['type'] eq 'text'"><img src="{gooraye::RES}/images/text.png" class="vm"> 文字投票<else/><img src="{gooraye::RES}/images/pic.png" class="vm"> 图片投票</if></td>
+                  <td><if condition="$list['type'] eq 'text'"><i class="fa fa-font"></i>  文字投票<else/><i class="fa fa-photo"></i> 图片投票</if></td>
                   <td>{gooraye:$list.statdate|date='Y-m-d',###}</td>
                   <td>{gooraye:$list.enddate|date='Y-m-d',###}</td>
                   <td> <if condition="$list['type'] eq 'text'">文字投票<else/>图片投票</if>{gooraye:$list.id}</td>
-                   <td class="norightborder"><a href="{gooraye::U('Vote/totals',array('type'=>$list['type'],'id'=>$list['id']))}" title="投票结果">投票结果</a> <a href="{gooraye::U('Vote/edit',array('type'=>$list['type'],'id'=>$list['id']))}" title="编辑">编辑</a> <a href="javascript:drop_confirm('您确定要删除吗?删除会把投票结果也一起删除！', '{gooraye::U('Vote/del',array('type'=>$list['type'],'id'=>$list['id']))}');">删除</a> 
+                   <td class="norightborder"><a class="btn btn-small btn-inverse" href="{gooraye::U('Vote/totals',array('type'=>$list['type'],'id'=>$list['id']))}" title="投票结果">投票结果</a> <a  class="btn btn-small btn-inverse" href="{gooraye::U('Vote/edit',array('type'=>$list['type'],'id'=>$list['id']))}" title="编辑">编辑</a> <a class="btn btn-small btn-inverse" href="javascript:drop_confirm('您确定要删除吗?删除会把投票结果也一起删除！', '{gooraye::U('Vote/del',array('type'=>$list['type'],'id'=>$list['id']))}');">删除</a> 
                    <if condition="$list['status'] eq 0">
-                   <a href="javascript:drop_confirm('开始投票活动', '{gooraye::U('Vote/setinc',array('type'=>$list['type'],'id'=>$list['id']))}');">开始</a> 
+                   <a class="btn btn-small btn-inverse" href="javascript:drop_confirm('开始投票活动', '{gooraye::U('Vote/setinc',array('type'=>$list['type'],'id'=>$list['id']))}');">开始</a> 
                    <else/>
-                   <a href="javascript:drop_confirm('你是否真的想结束投票活动.', '{gooraye::U('Vote/setdes',array('type'=>$list['type'],'id'=>$list['id']))}');">结束</a> 
+                   <a class="btn btn-small btn-inverse" href="javascript:drop_confirm('你是否真的想结束投票活动.', '{gooraye::U('Vote/setdes',array('type'=>$list['type'],'id'=>$list['id']))}');">结束</a> 
                    </if>
                    </td>
           

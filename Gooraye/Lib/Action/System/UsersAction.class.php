@@ -103,7 +103,7 @@ class UsersAction extends BackAction{
 				$_POST['viptime']=strtotime($_POST['viptime']);
                 if($UserDB->save($_POST)){
 					if($_POST['gid']!=$users['gid']){
-						$fun=M('Function')->field('funname,gid,isserve')->where('`gid` <= '.$_POST['gid'])->select();
+						$fun=M('Function')->field('funname,gid,category')->where('`gid` <= '.$_POST['gid'])->select();
 						foreach($fun as $key=>$vo){
 							$queryname.=$vo['funname'].',';
 						}
@@ -146,7 +146,7 @@ class UsersAction extends BackAction{
 		$open['uid']=session('uid');
 		$open['token']=$_POST['token'];
 		$gid=session('gid');
-		$fun=M('Function')->field('funname,gid,isserve')->where('`gid` <= '.$gid)->select();
+		$fun=M('Function')->field('funname,gid,category')->where('`gid` <= '.$gid)->select();
 		foreach($fun as $key=>$vo){
 			$queryname.=$vo['funname'].',';
 		}

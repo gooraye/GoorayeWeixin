@@ -8,7 +8,7 @@
 
           <div class="cLine">
     <div class="alert">
-    <p><span class="bold">使用方法：预约试驾和预约保养添加一项即可。</span> <a class="btn" href="javascript:location.reload()">刷新</a></p>
+    <p><span class="bold">使用方法：预约试驾和预约保养添加一项即可。</span> <a class="btn btn-small btn-inverse" href="javascript:location.reload()">刷新</a></p>
     </div>
 </div>
 
@@ -19,14 +19,14 @@
 
             <else/>
         <a href="{gooraye::U('Car/add_res',array('token'=>$token,'addtype'=>'drive'))}" class="btnGrayS vm bigbtn">
-                    <img src="tpl/User/default/common/images/pic.png" class="vm">添加预约试驾
+                   <i class="fa fa-plus"></i>添加预约试驾
                 </a> &nbsp;&nbsp;&nbsp;
             </if>
              <if condition="$maintain_count eq 1">
 
             <else/>
             <a href="{gooraye::U('Car/add_res',array('token'=>$token,'addtype'=>'maintain'))}" class="btnGrayS vm bigbtn">
-                    <img src="tpl/User/default/common/images/pic.png" class="vm">添加预约保养
+                    <i class="fa fa-plus"></i>添加预约保养
                 </a>
             </if>
                
@@ -63,9 +63,9 @@
                          <td></td>
                         <td>{gooraye:$vo['date']}</td-->
                         <td >
-                             <a href="{gooraye::U('Car/res_manage',array('token'=>$vo['token'],'id'=>$vo['id'],'addtype'=>$vo['addtype']))}" class="btn" title="订单管理">订单管理</a>
-                            <a class="btn" href="{gooraye::U('Car/res_edit',array('token'=>$vo['token'],'id'=>$vo['id'],'addtype'=>$vo['addtype']))}" title="编辑">编辑</a> 
-                             <a class="btn" href="{gooraye::U('Car/res_del',array('token'=>$vo['token'],'id'=>$vo['id'],'addtype'=>$vo['addtype']))}" onclick="return(confirm('确定要删除吗？'))"  title="删除">删除</a></td>
+                             <a href="{gooraye::U('Car/res_manage',array('token'=>$vo['token'],'id'=>$vo['id'],'addtype'=>$vo['addtype']))}" class="btn btn-small btn-inverse" title="订单管理">订单管理</a>
+                            <a class="btn btn-small btn-inverse" href="{gooraye::U('Car/res_edit',array('token'=>$vo['token'],'id'=>$vo['id'],'addtype'=>$vo['addtype']))}" title="编辑">编辑</a> 
+                             <a class="btn btn-small btn-inverse" href="{gooraye::U('Car/res_del',array('token'=>$vo['token'],'id'=>$vo['id'],'addtype'=>$vo['addtype']))}" onclick="return(confirm('确定要删除吗？'))"  title="删除">删除</a></td>
                      </tr>
                      </volist>
 

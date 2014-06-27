@@ -17,7 +17,7 @@ class UserAction extends BaseAction{
                 session(null);
                 session_destroy();
                 unset($_SESSION);
-                $this -> error('您的帐号已经到期，请充值后再使用');
+                $this -> error('您的帐号已经到期，请联系经销商续费！');
             }
         }
         $wecha = M('Wxuser') -> field('wxname,weixin,wxid,headerpic') -> where(array('token' => session('token'), 'uid' => session('uid'))) -> find();
@@ -63,6 +63,12 @@ class UserAction extends BaseAction{
         }
         $policy = base64_encode(json_encode($options));
         $sign = md5($policy . '&' . UNYUN_FORM_API_SECRET);
+        
+
+        $menuhtml = $this -> createMenus();
+       
+
+        $this -> assign('menuhtml',$menuhtml);
         $this -> assign('editor_upyun_sign', $sign);
         $this -> assign('editor_upyun_policy', $policy);
     }
@@ -77,5 +83,138 @@ class UserAction extends BaseAction{
             $this -> error('您还没有开启该模块的使用权,请到功能模块中添加', U('Function/index', array('token' => $this -> token)));
         }
     }
+
+    //菜单
+    public function createMenus(){
+        $menus = S('gr_menus');
+        if(empty($menus)){
+        $vipid = $this -> userGroup['id'];
+        $menus =  getMenu($vipid);
+
+        S('gr_menus',$menuhtml);
+        }
+        $menuhtml = $this->createHTMLMenu($menus);
+        return $menuhtml;
+    }
+
+    //组织菜单的html
+    public function createHTMLMenu($menus)
+    {
+        $html = '';
+        $i=0;
+
+        //获得查询参数
+        $parms=$_SERVER['QUERY_STRING'];
+        $parms1=explode('&',$parms);
+        $parmsArr=array();
+        if ($parms1){
+          foreach ($parms1 as $p){
+            $parms2=explode('=',$p);
+            $parmsArr[$parms2[0]]=$parms2[1];
+          }
+        }
+
+        //查询当前激活菜单
+        $subMenus=array();
+        $t=0;
+        $currentMenuID=0;
+        $currentParentMenuID=0;
+        foreach ($menus as $m){
+          $loopContinue=1;
+          if ($m['subs']){
+            $st=0;
+            foreach ($m['subs'] as $s){
+             
+              $includeArr=1;
+              if ($s['selectedCondition']){
+                foreach ($s['selectedCondition'] as $condition){
+                  if (!in_array($condition,$parmsArr)){
+                    $includeArr=0;
+                    break;
+                  }
+                }
+              }
+              if ($includeArr){
+                if ($s['exceptCondition']){
+                  foreach ($s['exceptCondition'] as $eptCondition){
+                    if (in_array($eptCondition,$parmsArr)){
+                      $includeArr=0;
+                      break;
+                    }
+                  }
+                }
+              }
+            
+              //
+              if ($includeArr){
+                $currentMenuID=$st;
+                $currentParentMenuID=$t;
+                $loopContinue=0;
+                break;
+              }
+              $st++;
+            }
+            //
+            if ($loopContinue==0){
+              break;
+            }
+          }
+          $t++;
+        }
+        //
+        /*
+        echo $currentMenuID;
+        echo $currentParentMenuID;
+        */
+        //
+        foreach ($menus as $m){
+          //
+          $displayStr='';
+          if ($currentParentMenuID!=0||0!=$currentMenuID){
+            $m['display']=0;
+          }
+          if (!$m['display']){
+            $displayStr=' style="display:none"';
+          }
+          if ($currentParentMenuID==$i){
+            $displayStr='';
+          }
+          $aClassStr='';
+          if ($displayStr){
+            $aClassStr=' nav-header-current';
+          }
+          $html .= '<a class="nav-header'.$aClassStr.'">'.$m['name'].'</a><ul class="ckit"'.$displayStr.'>';
+          if ($m['subs']){
+            $j=0;
+            foreach ($m['subs'] as $s){
+              $selectedClassStr='subCatalogList';
+              if ($currentParentMenuID==$i&&$j==$currentMenuID){
+                $selectedClassStr='selected';
+              }
+              $newStr='';
+              if ($s['test']){ //测试中的功能
+                $newStr.='<span class="test"></span>';
+              }else {
+              if ($s['new']){ //新开发功能
+                $newStr.='<span class="new"></span>';
+              }
+              }
+
+              $html .= '<li class="'.$selectedClassStr.'"> <a href="'.$s['link'].'">'.$s['name'].'</a>'.$newStr.'</li>';
+              
+              $j++;
+            }
+          }
+          $html .= '</ul>';
+          $i++;
+        }
+
+        return $html;
+        // $this->assign("menuhtml",$html);
+    //  $this->display();
+        // $this->show('123213');
+    }
+
+
 }
 ?>
