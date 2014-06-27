@@ -474,3 +474,25 @@ ul.dropdownmenu li:hover{
     .top .topmenu a:hover{
     	background-color: #7d7d7d;
     }
+
+    /*浮动*/
+    .floatfuncbox{
+	position:fixed;
+	right: 0px;
+	bottom: 50%;
+	margin-top: -16px;
+}
+.floatfuncbox a{
+	color:#fff;
+	display: block;
+	background: #6d6d6d;
+	text-align: center;
+	margin-top: 2px;
+	height: 36px;
+	width: 36px;
+	line-height: 40px;
+}
+.floatfuncbox a:hover{
+	
+	background: #7d7d7d;
+}
