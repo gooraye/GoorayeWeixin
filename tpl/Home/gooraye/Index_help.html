@@ -10,12 +10,21 @@
     <script src="{gooraye::RES}/js/embed.js" type="text/javascript"></script>
     <link href="{gooraye::RES}/css/embed.default.css" rel="stylesheet" type="text/css" />
     <link href="{gooraye::RES}/css/Function.css" rel="stylesheet" type="text/css" />
+    <script src="{gooraye::STATICS}/lazyloadSm.js" type="text/javascript"></script>
+    <style type="text/css">
+    	.body{	
+	  	background: url('{gooraye::RES}/images/help/tile-light.png');
+    	}
+    	#header{
+	  	background: #5d5d5d;
+    	}
+    	</style>
 </head>
 <body>
 <div id="header" class="navbar navbar-inverse navbar-fixed-top">
 	<div>
 		<div class="container">
-			<span class="brand"><a href="http://wx.gooraye.net/"><img src="{gooraye::RES}/images/help/logo.png"></a></span>
+			<span class="brand"><a href="http://wx.gooraye.net/"><img class="lazy" data-original= "{gooraye::RES}/images/help/logo.png"></a></span>
 			<ul class="nav secondary-nav" style="float:right;">				
 				<li></li>				
 			</ul>
@@ -32,18 +41,18 @@
 			</li>
 			<li class="active"><a href="#">古睿微通汇使用帮助</a></li>
 		</ul>
-		<div class="span3">
+		<div class="span3 affix" >
 			<ul class="nav-list" style="position: fixed;z-index:999 ;margin-top:17px;">
 				<li><a href="javascript:void(0)"><i class="icon-minus"></i> 基础设置</a>
 					<ul class="hide" style="display: block;">						
-						<li><a href="#1.1"></a></li>
-						<li><a href="#1.2">功能管理</a></li>
-						<li><a href="#1.3">关注时回复与帮助</a></li>
-						<li><a href="#1.4">微信—文本回复</a></li>
-                        <li><a href="#1.5">微信—图文回复</a></li>
-                        <li><a href="#1.6">微信—语音回复</a></li>
-                        <li><a href="#1.7">自定义LBS回复</a></li>
-                        <li><a href="#1.8">回答不上来的配置</a></li>
+						
+						<li><a href="#1.1">功能管理</a></li>
+						<li><a href="#1.2">关注时回复与帮助</a></li>
+						<li><a href="#1.3">微信—文本回复</a></li>
+                        <li><a href="#1.4">微信—图文回复</a></li>
+                        <li><a href="#1.5">微信—语音回复</a></li>
+                        <li><a href="#1.6">自定义LBS回复</a></li>
+                        <li><a href="#1.7">回答不上来的配置</a></li>
 					</ul>
 				</li>
 				<li><a href="javascript:void(0)"><i class="icon-plus"></i> 微网站设置</a>
@@ -61,69 +70,69 @@
 				</li>
 				<li><a href="javascript:void(0)"><i class="icon-plus"></i> 行业应用</a>
 					<ul class="hide" style="display: none;">
-						<li><a href="#4.1">订餐</a></li>
-					 	<li><a href="#4.2">360°全景</a></li>
-						<li><a href="#4.3">婚庆喜帖</a></li>
-						<li><a href="#4.4">3G微投票</a></li>
-                        <li><a href="#4.5">微汽车</a></li>
-                        <li><a href="#4.6">楼盘房产</a></li>
-                        <li><a href="#4.7">微教育</a></li>
-                        <li><a href="#4.8">微医疗</a></li>
-                        <li><a href="#4.9">酒店宾馆</a></li>
-                        <li><a href="#4.10">万能表单没报名，留言，预约</a></li>
-                        <li><a href="#4.11">通用订单</a></li>
+						<li><a href="#3.1">订餐</a></li>
+					 	<li><a href="#3.2">360°全景</a></li>
+						<li><a href="#3.3">婚庆喜帖</a></li>
+						<li><a href="#3.4">3G微投票</a></li>
+                        <li><a href="#3.5">微汽车</a></li>
+                        <li><a href="#3.6">楼盘房产</a></li>
+                        <li><a href="#3.7">微教育</a></li>
+                        <li><a href="#3.8">微医疗</a></li>
+                        <li><a href="#3.9">酒店宾馆</a></li>
+                        <li><a href="#3.10">万能表单没报名，留言，预约</a></li>
+                        <li><a href="#3.11">通用订单</a></li>
 					</ul>
 				</li>
 				<li><a href="javascript:void(0)"><i class="icon-plus"></i> 电商系统</a>
 					<ul class="hide" style="display: none;">
-					 		<li><a href="#5.1">在线支付设置</a></li>	
-						<li><a href="#5.2">微信团购系统</a></li>	
-                        <li><a href="#5.3">微信商城系统</a></li>	
-                        <li><a href="#5.4">融合第三方</a></li>	
-                        <li><a href="#5.5">DIY宣传页</a></li>	
-                        <li><a href="#5.6">3G图集</a></li>	
+					 		<li><a href="#4.1">在线支付设置</a></li>	
+						<li><a href="#4.2">微信团购系统</a></li>	
+                        <li><a href="#4.3">微信商城系统</a></li>	
+                        <li><a href="#4.4">融合第三方</a></li>	
+                        <li><a href="#4.5">DIY宣传页</a></li>	
+                        <li><a href="#4.6">3G图集</a></li>	
 					</ul>
 				</li>
 				<li><a href="javascript:void(0)"><i class="icon-plus"></i> 微用户管理CRM</a>
 					<ul class="hide" style="display: none;">						
-						<li><a href="#6.1">粉丝管理</a></li>	
-						<li><a href="#6.2">分组管理</a></li>
-						<li><a href="#6.3">渠道二维码</a></li>			
-                        <li><a href="#6.4">人工客服</a></li>	
-                        <li><a href="#6.5">群发消息</a></li>	
-                        <li><a href="#6.6">分享管理</a></li>					
+						<li><a href="#5.1">粉丝管理</a></li>	
+						<li><a href="#5.2">分组管理</a></li>
+						<li><a href="#5.3">渠道二维码</a></li>			
+                        <li><a href="#5.4">人工客服</a></li>	
+                        <li><a href="#5.5">群发消息</a></li>	
+                        <li><a href="#5.6">分享管理</a></li>					
 					</ul>
 				</li>
 				<li><a href="javascript:void(0)"><i class="icon-plus"></i> 推广活动</a>
 					<ul class="hide" style="display: none;">						
-						<li><a href="#7.1">幸运大转盘</a></li>						
-						<li><a href="#7.2">优惠券</a></li>
-                        <li><a href="#7.3">刮刮卡</a></li>	
-                        <li><a href="#7.4">幸运水果机</a></li>	
-                        <li><a href="#7.5">砸金蛋</a></li>	
-                        <li><a href="#7.6">祝福贺卡</a></li>	
-                        <li><a href="#7.7">摇一摇</a></li>	
-                        <li><a href="#7.8">微信墙</a></li>	
-                        <li><a href="#7.9">微路由</a></li>		
+						<li><a href="#6.1">幸运大转盘</a></li>						
+						<li><a href="#6.2">优惠券</a></li>
+                        <li><a href="#6.3">刮刮卡</a></li>	
+                        <li><a href="#6.4">幸运水果机</a></li>	
+                        <li><a href="#6.5">砸金蛋</a></li>	
+                        <li><a href="#6.6">祝福贺卡</a></li>	
+                        <li><a href="#6.7">摇一摇</a></li>	
+                        <li><a href="#6.8">微信墙</a></li>	
+                        <li><a href="#6.9">微路由</a></li>		
 					</ul>
 				</li>
 				<li><a href="javascript:void(0)"><i class="icon-plus"></i> 会员卡</a>
 					<ul class="hide" style="display: none;">
-						<li><a href="#8.1">会员卡</a></li>	
-						<li><a href="#8.2">回复设置</a></li>								
+						<li><a href="#7.1">会员卡</a></li>	
+						<li><a href="#7.2">回复设置</a></li>								
 					</ul>
 				</li>
 				<li><a href="javascript:void(0)"><i class="icon-plus"></i> 统计分析</a>
 					<ul class="hide" style="display: none;">						
-						<li><a href="#8.1">会员卡</a></li>	
-						<li><a href="#8.2">回复设置</a></li>					
+						<li><a href="#8.1">请求数详情</a></li>	
+						<li><a href="#8.2">粉丝行为分析</a></li>					
 					</ul>
 				</li>
 
 	
 			</ul>
 		</div>
-		<div class="span8">			
+		<div class="span8" style="float:right">			
 			<h3>1.基础设置</h3>				
 			<div class="markdown-body">
 	            <p></p>
@@ -133,7 +142,7 @@
 				  </h3>
 	            <p><b>使用说明：</b></p>
 	            <p>
-	                <img src="{gooraye::RES}/images/help/1_1_a.png"/><br/>
+	                <img class="lazy" data-original= "{gooraye::RES}/images/help/1_1_a.png"/><br/>
 	                <br/><br/>
 	                图片中打勾是已开启的功能，未打勾是关闭的功能。<br/>
 	            </p>
@@ -144,11 +153,11 @@
 				  </h3>
 	            <p><b>使用说明：</b></p>
 	            <p>
-	                <img src="{gooraye::RES}/images/help/1_2_a.png"/><br/><br/>
+	                <img class="lazy" data-original= "{gooraye::RES}/images/help/1_2_a.png"/><br/><br/>
 	                有用户关注公众号时，公众号会发送一条信息给用户。<br/>
                     打勾表示关注时回复多图<br/>
                     点击“切换到图文模式”可转化为图文回复<br/><br/>
-                    <img src="{gooraye::RES}/images/help/1_2_b.png"/><br/>
+                    <img class="lazy" data-original= "{gooraye::RES}/images/help/1_2_b.png"/><br/>
 	            </p> 
 	            <p></p>
 	             <h3>
@@ -157,7 +166,7 @@
 				  </h3>
 	            <p><b>使用说明：</b></p>
 	            <p>
-	                <img src="{gooraye::RES}/images/help/1_3_a.png"><br/><br/>
+	                <img class="lazy" data-original= "{gooraye::RES}/images/help/1_3_a.png"><br/><br/>
 	                
 	               	点击"切换到图文模式"可转化为图文回复<br/>
 	            </p>      
@@ -168,7 +177,7 @@
 				  </h3>
 	            <p><b>使用说明：</b></p>
 	            <p>
-	                <img src="{gooraye::RES}/images/help/1_4_a.png"/><br/><br/>
+	                <img class="lazy" data-original= "{gooraye::RES}/images/help/1_4_a.png"/><br/><br/>
 	                
 	                选择所属类别：选择图文回复属于那个分类下面的内容。<br/>
 	            </p>  
@@ -179,7 +188,7 @@
 				  </h3>
 	            <p><b>使用说明：</b></p>
 	            <p>
-	                <img src="{gooraye::RES}/images/help/1_5_a.png"/><br/>
+	                <img class="lazy" data-original= "{gooraye::RES}/images/help/1_5_a.png"/><br/>
 	                
 	            </p>  
                     <p></p>
@@ -189,18 +198,18 @@
 				  </h3>
 	            <p><b>使用说明：</b></p>
 	            <p>
-	                <img src="{gooraye::RES}/images/help/1_6_a.png"/><br/><br/>
+	                <img class="lazy" data-original= "{gooraye::RES}/images/help/1_6_a.png"/><br/><br/>
 	                
 	                经纬度：根据地图找到相应位置，点击”已经设定好，关闭该页面“就可以直接显示经纬度。<br/>
 	            </p>  
                     <p></p>
 	             <h3>
 					<a id="1.7" class="anchor_1" ></a>
-					<span>1.7)微信—图文回复</span>
+					<span>1.7)微信—回答不上来的回复</span>
 				  </h3>
 	            <p><b>使用说明：</b></p>
 	            <p>
-	                <img src="{gooraye::RES}/images/help/1_7_a.png"/><br/><br/>
+	                <img class="lazy" data-original= "{gooraye::RES}/images/help/1_7_a.png"/><br/><br/>
 	                
 	                直接将系统无法回复的问题答案写在文本框中。<br/>
 	            </p>  
@@ -215,9 +224,9 @@
 				  </h3>
 	            <p><b>使用说明：</b></p>
 	            <p>
-	                <img src="{gooraye::RES}/images/help/2_1_a.png"/><br/><br/>
+	                <img class="lazy" data-original= "{gooraye::RES}/images/help/2_1_a.png"/><br/><br/>
 	                填写的内容为首页内容。即输入首页或home平台发送给用户的消息界面。<br/><br/>
-	                <img src="{gooraye::RES}/images/help/2_1_b.png"/><br/>
+	                <img class="lazy" data-original= "{gooraye::RES}/images/help/2_1_b.png"/><br/>
 	                <br/>
 	            </p>
 	            <p></p>
@@ -227,7 +236,7 @@
 				  </h3>
 	            <p><b>使用说明：</b></p>
 	            <p>
-	                <img src="{gooraye::RES}/images/help/2_2_a.png"/><br/><br/>
+	                <img class="lazy" data-original= "{gooraye::RES}/images/help/2_2_a.png"/><br/><br/>
 	               
 	                从功能库添加：一些功能是心态自带的，就可以从功能库直接添加，例如：刮刮卡，订餐等。<br/>
                     分类页模板：当前页面显示的排版布局。<br/>
@@ -241,10 +250,10 @@
 				  </h3>
 	            <p><b>使用说明：</b></p>
 	            <p>
-	                <img src="{gooraye::RES}/images/help/2_3_a.png"/><br/><br>
+	                <img class="lazy" data-original= "{gooraye::RES}/images/help/2_3_a.png"/><br/><br>
 	               在当前模板页中选择首页模板，可以根据要求不同进行筛选。<br/>
                    在颜色风格& 预览中显示当前效果。<br/><br/>
-                   <img src="{gooraye::RES}/images/help/2_3_b.png"/><br/><br>
+                   <img class="lazy" data-original= "{gooraye::RES}/images/help/2_3_b.png"/><br/><br>
 	            </p>	
                  <p></p>
 	              <h3>
@@ -253,10 +262,10 @@
 				  </h3>
 	            <p><b>使用说明：</b></p>
 	            <p>
-	                <img src="{gooraye::RES}/images/help/2_4_a.png"/><br/><br>
+	                <img class="lazy" data-original= "{gooraye::RES}/images/help/2_4_a.png"/><br/><br>
 	               在当前界面中添加首页幻灯片。<br/>
                    根据排序的不同，幻灯片的先后顺序也有所不同。<br/><br/>
-                   <img src="{gooraye::RES}/images/help/2_4_b.png"/><br/><br>
+                   <img class="lazy" data-original= "{gooraye::RES}/images/help/2_4_b.png"/><br/><br>
 	            </p>	    
                  <p></p>
 	              <h3>
@@ -265,7 +274,7 @@
 				  </h3>
 	            <p><b>使用说明：</b></p>
 	            <p>
-	                <img src="{gooraye::RES}/images/help/2_5_a.png"/><br/><br>
+	                <img class="lazy" data-original= "{gooraye::RES}/images/help/2_5_a.png"/><br/><br>
 	               选择适合的背景图进行添加。<br/>
 
 	            </p>	    
@@ -276,12 +285,12 @@
 				  </h3>
 	            <p><b>使用说明：</b></p>
 	            <p>
-	                <img src="{gooraye::RES}/images/help/2_6_a.png"/><br/><br>
+	                <img class="lazy" data-original= "{gooraye::RES}/images/help/2_6_a.png"/><br/><br>
 	              根据要求填写适合的底部导航菜单。<br/>
                    在底部菜单风格选择中选择适合的菜单类型。<br/><br/>
-                   <img src="{gooraye::RES}/images/help/2_6_b.png"/><br/><br>
+                   <img class="lazy" class="lazy" data-original= "{gooraye::RES}/images/help/2_6_b.png"/><br/><br>
                    在菜单颜色和版权中添加版权信息和适合的底部导航菜单的颜色。<br/><br/>
-                   <img src="{gooraye::RES}/images/help/2_6_c.png"/><br/><br>
+                   <img class="lazy" class="lazy" data-original= "{gooraye::RES}/images/help/2_6_c.png"/><br/><br>
 	            </p>	  
                  <p></p>
 	              <h3>
@@ -290,10 +299,10 @@
 				  </h3>
 	            <p><b>使用说明：</b></p>
 	            <p>
-	                <img src="{gooraye::RES}/images/help/2_7_a.png"/><br/><br>
+	                <img class="lazy" data-original= "{gooraye::RES}/images/help/2_7_a.png"/><br/><br>
 	               在当前模板页中选择首页模板，可以根据要求不同进行筛选。<br/>
                    在颜色风格& 预览中显示当前效果。<br/><br/>
-                   <img src="{gooraye::RES}/images/help/2_7_b.png"/><br/><br>
+                   <img class="lazy" data-original= "{gooraye::RES}/images/help/2_7_b.png"/><br/><br>
 	            </p>	    
                         
                  <p></p>
@@ -303,10 +312,10 @@
 				  </h3>
 	            <p><b>使用说明：</b></p>
 	            <p>
-	                <img src="{gooraye::RES}/images/help/2_8_a.png"/><br/><br>
+	                <img class="lazy" data-original= "{gooraye::RES}/images/help/2_8_a.png"/><br/><br>
 	               在留言板配置中进行留言板的一些基本配置。<br/>
                    在留言表单中进行一系列操作。<br/><br/>
-                   <img src="{gooraye::RES}/images/help/2_8_b.png"/><br/><br>
+                   <img class="lazy" data-original= "{gooraye::RES}/images/help/2_8_b.png"/><br/><br>
 	            </p>	    
                  <p></p>
 	              <h3>
@@ -315,7 +324,7 @@
 				  </h3>
 	            <p><b>使用说明：</b></p>
 	            <p>
-	                <img src="{gooraye::RES}/images/help/2_9_a.png"/><br/><br>
+	                <img class="lazy" data-original= "{gooraye::RES}/images/help/2_9_a.png"/><br/><br>
 	               在社区配置中进行社区的基本配置。<br/>
                    点击不同的管理进行社区的管理。<br/><br/>
 	            </p>	    
@@ -330,11 +339,11 @@
 				  </h3>
 	            <p><b>使用说明：</b></p>
 	            <p>
-	                <img src="{gooraye::RES}/images/help/3_1_b.png"/><br/><br/>
+	                <img class="lazy" data-original= "{gooraye::RES}/images/help/3_1_b.png"/><br/><br/>
 	                输入订餐时公众平台发给用户的消息界面。<br/>
 	                根据要求配置<br/><br/>
-	                <img src="{gooraye::RES}/images/help/3_1_a.png"/><br/>
-	                <img src="{gooraye::RES}/images/help/3_1_c.png"/><br/><br/>
+	                <img class="lazy" data-original= "{gooraye::RES}/images/help/3_1_a.png"/><br/>
+	                <img class="lazy" data-original= "{gooraye::RES}/images/help/3_1_c.png"/><br/><br/>
 	                根据不同的要求进行管理。<br/>
 	                <br/>
 	            </p>
@@ -345,11 +354,11 @@
 				  </h3>
 	            <p><b>使用说明：</b></p>
 	            <p>
-	                <img src="{gooraye::RES}/images/help/3_2_a.png"/><br/><br/>
+	                <img class="lazy" data-original= "{gooraye::RES}/images/help/3_2_a.png"/><br/><br/>
 	                对360°全景进行内容配置<br/>
 	                对输入全景关键词时公众平台发给好友的消息界面。<br/><br/>
-	                <img src="{gooraye::RES}/images/help/3_2_b.png"/><br/><br/>
-                    <img src="{gooraye::RES}/images/help/3_2_c.png"/>
+	                <img class="lazy" data-original= "{gooraye::RES}/images/help/3_2_b.png"/><br/><br/>
+                    <img class="lazy" data-original= "{gooraye::RES}/images/help/3_2_c.png"/>
 	                <br/>
 	            </p>
                 <p></p>
@@ -359,9 +368,9 @@
 				  </h3>
 	            <p><b>使用说明：</b></p>
 	            <p>
-	                <img src="{gooraye::RES}/images/help/3_3_a.png"/>
-	                <img src="{gooraye::RES}/images/help/3_3_b.png"/><br/><br/>
-	                <img src="{gooraye::RES}/images/help/3_3_c.png"/><br/><br/>
+	                <img class="lazy" data-original= "{gooraye::RES}/images/help/3_3_a.png"/>
+	                <img class="lazy" data-original= "{gooraye::RES}/images/help/3_3_b.png"/><br/><br/>
+	                <img class="lazy" data-original= "{gooraye::RES}/images/help/3_3_c.png"/><br/><br/>
 	                对输入微喜帖关键词时公众平台发给好友的消息界面。<br/>
 	                <br/>
 	            </p>
@@ -372,8 +381,8 @@
 				  </h3>
 	            <p><b>使用说明：</b></p>
 	            <p>
-	                <img src="{gooraye::RES}/images/help/3_4_b.png"/><br/>
-	                <img src="{gooraye::RES}/images/help/3_4_a.png"/><br/>	<br/>                
+	                <img class="lazy" data-original= "{gooraye::RES}/images/help/3_4_b.png"/><br/>
+	                <img class="lazy" data-original= "{gooraye::RES}/images/help/3_4_a.png"/><br/>	<br/>                
                     可以进行文字投票和图片投票两种投票。<br/>
 	                <br/>
 	            </p>
@@ -384,8 +393,8 @@
 				  </h3>
 	            <p><b>使用说明：</b></p>
 	            <p>
-	                <img src="{gooraye::RES}/images/help/3_5_a.png"/>
-	                <img src="{gooraye::RES}/images/help/3_5_b.png"/><br/>
+	                <img class="lazy" data-original= "{gooraye::RES}/images/help/3_5_a.png"/>
+	                <img class="lazy" data-original= "{gooraye::RES}/images/help/3_5_b.png"/><br/>
 	                根据不同的内容进行配置。<br/>
                     根据不同的要求进行管理。<br/>
 	                <br/>
@@ -397,8 +406,8 @@
 				  </h3>
 	            <p><b>使用说明：</b></p>
 	            <p>
-	                <img src="{gooraye::RES}/images/help/3_6_b.png"/>
-	                <img src="{gooraye::RES}/images/help/3_6_a.png"/><br/>
+	                <img class="lazy" data-original= "{gooraye::RES}/images/help/3_6_b.png"/>
+	                <img class="lazy" data-original= "{gooraye::RES}/images/help/3_6_a.png"/><br/>
 	                根据要求配置相关配置<br/>
 	                <br/>
 	            </p>
@@ -409,10 +418,10 @@
 				  </h3>
 	            <p><b>使用说明：</b></p>
 	            <p>
-	                <img src="{gooraye::RES}/images/help/3_7_a.png"/><br/><br/>
+	                <img class="lazy" data-original= "{gooraye::RES}/images/help/3_7_a.png"/><br/><br/>
 	                在菜单回复配置中进行基本配置。<br/>
 	                在相应的菜单栏中进行内容的填写。<br/><br/>
-                    <img src="{gooraye::RES}/images/help/3_7_b.png"/><br/><br/>
+                    <img class="lazy" data-original= "{gooraye::RES}/images/help/3_7_b.png"/><br/><br/>
                      对输入学校关键词时公众平台发给好友的消息界面。 <br/><br/>
 	                <br/>
 	            </p>
@@ -423,10 +432,10 @@
 				  </h3>
 	            <p><b>使用说明：</b></p>
 	            <p>
-	                <img src="{gooraye::RES}/images/help/3_8_b.png"/>
-	                <img src="{gooraye::RES}/images/help/3_8_a.png"/><br/>
+	                <img class="lazy" data-original= "{gooraye::RES}/images/help/3_8_b.png"/>
+	                <img class="lazy" data-original= "{gooraye::RES}/images/help/3_8_a.png"/><br/>
                     在相应的菜单栏中进行内容的填写。<br/><br/>
-	                <img src="{gooraye::RES}/images/help/3_8_c.png"/><br/><br/>
+	                <img class="lazy" data-original= "{gooraye::RES}/images/help/3_8_c.png"/><br/><br/>
 	                对输入微医疗或医疗关键词时公众平台发给好友的消息界面。 <br/>
 	                <br/>
 	            </p>
@@ -437,9 +446,9 @@
 				  </h3>
 	            <p><b>使用说明：</b></p>
 	            <p>
-	                <img src="{gooraye::RES}/images/help/3_1_b.png"/><br/><br/>
+	                <img class="lazy" data-original= "{gooraye::RES}/images/help/3_1_b.png"/><br/><br/>
 	                对输入酒店关键词时公众平台发给好友的消息界面。 <br/>
-	                <img src="{gooraye::RES}/images/help/3_1_a.png"/><br/>
+	                <img class="lazy" data-original= "{gooraye::RES}/images/help/3_1_a.png"/><br/>
 	               在相应的菜单栏中进行内容的配置。<br/><br/>
 	                <br/>
 	            </p>
@@ -450,10 +459,10 @@
 				  </h3>
 	            <p><b>使用说明：</b></p>
 	            <p>
-	                <img src="{gooraye::RES}/images/help/3_10_b.png"/><br/><br/>
+	                <img class="lazy" data-original= "{gooraye::RES}/images/help/3_10_b.png"/><br/><br/>
 	               在相应的菜单栏中进行内容的配置。<br/>
 	               对输入关键词时公众平台发给好友的消息界面。 <br/><br/>
-                   <img src="{gooraye::RES}/images/help/3_10_a.png"/><br/>
+                   <img class="lazy" data-original= "{gooraye::RES}/images/help/3_10_a.png"/><br/>
 	                <br/>
 	            </p>
                 <p></p>
@@ -463,10 +472,10 @@
 				  </h3>
 	            <p><b>使用说明：</b></p>
 	            <p>
-	                <img src="{gooraye::RES}/images/help/3_11_b.png"/>
-	                <img src="{gooraye::RES}/images/help/3_11_a.png"/><br/><br/>
+	                <img class="lazy" data-original= "{gooraye::RES}/images/help/3_11_b.png"/>
+	                <img class="lazy" data-original= "{gooraye::RES}/images/help/3_11_a.png"/><br/><br/>
                     在相应的菜单栏中进行内容的配置。<br/>
-	                <img src="{gooraye::RES}/images/help/3_11_c.png"/><br/><br/>
+	                <img class="lazy" data-original= "{gooraye::RES}/images/help/3_11_c.png"/><br/><br/>
 	                对输入关键词时公众平台发给好友的消息界面。 <br/>
 	                <br/>
 	            </p>
@@ -480,7 +489,7 @@
 				  </h3>
 	            <p><b>使用说明：</b></p>
 	            <p>
-	            	<img src="{gooraye::RES}/images/help/4_1_a.png"><br/>
+	            	<img class="lazy" data-original= "{gooraye::RES}/images/help/4_1_a.png"><br/>
 	                根据相应的提示填写内容。<br/>
 	            </p>
 				<p></p>
@@ -490,10 +499,10 @@
 				  </h3>
 	            <p><b>使用说明：</b></p>
 	            <p>
-	            	<img src="{gooraye::RES}/images/help/4_2_a.png"/><br/>
+	            	<img class="lazy" data-original= "{gooraye::RES}/images/help/4_2_a.png"/><br/>
 	                 在相应的菜单栏中进行内容的配置。<br/>
 	                 对输入关键词时公众平台发给好友的消息界面。<br/>
-	                <img src="{gooraye::RES}/images/help/4_2_b.png"/><br/>
+	                <img class="lazy" data-original= "{gooraye::RES}/images/help/4_2_b.png"/><br/>
 	            </p>
 	            <p></p>
 	              <h3>
@@ -502,10 +511,10 @@
 				  </h3>
 	            <p><b>使用说明：</b></p>
 	            <p>
-	                <img src="{gooraye::RES}/images/help/4_3_a.png"/><br/><br/>
-	                <img src="{gooraye::RES}/images/help/4_3_b.png"/><br/>
+	                <img class="lazy" data-original= "{gooraye::RES}/images/help/4_3_a.png"/><br/><br/>
+	                <img class="lazy" data-original= "{gooraye::RES}/images/help/4_3_b.png"/><br/>
 	                在相应的菜单栏中进行内容的配置。<br/>
-	                <img src="{gooraye::RES}/images/help/4_3_c.png"/><br/>
+	                <img class="lazy" data-original= "{gooraye::RES}/images/help/4_3_c.png"/><br/>
 	                对输入关键词商城时公众平台发给好友的消息界面。<br/>
 	            </p>
 	            <p></p>
@@ -515,7 +524,7 @@
 				  </h3>
 	            <p><b>使用说明：</b></p>
 	            <p>
-	                <img src="{gooraye::RES}/images/help/4_4_a.png"/><br/>
+	                <img class="lazy" data-original= "{gooraye::RES}/images/help/4_4_a.png"/><br/>
 	                对相应的内容进行配置。<br/>
 	            </p>
                  <p></p>
@@ -525,7 +534,7 @@
 				  </h3>
 	            <p><b>使用说明：</b></p>
 	            <p>
-	                <img src="{gooraye::RES}/images/help/4_5_a.png"/><br/>
+	                <img class="lazy" data-original= "{gooraye::RES}/images/help/4_5_a.png"/><br/>
 	                对相应的内容进行配置。<br/>
 	            </p>
                  <p></p>
@@ -535,10 +544,10 @@
 				  </h3>
 	            <p><b>使用说明：</b></p>
 	            <p>
-	                <img src="{gooraye::RES}/images/help/4_6_a.png"/>
-                    <img src="{gooraye::RES}/images/help/4_6_c.png"/><br/><br/>
+	                <img class="lazy" data-original= "{gooraye::RES}/images/help/4_6_a.png"/>
+                    <img class="lazy" data-original= "{gooraye::RES}/images/help/4_6_c.png"/><br/><br/>
 	                对相应的内容进行配置。<br/>
-                    <img src="{gooraye::RES}/images/help/4_6_b.png"/><br/><br/>
+                    <img class="lazy" data-original= "{gooraye::RES}/images/help/4_6_b.png"/><br/><br/>
                     对输入关键词相册时公众平台发给好友的消息界面。<br/>
 	            </p>
 		    </div>
@@ -551,8 +560,8 @@
 				  </h3>
 	            <p><b>使用说明：</b></p>
 	            <p>
-	                <img src="{gooraye::RES}/images/help/5_1_a.png"/>
-                    <img src="{gooraye::RES}/images/help/5_1_b.png"/><br/><br/>
+	                <img class="lazy" data-original= "{gooraye::RES}/images/help/5_1_a.png"/>
+                    <img class="lazy" data-original= "{gooraye::RES}/images/help/5_1_b.png"/><br/><br/>
 					可以查看一些粉丝的动态。<br/>
 	            </p>
 	            <p></p>
@@ -562,8 +571,8 @@
 				  </h3>
 	            <p><b>使用说明：</b></p>
 	            <p>
-	                <img src="{gooraye::RES}/images/help/5_2_a.png"/>
-                    <img src="{gooraye::RES}/images/help/5_2_b.png"/><br/><br/>
+	                <img class="lazy" data-original= "{gooraye::RES}/images/help/5_2_a.png"/>
+                    <img class="lazy" data-original= "{gooraye::RES}/images/help/5_2_b.png"/><br/><br/>
 					可以对粉丝进行分组。<br/>
 	            </p>
                 <p></p>
@@ -573,7 +582,7 @@
 				  </h3>
 	            <p><b>使用说明：</b></p>
 	            <p>
-	                <img src="{gooraye::RES}/images/help/5_3_a.png"/><br/><br/>
+	                <img class="lazy" data-original= "{gooraye::RES}/images/help/5_3_a.png"/><br/><br/>
 					可以添加二维码。<br/>
 	            </p>
                 <p></p>
@@ -583,7 +592,7 @@
 				  </h3>
 	            <p><b>使用说明：</b></p>
 	            <p>
-                    <img src="{gooraye::RES}/images/help/5_4_a.png"/><br/><br/>
+                    <img class="lazy" data-original= "{gooraye::RES}/images/help/5_4_a.png"/><br/><br/>
 					可以开启和关闭人工客服系统。<br/>
 	            </p>
                 <p></p>
@@ -593,9 +602,9 @@
 				  </h3>
 	            <p><b>使用说明：</b></p>
 	            <p>
-	                <img src="{gooraye::RES}/images/help/5_5_a.png"/><br/><br/>
-                    <img src="{gooraye::RES}/images/help/5_5_b.png"/>
-                    <img src="{gooraye::RES}/images/help/5_5_c.png"/><br/><br/>
+	                <img class="lazy" data-original= "{gooraye::RES}/images/help/5_5_a.png"/><br/><br/>
+                    <img class="lazy" data-original= "{gooraye::RES}/images/help/5_5_b.png"/>
+                    <img class="lazy" data-original= "{gooraye::RES}/images/help/5_5_c.png"/><br/><br/>
 					可以进行文字，图片，图文，语音和视频的群发。<br/>
 	            </p>
                 <p></p>
@@ -605,7 +614,7 @@
 				  </h3>
 	            <p><b>使用说明：</b></p>
 	            <p>
-	                <img src="{gooraye::RES}/images/help/5_6_a.png"/><br/><br/>
+	                <img class="lazy" data-original= "{gooraye::RES}/images/help/5_6_a.png"/><br/><br/>
 					可以。<br/>
 	            </p>
 	        </div>
@@ -618,12 +627,12 @@
 				  </h3>
 	            <p><b>使用说明：</b></p>
 	            <p>
-	                <img src="{gooraye::RES}/images/help/6_1_a.png"/>
-                    <img src="{gooraye::RES}/images/help/6_1_b.png"/>
-                    <img src="{gooraye::RES}/images/help/6_1_c.png"/><br/><br/>
+	                <img class="lazy" data-original= "{gooraye::RES}/images/help/6_1_a.png"/>
+                    <img class="lazy" data-original= "{gooraye::RES}/images/help/6_1_b.png"/>
+                    <img class="lazy" data-original= "{gooraye::RES}/images/help/6_1_c.png"/><br/><br/>
 	                填写相应的设置即可开启幸运大转盘。<br/>
                     输入关键词时公众平台发给好友的消息界面。<br/><br/>
-                    <img src="{gooraye::RES}/images/help/6_1_d.png"/>
+                    <img class="lazy" data-original= "{gooraye::RES}/images/help/6_1_d.png"/>
 	            </p>
 	            <p></p>
 	              <h3>
@@ -633,12 +642,12 @@
 	            <p><b>使用说明：</b></p>
 	            <p>
 	                
-	                <img src="{gooraye::RES}/images/help/6_2_a.png"/>
-                    <img src="{gooraye::RES}/images/help/6_2_b.png"/>
-                    <img src="{gooraye::RES}/images/help/6_2_c.png"/><br/><br/>
+	                <img class="lazy" data-original= "{gooraye::RES}/images/help/6_2_a.png"/>
+                    <img class="lazy" data-original= "{gooraye::RES}/images/help/6_2_b.png"/>
+                    <img class="lazy" data-original= "{gooraye::RES}/images/help/6_2_c.png"/><br/><br/>
 	                填写相应的设置即可开启优惠券。<br/>
                     输入关键词时公众平台发给好友的消息界面。<br/><br/>
-                    <img src="{gooraye::RES}/images/help/6_2_d.png"/>
+                    <img class="lazy" data-original= "{gooraye::RES}/images/help/6_2_d.png"/>
 	            </p>
 	            <p></p>
 	              <h3>
@@ -648,12 +657,12 @@
 	            <p><b>使用说明：</b></p>
 	            <p>
 	                
-	                <img src="{gooraye::RES}/images/help/6_3_a.png"/>
-                    <img src="{gooraye::RES}/images/help/6_3_b.png"/>
-                    <img src="{gooraye::RES}/images/help/6_3_c.png"/><br/><br/>
+	                <img class="lazy" data-original= "{gooraye::RES}/images/help/6_3_a.png"/>
+                    <img class="lazy" data-original= "{gooraye::RES}/images/help/6_3_b.png"/>
+                    <img class="lazy" data-original= "{gooraye::RES}/images/help/6_3_c.png"/><br/><br/>
 	                填写相应的设置即可开启刮刮卡。<br/>
                     对输入关键词时公众平台发给好友的消息界面。<br/><br/>
-                    <img src="{gooraye::RES}/images/help/6_3_d.png"/>
+                    <img class="lazy" data-original= "{gooraye::RES}/images/help/6_3_d.png"/>
 	            </p>
                  <p></p>
 	              <h3>
@@ -663,12 +672,12 @@
 	            <p><b>使用说明：</b></p>
 	            <p>
 	                
-	                <img src="{gooraye::RES}/images/help/6_4_a.png"/>
-                    <img src="{gooraye::RES}/images/help/6_4_b.png"/>
-                    <img src="{gooraye::RES}/images/help/6_4_c.png"/><br/><br/>
+	                <img class="lazy" data-original= "{gooraye::RES}/images/help/6_4_a.png"/>
+                    <img class="lazy" data-original= "{gooraye::RES}/images/help/6_4_b.png"/>
+                    <img class="lazy" data-original= "{gooraye::RES}/images/help/6_4_c.png"/><br/><br/>
 	                填写相应的设置即可开启幸运水果机。<br/>
                     对输入关键词时公众平台发给好友的消息界面。<br/><br/>
-                    <img src="{gooraye::RES}/images/help/6_4_d.png"/>
+                    <img class="lazy" data-original= "{gooraye::RES}/images/help/6_4_d.png"/>
 	            </p>
                  <p></p>
 	              <h3>
@@ -678,12 +687,12 @@
 	            <p><b>使用说明：</b></p>
 	            <p>
 	                
-	                <img src="{gooraye::RES}/images/help/6_5_a.png"/>
-                    <img src="{gooraye::RES}/images/help/6_5_b.png"/>
-                    <img src="{gooraye::RES}/images/help/6_5_c.png"/><br/><br/>
+	                <img class="lazy" data-original= "{gooraye::RES}/images/help/6_5_a.png"/>
+                    <img class="lazy" data-original= "{gooraye::RES}/images/help/6_5_b.png"/>
+                    <img class="lazy" data-original= "{gooraye::RES}/images/help/6_5_c.png"/><br/><br/>
 	                填写相应的设置即可开启砸金蛋。<br/>
                     对输入关键词时公众平台发给好友的消息界面。<br/><br/>
-                    <img src="{gooraye::RES}/images/help/6_5_d.png"/>
+                    <img class="lazy" data-original= "{gooraye::RES}/images/help/6_5_d.png"/>
 	            </p>
                  <p></p>
 	              <h3>
@@ -693,11 +702,11 @@
 	            <p><b>使用说明：</b></p>
 	            <p>
 	                
-	                <img src="{gooraye::RES}/images/help/6_6_a.png"/>
-                    <img src="{gooraye::RES}/images/help/6_6_b.png"/><br/><br/>
+	                <img class="lazy" data-original= "{gooraye::RES}/images/help/6_6_a.png"/>
+                    <img class="lazy" data-original= "{gooraye::RES}/images/help/6_6_b.png"/><br/><br/>
 	                填写相应的设置即可开启祝福贺卡。<br/>
                     对输入关键词时公众平台发给好友的消息界面。<br/><br/>
-                    <img src="{gooraye::RES}/images/help/6_6_c.png"/>
+                    <img class="lazy" data-original= "{gooraye::RES}/images/help/6_6_c.png"/>
 	            </p>
                  <p></p>
 	              <h3>
@@ -707,11 +716,11 @@
 	            <p><b>使用说明：</b></p>
 	            <p>
 	                
-	                <img src="{gooraye::RES}/images/help/6_7_a.png"/>
-                    <img src="{gooraye::RES}/images/help/6_7_b.png"/><br/><br/>
+	                <img class="lazy" data-original= "{gooraye::RES}/images/help/6_7_a.png"/>
+                    <img class="lazy" data-original= "{gooraye::RES}/images/help/6_7_b.png"/><br/><br/>
 	                填写相应的设置即可开启摇一摇。<br/>
                     对输入关键词时公众平台发给好友的消息界面。<br/><br/>
-                    <img src="{gooraye::RES}/images/help/6_7_c.png"/>
+                    <img class="lazy" data-original= "{gooraye::RES}/images/help/6_7_c.png"/>
 	            </p>
                  <p></p>
 	              <h3>
@@ -721,11 +730,11 @@
 	            <p><b>使用说明：</b></p>
 	            <p>
 	                
-	                <img src="{gooraye::RES}/images/help/6_8_a.png"/>
-                    <img src="{gooraye::RES}/images/help/6_8_b.png"/><br/><br/>
+	                <img class="lazy" data-original= "{gooraye::RES}/images/help/6_8_a.png"/>
+                    <img class="lazy" data-original= "{gooraye::RES}/images/help/6_8_b.png"/><br/><br/>
 	                填写相应的设置即可开启微信墙。<br/>
                     对输入关键词时公众平台发给好友的消息界面。<br/><br/>
-                    <img src="{gooraye::RES}/images/help/6_3_d.png"/>
+                    <img class="lazy" data-original= "{gooraye::RES}/images/help/6_3_d.png"/>
 	            </p>
                  <p></p>
 	              <h3>
@@ -735,7 +744,7 @@
 	            <p><b>使用说明：</b></p>
 	            <p>
 	                
-	                <img src="{gooraye::RES}/images/help/6_9_a.png"/><br/><br/>
+	                <img class="lazy" data-original= "{gooraye::RES}/images/help/6_9_a.png"/><br/><br/>
                     输入相关内容设置路由<br/><br/>
 	            </p>
 	        </div>
@@ -748,8 +757,8 @@
 				  </h3>
 	            <p><b>使用说明：</b></p>
 	            <p>
-	            	<img src="{gooraye::RES}/images/help/7_1_a.png"/>
-                    <img src="{gooraye::RES}/images/help/7_1_b.png"/><br/>
+	            	<img class="lazy" data-original= "{gooraye::RES}/images/help/7_1_a.png"/>
+                    <img class="lazy" data-original= "{gooraye::RES}/images/help/7_1_b.png"/><br/>
 	            	填写相关内容设定会员卡。<br/>
 	            </p>
 	            <p></p>
@@ -759,11 +768,11 @@
 				  </h3>
 	            <p><b>使用说明：</b></p>
 	            <p>
-	                <img src="{gooraye::RES}/images/help/7_2_a.png"/>
-                    <img src="{gooraye::RES}/images/help/7_2_b.png"/><br/><br/>
+	                <img class="lazy" data-original= "{gooraye::RES}/images/help/7_2_a.png"/>
+                    <img class="lazy" data-original= "{gooraye::RES}/images/help/7_2_b.png"/><br/><br/>
                    设置会员卡自动回复内容。<br/>
 	               对输入关键词时公众平台发给好友的消息界面。<br/><br/>
-                    <img src="{gooraye::RES}/images/help/7_2_c.png"/>
+                    <img class="lazy" data-original= "{gooraye::RES}/images/help/7_2_c.png"/>
 	            </p>
 	        </div>
 	        <h3>8.统计分析</h3>				
@@ -775,8 +784,8 @@
 				  </h3>
 	            <p><b>使用说明：</b></p>
 	            <p>
-	                <img src="{gooraye::RES}/images/help/8_1_a.png"/>
-                    <img src="{gooraye::RES}/images/help/8_1_b.png"/><br/><br/>
+	                <img class="lazy" data-original= "{gooraye::RES}/images/help/8_1_a.png"/>
+                    <img class="lazy" data-original= "{gooraye::RES}/images/help/8_1_b.png"/><br/><br/>
 	                查看数据详情。<br/>
 	            </p>
 	            <p></p>
@@ -786,9 +795,9 @@
 				  </h3>
 	            <p><b>使用说明：</b></p>
 	            <p>
-	                <img src="{gooraye::RES}/images/help/8_2_a.png"/><br/><br/>
-                    <img src="{gooraye::RES}/images/help/8_2_b.png"/>
-                    <img src="{gooraye::RES}/images/help/8_2_c.png"/><br/><br/>
+	                <img class="lazy" data-original= "{gooraye::RES}/images/help/8_2_a.png"/><br/><br/>
+                    <img class="lazy" data-original= "{gooraye::RES}/images/help/8_2_b.png"/>
+                    <img class="lazy" data-original= "{gooraye::RES}/images/help/8_2_c.png"/><br/><br/>
 	               	查看粉丝行为。<br/>
 	            </p>
 	        </div></div>
@@ -825,7 +834,7 @@
     });
 
 
-    var navTop = $('.affix').length && $('.affix').offset().top,
+    var navTop = 10;
 	isFixed = 0;
     $(window).on('scroll', function processScroll() {
         var i, scrollTop = $(window).scrollTop()
@@ -838,11 +847,25 @@
         };
     });
 </script>
+
 </div></div>
 
 <script>
+function imglazyload(){
+            $("img.lazy").lazyload({
+                event : "sporty",
+                skip_invisible : false,
+                failure_limit : 15,
+                effect:"fadeIn",
+                threshold:20
+            });
+
+}
+var placeholder = "data:image/png;base64,R0lGODdh7gLuAuMAAMzMzJaWlr6+vrGxsaOjo5ycnKqqqre3t8XFxQAAAAAAAAAAAAAAAAAAAAAAAAAAACwAAAAA7gLuAgAE/hDISau9OOvNu/9gKI5kaZ5oqq5s675wLM90bd94ru987//AoHBILBqPyKRyyWw6n9CodEqtWq/YrHbL7Xq/4LB4TC6bz+i0es1uu9/wuHxOr9vv+Lx+z+/7/4CBgoOEhYaHiImKi4yNjo+QkZKTlJWWl5iZmpucnZ6foKGio6SlpqeoqaqrrK2ur7CxsrO0tba3uLm6u7y9vr/AwcLDxMXGx8jJysvMzc7P0NHS09TV1tfY2drb3N3e3+Dh4uPk5ebn6Onq6+zt7u/w8fLz9PX29/j5+vv8/f7/AAMKHEiwoMGDCBMqXMiwocOHECNKnEixosWLGDNq3Mixo8eP/iBDihxJsqTJkyhTqlzJsqXLlzBjypxJs6bNmzhz6tzJs6fPn0CDCh1KtKjRo0iTKl3KtKnTp1CjSp1KtarVq1izat3KtavXr2DDih1LtqzZs2jTql3Ltq3bt3Djyp1Lt67du3jz6t3Lt6/fv4ADCx5MuLDhw4gTK17MuLHjx5AjS55MubLly5gza97MubPnz6BDix5NurTp06hTq17NurXr17Bjy55Nu7bt27hz697Nu7fv38CDCx9OvLjx48iTK1/OvLnz59CjS59Ovbr169iza9/Ovbv37+DDix9Pvrz58+jTq1/Pvr379/Djy59Pv779+/jz69/Pv7///wAG/ijggAQWaOCBCCao4IIMNujggxBGKOGEFFZo4YUYZqjhhhx26OGHIIYo4ogklmjiiSimqOKKLLbo4oswxijjjDTWaOONOOao44489ujjj0AGKeSQRBZp5JFIJqnkkkw26eSTUEYp5ZRUVmnllVhmqeWWXHbp5ZdghinmmGSWaeaZaKap5ppstunmm3DGKeecdNZp55145qnnnnz26eefgAYq6KCEFmrooYgmquiijDbq6KOQRirppJRWaumlmGaq6aacdurpp6CGKuqopJZq6qmopqrqqqy26uqrsMYq66y01mrrrbjmquuuvPbq66/ABivssMQWa+yxyCar7LLM/jbr7LPQRivttNRWa+212Gar7bbcduvtt+CGK+645JZr7rnopqvuuuy26+67BwowAAEFFBBAAAUYcEAGCPTr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";
     $(function () {
-        $('.dropdown-toggle').dropdown();
+         $('.dropdown-toggle').dropdown();
+         $("img.lazy").attr("src",placeholder);
+        imglazyload();
     });
 </script>
 
