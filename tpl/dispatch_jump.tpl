@@ -57,7 +57,7 @@ transition: 0.25s;
 <p class="detail"></p>
 <div class="jump" style="padding-right:5px;text-align:center;">
 <a id="href" class="btn"  href="<?php echo($jumpUrl); ?>" style="color:#fff;">跳转（ <b id="wait"><?php echo($waitSecond); ?></b> ）</a> 
-<a id="cancel" class="btn"  href="#" style="color:#f40;" onclick="cancel();">取消</a> 
+<a id="cancel" class="btn"  href="#" style="color:#A8EB8F;" onclick="cancel();">取消</a> 
 </div>
 </div>
 <script type="text/javascript">
