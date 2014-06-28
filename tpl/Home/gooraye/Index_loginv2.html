@@ -18,9 +18,11 @@ body,div,p,ul,li,a{
 	padding:0px;
 }
 body{background-repeat:no-repeat; background-position:center top;}
-.loginbody{position:absolute; width:1030px; height:474px;  margin-top:-237px; margin-left:-465px;  left:50%; top:50%;}
+.loginbody{position: absolute;
+width: 1030px;height: 474px;margin-top: 100px;
+margin-left: -515px;left: 50%;}
 .newimgbox{background:url(/tpl/Home/gooraye/common/images/loginbg01.png) no-repeat; float:left; width:621px; height:474px; padding:4px 30px 4px 4px;}
-.loginbox{background:url(/tpl/Home/gooraye/common/images/loginbg02.png) no-repeat; float:right; width:380px; height:474px;}
+.loginbox{background:url(/tpl/Home/gooraye/common/images/loginbg02.png) no-repeat; margin: 0 auto; width:380px; height:474px;}
 .logintop{margin:0px 30px; padding:20px 0 25px; line-height:160%; border-bottom:1px dashed #ccc}
 .logintop h1{font-size:22px; color:#0781c7;}
 .logintop p{font-size:14px; color:#999;}
@@ -31,83 +33,25 @@ body{background-repeat:no-repeat; background-position:center top;}
 .login_jz{line-height:30px; font-size:12px; color:#666;width:300px; height:30px; line-height:30px;}
 .login_input{margin:9px 5px 8px 60px; height:40px; line-height:40px; padding:0; border:none; width:250px; font-size:14px;}
 .login_button{width:317px; height:57px;}
-.input_button{background-color:#0781c7; width:317px; height:50px; color:#fff; border:none; font-size:20px; cursor:pointer; border-radius:3px;}
+.input_button{background-color:#6d6d6d; width:317px; height:50px; color:#fff; border:none; font-size:20px; cursor:pointer; border-radius:3px;}
 
-.banner-box{
-			width:647px;
-			height: 474px;
-			overflow: hidden;
-			background:url(/tpl/Home/gooraye/common/images/loginbg01.png) no-repeat;
-			float:left;
-			padding:3px 0px ;
-}
-#banner{
-			width:621px;
-			height: 466px;
-			overflow: hidden;
-			position: relative;
-		}
-		#banner ul{
-			width:100%;
-			height: 100%;
-			position: absolute;
-			left:0;
-			top:0;
-		}
-		#banner li{
-			float: left;
-			width:621px;
-			height: 100%;
-			overflow: hidden;
-			display:inline-block;
-			position: relative;
-		}
-		#banner li p{
-			position: absolute;
-			left:0;
-			bottom:0;
-			width:100%;
-			height:30px;
-			line-height: 30px;
-			overflow: hidden;
-			background: #000;
-			opacity:0.7;
-			color:#fff;
-			padding-left:10px;
-			box-sizing: border-box;
-			font-size:14px;
-		}
 </style>
 </head>
 
 
 <body style="background-image:url(/tpl/Home/gooraye/common/images/{gooraye:$bgindex}.jpg)">
 	<div class="loginbody">
-		
-    	<div class="banner-box">
-    	<div id="banner">
-		<ul class="clearfix">
-			<li>
-				<img src="/tpl/Home/gooraye/common/images/login/1.jpg" alt="" height="466" width="621"/>
-			</li>
-		           <li>
-				<img src="/tpl/Home/gooraye/common/images/login/2.jpg" alt="" height="466" width="621"/>
-			</li>	   
-		               			
-		</ul>
-		</div>
-		</div>
+	
         <div class="loginbox">
         	<div class="logintop">
-                <h1>让你的微信公众平台与众不同</h1>
-                <p>拥抱变化，开启移动互联网梦想!</p>
+                <h1>微通汇后台登陆</h1>
+                <p>你想到，我做到！</p>
             </div>
             <form action="{gooraye::U('Users/checklogin')}" method="post">              
 
             <div class="login_table">
                 <div class="login_name"><input name="username" class="login_input" placeholder="请输入您的用户名" type="text" value=""/></div>
                 <div class="login_pw"><input  name="password" class="login_input" placeholder="请输入密码" type="password" /></div>
-                <!-- <div class="login_jz"><input name="remember" type="checkbox"  value="1" />记住帐号</div> -->
                 <div class="login_button"><input type="submit" class="input_button" value="登 录" /></div></div>
             </div>
             </form>
@@ -116,28 +60,28 @@ body{background-repeat:no-repeat; background-position:center top;}
 </body>
 <script type="text/javascript">
 	
-	if( $('#banner li').size() ){
-		var len = $('#banner li').length;
-		$('#banner ul').width(len*621);
-		var ulCopy = $('#banner ul').clone();
-		$(ulCopy).appendTo('#banner').css({'left':len*621+'px'});
-		var t;
-		function auto(){
-			t = setInterval(function(){
-				$('#banner ul').animate({'left':'-=621'},500,function(){
-					if( parseInt($(this).css('left')) <= (-1*len*621) ){
-						$(this).css({'left':len*621+'px'});
-					}
-				})
-			},5000);
-		}
-		auto();
-		$('#banner li').hover(function(){
-			clearInterval(t);
-		},function(){
-			auto();
-		})
-	}
+	// if( $('#banner li').size() ){
+	// 	var len = $('#banner li').length;
+	// 	$('#banner ul').width(len*621);
+	// 	var ulCopy = $('#banner ul').clone();
+	// 	$(ulCopy).appendTo('#banner').css({'left':len*621+'px'});
+	// 	var t;
+	// 	function auto(){
+	// 		t = setInterval(function(){
+	// 			$('#banner ul').animate({'left':'-=621'},500,function(){
+	// 				if( parseInt($(this).css('left')) <= (-1*len*621) ){
+	// 					$(this).css({'left':len*621+'px'});
+	// 				}
+	// 			})
+	// 		},5000);
+	// 	}
+	// 	auto();
+	// 	$('#banner li').hover(function(){
+	// 		clearInterval(t);
+	// 	},function(){
+	// 		auto();
+	// 	})
+	// }
 </script>
 
 <div style="display:none;clear:both">
