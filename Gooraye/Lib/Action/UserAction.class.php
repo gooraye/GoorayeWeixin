@@ -91,7 +91,7 @@ class UserAction extends BaseAction{
         $vipid = $this -> userGroup['id'];
         $menus =  getMenu($vipid);
 
-        S('gr_menus',$menuhtml);
+        S('gr_menus',$menus);
         }
         $menuhtml = $this->createHTMLMenu($menus);
         return $menuhtml;
