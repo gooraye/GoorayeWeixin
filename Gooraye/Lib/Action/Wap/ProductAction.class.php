@@ -485,7 +485,13 @@ class ProductAction extends WapAction{
 						$crow['token']=$row['token'];
 						$crow['time']=$time;
 						$product_cart_list_model->add($crow);
-						$product_model->where(array('id'=>$k))->setInc('salecount',$c['count']);
+						if((isset($c['count']) && is_integer($c['count']))){
+							$c['count'] = 0;
+							$product_model->where(array('id'=>$k))->setInc('salecount',$c['count']);
+						}
+
+//						addWeixinLog($carts,"购物count=".$c['count'] );
+						// $product_model->where(array('id'=>$k));
 					}
 				}
 				$_SESSION[$this->session_cart_name]='';
@@ -662,7 +668,7 @@ class ProductAction extends WapAction{
 				$productid=$k;
 				$price=$c['price'];
 				$count=$c['count'];
-				$product_model->where(array('id'=>$k))->setDec('salecount',$c['count']);
+				$product_model->where(array('id'=>$k))->setDec('salecount',$count);
 			}
 		}
 		$this->redirect(U('Product/my',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id'])));
