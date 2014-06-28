@@ -1,4 +1,7 @@
 <include file="Index:header"/>
+ <script src="{gooraye::STATICS}/jquery-1.4.2.min.js" type="text/javascript"></script>
+<script src="{gooraye::STATICS}/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="{gooraye::STATICS}/artDialog/plugins/iframeTools.js"></script>
 <div class="content" style="margin:0 auto;">
           <div class="cLineB" style="font-size:18px;"><h4>添加微信公众号</h4></div>
           <form method="post" action="{gooraye::U('User/Index/insert')}" enctype="multipart/form-data">
@@ -20,6 +23,7 @@
                   <th><span class="red">*</span>微信号：</th>
                   <td><input type="text" required="" name="weixin" value="" class="px" tabindex="1" size="25">　比如：gooraye </td>
                 </tr>
+                
                 <tr>
                   <th><span class="red"></span>AppID：</th>
                   <td><input type="text" name="appid" value="" class="px" tabindex="1" size="25">　用于自定义菜单等高级功能，可以不填 </td>
@@ -37,9 +41,9 @@
                   <option value="3">高级服务号</option>
                   </select>　高级服务号是指每年向微信官方交300元认证费的公众号 </td>
                 </tr>
-                  <tr style="display:none">
+                 <tr >
                   <th><span class="red">*</span>头像地址（url）:</th>
-                  <td><input class="px" name="headerpic" value="{gooraye::RES}/images/portrait.jpg" size="60">请填写图片外链地址 <a onclick="alert('请填写以jpg,png,gif,bmp等后缀的图文')" target="_blank"><img src="{gooraye::RES}/images/help.png" class="vm helpimg" title="帮助"></a></td>
+                  <td><input id="pic" class="px" name="headerpic" value="{gooraye::RES}/images/portrait.jpg" size="60">  <script src="{gooraye::STATICS}/upyun.js?2013"></script><a href="###" onclick="upyunPicUpload('pic',200,200,'{gooraye:$token}')" class="a_upload btn btn-small btn-inverse">上传</a> <a href="###" onclick="viewImg('pic')" class=" btn btn-small btn-inverse">预览</a></td>
                 </tr>
                  <tr style="display:none">
                   <th><span class="red">*</span>TOKEN</th>
@@ -94,4 +98,5 @@
   </div>
   <!--底部-->
   	</div>
-<!-- <include file="Public:footer"/>	 -->
+
+ <include file="Public:footer"/>
