@@ -33,18 +33,23 @@ class FunctionAction extends UserAction{
 			// }else {
 			// 	$fun=M('Function')->where(array('status'=>1,'gid'=>$vo['id']))->select();
 			// }
-		$fun = M('Function')->where(array('status'=>1,'gid'=>session('gid')))->select();
-		
-		$closedfun = array();
+		//过滤
+		$filter = $this->_get('filter');
+		if(strlen($filter)==0){
+			$fun = M('Function')->where(array('status'=>1,'gid'=>session('gid')))->select();
+		}else{
+			$fun = M('Function')->where(array('isserve'=>$filter,'status'=>1,'gid'=>session('gid')))->select();
+		}
+		// $closedfun = array();
 		foreach($fun as $vkey=>$vo){
-			if(!in_array($vo['funname'],$check)){
-				$closedfun[$vkey] = $vo;
-			}else{
+			// if(!in_array($vo['funname'],$check)){
+			// 	$closedfun[$vkey] = $vo;
+			// }else{
 				$function[$vkey] = $vo;
-			}
+			// }
 		}
 		// }
-		$this->assign('closedfun',$closedfun);
+		// $this->assign('closedfun',$closedfun);
 		$this->assign('fun',$function);
 		//
 		$wecha=M('Wxuser')->field('wxname,wxid,headerpic,weixin')->where(array('token'=>session('token'),'uid'=>session('uid')))->find();

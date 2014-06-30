@@ -1,80 +1,138 @@
 <include file="Public:head"/>
 <style type="text/css">
-  .changeapp li label span {
-    float:left;
-    padding: 2px;
-    display: inline-block;
-  }
-  .changeapp li label label {
-    float:right;
-    display: inline-block;
-  }
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+td,th 
+{
+  padding: 0;
+} 
+.table td,.table th {
+    background-color: #fff ;
+} 
+.table th{
+    padding: 5px;
+    background-color: #adadad ;
+}
+.table {
+    border-collapse: collapse !important;
+}
+
+.table-striped > tbody > tr:nth-child(odd) > td,
+.table-striped > tbody > tr:nth-child(odd) > th {
+  background-color: #f9f9f9;
+}
+.table{
+    width:100%;
+}
+.table>thead>tr>th, 
+.table>tbody>tr>th, 
+.table>tfoot>tr>th,
+.table>thead>tr>td, 
+.table>tbody>tr>td,
+.table>tfoot>tr>td {
+padding: 8px;
+line-height: 1.42857143;
+vertical-align: top;
+border-top: 1px solid #ddd;
+}
+.filterbtn{  
+    box-sizing:border-box;
+    padding: 10px;
+    position: relative;
+}
+.filterbtn a{
+    background-color: #f8f8f8;
+    padding: 5px;
+    box-sizing:border-box;
+    border: 2px solid #fff;
+    margin: -1px 3px 3px -1px;
+}
+.filter.active,
+.filterbtn a:hover{
+    border: 2px solid #c30008;
+}
+
+.filter{
+  position: relative;
+}
+
+.filter.active i{
+  background: url({gooraye::STATICS}/tmpls/images/pok.png) no-repeat;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 13px;
+  height: 13px;
+  display: block;
+}
+.tableContent .content{
+  background-color: #EEEEEE;
+}
 </style>
+<script type="text/javascript">
+  $(function(){
+      if(window.location.href.indexOf('filter=') >= 0){
+
+      $('.active').removeClass('active');
+      $('.filter').each(function(index,item){
+          if(index >= 1 && window.location.href.indexOf($(item).attr("href")) >= 0 ){
+               console.log($(item).attr("href"));
+              $(item).addClass("active");
+          } 
+      });
+      }
+  })
+</script>
+<!-- Content START -->      
 <div class="content">
+<div class="filterbtn">
+  功能类型：
+  <a class="filter active" href="{gooraye::U('Function/index',array('id'=>$_GET['id'],'token'=>getToken()))}">全部功能<i></i></a>
+  <a class="filter"  href="{gooraye::U('Function/index',array('id'=>$_GET['id'],'token'=>getToken(),'filter'=>'1'))}">基本查询<i></i></a>
+  <a class="filter"  href="{gooraye::U('Function/index',array('id'=>$_GET['id'],'token'=>getToken(),'filter'=>'2'))}">功能模块<i></i></a>
+</div>
 
-<div class="cLineB">
-  <h4 class="left">已开启的功能 <span class="FAQ">你可以关闭不需要的功能</span></h4>
- </div>
-<div class="msgWrap">
- <fieldset>
-<!--   <legend>
-    <span class="vipimgbig vip-iconbig"></span> VIP
-  </legend> -->
-  <ul class="changeapp">
-
+<table class="table table-striped">
+  <thead> 
+    <th>序号</th>
+    <th>功能名称</th>
+    <th>用法例子</th>
+    <th>开关</th>
+  </thead>
+  <tbody> 
+    <empty name="fun">  
+  <tr>
+       <td colspan="4">无相关内容</td>
+  </tr>
+  <else /> 
   <volist name="fun" id="list" key="b">
-  
-    <li>
-      <label>
-     <span>
-             {gooraye:$list.name}
-           </span>
-      <input  type="checkbox" id="switch{gooraye:$list.id}" class='switch switch-flat switch-gray'  onchange="changeapp(this,'{gooraye:$Think.session.token}','{gooraye:$list.id}')" checked="checked" value="{gooraye:$list.id}"/> 
-                 <label class='switch-btn' for='switch{gooraye:$list.id}' style="display:inline-block;"></label>
+    <tr>
+    <td>{gooraye:$b}</td>
+  <td>
+        {gooraye:$list.name}
+  </td>
+  <td>
+       {gooraye:$list.info}
 
-     </label>
+  </td>
+  <td>
 
-      <div>查询例子:<br> {gooraye:$list.info}</div>
-    </li>
+        <input  type="checkbox" id="switch{gooraye:$list.id}" class='switch switch-flat switch-gray'  onchange="changeapp(this,'{gooraye:$Think.session.token}','{gooraye:$list.id}')"  value="{gooraye:$list.id}" <if condition="in_array($list['funname'],$check)">checked="checked"</if>/>
+        <label class='switch-btn' for='switch{gooraye:$list.id}' style="display:inline-block;"></label>
+  </td>
+  </tr>
   </volist>
-  </ul>   
-   </fieldset>
+  </empty>
+</tbody>
+</table>
+
 </div>
-
-<div class="cLineB">
-  <h4 class="left">关闭的功能 <span class="FAQ">你可以开启关闭的功能</span></h4>
- </div>
-<div class="msgWrap">
- <fieldset>
- <!--  <legend>
-    <span class="vipimgbig vip-iconbig"></span> VIP
-  </legend> -->
-  <ul class="changeapp">
-  <volist name="closedfun" id="list" key="b">
-    <li>
-      <label>
-     <span>
-             {gooraye:$list.name}
-           </span>
-      <input  type="checkbox" id="switch{gooraye:$list.id}" class='switch switch-flat switch-gray'  onchange="changeapp(this,'{gooraye:$Think.session.token}','{gooraye:$list.id}')"  value="{gooraye:$list.id}"/> 
-
-                 <label class='switch-btn' for='switch{gooraye:$list.id}' style="display:inline-block;"></label>
-
-     </label>
-
-      <div>查询例子:<br> {gooraye:$list.info}</div>
-    </li>
-  </volist>
-  </ul>   
-   </fieldset>
-</div>
+<!-- Content END -->         
+<script>
 
 
-              <div class="clr"></div>
-                
-          </div>
-         
-           <script>
 function changeapp(obj,token,id){
 if(obj.checked==true){
    
