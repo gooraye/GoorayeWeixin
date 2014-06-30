@@ -40,8 +40,8 @@ function selectall(name) {
 <form method="post" action="{gooraye::U('Forum/delComment')}" id="info">
 <div class="cLine">
 <div class="pageNavigator left"> 
-	<a href="###" onclick="if(confirm('您确定要删除吗?')){$('#info').submit();}else{ return false;}" title="批量删除" class="btnGrayS vm bigbtn"><img src="{gooraye::RES}/images/product/arrow_switch.png" class="vm">批量删除</a>
-	 <a href="###" onclick="$('#info').attr('action','/index.php?g=User&m=Forum&a=checkComment');$('#info').submit();" title="批量审核" class="btnGrayS vm bigbtn"><img src="{gooraye::RES}/images/product/arrow_switch.png" class="vm">批量审核</a>
+	<a href="###" onclick="if(confirm('您确定要删除吗?')){$('#info').submit();}else{ return false;}" title="批量删除" class="btnGrayS vm bigbtn"><i class="fa fa-exchange"></i>批量删除</a>
+	 <a href="###" onclick="$('#info').attr('action','/index.php?g=User&m=Forum&a=checkComment');$('#info').submit();" title="批量审核" class="btnGrayS vm bigbtn"><i class="fa fa-exchange"></i>批量审核</a>
 </div>
 <div class="clr"></div>
 </div>
@@ -76,9 +76,9 @@ function selectall(name) {
 			<td><if condition="$t['status'] eq 1">正常显示<elseif condition="$t['status'] eq -1" /><font color="red">未审核</font><else /><font color="red">已被删除</font></if></td> 
 			<td class="norightborder">
 				<if condition="$t['status'] eq -1">
-					<a href="{gooraye::U('Forum/checkComment',array('token'=>$_GET['token'],'id'=>$t['id']))}">通过审核</a> &nbsp;  &nbsp; 
+					<a class="btn btn-small btn-inverse" href="{gooraye::U('Forum/checkComment',array('token'=>$_GET['token'],'id'=>$t['id']))}">通过审核</a> &nbsp;  &nbsp; 
 				</if>
-				<a href="javascript:drop_confirm('您确定要删除吗?', '{gooraye::U('Forum/delComment',array('token'=>$_GET['token'],'id'=>$t['id']))}');">删除</a>
+				<a class="btn btn-small btn-inverse" href="javascript:drop_confirm('您确定要删除吗?', '{gooraye::U('Forum/delComment',array('token'=>$_GET['token'],'id'=>$t['id']))}');">删除</a>
 			</td>
 		</tr>
 	</volist>

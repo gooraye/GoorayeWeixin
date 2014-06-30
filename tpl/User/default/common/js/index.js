@@ -37,6 +37,8 @@ window.alert = function (cont){
           $(".mask").show();
           $(".goorayealert").slideDown(800);
       }
+
+        $(".goorayealert").css("top",$(window).scrollTop()+50);
     }
 }
 

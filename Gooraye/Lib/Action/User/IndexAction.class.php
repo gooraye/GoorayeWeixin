@@ -167,9 +167,9 @@ class IndexAction extends UserAction{
 		$open['token']=$_POST['token'];
 		$gid=session('gid');
 		if (C('agent_version')&&$this->agentid){
-			$fun=M('Agent_function')->field('funname,gid,category')->where('`gid` <= '.$gid.' AND agentid='.$this->agentid)->select();
+			$fun=M('Agent_function')->field('funname,gid')->where('`gid` <= '.$gid.' AND agentid='.$this->agentid)->select();
 		}else {
-			$fun=M('Function')->field('funname,gid,category')->where('`gid` <= '.$gid)->select();
+			$fun=M('Function')->field('funname,gid')->where('`gid` <= '.$gid)->select();
 		}
 		foreach($fun as $key=>$vo){
 			$queryname.=$vo['funname'].',';

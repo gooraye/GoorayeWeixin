@@ -39,7 +39,7 @@
                   <td><eq name="vo.type" value="1">完全匹配<else/>模糊匹配</eq></td>
                   <td>{gooraye:$vo.click}</td>
                     <td><php>echo date('Y-m-d',$vo['updatetime']);</php></td>
-                   <td class="norightborder"> <a href="{gooraye::U('Text/edit',array('id'=>$vo['id']))}" title="编辑文本">编辑</a> <a href="{gooraye::U('Text/del',array('id'=>$vo['id']))}">删除</a></td>
+                   <td class="norightborder"> <a class="btn btn-small btn-inverse"  href="{gooraye::U('Text/edit',array('id'=>$vo['id']))}" title="编辑文本">编辑</a> <a class="btn btn-small btn-inverse" href="{gooraye::U('Text/del',array('id'=>$vo['id']))}">删除</a></td>
           
                 </tr>
 				</volist>

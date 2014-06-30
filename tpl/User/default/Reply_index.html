@@ -136,10 +136,10 @@ $(document).on("click","#del",function(){
 <div class="cLine">
 <div class="pageNavigator left">
     <div class="pageNavigator left">  
-    <span> <a href="#" title="选中审核" class="btnGrayS vm smallbtn" id="checked">选中审核</a></span>
-    <span> <a href="#" title="选中回复" class="btnGrayS vm smallbtn" id="replyed">选中回复</a></span>
-    <span> <a href="#" title="选中删除" class="btnGrayS vm smallbtn" id="del">选中删除</a></span>
-    <span> <a href="?g=User&m=Reply&a=config" title="留言板配置" class="btnGrayS vm smallbtn">留言板配置</a></span>    
+    <span> <a href="#" title="选中审核" class="btnGrayS vm smallbtn" id="checked"><i class="fa fa-pencil-square-o"></i>选中审核</a></span>
+    <span> <a href="#" title="选中回复" class="btnGrayS vm smallbtn" id="replyed"><i class="fa fa-mail-reply"></i>选中回复</a></span>
+    <span> <a href="#" title="选中删除" class="btnGrayS vm smallbtn" id="del"><i class="fa fa-trash-o"></i>选中删除</a></span>
+    <span> <a href="?g=User&m=Reply&a=config" title="留言板配置" class="btnGrayS vm smallbtn"><i class="fa fa-cog"></i>留言板配置</a></span>    
     
 </div>
 
@@ -169,16 +169,16 @@ $(document).on("click","#del",function(){
     <tr >
 <td id="playlist"><input type="checkbox" name="items" value="{gooraye:$item.id}"  class="checkitem"></td>
 <td>{gooraye:$item.name}</td>
-<td><a href="###" onclick="art.dialog({content: '{gooraye:$item.message}',width:300,height:200,resize:true,yesText:'关闭',background: '#000',opacity: 0.45});">查看留言 <if condition="$item['checked'] neq 1"> <font style="color:red;font-size:12px;">(未审核)</font><else/>
+<td><a href="###" onclick="art.dialog({content: '{gooraye:$item.message}',width:300,height:200,resize:true,yesText:'关闭',background: '#000',opacity: 0.45});" class="btn btn-small btn-inverse">查看留言 <if condition="$item['checked'] neq 1"> <font style="color:white;font-size:12px;">(未审核)</font><else/>
             <font ></font>  </if>
         </a></td>
-<td><a href="{gooraye::U('User/Reply/reply',array('msgid'=>$item['id'],'token'=>$token,'wecha_id'=>$wecha_id))}">查看回复<font color="#04AA00">(共<font color="red">{gooraye:$item.count}</font>条回复/<font style="color:red">{gooraye:$item.chkcount}</font>条新回复)</font></a></td>
+<td><a class="btn btn-small btn-inverse" href="{gooraye::U('User/Reply/reply',array('msgid'=>$item['id'],'token'=>$token,'wecha_id'=>$wecha_id))}">查看回复<font color="#fff">(共<font color="white">{gooraye:$item.count}</font>条回复/<font style="color:white">{gooraye:$item.chkcount}</font>条新回复)</font></a></td>
 <td>{gooraye:$item.time|date="Y-m-d H:i:s",###}</td> 
 
 <td class="norightborder">
-    <a href="{gooraye::U('User/Reply/checkOne',array('chk_value'=>$item['id'],'token'=>$token))}"><if condition="$item['checked'] neq '1'">审核</if></a>
+    <if condition="$item['checked'] neq '1'"><a class="btn btn-small btn-inverse" href="{gooraye::U('User/Reply/checkOne',array('chk_value'=>$item['id'],'token'=>$token))}">审核</a></if>
 <!--    &nbsp;&nbsp;<a href="#" messageid="{gooraye:$item.id}" class="replyeded">回复</a>-->
-    &nbsp;&nbsp;<a href="javascript:drop_confirm('您确定要删除吗?', '{gooraye::U('User/Reply/deled',array('chk_value'=>$item['id'],'token'=>$token))}');">删除</a></td>
+    &nbsp;&nbsp;<a class="btn btn-small btn-inverse" href="javascript:drop_confirm('您确定要删除吗?', '{gooraye::U('User/Reply/deled',array('chk_value'=>$item['id'],'token'=>$token))}');">删除</a></td>
 </tr>
 
 </volist>

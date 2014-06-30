@@ -128,7 +128,7 @@
                     data-errormessage-value-missing="必须上传图片!"  data-errormessage-custom-error="如果是手动填写外链,正确的网址,如: http://www.baidu.com/images/demo.png">
 
                                             <span class="help-inline">
-                                                 <script src="{gooraye::STATICS}/upyun.js"></script><a href="###" onclick="upyunPicUpload('pic_url',720,400,'{gooraye:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('pic_url')">预览</a>
+                                                 <script src="{gooraye::STATICS}/upyun.js"></script><a href="###" onclick="upyunPicUpload('pic_url',720,400,'{gooraye:$token}')" class="a_upload btn btn-small btn-inverse">上传</a> <a href="###" onclick="viewImg('pic_url')" class="btn btn-small btn-inverse">预览</a>
                                                 <span class="help-inline">建议尺寸：宽720像素，高400像素</span>
                                             </span>
                                         </p>
@@ -144,7 +144,7 @@
                                             </volist>
                                         </select>
                                         <span class="maroon">*</span>
-                                        <span class="help-inline">如果没有留空或者到 <a href="{gooraye::U('Panorama/add',array('token'=>$token))}" class="btn"><strong><font color='red'>360°全景</strong></font></a>添加</span>
+                                        <span class="help-inline">如果没有留空或者到 <a href="{gooraye::U('Panorama/add',array('token'=>$token))}" class="btn btn-small btn-inverse"><strong><font color='red'>360°全景</strong></font></a>添加</span>
                     </td>
                 </tr>
                 <tr>

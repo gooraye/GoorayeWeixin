@@ -46,7 +46,7 @@ items : [
                 </tr>
                 <tr>
                     <th width="120">官方网站：</th>
-                    <td>   <input type="text" name="www" id="www" class="input-xlarge px" style="width:200px"  placeholder="必须(http://|https://)开头" value="{gooraye:$brand['www']}" /> <span class="help-inline">请输入品牌官方网站的完成url地址,如：http://www.bmw.com.cn (没有可以留空)</span></td>
+                    <td>   <input type="text" name="www" id="www" class="input-xlarge px" style="width:200px"  placeholder="必须(http://|https://)开头" value="{gooraye:$brand['www']}" /> <span class="help-inline">请输入品牌官方网站的完成url地址,如：http://www.xxx.com (没有可以留空)</span></td>
                 </tr>
                 <tr>
                     <th>LOGO:</th>
@@ -55,7 +55,7 @@ items : [
                               <input type="text" class="px" id="logo"  name="logo"  value="{gooraye:$brand['logo']|default='./tpl/User/default/common/car/car_logo.png'}" data-validation-engine="validate[required,custom[url]]"
                     data-errormessage-value-missing="必须上传图片!"  data-errormessage-custom-error="如果是手动填写外链,正确的网址,如: http://www.baidu.com/images/demo.png" />
                                          <span class="help-inline">
-                                            <script src="{gooraye::STATICS}/upyun.js"></script><a href="###" onclick="upyunPicUpload('logo',420,60,'{gooraye:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('logo')">预览</a>
+                                            <script src="{gooraye::STATICS}/upyun.js"></script><a href="###" onclick="upyunPicUpload('logo',420,60,'{gooraye:$token}')" class="a_upload btn btn-small btn-inverse">上传</a> <a href="###" onclick="viewImg('logo')" class=" btn btn-small btn-inverse">预览</a>
                                         </span>
                                         <span class="help-inline">建议图片尺寸420*60，不超过300K</span>
                     </td>

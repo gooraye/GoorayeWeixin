@@ -39,7 +39,7 @@ function selectall(name) {
 <div class="msgWrap">
 <form method="post" action="{gooraye::U('Forum/delMessage')}" id="info">
 <div class="cLine">
-<div class="pageNavigator left"> <a href="###" onclick="$('#info').submit()" title="批量删除" class="btnGrayS vm bigbtn"><img src="{gooraye::RES}/images/product/arrow_switch.png" class="vm">批量删除</a></div>
+<div class="pageNavigator left"> <a href="###" onclick="$('#info').submit()" title="批量删除" class="btnGrayS vm bigbtn"><i class="fa fa-exchange"></i>批量删除</a></div>
 <div class="clr"></div>
 </div>
 
@@ -67,7 +67,7 @@ function selectall(name) {
 			<td>{gooraye:$t.content|htmlspecialchars_decode}</td>
 			<td>{gooraye:$t.createtime|date="Y-m-d H:i:s",###}</td>
 			<td><if condition="$t['isread'] eq 1"><font color="red">未读</font><else />已读</if></td> 
-			<td class="norightborder"><a href="javascript:drop_confirm('您确定要删除吗?', '{gooraye::U('Forum/delMessage',array('token'=>$_GET['token'],'id'=>$t['id']))}');">删除</a></td>
+			<td class="norightborder"><a class="btn btn-small btn-inverse" href="javascript:drop_confirm('您确定要删除吗?', '{gooraye::U('Forum/delMessage',array('token'=>$_GET['token'],'id'=>$t['id']))}');">删除</a></td>
 		</tr>
 	</volist>
 </tbody>

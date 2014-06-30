@@ -78,9 +78,9 @@ overflow: hidden;
 <td><eq name="vo.status" value="1">显示<else/>不显示</eq></td>
 <td class="norightborder">
 
-    <?php if ($vo['fid']==0){?><a href="{gooraye::U('Catemenu/index',array('fid'=>$vo['id']))}">子菜单</a><?php }?>
-    <a href="<?php if ($vo['fid']==0){?>{gooraye::U('Catemenu/edit',array('id'=>$vo['id']))}<?php }else{?>{gooraye::U('Catemenu/edit',array('id'=>$vo['id'],'fid'=>$vo['fid']))}<?php }?>">编辑</a>
-    <a href="<?php if ($vo['fid']==0){?>{gooraye::U('Catemenu/del',array('id'=>$vo['id']))}<?php }else{?>{gooraye::U('Catemenu/del',array('id'=>$vo['id'],'fid'=>$vo['fid']))}<?php }?>">删除</a>
+    <?php if ($vo['fid']==0){?><a class=" btn btn-small btn-inverse " href="{gooraye::U('Catemenu/index',array('fid'=>$vo['id']))}">子菜单</a><?php }?>
+    <a class=" btn btn-small btn-inverse " href="<?php if ($vo['fid']==0){?>{gooraye::U('Catemenu/edit',array('id'=>$vo['id']))}<?php }else{?>{gooraye::U('Catemenu/edit',array('id'=>$vo['id'],'fid'=>$vo['fid']))}<?php }?>">编辑</a>
+    <a class=" btn btn-small btn-inverse " href="<?php if ($vo['fid']==0){?>{gooraye::U('Catemenu/del',array('id'=>$vo['id']))}<?php }else{?>{gooraye::U('Catemenu/del',array('id'=>$vo['id'],'fid'=>$vo['fid']))}<?php }?>">删除</a>
 </td>
 </tr>
 </volist>

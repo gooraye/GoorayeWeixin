@@ -75,7 +75,7 @@
        <strong>{gooraye:$wecha.wxname}</strong><a href="#" target="_blank" class="vipimg vip-icon<php>echo $userinfo['taxisid']-1;</php>" title=""></a> -->
     <if condition="$_SESSION[uid]==false">
       <else/>
-      你好,<a href="/#" hidefocus="true"  ><span style="color:#f40">{gooraye:$Think.session.uname}</span></a>（uid:{gooraye:$Think.session.uid}）
+      你好,<a href="{gooraye::U('User/Index/index')}" hidefocus="true"  ><span style="color:#f40">{gooraye:$Think.session.uname}</span></a>（uid:{gooraye:$Think.session.uid}）
      
       <a class="btn btn-small btn-inverse" href="{gooraye::U('System/Admin/logout')}" ><i class="fa fa-power-off " title="退出系统"></i></a>
   </if> 

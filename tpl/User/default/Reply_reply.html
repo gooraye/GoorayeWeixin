@@ -140,9 +140,9 @@ $(document).on("click","#del",function(){
 <if condition="$res">
 <div class="cLine">
 <div class="pageNavigator left">    
-      <span> <a href="#" title="选中审核" class="btnGrayS vm smallbtn" id="checked">选中审核</a></span>
+      <span> <a href="#" title="选中审核" class="btnGrayS vm smallbtn" id="checked"><i class="fa fa-pencil-square-o"></i>选中审核</a></span>
 
-       <span> <a href="#" title="选中删除" class="btnGrayS vm smallbtn" id="del">选中删除</a></span>
+       <span> <a href="#" title="选中删除" class="btnGrayS vm smallbtn" id="del"><i class="fa fa-trash-o"></i>选中删除</a></span>
 </div>   
 <div class="clr"></div>
 </div>
@@ -170,9 +170,9 @@ $(document).on("click","#del",function(){
 <td><if condition="$item['differ'] neq 1"><font style="color:#94D38A;">(网友回复)</font><else/><font style="color:#94D38A;">(管理员回复)</font></if><if condition="$item['checked'] neq 1"><font color="red">(未审核)</font><else/><font ></font></if>{gooraye:$item.reply|htmlspecialchars}</td>
 <td>{gooraye:$item.time|date="Y-m-d H:i:s",###}</td> 
 
-<td class="norightborder">
-    <a href="{gooraye::U('Reply/replyChked',array('id'=>$item['id'],'token'=>$token))}"><if condition="$item['checked'] neq 1">审核<else/><font style="margin-left:30px;"></font></if></a>
-    &nbsp;&nbsp;<a href="javascript:drop_confirm('您确定要删除吗?', '{gooraye::U('User/Reply/replyDeled',array('id'=>$item['id'],'token'=>$token))}');">删除</a></td>
+<td class="norightborder"><if condition="$item['checked'] neq 1">
+    <a class="btn btn-small btn-inverse" href="{gooraye::U('Reply/replyChked',array('id'=>$item['id'],'token'=>$token))}">审核</a></if>
+     <a class="btn btn-small btn-inverse" href="javascript:drop_confirm('您确定要删除吗?', '{gooraye::U('User/Reply/replyDeled',array('id'=>$item['id'],'token'=>$token))}');">删除</a></td>
 </tr>
 
 </volist>

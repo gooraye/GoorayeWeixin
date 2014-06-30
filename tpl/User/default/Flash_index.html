@@ -9,7 +9,7 @@
 </if>
  </div>
          <div class="cLineC" style="line-height: 32px;">
- <a href="{gooraye::U('Flash/add',array('tip'=>$tip))}" class="btnGrayS vm bigbtn" ><if condition="$tip eq 1">添加幻灯片<else/>添加背景图</if></a> 
+ <a href="{gooraye::U('Flash/add',array('tip'=>$tip))}" class="btnGrayS vm bigbtn" ><i class="fa fa-plus"></i><if condition="$tip eq 1">添加幻灯片<else/>添加背景图</if></a> 
 </div>
  
  <div class="msgWrap form">
@@ -31,7 +31,7 @@
 <p>直接填写活动外链地址：<a class="red">大转盘387</a></p>
 </span></span></th>
 
-                        <th style=" width:100px;" class="norightborder">操作</th>
+                        <th style=" width:160px;" class="norightborder">操作</th>
 </tr>
 </thead>
 <volist name="info" id="vo">
@@ -41,9 +41,9 @@
 <td><div class="cateimg"><img src="{gooraye:$vo.img}" class="cateimg_small"  /><img src="{gooraye:$vo.img}" class="cateimg_big"  /></div></td>
 <td>{gooraye:$vo.url}</td>
 <td class="norightborder">
-	<a href="{gooraye::U('Wap/Index/flash',array('token'=>$_SESSION['token'],'tip'=>$tip))}">查看</a>
-	<a href="{gooraye::U('Flash/edit',array('id'=>$vo['id'],'tip'=>$tip))}">编辑</a>
-	<a href="javascript:drop_confirm('您确定要删除吗?', \'{gooraye::U('Flash/del',array('id'=>$vo['id'],'tip'=>$tip))}\');">删除</a>
+	<a class="btn btn-small btn-inverse"  href="{gooraye::U('Wap/Index/flash',array('token'=>$_SESSION['token'],'tip'=>$tip))}">查看</a>
+	<a class="btn btn-small btn-inverse"  href="{gooraye::U('Flash/edit',array('id'=>$vo['id'],'tip'=>$tip))}">编辑</a>
+	<a class="btn btn-small btn-inverse"  href="javascript:drop_confirm('您确定要删除吗?', \'{gooraye::U('Flash/del',array('id'=>$vo['id'],'tip'=>$tip))}\');">删除</a>
 </td>
 </tr>
 </volist>

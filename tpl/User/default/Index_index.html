@@ -9,15 +9,22 @@
       /*background: #8d8d8d;*/
       float:left;;
       margin: 0 0 20px 20px;
-  width: 150px;
-      padding: 5px;
+    
+      width: 175px;
+      height: 295px;
+      padding: 0px 5px 0px 0px;
   }
+
   .publiclist .row{
-      margin: 5px 0px;
-      float:left;
-      overflow-wrap:break-word;
+      margin: 1px 0px;
+      float: left;
+      overflow-wrap: break-word;
       position: relative;
       width: 100%;
+      border-radius: 5px;
+      padding: 7px;
+      background: #fff;
+      box-sizing: border-box;
 
   }
 
@@ -62,7 +69,8 @@ padding: 0 20px;
   width: 100%;
   left: 0px;
   float: left;
-  background: #fff;
+  background: #E0E0E0;
+
 }
 .usercontent{
   width: 20%;
@@ -72,33 +80,75 @@ padding: 0 20px;
 }
 .publiclist{
   float:left;
-  width: 80%;
+  width: 100%;
   box-sizing:border-box;
   padding-top: 0px;
 }
-.btn.btn-red{
+.btn.btn-gray{
   color: #fff;
   font-size: 1.4em;
-  background-color: #f40;
+  background-color: #6d6d6d;
 }
 .btn.btn-red:hover{
   background-color: #fe3300;
   margin-right: 10px;
 }
 .publicmember{
-  background-color: #fff;
+  background-color: #7f7f7f;
   margin:0px;
+
 }
 .box{
-  background: #3d3d3d;
+  background:  url('{gooraye::RES}/images/radio_iphone2.png');
   float: left;
   border-radius: 20px;
   padding-top: 60px;
-  padding: 80px 20px 60px 20px;
+  padding: 60px 20px 60px 20px;
+  padding: 59px 5px 60px 15px;
   margin-right: 20px;
 }
 .floatfuncbox{
   right: 25px;
+}
+/* 放到顶部 */
+.usercontent.fixed{
+    position:fixed;
+    top: 0px;
+    left:50%;
+    margin-left: -140px;
+}
+@media (max-width:940px){
+
+  .usercontent.fixed{
+      position:fixed;
+      top: 0px;
+      left:50%;
+      margin-left: -100px;
+  }
+}
+.fixed.usercontent a.btn{
+    height: 30px;
+    border-radius: 0px;    
+    background: #5d5d5d;
+    z-index: 99999;
+}
+.fixed.usercontent a.btn:hover{
+  
+    background: #6d6d6d;
+}
+.center.usercontent {
+    height: 100%;
+    box-sizing: border-box;
+    width: 50%;
+    margin: auto;
+    float: none;
+}
+/* 单个时 居中*/
+.mgcenter
+{
+  left: 50%;
+  position: relative;
+  margin-left: -160px;  
 }
 </style>
 <script language="JavaScript">
@@ -109,13 +159,14 @@ if (window.top != self){
 <!-- 右边内容 START -->
 <div class="content" style="padding:20px 0px;">
   <!--  快捷功能 START -->
-  <div class="usercontent"><a class="btn   btn-inverse btn-red" title="添加微信公众号" onclick="location.href='{gooraye::U('Index/add')}';">添加微信公众号</a>
+  <div class="usercontent  <if condition='count($info) neq 1'>fixed<else/>center</if>"><a class="btn  btn-gray  btn-inverse " title="添加微信公众号" onclick="location.href='{gooraye::U('Index/add')}';">添加微信公众号</a>
 
    <div class="clr"></div>
   </div>
   <!--  快捷功能 END -->
+
 <!-- 公众号列表 START -->
-<div class="publiclist" >
+<div class="publiclist <if condition='count($info) lt 2'>mgcenter</if>" >
   <volist name="info" id="vo"> 
     <!--  单个公众号展示  -->
     <div class="box">
@@ -128,6 +179,7 @@ if (window.top != self){
       </div>
         
       <div class="row">
+         接口配置地址：<br/>
         {gooraye:$f_siteUrl}/index.php/api/{gooraye::$vo['token']}
         </div>
 

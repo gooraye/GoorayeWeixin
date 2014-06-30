@@ -67,7 +67,7 @@ function setlatlng(longitude,lat){
       <img class="thumb_img" id="picurl_src" src="{gooraye:$reslist['picurl']|default='tpl/User/default/common/car/yuyue.jpg'}" style="max-height:100px;">
       <input id="picurl" type="text" class="span4" name="picurl" class="input-xlarge"  schoolSet data-rule-url="true" value="{gooraye:$reslist['picurl']|default='tpl/User/default/common/car/yuyue.jpg'}" />
           <span class="help-inline">
-               <script src="{gooraye::STATICS}/upyun.js"></script><a href="###" onclick="upyunPicUpload('picurl',720,400,'{gooraye:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('picurl')">预览</a>
+               <script src="{gooraye::STATICS}/upyun.js"></script><a href="###" onclick="upyunPicUpload('picurl',720,400,'{gooraye:$token}')" class="a_upload btn btn-small btn-inverse">上传</a> <a href="###" onclick="viewImg('picurl')" class="btn btn-small btn-inverse">预览</a>
               <span class="help-inline">建议尺寸：宽720像素，高400像素</span>
           </span>
        </div>
@@ -76,7 +76,7 @@ function setlatlng(longitude,lat){
       <img class="thumb_img" id="picurl_src" src="{gooraye:$reslist['picurl']|default='tpl/User/default/common/car/baoyang.jpg'}" style="max-height:100px;">
       <input id="picurl" type="text" class="span4" name="picurl" class="input-xlarge"  schoolSet data-rule-url="true" value="{gooraye:$reslist['picurl']|default='tpl/User/default/common/car/baoyang.jpg'}" />
           <span class="help-inline">
-               <script src="{gooraye::STATICS}/upyun.js"></script><a href="###" onclick="upyunPicUpload('picurl',720,400,'{gooraye:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('picurl')">预览</a>
+               <script src="{gooraye::STATICS}/upyun.js"></script><a href="###" onclick="upyunPicUpload('picurl',720,400,'{gooraye:$token}')" class="a_upload btn btn-small btn-inverse">上传</a> <a href="###" onclick="viewImg('picurl')" class="btn btn-small btn-inverse">预览</a>
               <span class="help-inline">建议尺寸：宽720像素，高400像素</span>
           </span>
        </div>
@@ -94,7 +94,7 @@ function setlatlng(longitude,lat){
 
           经度 <input type="text" id="longitude"  name="lng" size="14" class="px" value="{gooraye:$reslist['lng']}" />
           纬度 <input type="text" id="latitude" name="lat" size="14"  class="px" value="{gooraye:$reslist['lat']}" />
-          <a href="###" onclick="setlatlng($('#longitude').val(),$('#latitude').val())">在地图中查看/设置</a>
+          <a class="btn btn-small btn-inverse"  href="###" onclick="setlatlng($('#longitude').val(),$('#latitude').val())">在地图中查看/设置</a>
          </div>
     </div>
 
@@ -113,7 +113,7 @@ function setlatlng(longitude,lat){
               <input id="headpic"type="text"class="input-large" name="headpic" class="span4 px"  schoolSet data-rule-url="true" value="{gooraye:$reslist['headpic']|default='tpl/User/default/common/car/yuyue.jpg'}" />
             <span class="maroon">*</span>
             <span class="help-inline">
-            <a href="###" onclick="upyunPicUpload('headpic',720,400,'{gooraye:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('headpic')">预览</a>
+            <a href="###" onclick="upyunPicUpload('headpic',720,400,'{gooraye:$token}')" class="a_upload btn btn-small btn-inverse">上传</a> <a class="btn btn-small btn-inverse" href="###" onclick="viewImg('headpic')">预览</a>
          </div>
 <else/>
  <div class="controls">
@@ -121,7 +121,7 @@ function setlatlng(longitude,lat){
               <input id="headpic"type="text"class="input-large" name="headpic" class="span4 px"  schoolSet data-rule-url="true" value="{gooraye:$reslist['headpic']|default='tpl/User/default/common/car/baoyang.jpg'}" />
             <span class="maroon">*</span>
             <span class="help-inline">
-            <a href="###" onclick="upyunPicUpload('headpic',720,400,'{gooraye:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('headpic')">预览</a>
+            <a href="###" onclick="upyunPicUpload('headpic',720,400,'{gooraye:$token}')" class="a_upload btn btn-small btn-inverse">上传</a> <a href="###" class="btn btn-small btn-inverse" onclick="viewImg('headpic')">预览</a>
          </div>
 </if>
 
