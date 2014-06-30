@@ -130,7 +130,7 @@ function createAniMarker(result){
 		p = new BMap.Point(result.center.lng,result.center.lat);
 	}else{
 		p = new BMap.Point($('#longitude').val(),$('#latitude').val());
-	}
+	}	
 	marker = new BMap.Marker(p);
 	marker.enableDragging();
 	map.addOverlay(marker);
