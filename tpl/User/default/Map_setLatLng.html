@@ -93,19 +93,34 @@ var local = new BMap.LocalSearch("全国", {
     panel : "r-result",
     autoViewport: true,
     selectFirstResult: false
-  }
+
+  },
+  onSearchComplete:searchComplete
 });
-function searchLoc(){
-	$key = G("keyword").value;
+function searchLoc(keyword){
+	$key = (arguments && arguments[0] )|| G("keyword").value;
 	local.search($key);
+}
+
+function searchComplete(){
+		var result = local.getResults();
+	if(result && result.getPoi(0) ){
+	var pp = local.getResults().getPoi(0).point;    //获取第一个智能搜索的结果
+        	map.centerAndZoom(pp, 18);
+       	marker = new BMap.Marker(pp);
+        	map.addOverlay(marker);    //添加标注
+	marker.setAnimation(BMAP_ANIMATION_BOUNCE);
+	}
 }
 
 //创建标注
 var marker = {};
 function createAniMarker(result){
-	var cityName = (result && result.name) || '绍兴';
+	var cityName = (result && result.name) || '';
 	if($('#longitude').val()==0||$('#longitude').val()==''){
-		map.setCenter(cityName);
+		if(cityName){
+			map.setCenter(cityName);
+		}
 		p = new BMap.Point(map.getCenter().lng,map.getCenter().lat);
 	}else{
 		p = new BMap.Point($('#longitude').val(),$('#latitude').val());
@@ -156,32 +171,29 @@ var str = "";
         value = _value.province +  _value.city +  _value.district +  _value.street +  _value.business;
     }    
     str += "<br />ToItem<br />index = " + e.toitem.index + "<br />value = " + value;
-    G("searchResultPanel").innerHTML = str;
+    // G("searchResultPanel").innerHTML = str;
 });
 
 var myValue;
 ac.addEventListener("onconfirm", function(e) {    //鼠标点击下拉列表后的事件
 var _value = e.item.value;
     myValue = _value.province +  _value.city +  _value.district +  _value.street +  _value.business;
-    G("searchResultPanel").innerHTML ="onconfirm<br />index = " + e.item.index + "<br />myValue = " + myValue;
+    // G("searchResultPanel").innerHTML ="onconfirm<br />index = " + e.item.index + "<br />myValue = " + myValue;
     
     setPlace();
 });
 //设置地点
 function setPlace(){
     map.clearOverlays();    //清除地图上所有覆盖物
-    function myFun(){
-        	var pp = local.getResults().getPoi(0).point;    //获取第一个智能搜索的结果
-        	map.centerAndZoom(pp, 18);
-       	marker = new BMap.Marker(pp);
+ //    function myFun(){
+ //        	var pp = local.getResults().getPoi(0).point;    //获取第一个智能搜索的结果
+ //        	map.centerAndZoom(pp, 18);
+ //       	marker = new BMap.Marker(pp);
+ //        	map.addOverlay(marker);    //添加标注
+	// marker.setAnimation(BMAP_ANIMATION_BOUNCE);
+ //    }
 
-	marker.setAnimation(BMAP_ANIMATION_BOUNCE);
-        	map.addOverlay(marker);    //添加标注
-    }
-    var local = new BMap.LocalSearch(map, { //智能搜索
-      onSearchComplete: myFun
-    });
-    local.search(myValue);
+	searchLoc(myValue);
 }
 //console.log(marker);
 
