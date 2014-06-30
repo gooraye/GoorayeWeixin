@@ -1,6 +1,6 @@
 <include file="Public:head"/>
-<script src="/tpl/static/artDialog/jquery.artDialog.js?skin=default"></script>
-<script src="/tpl/static/artDialog/plugins/iframeTools.js"></script>
+<script src="{gooraye::STATICS}/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="{gooraye::STATICS}/artDialog/plugins/iframeTools.js"></script>
 <style type="text/css">
 .cLine {
     display: block;
@@ -59,7 +59,7 @@ width: 200px;
 </tr>
 <tr>
 <th>相册头部图片外链地址:</th>
-<td><input type="text" name="picurl" id="picurl" value="{gooraye:$headpic}" class="px" style="width:400px;">   <script src="/tpl/static/upyun.js"></script><a href="###" class="btn btn-small btn-inverse" onclick="upyunPicUpload('picurl',700,420,'{gooraye:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('picurl')" class="btn btn-small btn-inverse" >预览</a> <button type="submit" name="homesubmit" value="true" class="btn btn-small btn-inverse" ><strong>修改</strong></button></td>
+<td><input type="text" name="picurl" id="picurl" value="{gooraye:$headpic}" class="px" style="width:400px;">   <script src="{gooraye::STATICS}/upyun.js"></script><a href="###" class="btn btn-small btn-inverse" onclick="upyunPicUpload('picurl',700,420,'{gooraye:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('picurl')" class="btn btn-small btn-inverse" >预览</a> <button type="submit" name="homesubmit" value="true" class="btn btn-small btn-inverse" ><strong>修改</strong></button></td>
 </tr></tbody></table>
                             </form>
 </div>

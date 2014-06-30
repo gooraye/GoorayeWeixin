@@ -1,6 +1,6 @@
 <include file="Public:head" />
-<script src="/tpl/static/artDialog/jquery.artDialog.js?skin=default"></script>
-<script src="/tpl/static/artDialog/plugins/iframeTools.js"></script>
+<script src="{gooraye::STATICS}/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="{gooraye::STATICS}/artDialog/plugins/iframeTools.js"></script>
 <div class="content"> 
 	<div class="cLineB"> 
 		<h4>菜品分类设置</h4> 
@@ -21,7 +21,7 @@
        </tr>
        <tr> 
         <th>展示图片：</th>
-        <td><input type="text" name="image" value="{gooraye:$tableData.image}" class="px" id="pic" style="width:400px;" />  <script src="/tpl/static/upyun.js"></script><a href="###" onclick="upyunPicUpload('pic',700,700,'{gooraye:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('pic')">预览</a></td> 
+        <td><input type="text" name="image" value="{gooraye:$tableData.image}" class="px" id="pic" style="width:400px;" />  <script src="{gooraye::STATICS}/upyun.js"></script><a href="###" onclick="upyunPicUpload('pic',700,700,'{gooraye:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('pic')">预览</a></td> 
        </tr>
        <tr> 
         <th>分类描述：</th> 

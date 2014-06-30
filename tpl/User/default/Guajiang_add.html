@@ -1,6 +1,6 @@
 <include file="Public:head"/>
-<script src="/tpl/static/artDialog/jquery.artDialog.js?skin=default"></script>
-<script src="/tpl/static/artDialog/plugins/iframeTools.js"></script>
+<script src="{gooraye::STATICS}/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="{gooraye::STATICS}/artDialog/plugins/iframeTools.js"></script>
 <script src="{gooraye::RES}/js/date/WdatePicker.js"></script>
  <form class="form" method="post" action=""  target="_top" enctype="multipart/form-data" >
         <div class="content">
@@ -22,7 +22,7 @@
 		<br />
 		<input class="px" id="pic1" name="starpicurl" value="<if condition="$vo['starpicurl'] eq ''">{gooraye:$f_siteUrl}/tpl/User/default/common/images/img/activity-scratch-card-start.jpg<else/>{gooraye:$vo.starpicurl}</if>"   onclick="document.getElementById('pic1_src').src=this.value;" style="width:363px;"  />
 		<br /><input name="type" value="2" type="hidden"   />
-		 <script src="/tpl/static/upyun.js"></script><a href="###" onclick="upyunPicUpload('pic1',1000,500,'{gooraye:$token}')" class="a_upload btn btn-small btn-inverse">上传</a> <a href="###" onclick="viewImg('pic1')" class="btn btn-small btn-inverse">预览</a>&nbsp;活动开始图片
+		 <script src="{gooraye::STATICS}/upyun.js"></script><a href="###" onclick="upyunPicUpload('pic1',1000,500,'{gooraye:$token}')" class="a_upload btn btn-small btn-inverse">上传</a> <a href="###" onclick="viewImg('pic1')" class="btn btn-small btn-inverse">预览</a>&nbsp;活动开始图片
 	  </div>
   </TD>
 </TR>
@@ -79,7 +79,7 @@
   				<td rowspan="4" valign="top"><div style="margin-left:20px"><img  id="pic2_src" src="<if condition="$vo['endpicurl'] eq ''">{gooraye:$f_siteUrl}/tpl/User/default/common/images/img/activity-scratch-card-end.jpg<else/>{gooraye:$vo.endpicurl}</if>"  width="373px"/> <br />
   					<input class="px" id="pic2" name="endpicurl" value="<if condition="$vo['endpicurl'] eq ''">{gooraye:$f_siteUrl}/tpl/User/default/common/images/img/activity-scratch-card-end.jpg<else/>{gooraye:$vo.endpicurl}</if>"  onchange="document.getElementById('pic2_src').src=this.value;"  style="width:363px;"  />
   					<br />
-  					 <script src="/tpl/static/upyun.js"></script><a href="###" onclick="upyunPicUpload('pic2',1000,500,'{gooraye:$token}')" class="a_upload btn btn-small btn-inverse">上传</a> <a href="###" onclick="viewImg('pic2')" class="btn btn-small btn-inverse">预览</a>&nbsp;活动结束图片</div></td>
+  					 <script src="{gooraye::STATICS}/upyun.js"></script><a href="###" onclick="upyunPicUpload('pic2',1000,500,'{gooraye:$token}')" class="a_upload btn btn-small btn-inverse">上传</a> <a href="###" onclick="viewImg('pic2')" class="btn btn-small btn-inverse">预览</a>&nbsp;活动结束图片</div></td>
   				</tr>
   			<tr>
   				<th valign="top">活动结束说明：</th>

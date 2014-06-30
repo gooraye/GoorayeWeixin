@@ -8,14 +8,14 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="format-detection" content="telephone=no">
 <meta charset="utf-8">
-<link href="/tpl/static/tip.css" rel="stylesheet" type="text/css">
+<link href="{gooraye::STATICS}/tip.css" rel="stylesheet" type="text/css">
 </head> 
 <body>
 	<div class="errorbg">
-		<img src="/tpl/static/tip.jpg">
+		<img src="{gooraye::STATICS}/tip.jpg">
 	</div>
 	<div class="tu">
-		<img src="<present name="message">/tpl/static/success.png<else/>/tpl/static/error.png</present>">
+		<img src="<present name="message">{gooraye::STATICS}/success.png<else/>{gooraye::STATICS}/error.png</present>">
 		<div class="msg" style="margin-top:15px">
 		<present name="message"><?php echo($message); ?><else/><?php echo($error); ?></present>
 		</div>

@@ -10,13 +10,13 @@
  <script src="{gooraye::STATICS}/jquery-1.4.2.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak={gooraye::$apikey}"></script>
  <link rel="stylesheet" type="text/css" href="{gooraye::RES}/css/cymain.css" />
- <script src="/tpl/static/artDialog/jquery.artDialog.js?skin=default"></script>
-<script src="/tpl/static/artDialog/plugins/iframeTools.js"></script>
+ <script src="{gooraye::STATICS}/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="{gooraye::STATICS}/artDialog/plugins/iframeTools.js"></script>
 <if condition="$type eq 'music'">
 <script type="text/javascript" src="http://ajax.useso.com/ajax/libs/jquery/1/jquery.js"></script>
-<script type="text/javascript" src="/tpl/static/audioplayer/inc/jquery.jplayer.min.js"></script>
-    <script type="text/javascript" src="/tpl/static/audioplayer/inc/jquery.mb.miniPlayer.js"></script>
-    <link rel="stylesheet" type="text/css" href="/tpl/static/audioplayer/css/miniplayer.css" title="style" media="screen"/>
+<script type="text/javascript" src="{gooraye::STATICS}/audioplayer/inc/jquery.jplayer.min.js"></script>
+    <script type="text/javascript" src="{gooraye::STATICS}/audioplayer/inc/jquery.mb.miniPlayer.js"></script>
+    <link rel="stylesheet" type="text/css" href="{gooraye::STATICS}/audioplayer/css/miniplayer.css" title="style" media="screen"/>
     <script type="text/javascript">
         $(function () {
 

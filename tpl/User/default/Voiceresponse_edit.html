@@ -1,6 +1,6 @@
 <include file="Public:head"/>
-<script src="/tpl/static/artDialog/jquery.artDialog.js?skin=default"></script>
-<script src="/tpl/static/artDialog/plugins/iframeTools.js"></script>
+<script src="{gooraye::STATICS}/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="{gooraye::STATICS}/artDialog/plugins/iframeTools.js"></script>
 
  <div class="content">
           <div class="cLineB"><h4>编辑语音回复</h4><a href="javascript:history.go(-1);"  class="right btnGrayS vm" style="margin-top:-27px" >返回</a></div> 
@@ -20,7 +20,7 @@
 </TR>
                             <TR>
   <TH valign="top"><span class="red">*</span><label for="MusicUrl">音乐链接：</label></TH>
-  <TD><input type="input" class="px" id="musicurl" value="{gooraye:$info.musicurl}" name="musicurl" style="width:600px" > <script src="/tpl/static/upyun.js"></script><a href="###" onclick="upyunPicUpload('musicurl',0,0,'{gooraye:$token}')" class="a_upload btn btn-small btn-inverse">上传</a>&nbsp;<a href="###" onclick="chooseFile('musicurl','music')" class="a_upload  btn btn-small btn-inverse">选择</a><br />
+  <TD><input type="input" class="px" id="musicurl" value="{gooraye:$info.musicurl}" name="musicurl" style="width:600px" > <script src="{gooraye::STATICS}/upyun.js"></script><a href="###" onclick="upyunPicUpload('musicurl',0,0,'{gooraye:$token}')" class="a_upload btn btn-small btn-inverse">上传</a>&nbsp;<a href="###" onclick="chooseFile('musicurl','music')" class="a_upload  btn btn-small btn-inverse">选择</a><br />
                   </TD>
 </TR>
                             <TR>

@@ -1,8 +1,8 @@
 <include file="Public:head"/>
 <include file="Medical:menu"/>
 <link rel="stylesheet" type="text/css" href="{gooraye::RES}/css/cymain.css" />
-<script src="/tpl/static/artDialog/jquery.artDialog.js?skin=default"></script>
-<script src="/tpl/static/artDialog/plugins/iframeTools.js"></script>
+<script src="{gooraye::STATICS}/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="{gooraye::STATICS}/artDialog/plugins/iframeTools.js"></script>
  <link rel="stylesheet" href="{gooraye::STATICS}/kindeditor/themes/default/default.css" />
 <link rel="stylesheet" href="{gooraye::STATICS}/kindeditor/plugins/code/prettify.css" />
 <script src="{gooraye::STATICS}/kindeditor/kindeditor.js" type="text/javascript"></script>
@@ -47,7 +47,7 @@ function setlatlng(longitude,latitude){
 	art.dialog.data('latitude', latitude);
 	// 此时 iframeA.html 页面可以使用 art.dialog.data('test') 获取到数据，如：
 	// document.getElementById('aInput').value = art.dialog.data('test');
-	art.dialog.open('{gooraye::U('Map/setLatLng',array('token'=>$token,'id'=>$id))}',{lock:false,title:'设置经纬度',width:600,height:400,yesText:'关闭',background: '#000',opacity: 0.87});
+	art.dialog.open('{gooraye::U('Map/setLatLng',array('token'=>$token,'id'=>$id))}',{lock:false,title:'设置经纬度',width:900,height:400,resize:true,yesText:'关闭',background: '#000',opacity: 0.87});
 }
 </script>
 <if condition="($parentid neq  '0') and ($parentid neq '')"><a href="{gooraye::U('Product/cats',array('token'=>$token,'parentid'=>$parentCat['parentid']))}" class="btnGreen" style="margin-top:-27px">返回上</a></if>
@@ -94,7 +94,7 @@ function setlatlng(longitude,latitude){
        <tr>
         <th><span class="red">*</span>Logo地址：</th>
         <td><input type="text" id="logourl" name="logourl" value="{gooraye:$set.logourl}" class="px require" style="width:400px;" data-validation-engine="validate[required,custom[url]]"
-                    data-errormessage-value-missing="必须上传图片!"  data-errormessage-custom-error="如果是手动填写,正确的网址,如: http://www.baidu.com/images/demo.png"/> <script src="/tpl/static/upyun.js"></script><a href="###" onclick="upyunPicUpload('logourl',700,420,'{gooraye:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('logourl')">预览</a></td>
+                    data-errormessage-value-missing="必须上传图片!"  data-errormessage-custom-error="如果是手动填写,正确的网址,如: http://www.baidu.com/images/demo.png"/> <script src="{gooraye::STATICS}/upyun.js"></script><a href="###" onclick="upyunPicUpload('logourl',700,420,'{gooraye:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('logourl')">预览</a></td>
        </tr>
         <tr>
         <th><span class="red">*</span>经纬度：</th>

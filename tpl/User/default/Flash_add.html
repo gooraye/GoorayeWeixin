@@ -1,6 +1,6 @@
 <include file="Public:head"/>
-<script src="/tpl/static/artDialog/jquery.artDialog.js?skin=default"></script>
-<script src="/tpl/static/artDialog/plugins/iframeTools.js"></script>
+<script src="{gooraye::STATICS}/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="{gooraye::STATICS}/artDialog/plugins/iframeTools.js"></script>
  <div class="content">
           <div class="cLineB"><h4><if condition="$tip eq 1">添加幻灯片<else/>添加背景图</if></h4><a href="javascript:history.go(-1);"  class="right btnGrayS vm" style="margin-top:-27px" >返回</a></div> 
 <div class="msgWrap">
@@ -17,7 +17,7 @@
 </TR>
 <TR>
   <TH valign="top"><label for="keyword"><if condition="$tip eq 1">幻灯片图片：<else/>背景图图片：</if></label></TH>
-  <TD><input type="input" class="px" id="img" value="" name="img" style="width:500px" >  <script src="/tpl/static/upyun.js?2013"></script><a href="###" onclick="chooseFile('img','<if condition="$tip eq 1">focus<else/>background</if>')" class="a_upload btn btn-small btn-inverse">选择</a> <a href="###" onclick="upyunPicUpload('img',<if condition="$tip eq 1">700,420<else/>640,1136</if>,'{gooraye:$token}')" class="a_upload btn btn-small btn-inverse">上传</a> <a href="###" onclick="viewImg('img')" class="btn btn-small btn-inverse">预览</a> 建议图片(<if condition="$tip eq 1">宽640高320<else/>宽640高1136</if>)  </TD>
+  <TD><input type="input" class="px" id="img" value="" name="img" style="width:500px" >  <script src="{gooraye::STATICS}/upyun.js?2013"></script><a href="###" onclick="chooseFile('img','<if condition="$tip eq 1">focus<else/>background</if>')" class="a_upload btn btn-small btn-inverse">选择</a> <a href="###" onclick="upyunPicUpload('img',<if condition="$tip eq 1">700,420<else/>640,1136</if>,'{gooraye:$token}')" class="a_upload btn btn-small btn-inverse">上传</a> <a href="###" onclick="viewImg('img')" class="btn btn-small btn-inverse">预览</a> 建议图片(<if condition="$tip eq 1">宽640高320<else/>宽640高1136</if>)  </TD>
   <TD>&nbsp;</TD>
 </TR>
 <if condition="$tip eq 1">

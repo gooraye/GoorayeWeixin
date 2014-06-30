@@ -2,11 +2,11 @@
 <include file="Estate:menu"/>
 <link rel="stylesheet" type="text/css" href="{gooraye::Common}/default_user_com.css" media="all">
 <script src="./tpl/User/default/common/js/date/WdatePicker.js"></script>
-<script src="/tpl/static/artDialog/jquery.artDialog.js?skin=default"></script>
-<script src="/tpl/static/artDialog/plugins/iframeTools.js"></script>
-<link rel="stylesheet" type="text/css" media="all" href="{gooraye::Common}/daterangepicker/daterangepicker-bs3.css" />
+<script src="{gooraye::STATICS}/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="{gooraye::STATICS}/artDialog/plugins/iframeTools.js"></script>
+<!-- <link rel="stylesheet" type="text/css" media="all" href="{gooraye::Common}/daterangepicker/daterangepicker-bs3.css" /> -->
 <script type="text/javascript" src="{gooraye::Common}/daterangepicker/moment.js"></script>
-<script type="text/javascript" src="{gooraye::Common}/daterangepicker/daterangepicker.js"></script>
+<!-- <script type="text/javascript" src="{gooraye::Common}/daterangepicker/daterangepicker.js"></script> -->
 
 
 <div class="content">
@@ -14,7 +14,7 @@
   <h4>预约系统设置 </h4><a href="javascript:history.go(-1);return false;" class="right btnGrayS vm" style="margin-top:-27px">返回</a>
  </div>
   <div class="msgWrap bgfc">
-  <form action="" method="post" class="form-horizontal form-validate" novalidate="novalidate">
+  <form action="__SELF__" method="post" class="form-horizontal form-validate" novalidate="novalidate">
  <input type="hidden" name="rid" id="rid" value="123"/>
  <if condition="$reslist['id'] neq ''">
  <input type="hidden" name="id" id="id" value="{gooraye:$reslist['id']}"/>
@@ -40,7 +40,7 @@
 </if>
       <input id="picurl" type="text" class="span4" name="picurl" class="input-xlarge"  schoolSet data-rule-url="true" value="{gooraye:$reslist['picurl']}" />
           <span class="help-inline">
-               <script src="{gooraye::STATICS}/upyun.js"></script><a href="###" onclick="upyunPicUpload('picurl',720,400,'{gooraye:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('picurl')">预览</a>
+               <script src="{gooraye::STATICS}/upyun.js"></script><a href="###" onclick="upyunPicUpload('picurl',720,400,'{gooraye:$token}')" class="a_upload btn btn-small btn-inverse">上传</a> <a href="###" onclick="viewImg('picurl')" class="btn btn-small btn-inverse">预览</a>
               <span class="help-inline">建议尺寸：宽720像素，高400像素</span>
           </span>
        </div>
@@ -50,14 +50,14 @@ function setlatlng(longitude,latitude){
   art.dialog.data('latitude', latitude);
   // 此时 iframeA.html 页面可以使用 art.dialog.data('test') 获取到数据，如：
   // document.getElementById('aInput').value = art.dialog.data('test');
-  art.dialog.open('{gooraye::U('Map/setLatLng',array('token'=>$token,'id'=>$id))}',{lock:false,title:'设置经纬度',width:600,height:400,yesText:'关闭',background: '#000',opacity: 0.87});
+  art.dialog.open('{gooraye::U('Map/setLatLng',array('token'=>$token,'id'=>$id))}',{lock:false,title:'设置经纬度',width:900,height:400,resize:true,yesText:'关闭',background: '#000',opacity: 0.87});
 }
 </script>
     </div>
      <div class="control-group">
                                 <label for="address" class="control-label">预约地址：</label>
                                 <div class="controls">
-                                    <input type="text" name="address" id="address" class="span4"  value="{gooraye:$reslist['address']}" schoolSet  placeholder="请输入接待预约用户的地址"/><span class="maroon">*</span><span class="help-inline">如合肥市政务区南二环路3818号万达广场</span>
+                                    <input type="text" name="address" id="address" class="span4"  value="{gooraye:$reslist['address']}" schoolSet  placeholder="请输入接待预约用户的地址"/><span class="maroon">*</span><span class="help-inline">如绍兴市越城区教育路</span>
                                 </div>
                              </div>
     <div class="control-group">
@@ -66,7 +66,7 @@ function setlatlng(longitude,latitude){
           <span class="maroon">注意：这个只是模糊定位，准确位置请地图上标注！</span><br />
                 经度 <input type="text" id="longitude"  name="lng" size="14" class="span4" value="{gooraye:$reslist['lng']}" />
                 纬度 <input type="text"  name="lat" size="14" id="latitude" class="span4" value="{gooraye:$reslist['lat']}" />
-                <a href="###" onclick="setlatlng($('#longitude').val(),$('#latitude').val())">在地图中查看/设置</a>
+                <a href="###" onclick="setlatlng($('#longitude').val(),$('#latitude').val())" class="btn btn-small btn-inverse">在地图中查看/设置</a>
          </div>
     </div>
 
@@ -85,7 +85,7 @@ function setlatlng(longitude,latitude){
               <input id="headpic"type="text"class="input-large" name="headpic" class="span4 px"  schoolSet data-rule-url="true" value="{gooraye:$reslist['headpic']}" />
             <span class="maroon">*</span>
             <span class="help-inline">
-            <a href="###" onclick="upyunPicUpload('headpic',720,400,'{gooraye:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('headpic')">预览</a>
+            <a href="###" onclick="upyunPicUpload('headpic',720,400,'{gooraye:$token}')" class="a_upload btn btn-small btn-inverse">上传</a> <a href="###" onclick="viewImg('headpic')" class="btn btn-small btn-inverse">预览</a>
          </div>
      </div>
      <div class="control-group">
@@ -148,11 +148,11 @@ function setlatlng(longitude,latitude){
                                             </div>
                                              <script type="text/javascript">
                $(document).ready(function() {
-                  $('#date').daterangepicker({
-                    timePicker: true,
-                    timePickerIncrement: 30,
-                    format: 'MM/DD/YYYY hh:mm:ss'
-                  });
+                  // $('#date').daterangepicker({
+                  //   timePicker: true,
+                  //   timePickerIncrement: 30,
+                  //   format: 'MM/DD/YYYY hh:mm:ss'
+                  // });
                });
                </script>
                                             <div class="control-group"  style="display: none;" >
@@ -164,27 +164,27 @@ function setlatlng(longitude,latitude){
                                             </div>
     <script type="text/javascript">
     $(function () {
-         $("input[type='radio']").click(function () {
-            var $this = $(this), $val = $this.val(), $div = $this.parents(".control-group");
-            if ($val == 1) {
-                $div.next().show();
-                $div.next().next().hide();
-                $("#type1").show();
-                $("#type2").hide();
-                $("#type3").hide();
-            } else {
-                $div.next().next().show();
-                $div.next().hide();
-                if($val == 2){
-                    $("#type2").show();
-                    $("#type1").hide();
-                    $("#type3").hide();
-                }else{
-                    $("#type3").show();
-                    $("#type1").hide();
-                    $("#type2").hide();
-                }
-            }
+         // $("input[type='radio']").click(function () {
+         //    var $this = $(this), $val = $this.val(), $div = $this.parents(".control-group");
+         //    if ($val == 1) {
+         //        $div.next().show();
+         //        $div.next().next().hide();
+         //        $("#type1").show();
+         //        $("#type2").hide();
+         //        $("#type3").hide();
+         //    } else {
+         //        $div.next().next().show();
+         //        $div.next().hide();
+         //        if($val == 2){
+         //            $("#type2").show();
+         //            $("#type1").hide();
+         //            $("#type3").hide();
+         //        }else{
+         //            $("#type3").show();
+         //            $("#type1").hide();
+         //            $("#type2").hide();
+         //        }
+         //    }
          })
             </script>
 
@@ -334,10 +334,10 @@ function sdoaddit(i) {
                                             <tr id="trtxt5"  style="display: none" >
                                                 <td>输入需要增加的内容：</td>
                                                 <td>
-                                                    <input type="text" class="px" name="txt5" id="txt5" value="{gooraye:$reslist['txt5']}"></td>
+                                                    <input type="text" class="px" name="txt5" id="txt5" value="{gooraye:$reslist['txt5']}" /></td>
                                                 <td>
-                                                    <input name="value5" class="px" id="value5" type="text" value="{gooraye:$reslist['value5']}"></td>
-
+                                                    <input name="value5" class="px" id="value5" type="text" value="{gooraye:$reslist['value5']}" />
+                                                </td>
                                                 <td>
                                                     <p><a href="javascript:dodelit(5)">删除</a></p>
                                                 </td>

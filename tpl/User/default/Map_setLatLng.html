@@ -2,33 +2,59 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title> 微信公众平台源码,微信机器人源码,微信自动回复源码 Gooraye多用户微信营销系统</title>
+<title> 微通汇系统</title>
 <meta http-equiv="MSThemeCompatible" content="Yes" />
-<link rel="stylesheet" type="text/css" href="/tpl/User/default/common/css/style_2_common.css?BPm" />
-<script src="/tpl/User/default/common/js/common.js" type="text/javascript"></script>
-<link href="/tpl/User/default/common/css/style.css" rel="stylesheet" type="text/css" />
- <script src="/tpl/static/jquery-1.4.2.min.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="{gooraye::RES}/css/style_2_common.css?BPm" />
+<script src="{gooraye::RES}/js/common.js" type="text/javascript"></script>
+<link href="{gooraye::RES}/css/style.css" rel="stylesheet" type="text/css" />
+ <script src="{gooraye::STATICS}/jquery-1.4.2.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak={gooraye::$apikey}"></script>
- <link rel="stylesheet" type="text/css" href="/tpl/User/default/common/css/cymain.css" />
- <script src="/tpl/static/artDialog/jquery.artDialog.js?skin=default"></script>
-<script src="/tpl/static/artDialog/plugins/iframeTools.js"></script>
+ <link rel="stylesheet" type="text/css" href="{gooraye::RES}/css/cymain.css" />
+ <script src="{gooraye::STATICS}/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="{gooraye::STATICS}/artDialog/plugins/iframeTools.js"></script>
 <style type="text/css">
-body, html {width: 100%;height: 100%;overflow: hidden;margin:0;}
+body, html,#allmap {width: 100%;height: 100%;overflow: hidden;margin:0;}
 #allmap {width: 100%;height: 100%;overflow: hidden;margin:0;}
-#l-map{height:100%;width:100%;}
+#l-map{height:100%;width:78%;float: left;border-right:2px solid #bcbcbc;}
+#r-result{height:100%;width:20%;float:left;}
+.search{
+	padding: 6px;
+	font-size: 14px;
+	margin: 5px;
+	color: #993300;
+}
+.search a{
+	background-color: #5d5d5d;
+	color: #fff;
+	margin-left: 5px;
+	border-radius: 3px;
+	padding: 5px;
+}
+.searchkeyword{
+	border: #606060 2px solid;
+	padding: 5px;
+
+}
 </style>
 </head>
 <body id="nv_member">
 <input type="hidden" id="longitude" value="0" />
 <input type="hidden" id="latitude" value="0" />
 
-<div class="ftip" style="margin:0">拖动红色图标到相应位置然后点击右侧链接-> <a id="ok" style="float:none" href="###">已经设定好，关闭该页面</a></div>
+<!-- <div class="ftip" style="margin:0">拖动红色图标到相应位置然后点击右侧链接-> <a id="ok" style="float:none" href="###">已经设定好，关闭该页面</a></div> -->
+<div class="search" style="margin:0">全国范围内搜索：<input type="text" id="keyword" class="searchkeyword"  /><a href="#" onclick="searchLoc();return false;">搜索</a> <a id="ok" style="float:none;background-color:#f40" href="###" >设定好就点我吧</a> 把跳动的点[拖动到或点击]你的公司地址或其它地址。</div>
+<!-- <div class="ftip" style="margin:0"></div> -->
 <div id="l-map"></div>
+<div id="r-result">搜索结果展示</div>
 <script type="text/javascript">
+function G(id) {
+    return document.getElementById(id);
+}
 if (art.dialog.data('longitude')) {
-	document.getElementById('longitude').value = art.dialog.data('longitude');// 获取由主页面传递过来的数据
-	document.getElementById('latitude').value = art.dialog.data('latitude');
+	G('longitude').value = art.dialog.data('longitude');// 获取由主页面传递过来的数据
+	G('latitude').value = art.dialog.data('latitude');
 };
+
 // 关闭并返回数据到主页面
 document.getElementById('ok').onclick = function () {
 	var origin = artDialog.open.origin;
@@ -44,26 +70,120 @@ var map = new BMap.Map("l-map");
 var point = new BMap.Point($('#longitude').val(),$('#latitude').val());
 map.centerAndZoom(point,12);
 map.enableScrollWheelZoom();                            //启用滚轮放大缩小
-function myFun(result){
-	var cityName = result.name;
+//右键菜单
+var menu = new BMap.ContextMenu();
+var txtMenuItem = [
+  {
+   text:'卫星视图',
+   callback:function(){ map.setMapType(BMAP_HYBRID_MAP);}
+  }
+ ];
+
+
+ for(var i=0; i < txtMenuItem.length; i++){
+  menu.addItem(new BMap.MenuItem(txtMenuItem[i].text,txtMenuItem[i].callback,100));
+ }
+ 
+ map.addContextMenu(menu);
+//搜索
+
+var local = new BMap.LocalSearch("全国", {
+  renderOptions: {
+    map: map,
+    panel : "r-result",
+    autoViewport: true,
+    selectFirstResult: false
+  }
+});
+function searchLoc(){
+	$key = G("keyword").value;
+	local.search($key);
+}
+
+//创建标注
+var marker = {};
+function createAniMarker(result){
+	var cityName = (result && result.name) || '绍兴';
 	if($('#longitude').val()==0||$('#longitude').val()==''){
 		map.setCenter(cityName);
-		p = new BMap.Point(result.center.lng,result.center.lat);
+		p = new BMap.Point(map.getCenter().lng,map.getCenter().lat);
 	}else{
 		p = new BMap.Point($('#longitude').val(),$('#latitude').val());
 	}
-	var marker = new BMap.Marker(p);
+	marker = new BMap.Marker(p);
 	marker.enableDragging();
 	map.addOverlay(marker);
-
+	marker.setAnimation(BMAP_ANIMATION_BOUNCE);
 	marker.addEventListener("dragend", function(e){
 		$('#longitude').attr('value',e.point.lng)
 		$('#latitude').attr('value',e.point.lat)
 	})
+
 }
 
 var myCity = new BMap.LocalCity();
-var p=myCity.get(myFun);
+myCity.get(createAniMarker);
+
+
+
+//点击事件
+map.addEventListener("click",function(e){	
+	map.removeOverlay(marker);
+	$("#longitude").attr("value",e.point.lng);
+	$("#latitude").attr("value",e.point.lat);
+	createAniMarker();
+//    alert(e.point.lng + "," + e.point.lat);
+});
+
+//智能提示
+var ac = new BMap.Autocomplete(    //建立一个自动完成的对象
+    {"input" : "keyword"
+    ,"location" : map
+});
+
+ac.addEventListener("onhighlight", function(e) {  //鼠标放在下拉列表上的事件
+var str = "";
+    var _value = e.fromitem.value;
+    var value = "";
+    if (e.fromitem.index > -1) {
+        value = _value.province +  _value.city +  _value.district +  _value.street +  _value.business;
+    }    
+    str = "FromItem<br />index = " + e.fromitem.index + "<br />value = " + value;
+    
+    value = "";
+    if (e.toitem.index > -1) {
+        _value = e.toitem.value;
+        value = _value.province +  _value.city +  _value.district +  _value.street +  _value.business;
+    }    
+    str += "<br />ToItem<br />index = " + e.toitem.index + "<br />value = " + value;
+    G("searchResultPanel").innerHTML = str;
+});
+
+var myValue;
+ac.addEventListener("onconfirm", function(e) {    //鼠标点击下拉列表后的事件
+var _value = e.item.value;
+    myValue = _value.province +  _value.city +  _value.district +  _value.street +  _value.business;
+    G("searchResultPanel").innerHTML ="onconfirm<br />index = " + e.item.index + "<br />myValue = " + myValue;
+    
+    setPlace();
+});
+//设置地点
+function setPlace(){
+    map.clearOverlays();    //清除地图上所有覆盖物
+    function myFun(){
+        	var pp = local.getResults().getPoi(0).point;    //获取第一个智能搜索的结果
+        	map.centerAndZoom(pp, 18);
+       	marker = new BMap.Marker(pp);
+
+	marker.setAnimation(BMAP_ANIMATION_BOUNCE);
+        	map.addOverlay(marker);    //添加标注
+    }
+    var local = new BMap.LocalSearch(map, { //智能搜索
+      onSearchComplete: myFun
+    });
+    local.search(myValue);
+}
+//console.log(marker);
 
 </script>
 </body>

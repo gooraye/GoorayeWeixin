@@ -1,6 +1,6 @@
 <include file="Public:head"/>  
-<script src="/tpl/static/artDialog/jquery.artDialog.js?skin=default"></script>
-<script src="/tpl/static/artDialog/plugins/iframeTools.js"></script>
+<script src="{gooraye::STATICS}/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="{gooraye::STATICS}/artDialog/plugins/iframeTools.js"></script>
 <div class="content">
 <div class="cLineB">
   <h4>淘宝天猫店铺配置<span class="FAQ">只需要你填写天猫或淘宝店铺的手机站点地址，简单配置关键词，再在功能管理页面开启此功能，就可以直接通过微信检索店铺内的商品。</span></h4>             
@@ -18,7 +18,7 @@
                 </tr>
                  <tr>
                   <th><span class="red">*</span><label for="tel">店铺封面图片：</label></th>
-                  <td><input type="text"  name="picurl"  id="picurl" value="{gooraye:$taobao.picurl}"   class="px" tabindex="1" size="80">   <script src="/tpl/static/upyun.js"></script><a href="###" onclick="upyunPicUpload('picurl',700,420,'{gooraye:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('picurl')">预览</a></td>
+                  <td><input type="text"  name="picurl"  id="picurl" value="{gooraye:$taobao.picurl}"   class="px" tabindex="1" size="80">   <script src="{gooraye::STATICS}/upyun.js"></script><a href="###" onclick="upyunPicUpload('picurl',700,420,'{gooraye:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('picurl')">预览</a></td>
                 </tr>
                 <tr>
                   <th><span class="red">*</span><label for="tel">店铺地址：</label></th>

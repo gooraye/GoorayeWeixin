@@ -2,8 +2,8 @@
 <link rel="stylesheet" type="text/css" href="./tpl/User/default/common/css/cymain.css" />
 
 
-<script src="/tpl/static/artDialog/jquery.artDialog.js?skin=default"></script>
-<script src="/tpl/static/artDialog/plugins/iframeTools.js"></script>
+<script src="{gooraye::STATICS}/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="{gooraye::STATICS}/artDialog/plugins/iframeTools.js"></script>
 
 <div class="content">
           <div class="cLineB"><h4>群发信息</h4></div>
@@ -50,7 +50,7 @@
   function addImgMessage(){
 	art.dialog.data('titledom', 'titledom');
 	art.dialog.data('imgids', 'imgids');
-	art.dialog.open('?g=User&m=Message&a=img',{lock:true,title:'选择图文消息',width:600,height:400,yesText:'关闭',background: '#000',opacity: 0.45});
+	art.dialog.open('?g=User&m=Message&a=img',{lock:true,title:'选择图文消息',width:600,height:400,resize:true,yesText:'关闭',background: '#000',opacity: 0.45});
 }
  function clearMessage(){
  	document.getElementById('titledom').innerHTML='';

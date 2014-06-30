@@ -1,7 +1,7 @@
 <include file="Public:head"/>
 <include file="Hairdressing:menu"/>
-<script src="./tpl/static/artDialog/jquery.artDialog.js?skin=default"></script>
-<script src="./tpl/static/artDialog/plugins/iframeTools.js"></script>
+<script src=".{gooraye::STATICS}/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src=".{gooraye::STATICS}/artDialog/plugins/iframeTools.js"></script>
  <style>
 .cLine {
     overflow: hidden;
@@ -82,7 +82,7 @@ font-weight:bold;
         </table>
  <script>
             function showIntroDetail(id){
-                art.dialog.open('{gooraye::U('Hairdressing/guanlist_edit',array('token'=>$token))}&id='+id,{lock:false,title:'预约订单详情',width:700,height:420,yesText:'关闭',background: '#000',opacity: 0.87});
+                art.dialog.open('{gooraye::U('Hairdressing/guanlist_edit',array('token'=>$token))}&id='+id,{lock:false,title:'预约订单详情',width:700,height:420,resize:true,yesText:'关闭',background: '#000',opacity: 0.87});
             }
         </script>
       </div>

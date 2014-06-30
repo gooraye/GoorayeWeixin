@@ -1,6 +1,6 @@
 <include file="Public:head"/>
-<script src="/tpl/static/artDialog/jquery.artDialog.js?skin=default"></script>
-<script src="/tpl/static/artDialog/plugins/iframeTools.js"></script>
+<script src="{gooraye::STATICS}/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="{gooraye::STATICS}/artDialog/plugins/iframeTools.js"></script>
 <div class="content">
 	 <div class="cLineB">
 		<h4>商家设置 </h4><a href="index.php?ac=card-list&amp;id=9878" class="right btnGrayS vm" style="margin-top:-27px">返回</a>
@@ -14,7 +14,7 @@
 						<textarea class="px" id="info" name="info" style="width: 450px; height: 230px; ">{gooraye:$info.info}</textarea>
 					</td>
 					<td valign="top">商家logo外链地址(图片尺寸100x100)<br>
-						<input type="input" class="px" id="logo" name="logo" value="{gooraye:$info.logo}" style="width:250px;" onblur="document.getElementById('logo_src').src=document.getElementById('logo').value;">  <script src="/tpl/static/upyun.js"></script><a href="###" onclick="upyunPicUpload('logo',200,200,'{gooraye:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('logo')">预览</a>
+						<input type="input" class="px" id="logo" name="logo" value="{gooraye:$info.logo}" style="width:250px;" onblur="document.getElementById('logo_src').src=document.getElementById('logo').value;">  <script src="{gooraye::STATICS}/upyun.js"></script><a href="###" onclick="upyunPicUpload('logo',200,200,'{gooraye:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('logo')">预览</a>
 					</td>
 					<td rowspan="4" valign="top">&nbsp;</td>
 					<td rowspan="4" valign="top"><img id="logo_src" class="logo" src="{gooraye:$info.logo}" width="100px" height="100px"></td>

@@ -2,8 +2,8 @@
 <link rel="stylesheet" type="text/css" href="./tpl/User/default/common/css/cymain.css" />
 
 
-<script src="/tpl/static/artDialog/jquery.artDialog.js?skin=default"></script>
-<script src="/tpl/static/artDialog/plugins/iframeTools.js"></script>
+<script src="{gooraye::STATICS}/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="{gooraye::STATICS}/artDialog/plugins/iframeTools.js"></script>
 
 <div class="content">
           <div class="cLineB"><h4>群发信息</h4></div>
@@ -43,7 +43,7 @@
        </tr> 
               		<TR style="display:none">
   <TH>媒体文件</TH>
-  <TD><input type="input" class="px" id="media" name="mediasrc" style="width:250px"> <script src="/tpl/static/upyun.js"></script><a href="###" onclick="chooseFile('media','background')" class="a_upload">选择</a>&nbsp;&nbsp;&nbsp;<a href="###" onclick="upyunPicUpload('media',1500,1000,'{gooraye:$token}')" class="a_upload">上传</a> 仅发送图片消息、语音消息或视频消息的时候填写</TD>
+  <TD><input type="input" class="px" id="media" name="mediasrc" style="width:250px"> <script src="{gooraye::STATICS}/upyun.js"></script><a href="###" onclick="chooseFile('media','background')" class="a_upload">选择</a>&nbsp;&nbsp;&nbsp;<a href="###" onclick="upyunPicUpload('media',1500,1000,'{gooraye:$token}')" class="a_upload">上传</a> 仅发送图片消息、语音消息或视频消息的时候填写</TD>
 </TR>
 <tr style="display:none"> 
         <th><span class="red"></span>文本消息/简介</th> 
@@ -61,7 +61,7 @@
 	
 	art.dialog.data('js_appmsg_preview', 'js_appmsg_preview');
 	art.dialog.data('multione', 'multione');
-	art.dialog.open('?g=User&m=Message&a=img',{lock:true,title:'选择图文消息',width:600,height:400,yesText:'关闭',background: '#000',opacity: 0.45});
+	art.dialog.open('?g=User&m=Message&a=img',{lock:true,title:'选择图文消息',width:600,height:400,resize:true,yesText:'关闭',background: '#000',opacity: 0.45});
 }
  function clearMessage(){
  	document.getElementById('titledom').innerHTML='';
@@ -568,7 +568,7 @@ a {
 <div class="mediaHead"><span class="title" id="zbt">图文消息标题</span><span class="time"><?php echo date('Y-m-d',time());?></span>
 <div class="clr"></div>
 </div>
-<div class="mediaImg"><img id="suicaipic1" src="/tpl/static/message/oid.jpg"></div>
+<div class="mediaImg"><img id="suicaipic1" src="{gooraye::STATICS}/message/oid.jpg"></div>
 <div class="mediaContent mediaContentP">
 <p id="zinfo">消息简介</p>
 </div>

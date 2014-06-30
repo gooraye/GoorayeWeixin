@@ -1,7 +1,7 @@
 <include file="Public:head"/> 
 <link rel="stylesheet" type="text/css" href="{gooraye::RES}/css/cymain.css" />
-<script src="/tpl/static/artDialog/jquery.artDialog.js?skin=default"></script>
-<script src="/tpl/static/artDialog/plugins/iframeTools.js"></script>
+<script src="{gooraye::STATICS}/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="{gooraye::STATICS}/artDialog/plugins/iframeTools.js"></script>
 <!--弹出层样式-->
 <style type="text/css">
 body,h2{margin:0;padding:0;}
@@ -169,7 +169,7 @@ $(document).on("click","#del",function(){
     <tr >
 <td id="playlist"><input type="checkbox" name="items" value="{gooraye:$item.id}"  class="checkitem"></td>
 <td>{gooraye:$item.name}</td>
-<td><a href="###" onclick="art.dialog({content: '{gooraye:$item.message}',width:300,height:200,yesText:'关闭',background: '#000',opacity: 0.45});">查看留言 <if condition="$item['checked'] neq 1"> <font style="color:red;font-size:12px;">(未审核)</font><else/>
+<td><a href="###" onclick="art.dialog({content: '{gooraye:$item.message}',width:300,height:200,resize:true,yesText:'关闭',background: '#000',opacity: 0.45});">查看留言 <if condition="$item['checked'] neq 1"> <font style="color:red;font-size:12px;">(未审核)</font><else/>
             <font ></font>  </if>
         </a></td>
 <td><a href="{gooraye::U('User/Reply/reply',array('msgid'=>$item['id'],'token'=>$token,'wecha_id'=>$wecha_id))}">查看回复<font color="#04AA00">(共<font color="red">{gooraye:$item.count}</font>条回复/<font style="color:red">{gooraye:$item.chkcount}</font>条新回复)</font></a></td>

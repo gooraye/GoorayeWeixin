@@ -2,8 +2,8 @@
 <include file="Car:menu"/>
 <link rel="stylesheet" type="text/css" href="{gooraye::Common}/default_user_com.css" media="all">
 <script src="./tpl/User/default/common/js/date/WdatePicker.js"></script>
-<script src="/tpl/static/artDialog/jquery.artDialog.js?skin=default"></script>
-<script src="/tpl/static/artDialog/plugins/iframeTools.js"></script>
+<script src="{gooraye::STATICS}/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="{gooraye::STATICS}/artDialog/plugins/iframeTools.js"></script>
 <link rel="stylesheet" type="text/css" media="all" href="{gooraye::Common}/daterangepicker/daterangepicker-bs3.css" />
 <script type="text/javascript" src="{gooraye::Common}/daterangepicker/moment.js"></script>
 <script type="text/javascript" src="{gooraye::Common}/daterangepicker/daterangepicker.js"></script>
@@ -30,7 +30,7 @@ function setlatlng(longitude,lat){
   art.dialog.data('latitude', latitude);
   // 此时 iframeA.html 页面可以使用 art.dialog.data('test') 获取到数据，如：
   // document.getElementById('aInput').value = art.dialog.data('test');
-  art.dialog.open("{gooraye::U('Map/setLatLng',array('token'=>$token,'id'=>$id))}",{lock:false,title:'设置经纬度',width:600,height:400,yesText:'关闭',background: '#000',opacity: 0.87});
+  art.dialog.open("{gooraye::U('Map/setLatLng',array('token'=>$token,'id'=>$id))}",{lock:false,title:'设置经纬度',width:900,height:400,resize:true,yesText:'关闭',background: '#000',opacity: 0.87});
 }
 
 </script>

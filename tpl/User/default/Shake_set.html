@@ -1,6 +1,6 @@
 <include file="Public:head"/>
-<script src="/tpl/static/artDialog/jquery.artDialog.js?skin=default"></script>
-<script src="/tpl/static/artDialog/plugins/iframeTools.js"></script>
+<script src="{gooraye::STATICS}/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="{gooraye::STATICS}/artDialog/plugins/iframeTools.js"></script>
 <div class="content" >  
 <div class="cLineB"><h4>摇一摇设置</h4><a href="javascript:history.go(-1);"  class="right btnGrayS vm" style="margin-top:-27px" >返回</a></div> 
 <div class="msgWrap">
@@ -19,7 +19,7 @@
 </TR>
  <tr> 
         <th>图文回复图片：</th>
-        <td><input type="text" name="thumb" value="{gooraye:$info.thumb}" class="px" id="thumb" style="width:400px;" />  <script src="/tpl/static/upyun.js"></script><a href="###" onclick="upyunPicUpload('thumb',700,420,'{gooraye:$token}')" class="btn btn-small btn-inverse">上传</a> <a href="###" onclick="viewImg('thumb')" class="btn btn-small btn-inverse">预览</a></td> 
+        <td><input type="text" name="thumb" value="{gooraye:$info.thumb}" class="px" id="thumb" style="width:400px;" />  <script src="{gooraye::STATICS}/upyun.js"></script><a href="###" onclick="upyunPicUpload('thumb',700,420,'{gooraye:$token}')" class="btn btn-small btn-inverse">上传</a> <a href="###" onclick="viewImg('thumb')" class="btn btn-small btn-inverse">预览</a></td> 
        </tr>
 <tr> 
         <th><span class="red"></span>简介：</th> 
@@ -85,7 +85,7 @@
 </TR>
 <TR>
   <TH valign="top"><label for="text">大屏幕背景：</label></TH>
-  <TD><input type="input" class="px" id="background" value="{gooraye:$info.background}" name="background" style="width:250px" value="{gooraye:$info.background}" > <script src="/tpl/static/upyun.js"></script><a href="###"  onclick="chooseFile('background','background')" class="btn btn-small btn-inverse">选择</a>&nbsp;&nbsp;&nbsp;<a href="###" onclick="upyunPicUpload('background',1500,1000,'{gooraye:$token}')" class="btn btn-small btn-inverse">上传</a>&nbsp;&nbsp;&nbsp;<a href="###" onclick="viewImg('background')" class="btn btn-small btn-inverse">预览</a> 
+  <TD><input type="input" class="px" id="background" value="{gooraye:$info.background}" name="background" style="width:250px" value="{gooraye:$info.background}" > <script src="{gooraye::STATICS}/upyun.js"></script><a href="###"  onclick="chooseFile('background','background')" class="btn btn-small btn-inverse">选择</a>&nbsp;&nbsp;&nbsp;<a href="###" onclick="upyunPicUpload('background',1500,1000,'{gooraye:$token}')" class="btn btn-small btn-inverse">上传</a>&nbsp;&nbsp;&nbsp;<a href="###" onclick="viewImg('background')" class="btn btn-small btn-inverse">预览</a> 
  
 <input type="hidden" name="id" value="{gooraye:$info.id}" />
 </TD>

@@ -1,7 +1,7 @@
 <include file="Public:head"/>  
 <link rel="stylesheet" type="text/css" href="{gooraye::RES}/css/cymain.css" />
-<script src="/tpl/static/artDialog/jquery.artDialog.js?skin=default"></script>
-<script src="/tpl/static/artDialog/plugins/iframeTools.js"></script>
+<script src="{gooraye::STATICS}/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="{gooraye::STATICS}/artDialog/plugins/iframeTools.js"></script>
         <div class="content">
 <div class="cLineB">
 <h4 class="left">订单管理（<a href="{gooraye::U('Store/orders',array('token'=>$token,'handled'=>0))}">未处理订单<span style="color:#f00">{gooraye:$unhandledCount}</span>个</a>） ({gooraye:$page}) </h4>
@@ -97,7 +97,7 @@ function selectall(name) {
 
    <script>
 function showIntroDetail(id){
-	art.dialog.open('{gooraye::U('Store/orderInfo',array('token'=>$token,'dining'=>$isDining))}&id='+id,{lock:false,title:'订单详情',width:1000,height:620,yesText:'关闭',background: '#000',opacity: 0.87});
+	art.dialog.open('{gooraye::U('Store/orderInfo',array('token'=>$token,'dining'=>$isDining))}&id='+id,{lock:false,title:'订单详情',width:1000,height:620,resize:true,yesText:'关闭',background: '#000',opacity: 0.87});
 }
 </script>
 </div>

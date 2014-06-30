@@ -8,7 +8,7 @@
 
           <div class="cLine">
     <div class="alert">
-    <p><span class="bold">使用方法：添加一项即可,请勿重复添加。</span> <a class="btn" href="javascript:location.reload()">刷新</a></p>
+    <p><span class="bold">使用方法：添加一项即可,请勿重复添加。</span> <a class="btn btn-small btn-inverse" href="javascript:location.reload()">刷新</a></p>
     </div>
 </div>
 
@@ -17,7 +17,7 @@
             <div class="pageNavigator left">
           <if condition="$count eq 0">
                 <a href="{gooraye::U('Estate/reservation_add',array('token'=>$token))}" class="btnGrayS vm bigbtn">
-                    <img src="tpl/User/default/common/images/pic.png" class="vm">添加预约
+                    <i class="fa fa-plus"></i>添加预约
                 </a>
           </if>
             </div>
@@ -52,9 +52,9 @@
                         <td>{gooraye:$vo['date']}</td-->
                         <td>外链地址 {gooraye:$vo['id']}</td>
                         <td >
-                             <a href="{gooraye::U('Estate/reservation_manage',array('token'=>$vo['token'],'id'=>$vo['id'],'addtype'=>$vo['addtype']))}" class="btn" title="订单管理">订单管理</a>
-                            <a class="btn" href="{gooraye::U('Estate/reservation_edit',array('token'=>$vo['token'],'id'=>$vo['id'],'addtype'=>$vo['addtype']))}" title="编辑">编辑</a> 
-                             <a class="btn" href="{gooraye::U('Estate/reservation_del',array('token'=>$vo['token'],'id'=>$vo['id'],'addtype'=>$vo['addtype']))}" onclick="return(confirm('确定要删除吗？'))"  title="删除">删除</a></td>
+                             <a href="{gooraye::U('Estate/reservation_manage',array('token'=>$vo['token'],'id'=>$vo['id'],'addtype'=>$vo['addtype']))}" class="btn btn-small btn-inverse" title="订单管理">订单管理</a>
+                            <a class="btn btn-small btn-inverse" href="{gooraye::U('Estate/reservation_edit',array('token'=>$vo['token'],'id'=>$vo['id'],'addtype'=>$vo['addtype']))}" title="编辑">编辑</a> 
+                             <a class="btn btn-small btn-inverse" href="{gooraye::U('Estate/reservation_del',array('token'=>$vo['token'],'id'=>$vo['id'],'addtype'=>$vo['addtype']))}" onclick="return(confirm('确定要删除吗？'))"  title="删除">删除</a></td>
                      </tr>
                      </volist>
 

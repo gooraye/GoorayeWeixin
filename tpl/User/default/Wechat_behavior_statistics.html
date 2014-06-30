@@ -1,5 +1,5 @@
 <include file="Public:head"/>
-<script src="/tpl/static/fushionCharts/JSClass/FusionCharts.js" type="text/javascript"></script>   
+<script src="{gooraye::STATICS}/fushionCharts/JSClass/FusionCharts.js" type="text/javascript"></script>   
 <link rel="stylesheet" type="text/css" href="./tpl/User/default/common/css/cymain.css" />
 <div class="content">
          
@@ -35,7 +35,7 @@
          <div id="chartdiv1" align="center"></div>
          <goorayeif where="$statisticsAll eq 1">
          <script type="text/javascript">
-					var chart = new FusionCharts("/tpl/static/fushionCharts/Charts/Pie3D.swf", "ChartId", "600", "500", "0", "1");
+					var chart = new FusionCharts("{gooraye::STATICS}/fushionCharts/Charts/Pie3D.swf", "ChartId", "600", "500", "0", "1");
 					//chart.setTransparent("false");
 					chart.setDataXML('{gooraye:$xml}');
 					//chart.setDataURL("data.html");
@@ -44,14 +44,14 @@
          </goorayeif>
          <goorayeif where="$detail eq 1">
 					<script type="text/javascript">
-					var chart = new FusionCharts("/tpl/static/fushionCharts/Charts/Bar2D.swf", "ChartId", "600", "500", "0", "1");
+					var chart = new FusionCharts("{gooraye::STATICS}/fushionCharts/Charts/Bar2D.swf", "ChartId", "600", "500", "0", "1");
 					chart.setDataXML('{gooraye:$xml}');
 					chart.render("chartdiv1");
 					</script>
 					</goorayeif>
 					<goorayeif where="$statisticsTrend eq 1">
 					<script type="text/javascript">
-					var chart = new FusionCharts("/tpl/static/fushionCharts/Charts/MSArea.swf", "ChartId", "900", "500", "0", "1");
+					var chart = new FusionCharts("{gooraye::STATICS}/fushionCharts/Charts/MSArea.swf", "ChartId", "900", "500", "0", "1");
 					chart.setDataXML('{gooraye:$xml}');
 					chart.render("chartdiv1");
 					</script>

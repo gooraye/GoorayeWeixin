@@ -1,4 +1,4 @@
-.tab {height: 35px; margin:10px 0 0 0;background:#eee;border-bottom: 1px solid #d7dde6;}
+.tab {height: 35px; margin:0px 0 0 0;background:#eee;border-bottom: 1px solid #d7dde6;}
 .tab ul{ height: 35px;}
 
 .tab ul li{ float:left; height:30px; border: 1px solid #d7dde6; background: #f6f6f6; font-size: 14px; line-height: 30px; margin: 4px 0 0 10px; display: inline; cursor: pointer; white-space: nowrap ;  padding:0 18px}

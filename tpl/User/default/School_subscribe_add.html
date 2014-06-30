@@ -2,8 +2,8 @@
 <include file="School:menu"/>
 <link rel="stylesheet" type="text/css" href="{gooraye::Common}/default_user_com.css" media="all">
 <script src="./tpl/User/default/common/js/date/WdatePicker.js"></script>
-<script src="/tpl/static/artDialog/jquery.artDialog.js?skin=default"></script>
-<script src="/tpl/static/artDialog/plugins/iframeTools.js"></script>
+<script src="{gooraye::STATICS}/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="{gooraye::STATICS}/artDialog/plugins/iframeTools.js"></script>
 
 <link rel="stylesheet" href="{gooraye::STATICS}/kindeditor/themes/default/default.css" />
 <link rel="stylesheet" href="{gooraye::STATICS}/kindeditor/plugins/code/prettify.css" />
@@ -26,7 +26,7 @@ items : [
 function setlatlng(longitude,lat){
   art.dialog.data('longitude', longitude);
   art.dialog.data('latitude', latitude);
-  art.dialog.open("{gooraye::U('Map/setLatLng',array('token'=>$token,'id'=>$id))}",{lock:false,title:'设置经纬度',width:600,height:400,yesText:'关闭',background: '#000',opacity: 0.87});
+  art.dialog.open("{gooraye::U('Map/setLatLng',array('token'=>$token,'id'=>$id))}",{lock:false,title:'设置经纬度',width:900,height:400,resize:true,yesText:'关闭',background: '#000',opacity: 0.87});
 }
 
 </script>

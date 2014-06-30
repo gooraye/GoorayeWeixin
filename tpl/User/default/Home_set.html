@@ -1,11 +1,11 @@
 <include file="Public:head"/>
-<script src="/tpl/static/artDialog/jquery.artDialog.js?skin=default"></script>
-<script src="/tpl/static/artDialog/plugins/iframeTools.js"></script>
+<script src="{gooraye::STATICS}/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="{gooraye::STATICS}/artDialog/plugins/iframeTools.js"></script>
 
 <script type="text/javascript" src="http://ajax.useso.com/ajax/libs/jquery/1/jquery.js"></script>
-<script type="text/javascript" src="/tpl/static/audioplayer/inc/jquery.jplayer.min.js"></script>
-    <script type="text/javascript" src="/tpl/static/audioplayer/inc/jquery.mb.miniPlayer.js"></script>
-    <link rel="stylesheet" type="text/css" href="/tpl/static/audioplayer/css/miniplayer.css" title="style" media="screen"/>
+<script type="text/javascript" src="{gooraye::STATICS}/audioplayer/inc/jquery.jplayer.min.js"></script>
+    <script type="text/javascript" src="{gooraye::STATICS}/audioplayer/inc/jquery.mb.miniPlayer.js"></script>
+    <link rel="stylesheet" type="text/css" href="{gooraye::STATICS}/audioplayer/css/miniplayer.css" title="style" media="screen"/>
     <script type="text/javascript">
         $(function () {
 
@@ -48,7 +48,7 @@
 				</tr>
 				<tr>
 					<th>回复图片：</th>
-					<td><input type="text" name="picurl" id="picurl" value="{gooraye:$home.picurl}" class="px" style="width:550px;">   <script src="/tpl/static/upyun.js"></script><a href="###" onclick="upyunPicUpload('picurl',700,420,'{gooraye:$token}')" class="a_upload btn btn-small btn-inverse">上传</a> <a href="###" class="btn btn-small btn-inverse" onclick="viewImg('picurl')">预览</a></td>
+					<td><input type="text" name="picurl" id="picurl" value="{gooraye:$home.picurl}" class="px" style="width:550px;">   <script src="{gooraye::STATICS}/upyun.js"></script><a href="###" onclick="upyunPicUpload('picurl',700,420,'{gooraye:$token}')" class="a_upload btn btn-small btn-inverse">上传</a> <a href="###" class="btn btn-small btn-inverse" onclick="viewImg('picurl')">预览</a></td>
 				</tr>
 				<tr>
 					<th>3G网站背景：</th>

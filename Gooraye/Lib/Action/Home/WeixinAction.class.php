@@ -294,6 +294,7 @@ class WeixinAction extends Action{
             }
 
         // addWeixinLog($key,"用户发送来的文本内容");
+            //用户发来的内容如果
         switch($key){
             
             case '首页': case 'home': return $this -> home();

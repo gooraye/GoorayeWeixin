@@ -1,9 +1,9 @@
 <include file="Public:head"/>
 <script src="./tpl/User/default/common/js/date/WdatePicker.js"></script>
-<script src="/tpl/static/artDialog/jquery.artDialog.js?skin=default"></script>
-<script src="/tpl/static/artDialog/plugins/iframeTools.js"></script>
+<script src="{gooraye::STATICS}/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="{gooraye::STATICS}/artDialog/plugins/iframeTools.js"></script>
 
- <script src="/tpl/static/upyun.js"></script>
+ <script src="{gooraye::STATICS}/upyun.js"></script>
 <div class="content">
 <style>
 .msgWrap .control-group {
@@ -26,7 +26,7 @@ padding: 19px 20px 20px 160px;
 margin-top: 20px;
 }
 .span4, .span1, .option, .valid, .input-large{
-	background: url(../images/px.png) repeat-x scroll 0 0 #FFFFFF;
+	background: url({gooraye::RES}/images/img/px.png) repeat-x scroll 0 0 #FFFFFF;
     border-color: #848484 #E0E0E0 #E0E0E0 #848484;
     border-style: solid;
     border-width: 1px;
@@ -39,7 +39,7 @@ margin-top: 20px;
 function setlatlng(longitude,latitude){
 	art.dialog.data('longitude', longitude);
 	art.dialog.data('latitude', latitude);
-	art.dialog.open('{gooraye::U('Map/setLatLng')}',{lock:false,title:'设置经纬度',width:600,height:400,yesText:'关闭',background: '#000',opacity: 0.87});
+	art.dialog.open('{gooraye::U('Map/setLatLng')}',{lock:false,title:'设置经纬度',width:900,height:400,resize:true,yesText:'关闭',background: '#000',opacity: 0.87});
 }
 </script>
 <div class="cLineB">

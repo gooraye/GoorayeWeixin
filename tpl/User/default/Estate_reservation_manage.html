@@ -2,8 +2,8 @@
 <include file="Estate:menu"/>
 <link rel="stylesheet" type="text/css" href="{gooraye::Common}/default_user_com.css" media="all">
 <link rel="stylesheet" type="text/css" href="{gooraye::RES}/css/cymain.css" />
-<script src="./tpl/static/artDialog/jquery.artDialog.js?skin=default"></script>
-<script src="./tpl/static/artDialog/plugins/iframeTools.js"></script>
+<script src=".{gooraye::STATICS}/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src=".{gooraye::STATICS}/artDialog/plugins/iframeTools.js"></script>
 <div class="content">
           <div class="cLineB">
               <h4 class="left">预约订单管理</h4>
@@ -45,7 +45,7 @@
 
 
 
-                        <td class="norightborder"><a href="###" onclick="showIntroDetail({gooraye:$o.id})">详细</a>  <a class="btn" href="javascript:drop_confirm('您确定要删除吗?', '{gooraye::U('Reservation/manage_del',array('token'=>$o['token'],'id'=>$o['id']))}');"  title="删除">删除</a></td>
+                        <td class="norightborder"><a class="btn  btn-small btn-inverse" href="###" onclick="showIntroDetail({gooraye:$o.id})">详细</a>  <a class="btn btn-small btn-inverse" href="javascript:drop_confirm('您确定要删除吗?', '{gooraye::U('Reservation/manage_del',array('token'=>$o['token'],'id'=>$o['id']))}');"  title="删除">删除</a></td>
                     </tr>
                 </volist>
                 </tbody>
@@ -55,7 +55,7 @@
           </div>
            <script>
             function showIntroDetail(id){
-                art.dialog.open('{gooraye::U('Reservation/reservation_uinfo',array('token'=>$token))}&id='+id,{lock:false,title:'预约订单详情',width:700,height:420,yesText:'关闭',background: '#000',opacity: 0.87});
+                art.dialog.open('{gooraye::U('Reservation/reservation_uinfo',array('token'=>$token))}&id='+id,{lock:false,title:'预约订单详情',width:700,height:420,resize:true,yesText:'关闭',background: '#000',opacity: 0.87});
             }
         </script>
 
