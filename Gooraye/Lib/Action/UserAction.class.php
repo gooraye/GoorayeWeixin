@@ -32,9 +32,9 @@ class UserAction extends BaseAction{
                 $this -> redirect('Home/Index/login');
             }
         }
-        if (session('companyLogin') == 1 && !in_array(MODULE_NAME, array('Attachment', 'Repast', 'Upyun', 'Hotels'))){
-            $this -> redirect(U('User/Repast/index', array('cid' => session('companyid'))));
-        }
+        // if (session('companyLogin') == 1 && !in_array(MODULE_NAME, array('Attachment', 'Repast', 'Upyun', 'Hotels'))){
+        //     $this -> redirect(U('User/Repast/index', array('cid' => session('companyid'))));
+        // }
         define('UNYUN_BUCKET', C('up_bucket'));
         define('UNYUN_USERNAME', C('up_username'));
         define('UNYUN_PASSWORD', C('up_password'));
@@ -65,8 +65,7 @@ class UserAction extends BaseAction{
         $sign = md5($policy . '&' . UNYUN_FORM_API_SECRET);
         
 
-        $menuhtml = $this -> createMenus();
-       
+        $menuhtml = $this -> createMenus();      
 
         $this -> assign('menuhtml',$menuhtml);
         $this -> assign('editor_upyun_sign', $sign);
@@ -86,13 +85,13 @@ class UserAction extends BaseAction{
 
     //菜单
     public function createMenus(){
-        $menus = S('gr_menus');
-        if(empty($menus)){
-        $vipid = $this -> userGroup['id'];
-        $menus =  getMenu($vipid);
+        // $menus = S('gr_menus');
+        // if(empty($menus)){
+            $vipid = $this -> userGroup['id'];
+            $menus =  getMenu($vipid);
 
-        S('gr_menus',$menus);
-        }
+        //     S('gr_menus',$menus);
+        // }
         $menuhtml = $this->createHTMLMenu($menus);
         return $menuhtml;
     }

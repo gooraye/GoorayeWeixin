@@ -440,9 +440,16 @@ class StoreAction extends WapAction{
 				$crow['token'] = $row['token'];
 				$crow['time'] = $time;
 				$product_cart_list_model->add($crow);
-				
+				if(empty($tdata[1][$k]['total'])){
+					continue;
+				}
+				if(is_integer($tdata[1][$k]['total'])){
+
+
 				//增加销量
 				$product_model->where(array('id'=>$k))->setInc('salecount', $tdata[1][$k]['total']);
+
+				}
 			}
 			
 			//删除库存
@@ -450,7 +457,10 @@ class StoreAction extends WapAction{
 				$total = 0;
 				if (is_array($rowset)) {
 					foreach ($rowset as $did => $ro) {
-						M('Product_detail')->where(array('id' => $did, 'pid' => $pid, 'num' => array('gt', $ro['count'])))->setDec('num', $ro['count']);
+						if(empty($ro['count'])){
+							continue;
+						}
+						M('Product_detail')->where(array('id' => $did, 'pid' => $pid, 'num' => array('gt', $ro['count'])))->setDec('num', intval($ro['count']));
 						$total += $ro['count'];
 					}
 				} else {

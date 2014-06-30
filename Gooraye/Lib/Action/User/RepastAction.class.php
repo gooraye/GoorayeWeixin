@@ -28,6 +28,7 @@ class RepastAction extends UserAction{
                 }
             }
         }
+        $this -> assign('companyname', session('companyname'));
         $this -> assign('ischild', session('companyLogin'));
         $this -> assign('cid', $this -> _cid);
     }

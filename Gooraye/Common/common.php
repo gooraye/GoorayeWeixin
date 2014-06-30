@@ -11,10 +11,14 @@ function isAndroid(){
 * author 贝贝 <hebiduhebi@163.com>
 */
 function getToken(){
+
+
 	if(isset($_GET['token'])){
 		return $_GET['token'];
 	}
-	return '';
+
+
+	return session('token');
 }
 
 function addWeixinLog($data, $operator = '') {
@@ -284,7 +288,7 @@ function getMenu($vipid)
 }
 //所有功能
 function getMenu1(){
-	$token = $_GET['token'];
+	$token = getToken();
 	
 	return array(
 	        array(

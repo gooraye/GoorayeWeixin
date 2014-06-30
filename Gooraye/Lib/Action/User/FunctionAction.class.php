@@ -20,24 +20,31 @@ class FunctionAction extends UserAction{
 		$open['uid']=session('uid');
 		$open['token']=session('token');
 		//遍历功能列表
-		if (!C('agent_version')){
-			$group=M('User_group')->field('id,name')->where('status=1')->select();
-		}else {
-			$group=M('User_group')->field('id,name')->where('status=1 AND agentid='.$this->agentid)->select();
-		}
+		// if (!C('agent_version')){
+		// 	$group=M('User_group')->field('id,name')->where('status=1')->select();
+		// }else {
+		// 	$group=M('User_group')->field('id,name')->where('status=1 AND agentid='.$this->agentid)->select();
+		// }
 		$check=explode(',',$toback['queryname']);
 		$this->assign('check',$check);
-		foreach($group as $key=>$vo){
-			if (C('agent_version')&&$this->agentid){
-				$fun=M('Agent_function')->where(array('status'=>1,'gid'=>$vo['id']))->select();
-			}else {
-				$fun=M('Function')->where(array('status'=>1,'gid'=>$vo['id']))->select();
-			}
-			
-			foreach($fun as $vkey=>$vo){
-				$function[$key][$vkey]=$vo;
+		// foreach($group as $key=>$vo){
+			// if (C('agent_version')&&$this->agentid){
+			// 	$fun=M('Agent_function')->where(array('status'=>1,'gid'=>$vo['id']))->select();
+			// }else {
+			// 	$fun=M('Function')->where(array('status'=>1,'gid'=>$vo['id']))->select();
+			// }
+		$fun = M('Function')->where(array('status'=>1,'gid'=>session('gid')))->select();
+		
+		$closedfun = array();
+		foreach($fun as $vkey=>$vo){
+			if(!in_array($vo['funname'],$check)){
+				$closedfun[$vkey] = $vo;
+			}else{
+				$function[$vkey] = $vo;
 			}
 		}
+		// }
+		$this->assign('closedfun',$closedfun);
 		$this->assign('fun',$function);
 		//
 		$wecha=M('Wxuser')->field('wxname,wxid,headerpic,weixin')->where(array('token'=>session('token'),'uid'=>session('uid')))->find();

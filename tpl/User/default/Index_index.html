@@ -1,28 +1,150 @@
 <include file="Index:header" />
 <script src="/tpl/static/artDialog/jquery.artDialog.js?skin=default"></script>
 <script src="/tpl/static/artDialog/plugins/iframeTools.js"></script>
+<style type="text/css">
+  .publiclist{
+      padding: 60px;
+  }
+  .publicmember{
+      /*background: #8d8d8d;*/
+      float:left;;
+      margin: 0 0 20px 20px;
+  width: 150px;
+      padding: 5px;
+  }
+  .publiclist .row{
+      margin: 5px 0px;
+      float:left;
+      overflow-wrap:break-word;
+      position: relative;
+      width: 100%;
+
+  }
+
+.publiclist .ctrlbtns{
+  text-align: center;
+}
+
+.publiclist .publicbtn a{
+    display: block;
+    text-align: center;
+}
+.content{
+    float:left;
+    width:640px;
+    left: 50%;
+    position: relative;
+    margin-left: -320px;
+}
+.whitephone{
+  background-image: url('{gooraye::STATICS}/tmpls/images/radio_iphone.png');
+}
+.whitephone:hover{
+  background-image: url('{gooraye::STATICS}/tmpls/images/radio_iphone0.png');
+}
+.usercontent a{
+  float: left;
+  width: 100%;
+  text-align: center;
+}
+.usercontent a:hover{
+  background-color: #5d5d5d;
+  color: #fff;
+}
+
+/* 变更样式 */
+.developer{
+  background: #5d5d5d;
+padding: 0 20px;
+}
+.content{
+  margin-left: 0px;
+  width: 100%;
+  left: 0px;
+  float: left;
+  background: #fff;
+}
+.usercontent{
+  width: 20%;
+  height: 100%;
+  float: left;
+  box-sizing:border-box;
+}
+.publiclist{
+  float:left;
+  width: 80%;
+  box-sizing:border-box;
+  padding-top: 0px;
+}
+.btn.btn-red{
+  color: #fff;
+  font-size: 1.4em;
+  background-color: #f40;
+}
+.btn.btn-red:hover{
+  background-color: #fe3300;
+  margin-right: 10px;
+}
+.publicmember{
+  background-color: #fff;
+  margin:0px;
+}
+.box{
+  background: #3d3d3d;
+  float: left;
+  border-radius: 20px;
+  padding-top: 60px;
+  padding: 80px 20px 60px 20px;
+  margin-right: 20px;
+}
+.floatfuncbox{
+  right: 25px;
+}
+</style>
 <script language="JavaScript">
 if (window.top != self){
 	window.top.location = self.location;
 }
 </script>
 <!-- 右边内容 START -->
-<div class="content" style="width:100%;padding:20px 0px;">
+<div class="content" style="padding:20px 0px;">
   <!--  快捷功能 START -->
-  <div class="usercontent">
-    <ul>
-
-    <li class="addli"><a class="btn btn-large  btn-inverse" title="添加微信公众号" onclick="location.href='{gooraye::U('Index/add')}';">添加微信公众号</a>
-    </li>
-
-    </ul>
+  <div class="usercontent"><a class="btn   btn-inverse btn-red" title="添加微信公众号" onclick="location.href='{gooraye::U('Index/add')}';">添加微信公众号</a>
 
    <div class="clr"></div>
   </div>
   <!--  快捷功能 END -->
+<!-- 公众号列表 START -->
+<div class="publiclist" >
+  <volist name="info" id="vo"> 
+    <!--  单个公众号展示  -->
+    <div class="box">
+    <div class="publicmember " >
+      <div class="row"><a href="{gooraye::U('Function/index',array('id'=>$vo['id'],'token'=>$vo['token']))}" title="点击进入功能管理"><img src="{gooraye:$vo.headerpic}" width="40" height="40"></a>
+      <span>{gooraye:$vo.wxname}</span></div>
+
+      <div class="row">
+        到期时间：<br/>{gooraye:$viptime|date="Y-m-d",###} <a href="###" onclick="alert('请联系经销商')" id="smemberss" class=" btn btn-small btn-inverse">我要续费</a>
+      </div>
+        
+      <div class="row">
+        {gooraye:$f_siteUrl}/index.php/api/{gooraye::$vo['token']}
+        </div>
+
+        <div class="row ctrlbtns">
+           <a  class=" btn btn-small btn-inverse" href="{gooraye::U('Index/edit',array('id'=>$vo['id']))}">编辑</a>　<a   href="javascript:drop_confirm('您确定要删除吗?', '{gooraye::U('Index/del',array('id'=>$vo['id']))}');" class=" btn btn-small btn-inverse">删除</a>　          
+        </div>
+        <div  class="row publicbtn">          
+            <a class="btn btn-large btn-inverse" href="{gooraye::U('Function/index',array('id'=>$vo['id'],'token'=>$vo['token']))}" class="btnGreens" >进入管理</a>
+        </div>
+    </div>
+    </div>
+  </volist>
+</div>
+<!-- 公众号列表 EDN -->
 
           <!-- 公众号列表 START-->
-          <div class="msgWrap">
+          <div class="msgWrap" style="display:none;">
             <TABLE class="ListProduct" border="0" cellSpacing="0" cellPadding="0" width="100%">
               <THEAD>
                 <TR>

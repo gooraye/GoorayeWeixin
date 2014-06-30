@@ -1,7 +1,7 @@
 <include file="Public:head"/>  
 <link rel="stylesheet" type="text/css" href="{gooraye::RES}/css/cymain.css" />
-<script src="/tpl/static/artDialog/jquery.artDialog.js?skin=default"></script>
-<script src="/tpl/static/artDialog/plugins/iframeTools.js"></script>
+<script src="{gooraye::STATICS}/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="{gooraye::STATICS}/artDialog/plugins/iframeTools.js"></script>
 
         <div class="content">
 <div class="cLineB">
@@ -65,7 +65,7 @@ function selectall(name) {
 <td><if condition="$c['display'] eq 1">显示<else />隐藏</if></td>
 <td>{gooraye:$c.address}</td>
 <td>{gooraye:$c.url}</td>
-<td class="norightborder"><a href="{gooraye::U('Company/index',array('token'=>$token,'id'=>$c['id'],'isBranch'=>1))}">修改</a> <a href="javascript:drop_confirm('您确定要删除吗?', '{gooraye::U('Company/delete',array('token'=>$token,'id'=>$c['id'],'isBranch'=>1))}');">删除</a></td>
+<td class="norightborder"><a href="{gooraye::U('Company/index',array('token'=>$token,'id'=>$c['id'],'isBranch'=>1))}"  class="btn btn-small btn-inverse">修改</a> <a href="javascript:drop_confirm('您确定要删除吗?', '{gooraye::U('Company/delete',array('token'=>$token,'id'=>$c['id'],'isBranch'=>1))}');" class="btn btn-small btn-inverse">删除</a></td>
 </tr>
 </volist>
 </tbody>

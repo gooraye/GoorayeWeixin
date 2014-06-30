@@ -1,11 +1,7 @@
-<if condition="$ischild neq 1">
 <include file="Public:head" />
-<else />
-<include file="Repast:head" />
-</if>
 <link rel="stylesheet" type="text/css" href="{gooraye::RES}/css/cymain.css" />
-<script src="/tpl/static/artDialog/jquery.artDialog.js?skin=default"></script>
-<script src="/tpl/static/artDialog/plugins/iframeTools.js"></script>
+<script src="{gooraye::STATICS}/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="{gooraye::STATICS}/artDialog/plugins/iframeTools.js"></script>
 <div class="content">
 <div class="cLineB">
 <h4 class="left">订单管理({gooraye:$page}) </h4>
@@ -13,7 +9,11 @@
 </div>
 <div class="clr"></div>
 </div>
+<if condition="$ischild neq 1">
 <div style="background:#fefbe4;border:1px solid #f3ecb9;color:#993300;padding:10px;margin-top:5px;">此处只显示总店信息，连锁店订单及菜品请进入相应平台进行管理，连锁店登录账号密码及登录地址请在LBS里设置查看</div>
+<else/>  
+<div style="background:#fefbe4;border:1px solid #f3ecb9;color:#993300;padding:10px;margin-top:5px;">{gooraye::$companyname}分店信息</div>
+</if>
 <!--tab start-->
 <div class="tab">
 <ul>

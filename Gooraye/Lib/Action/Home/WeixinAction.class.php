@@ -207,6 +207,9 @@ class WeixinAction extends Action{
         }elseif(!(strpos($data['Content'], '人品') === FALSE)){
             // addWeixinLog($data['Content'],"音乐d");
             $return = $this -> renpin(str_replace('人品', '', $data['Content']));
+        }elseif(!(strpos($data['Content'], '快递') === FALSE)){
+            // addWeixinLog($data['Content'],"音乐d");
+            $return = $this -> kuaidi(str_replace('快递', '', $data['Content']));
         }else{
             // addWeixinLog($data,"附近 else");
             $check = $this -> user('connectnum');
@@ -950,13 +953,22 @@ private function tianqi($n){
 
 /* 快递 */
 private function kuaidi($data){
-    $data = array_merge($data);
+    addWeixinLog($data ,"kuaidi");
+    $data = explode(" ",$data);
     addWeixinLog($data[0]." ".$data[1] ,"kuaidi");
-    $str = file_get_contents('http://www.weinxinma.com/api/index.php?m=Express&a=index&name=' . $data[0] . '&number=' . $data[1]);
-    if ($str == '不支持的快递公司'){
-        $str = file_get_contents('http://www.weinxinma.com/api/index.php?m=Express&a=index&name=' . $data[1] . '&number=' . $data[0]);
-    }
-    return $str;
+    if(count($data) >= 2){
+        // $data[0] = str_replace("快递", "", $data[0]);
+        // $data[1] = str_replace("快递", "", $data[1]);
+        $str = file_get_contents('http://www.weinxinma.com/api/index.php?m=Express&a=index&name=' . $data[0] . '&number=' . $data[1]);
+        if ($str == '不支持的快递公司'){
+            $str = file_get_contents('http://www.weinxinma.com/api/index.php?m=Express&a=index&name=' . $data[1] . '&number=' . $data[0]);
+     }
+
+        return $str;
+    }else{
+        $str = "快递查询方式（要加空格）：快递 韵达 快递单号";
+     }
+    return "";
 }
 //朗读
 private function langdu($data){

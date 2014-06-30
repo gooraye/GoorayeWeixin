@@ -1,13 +1,13 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html >
+<html >
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-<title>登陆与注册－{gooraye:$f_siteTitle}</title>
+<title>登陆－{gooraye:$f_siteTitle}</title>
 <meta name="keywords" content="微通汇 微信公众账号 微信公众平台 微信公众账号开发 微信二次开发 微信接口开发 微信托管服务 微信营销 微信公众平台接口开发"/>
 <meta name="description" content="微信公众平台接口开发、托管、营销活动、二次开发"/>
-<link rel="stylesheet" type="text/css" href="../tpl/static/style.css" />
+<link rel="stylesheet" type="text/css" href="{gooraye::STATICS}/style.css" />
 </head>
-<body class="loggedout" style="background:url(../tpl/static/bg.jpg);">
+<body class="loggedout" style="background:url({gooraye::STATICS}/bg.jpg);">
 	<div id="olark" style="display: none;"><olark><iframe id="olark-loader" frameborder="0"></iframe></olark></div> 
 	<div class="container-fluid" style="width:600px;">
 		<div class="row-fluid header-row">
@@ -27,7 +27,7 @@
 										<div class="controls">
 					                    	<input type="hidden" name="cid" value="{gooraye:$cid}"/>
 					                    	<input type="hidden" name="k" value="{gooraye:$k}"/>
-											<input class="input-xlarge" name="username" id="username" autocomplete="off" type="text" />
+											<input  class="input-xlarge" name="username" id="username" autocomplete="off" type="text" />
 										</div>
 									</div>
 									<div class="control-group">
@@ -59,6 +59,6 @@
 	</div>
 </body>
 <script type="text/javascript">
-$("#username").focus();
+// $("#username").focus();
 </script>
 </html>
