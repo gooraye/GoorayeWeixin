@@ -14,6 +14,8 @@ class IndexAction extends BaseAction{
 		$this->assign('includeFooterPath',$this->includePath.'Public_footer.html');
 		
 	}
+
+	/*公司员工登录*/
 	public function clogin()
 	{
 		$cid = isset($_GET['cid']) ? intval($_GET['cid']) : 0;
@@ -23,13 +25,13 @@ class IndexAction extends BaseAction{
 		$this->display($this->home_theme.':Index:'.ACTION_NAME);
 	}
 	
-
+	//设置背景
 	public function setBg(){
 			
 		list($msec, $sec) = explode(' ', microtime());
 		//播下随机数发生器种子，用srand函数调用seed函数的返回结果
 		srand((float)$sec);
-		$this->assign("bgindex",rand(1,4));
+		$this->assign("bgindex",rand(1,2));
 	}
 	//
 	public function index(){
@@ -67,7 +69,9 @@ class IndexAction extends BaseAction{
 		$this->assign('uid',$uid);
 		$this->display($this->home_theme.':Index:'.ACTION_NAME);
 	}
-	
+	public function price(){
+		$this->display();
+	}
 	// public function fc(){
 	// 	$this->display($this->home_theme.':Index:'.ACTION_NAME);
 	// }

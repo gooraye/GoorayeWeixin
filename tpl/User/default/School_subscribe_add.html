@@ -100,7 +100,7 @@ function setlatlng(longitude,lat){
       <input id="picurl" type="text" class="span4" name="picurl" class="input-xlarge"  data-validation-engine="validate[required,custom[url]]"
                     data-errormessage-value-missing="必须上传图片!"  data-errormessage-custom-error="如果是手动填写,正确的网址,如: http://www.baidu.com/images/demo.png"  value="{gooraye:$reslist['picurl']}" />
           <span class="help-inline">
-               <script src="{gooraye::STATICS}/upyun.js"></script><a href="###" onclick="upyunPicUpload('picurl',470,240,'{gooraye:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('picurl')">预览</a>
+               <script src="{gooraye::STATICS}/upyun.js"></script><a href="###" onclick="upyunPicUpload('picurl',470,240,'{gooraye:$token}')" class="a_upload  btn btn-small btn-inverse">上传</a> <a href="###" onclick="viewImg('picurl') "  class="btn btn-small btn-inverse">预览</a>
               <span class="help-inline">建议尺寸：宽470像素，高240像素</span>
           </span>
        </div>
@@ -119,7 +119,7 @@ function setlatlng(longitude,lat){
 
           经度 <input type="text" id="longitude"  name="lng" size="14" class="px" value="{gooraye:$reslist['lng']}" />
           纬度 <input type="text" id="latitude" name="lat" size="14"  class="px" value="{gooraye:$reslist['lat']}" />
-          <a href="###" onclick="setlatlng($('#longitude').val(),$('#latitude').val())">在地图中查看/设置</a>
+          <a href="###" onclick="setlatlng($('#longitude').val(),$('#latitude').val())"  class="btn btn-small btn-inverse">在地图中查看/设置</a>
          </div>
     </div>
 
@@ -139,7 +139,7 @@ function setlatlng(longitude,lat){
                     data-errormessage-value-missing="必须上传图片!"  data-errormessage-custom-error="如果是手动填写,正确的网址,如: http://www.baidu.com/images/demo.png"  value="{gooraye:$reslist['headpic']}" />
             <span class="maroon">*</span>
             <span class="help-inline">
-            <a href="###" onclick="upyunPicUpload('headpic',720,400,'{gooraye:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('headpic')">预览</a>
+            <a href="###" onclick="upyunPicUpload('headpic',720,400,'{gooraye:$token}')" class="a_upload  btn btn-small btn-inverse">上传</a> <a href="###" onclick="viewImg('headpic')"  class="btn btn-small btn-inverse">预览</a>
          </div>
 
 

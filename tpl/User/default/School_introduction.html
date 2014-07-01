@@ -67,7 +67,7 @@
                     data-errormessage-value-missing="必须上传回复图片!"  data-errormessage-custom-error="正确的网址,如: http://www.baidu.com/images/demo.png" style="width: 300px;">
 
                          <span class="help-inline">
-                              <a href="###" onclick="upyunPicUpload('head_url',365,158,'{gooraye:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('head_url')">预览</a>
+                              <a href="###" onclick="upyunPicUpload('head_url',365,158,'{gooraye:$token}')" class="a_upload btn btn-small btn-inverse">上传</a> <a href="###" onclick="viewImg('head_url')" class="btn btn-small btn-inverse">预览</a>
                               <span class="maroon">图片大小不超过300K [365*158](仅图文回复显示)</span>
                          </span>
                      </p>
@@ -93,7 +93,7 @@
                                 </volist>
                           </select>
                     <span class="maroon">首页背景幻灯片［建议最多5张，3张效果更好］最低要求尺寸(460*693)</span>
-                     ，如果没有请去：<a href="{gooraye::U('Photo/add',array('token'=>$token,'poid'=>$schoolSet['album_id']))}" class="btn">添加幻灯片</a>&nbsp;
+                     ，如果没有请去：<a href="{gooraye::U('Photo/add',array('token'=>$token,'poid'=>$schoolSet['album_id']))}"  class="btn btn-small btn-inverse">添加幻灯片</a>&nbsp;
                     <span class="tooltips"><img src="/tpl/Home/gooraye/common/images/price_help.png" align="absmiddle"><span><font color='red'>请到[ 3G图集 ]创建相册,然后上传图片.<br/>相册要选择[ 显示此相册 ].建议最多5张，3张效果更好.大小不要超过100KB.</font>
                 </span></span>
                      </td>
@@ -115,7 +115,7 @@
                 <tr>
                     <th width="120">背景音乐</th>
                 <td>
-                    <table><tr><td><a style="width:120px;float:left" id="musicurl_src" class="audio {skin:'blue'}" href="{gooraye:$schoolSet.musicurl|default='http://mp3.weiecn.com/vd.php/17647129/weiecn.mp3'}">音乐播放</a></td><td> <input class="px" name="musicurl" value="{gooraye:$schoolSet.musicurl|default='http://mp3.weiecn.com/vd.php/17647129/weiecn.mp3'}" id="musicurl" style="width:200px;float:left" onchange="$('#musicurl_src').attr('href',this.value"> <a href="###" onclick="chooseFile('musicurl','music')" class="a_upload">选择</a> &nbsp; 不懂点我
+                    <table><tr><td><a style="width:120px;float:left" id="musicurl_src" class="audio {skin:'blue'}" href="{gooraye:$schoolSet.musicurl|default='http://mp3.weiecn.com/vd.php/17647129/weiecn.mp3'}">音乐播放</a></td><td> <input class="px" name="musicurl" value="{gooraye:$schoolSet.musicurl|default='http://mp3.weiecn.com/vd.php/17647129/weiecn.mp3'}" id="musicurl" style="width:200px;float:left" onchange="$('#musicurl_src').attr('href',this.value"> <a href="###" onclick="chooseFile('musicurl','music')" class="a_upload  btn btn-small btn-inverse">选择</a> &nbsp; 不懂点我
                     <span class="tooltips"><img src="/tpl/Home/gooraye/common/images/price_help.png" align="absmiddle"><span><font color='red'>如果不需要背景音乐,<br/>留空即可</font>
                 </span></span></td></tr></table>
                      </td>

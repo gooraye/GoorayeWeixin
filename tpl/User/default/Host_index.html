@@ -34,7 +34,7 @@
 <th width="130">创建时间</th>
  
 <th>外链代码</th>
-<th width="200" class="norightborder">操作</th>
+<th width="260" class="norightborder">操作</th>
 </tr>
 </thead>
 <tbody>
@@ -48,7 +48,7 @@
 <td>{gooraye:$hostlist.tel}</td>
 <td>{gooraye:$hostlist.creattime|date="Y-m-d H:i:s",###}</td> 
 <td>商家订单 {gooraye:$hostlist.id}</td>
-<td class="norightborder"><a href="{gooraye::U('Host/admin',array('id'=>$hostlist['id'],'token'=>$token))}">订单管理</a> <a href="{gooraye::U('Host/set',array('id'=>$hostlist['id'],'token'=>$token))}">商家设置</a> <a href="{gooraye::U('Host/lists',array('id'=>$hostlist['id'],'token'=>$token))}">订单设置</a> <a href="javascript:drop_confirm('您确定要删除吗?', '{gooraye::U('Host/index_del',array('id'=>$hostlist['id'],'token'=>$token))}');">删除</a></td>
+<td class="norightborder"><a class="btn btn-small btn-inverse" href="{gooraye::U('Host/admin',array('id'=>$hostlist['id'],'token'=>$token))}">订单管理</a> <a class="btn btn-small btn-inverse" href="{gooraye::U('Host/set',array('id'=>$hostlist['id'],'token'=>$token))}">商家设置</a> <a class="btn btn-small btn-inverse" href="{gooraye::U('Host/lists',array('id'=>$hostlist['id'],'token'=>$token))}">订单设置</a> <a class="btn btn-small btn-inverse" href="javascript:drop_confirm('您确定要删除吗?', '{gooraye::U('Host/index_del',array('id'=>$hostlist['id'],'token'=>$token))}');">删除</a></td>
 </tr>
 </volist>
 </tbody>

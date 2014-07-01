@@ -61,8 +61,8 @@ font-weight:bold;
               <td>{gooraye:$vo['begintime']|date="Y-m-d",###} / {gooraye:$vo['endtime']|date="Y-m-d",###}</td>
               <td><if condition="$vo['ishow'] eq 1">显示<else/>隐藏</if></td>
               <td class="norightborder">
-              <a href="{gooraye::U('School/cookbook_add',array('id'=>$vo['id'],'type'=>$vo['type']))}" class="btnGreen">编辑</a>
-              <a href="{gooraye::U('School/cookbook_del',array('id'=>$vo['id'],'type'=>$vo['type']))}" onclick="return(confirm('确定要删除吗？'))" class="btnGreen">删除</a> </td>
+              <a href="{gooraye::U('School/cookbook_add',array('id'=>$vo['id'],'type'=>$vo['type']))}" class="btn btn-small btn-inverse">编辑</a>
+              <a href="{gooraye::U('School/cookbook_del',array('id'=>$vo['id'],'type'=>$vo['type']))}" onclick="return(confirm('确定要删除吗？'))" class="btn btn-small btn-inverse">删除</a> </td>
             </tr></tbody>
 </volist>
             </table>

@@ -45,7 +45,7 @@
 
 
 
-                        <td class="norightborder"><a href="###" onclick="showIntroDetail({gooraye:$o.id})">详细</a>  <a class="btn" href="javascript:drop_confirm('您确定要删除吗?', '{gooraye::U('Car/manage_del',array('token'=>$o['token'],'id'=>$o['id'],'car'=>'car'))}');"  title="删除">删除</a></td>
+                        <td class="norightborder"><a class="btn btn-small btn-inverse" href="###" onclick="showIntroDetail({gooraye:$o.id})">详细</a>  <a class="btn" href="javascript:drop_confirm('您确定要删除吗?', '{gooraye::U('Car/manage_del',array('token'=>$o['token'],'id'=>$o['id'],'car'=>'car'))}');"  class="btn btn-small btn-inverse"  title="删除">删除</a></td>
                     </tr>
                 </volist>
                 </tbody>

@@ -112,10 +112,15 @@ padding: 0 20px;
 }
 /* 放到顶部 */
 .usercontent.fixed{
-    position:fixed;
+   /* position:fixed;
     top: 0px;
     left:50%;
-    margin-left: -140px;
+    margin-left: -140px;*/
+    position: absolute;
+top: 0px;
+left: 50%;
+margin-left: -140px;
+margin-top: -50px;
 }
 @media (max-width:940px){
 
@@ -252,5 +257,7 @@ if (window.top != self){
 <!-- contentmanage 块 END -->
 </div>
 <!-- wp 块 END -->
+
+
  <include file="Public:footer"/>
 

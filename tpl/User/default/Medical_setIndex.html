@@ -58,7 +58,7 @@
                          <input type="input" class="px" id="head_url" value="{gooraye:$medicalSet['head_url']}" name="head_url" >
 
                          <span class="help-inline">
-                              <script src="{gooraye::STATICS}/upyun.js"></script><a href="###" onclick="upyunPicUpload('head_url',365,158,'{gooraye:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('head_url')">预览</a>
+                              <script src="{gooraye::STATICS}/upyun.js"></script><a href="###" onclick="upyunPicUpload('head_url',365,158,'{gooraye:$token}')" class="btn btn-small btn-inverse" >上传</a> <a href="###" onclick="viewImg('head_url')" class="btn btn-small btn-inverse" >预览</a>
                               <span class="maroon">图片大小不超过300K (仅图文回复显示)</span>
                          </span>
                      </p>
@@ -83,7 +83,7 @@
                                 </volist>
                           </select>
                     <span class="maroon">如选择：微医疗首页 ［建议最多5张，3张效果更好］</span>
-                     ，如果没有请去：<a href="{gooraye::U('Photo/add',array('token'=>$token,'poid'=>$medicalSet['album_id']))}" class="btn">添加幻灯片</a>
+                     ，如果没有请去：<a href="{gooraye::U('Photo/add',array('token'=>$token,'poid'=>$medicalSet['album_id']))}" class="btn btn-small btn-inverse" >添加幻灯片</a>
                      </td>
                 </tr>
                 <tr>
@@ -120,7 +120,7 @@
                                             </volist>
                                         </select>
                                         <span class="maroon">*</span>
-                                        <span class="help-inline">如果没有，请先到<a href="{gooraye::U('Classify/add',array('token'=>$token))}" class="btn"> <strong><font color='red'>文章分类管理</strong></font></a>添加</span> <span class="maroon">注意：只能添加［图文回复］的［新增图文自定义回复］！</span>
+                                        <span class="help-inline">如果没有，请先到<a href="{gooraye::U('Classify/add',array('token'=>$token))}" class="btn btn-small btn-inverse" > 文章分类管理</a>添加</span> <span class="maroon">注意：只能添加［图文回复］的［新增图文自定义回复］！</span>
                      </td>
                 </tr>
                 <tr>
@@ -133,7 +133,7 @@
                                             </volist>
                                         </select>
                                         <span class="maroon">*</span>
-                                        <span class="help-inline">如果没有，请先到<a href="{gooraye::U('Classify/add',array('token'=>$token))}" class="btn"> <strong><font color='red'>文章分类管理</strong></font></a>添加</span> <span class="maroon">注意：只能添加［图文回复］的［新增图文自定义回复］！</span>
+                                        <span class="help-inline">如果没有，请先到<a href="{gooraye::U('Classify/add',array('token'=>$token))}" class="btn btn-small btn-inverse" > 文章分类管理</a>添加</span> <span class="maroon">注意：只能添加［图文回复］的［新增图文自定义回复］！</span>
                      </td>
                 </tr>
                <tr>
@@ -146,7 +146,7 @@
                                             </volist>
                                         </select>
                                         <span class="maroon">*</span>
-                                        <span class="help-inline">如果没有，请先到<a href="{gooraye::U('Classify/add',array('token'=>$token))}" class="btn"> <strong><font color='red'>文章分类管理</strong></font></a>添加</span> <span class="maroon">注意：只能添加［图文回复］的［新增图文自定义回复］！</span>
+                                        <span class="help-inline">如果没有，请先到<a href="{gooraye::U('Classify/add',array('token'=>$token))}" class="btn btn-small btn-inverse" >文章分类管理</a>添加</span> <span class="maroon">注意：只能添加［图文回复］的［新增图文自定义回复］！</span>
                      </td>
                 </tr>
                  <tr>
@@ -159,7 +159,7 @@
                                             </volist>
                                         </select>
                                         <span class="maroon">*</span>
-                                        <span class="help-inline">如果没有，请先到<a href="{gooraye::U('Classify/add',array('token'=>$token))}" class="btn"> <strong><font color='red'>文章分类管理</strong></font></a>添加</span> <span class="maroon">注意：只能添加［图文回复］的［新增图文自定义回复］！</span>
+                                        <span class="help-inline">如果没有，请先到<a href="{gooraye::U('Classify/add',array('token'=>$token))}" class="btn btn-small btn-inverse" > 文章分类管理</a>添加</span> <span class="maroon">注意：只能添加［图文回复］的［新增图文自定义回复］！</span>
                      </td>
                 </tr>
                  <tr>
@@ -172,7 +172,7 @@
                                             </volist>
                                         </select>
                                         <span class="maroon">*</span>
-                                        <span class="help-inline">如果没有，请先到<a href="{gooraye::U('Classify/add',array('token'=>$token))}" class="btn"> <strong><font color='red'>文章分类管理</strong></font></a>添加</span> <span class="maroon">注意：只能添加［图文回复］的［新增图文自定义回复］！</span>
+                                        <span class="help-inline">如果没有，请先到<a href="{gooraye::U('Classify/add',array('token'=>$token))}" class="btn btn-small btn-inverse" > 文章分类管理</a>添加</span> <span class="maroon">注意：只能添加［图文回复］的［新增图文自定义回复］！</span>
                      </td>
                 </tr>
                  <tr>
@@ -185,7 +185,7 @@
                                             </volist>
                                         </select>
                                         <span class="maroon">*</span>
-                                        <span class="help-inline">如果没有，请先到<a href="{gooraye::U('Classify/add',array('token'=>$token))}" class="btn"> <strong><font color='red'>文章分类管理</strong></font></a>添加</span> <span class="maroon">注意：只能添加［图文回复］的［新增图文自定义回复］！</span>
+                                        <span class="help-inline">如果没有，请先到<a href="{gooraye::U('Classify/add',array('token'=>$token))}" class="btn btn-small btn-inverse" >文章分类管理</a>添加</span> <span class="maroon">注意：只能添加［图文回复］的［新增图文自定义回复］！</span>
                      </td>
                 </tr>
                  <tr>
@@ -198,7 +198,7 @@
                                             </volist>
                                         </select>
                                         <span class="maroon">*</span>
-                                        <span class="help-inline">如果没有，请先到<a href="{gooraye::U('Classify/add',array('token'=>$token))}" class="btn"> <strong><font color='red'>文章分类管理</strong></font></a>添加</span> <span class="maroon">注意：只能添加［图文回复］的［新增图文自定义回复］！</span>
+                                        <span class="help-inline">如果没有，请先到<a href="{gooraye::U('Classify/add',array('token'=>$token))}" class="btn btn-small btn-inverse" >文章分类管理</a>添加</span> <span class="maroon">注意：只能添加［图文回复］的［新增图文自定义回复］！</span>
                      </td>
                 </tr>
 
@@ -212,7 +212,7 @@
                                             </volist>
                                         </select>
                                         <span class="maroon">*</span>
-                                        <span class="help-inline">如果没有，请先到<a href="{gooraye::U('Classify/add',array('token'=>$token))}" class="btn"> <strong><font color='red'>文章分类管理</strong></font></a>添加</span> <span class="maroon">注意：只能添加［图文回复］的［新增图文自定义回复］！</span>
+                                        <span class="help-inline">如果没有，请先到<a href="{gooraye::U('Classify/add',array('token'=>$token))}" class="btn btn-small btn-inverse" >文章分类管理</a>添加</span> <span class="maroon">注意：只能添加［图文回复］的［新增图文自定义回复］！</span>
                      </td>
                 </tr>
 

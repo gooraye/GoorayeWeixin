@@ -43,8 +43,8 @@
                   <TD>{gooraye:$list['xq_name']}</TD>
                   <TD>{gooraye:$list['sd_name']}</TD>
                   <TD>
-<a href="{gooraye::U('School/assess_course',array('token'=>$token,'id'=>$list['id'],'tid'=>$list['tid'],'type'=>'edit'))}"><font color="red">编辑</font></a> &nbsp;&nbsp;
-<a class="btn" href="{gooraye::U('School/del_item',array('token'=>$token,'id'=>$list['id'],'deltype'=>'curriculum'))}" onclick="return(confirm('确定要删除吗？'))"  title="删除"><font color="#CCC7C7">删除</font></a>
+<a  class="btn btn-small btn-inverse" href="{gooraye::U('School/assess_course',array('token'=>$token,'id'=>$list['id'],'tid'=>$list['tid'],'type'=>'edit'))}">编辑</a> &nbsp;&nbsp;
+<a  class="btn btn-small btn-inverse" href="{gooraye::U('School/del_item',array('token'=>$token,'id'=>$list['id'],'deltype'=>'curriculum'))}" onclick="return(confirm('确定要删除吗？'))"  title="删除">删除</a>
                  </TD>
                 </TR>
 </volist>

@@ -9,14 +9,14 @@
 <input type="hidden" name="ac" value="hotels-list">
 <input type="hidden" name="id" value="9878">
 <input type="hidden" name="wxid" value="gh_423dwjkewad">
-<input type="submit" value="搜索" id="msgSearchBtn" href="" class="btnGrayS" title="搜索">
+<input type="submit" value="搜索" id="msgSearchBtn" href="" class="btn btn-small btn-inverse" title="搜索">
 </form>
 </div>
 <div class="clr"></div>
 </div>
 
 <div class="cLine">
-<div class="pageNavigator left"> <a href="{gooraye::U('Selfform/add',array('token'=>$token))}" title="添加" class="btnGrayS vm bigbtn"><img src="{gooraye::RES}/images/product/add.png" width="16" class="vm">添加</a></div>
+<div class="pageNavigator left"> <a href="{gooraye::U('Selfform/add',array('token'=>$token))}" title="添加" class="btnGrayS vm bigbtn"><i class="fa fa-plus"></i>添加</a></div>
 <div class="clr"></div>
 </div>
 <div class="msgWrap">
@@ -43,7 +43,7 @@
 <td>{gooraye:$item.keyword}</td>
 <td>{gooraye:$item.time|date="Y-m-d H:i:s",###}</td> 
 <td>万能表单 {gooraye:$item.id}</td> 
-<td class="norightborder"><a href="{gooraye::U('Selfform/infos',array('id'=>$item['id'],'token'=>$token))}">提交信息管理</a>&nbsp;&nbsp;<a href="{gooraye::U('User/Selfform/inputs',array('id'=>$item['id'],'token'=>$token))}">输入项管理</a>&nbsp;&nbsp;<a href="{gooraye::U('Selfform/set',array('id'=>$item['id'],'token'=>$token))}">修改</a>&nbsp;&nbsp;<a href="javascript:drop_confirm('您确定要删除吗?', '{gooraye::U('Selfform/del',array('id'=>$item['id'],'token'=>$token))}');">删除</a></td>
+<td class="norightborder"><a class="btn btn-small btn-inverse" href="{gooraye::U('Selfform/infos',array('id'=>$item['id'],'token'=>$token))}">提交信息管理</a>&nbsp;&nbsp;<a href="{gooraye::U('User/Selfform/inputs',array('id'=>$item['id'],'token'=>$token))}" class="btn btn-small btn-inverse">输入项管理</a>&nbsp;&nbsp;<a href="{gooraye::U('Selfform/set',array('id'=>$item['id'],'token'=>$token))}" class="btn btn-small btn-inverse">修改</a>&nbsp;&nbsp;<a href="javascript:drop_confirm('您确定要删除吗?', '{gooraye::U('Selfform/del',array('id'=>$item['id'],'token'=>$token))}');" class="btn btn-small btn-inverse">删除</a></td>
 </tr>
 </volist>
 </tbody>

@@ -27,7 +27,7 @@
     <form method="post" id="formID" action="{gooraye::U('School/search',array('token'=>$token))}">
         <input type="hidden" name="searchkey[key]" value="students">
         姓名:<input size="20" value=""  placeholder="请输入学员姓名"  name="searchkey[name]" class="px">&nbsp;&nbsp;&nbsp;手机号:<input size="20" value="" name="searchkey[phone]"placeholder="请输入学员电话" class="px">&nbsp;&nbsp;&nbsp;
-        <button type="submit" name="appidsubmit"  value="true" class="btnGreen vm" ><strong>查询</strong></button>
+        <button type="submit" name="appidsubmit"  value="true" class="btn btn-small btn-inverse" ><strong>查询</strong></button>
     </form>
  </div>
           <div class="msgWrap">
@@ -69,9 +69,9 @@
                   <TD><if condition="$list['seffectivetime'] neq '0000-00-00'">{gooraye:$list['seffectivetime']}<else/>---</if></TD>
                  <TD><if condition="$list['stheendtime'] neq '0000-00-00'">{gooraye:$list['stheendtime']}<else/>---</if></TD>
                  <TD>
-<a href="{gooraye::U('School/student_add',array('token'=>$token,'id'=>$list['id'],'type'=>'edit'))}"><font color="red">编辑</font></a>
-<a class="btn" href="{gooraye::U('School/del_item',array('token'=>$vo['token'],'id'=>$list['id'],'deltype'=>'students'))}" onclick="return(confirm('确定要删除吗？'))"  title="删除"><font color="#CCC7C7">删除</font></a>
-<a href="{gooraye::U('School/student_score',array('token'=>$token,'id'=>$list['id']))}">录成绩</a>
+<a class="btn btn-small btn-inverse" href="{gooraye::U('School/student_add',array('token'=>$token,'id'=>$list['id'],'type'=>'edit'))}">编辑</a>
+<a class="btn btn-small btn-inverse" href="{gooraye::U('School/del_item',array('token'=>$vo['token'],'id'=>$list['id'],'deltype'=>'students'))}" onclick="return(confirm('确定要删除吗？'))"   title="删除">删除</a>
+<a class="btn btn-small btn-inverse" href="{gooraye::U('School/student_score',array('token'=>$token,'id'=>$list['id']))}">录成绩</a>
                  </TD>
                 </TR>
 </volist>

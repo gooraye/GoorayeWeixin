@@ -72,7 +72,7 @@ class WeixinAction extends Action{
                 }elseif(trim($follow_data['keyword']) == '我要上网'){
                     return $this -> wysw();
                 }
-                addWeixinLog($follow_data,'subscribe关注时');
+                // addWeixinLog($follow_data,'subscribe关注时');
                 return $this -> keyword($follow_data['keyword']);
             }else{
                 return array(html_entity_decode($follow_data['content']), 'text');
@@ -787,6 +787,8 @@ private function shouye($name){
 }
 //健康
 private function jiankang($data){
+
+    $this -> behaviordata('jiankang', '', '1');
     if(empty($data))return '主人，' . $this -> my . "提醒您\n正确的查询方式是:\n健康+身高,+体重\n例如：健康170,65";
     $height = $data[1] / 100;
     $weight = $data[2];
@@ -813,6 +815,7 @@ private function jiankang($data){
 }
 //附近 
 private function fujin($keyword){
+    $this -> behaviordata('fujin', '', '1');
     $keyword = implode('', $keyword);
     if($keyword == false){
         return $this -> my . "很难过,无法识别主人的指令,正确使用方法是:输入【附近+关键词】当" . $this -> my . '提醒您输入地理位置的时候就OK啦';
@@ -834,6 +837,7 @@ private function fujin($keyword){
 }
 //我要上网
 private function wysw(){
+    $this -> behaviordata('wysw', '', '1');
     $thisItem = M('Router_config') -> where(array('token' => $this -> token)) -> find();
     return array(array(array($thisItem['title'], $thisItem['info'], $thisItem['picurl'], $routerUrl)), 'news');
 }
@@ -856,6 +860,7 @@ private function recordLastRequest($key, $msgtype = 'text'){
 }
 //地图
 function map($x, $y){
+    $this -> behaviordata('map', '', '1');
     $transUrl = 'http://api.map.baidu.com/ag/coord/convert?from=2&to=4&x=' . $x . '&y=' . $y;
     $json = Http :: fsockopenDownload($transUrl);
     if($json == false){
@@ -931,6 +936,7 @@ function map($x, $y){
 }
 //算命
 private function suanming($name){
+    $this -> behaviordata('suanming', '', '1');
     $name = implode('', $name);
     if(empty($name)){
         return '主人' . $this -> my . '提醒您正确的使用方法是[算命+姓名]';
@@ -941,6 +947,7 @@ private function suanming($name){
 }
 /* 天气 */
 private function tianqi($n){
+    $this -> behaviordata('tianqi', '', '1');
     $name = implode('', $n);
     if ($name == ''){
         $name = '绍兴';
@@ -954,9 +961,8 @@ private function tianqi($n){
 
 /* 快递 */
 private function kuaidi($data){
-    addWeixinLog($data ,"kuaidi");
+    $this -> behaviordata('kuaidi', '', '1');
     $data = explode(" ",$data);
-    addWeixinLog($data[0]." ".$data[1] ,"kuaidi");
     if(count($data) >= 2){
         // $data[0] = str_replace("快递", "", $data[0]);
         // $data[1] = str_replace("快递", "", $data[1]);
@@ -980,6 +986,7 @@ private function langdu($data){
 /* 音乐 */
 private function yinle($name){
 
+    $this -> behaviordata('yinle', '', '1');
      $music = $this -> getMusicInfo($name);
      // addWeixinLog($music,"yinle 结果");
       return $music;
@@ -987,12 +994,7 @@ private function yinle($name){
 }
 /* 歌词 */
 function geci($n){
-    $name = implode('', $n);
-
-    @$str = $this -> apiServer . '/pgicms_api/api.php?key=free&server_key=' . C('server_key') . '&server_topdomain=' . C('server_topdomain') . '&appid=0&msg=' . urlencode('歌词' . $name);
-    $json = json_decode(file_get_contents($str));
-    $str = str_replace('{br}', "\n", $json -> content);
-    return str_replace('mzxing_com', 'gooraye', $str);
+    return "";
 }
 /* 域名 
     暂时不支持
@@ -1003,6 +1005,8 @@ private function yuming($n){
 }
 /* 手机 */
 private function shouji($n){
+
+    $this -> behaviordata('shouji', '', '1');
     $name = implode('', $n);
      //addWeixinLog( $name.C('k780.Appkey'),C('k780.Sign'));
     $str ='http://api.k780.com:88/?app=phone.get&phone='.$name.'&appkey='.C('k780.Appkey').'&sign='.C('k780.Sign').'&format=json';
@@ -1025,6 +1029,7 @@ private function shouji($n){
 }
 //身份证查询
 private function shenfenzheng($n){
+    $this -> behaviordata('shenfenzheng', '', '1');
     $name = implode('', $n);
     if(count($name) > 1){
         $this -> error_msg($name) ;
@@ -1048,6 +1053,7 @@ private function shenfenzheng($n){
 }
 //公交
 private function gongjiao($data){
+    $this -> behaviordata('gongjiao', '', '1');
     $data = array_merge($data);
     if(count($data) < 2){
         $this -> error_msg() ;
@@ -1070,6 +1076,7 @@ private function gongjiao($data){
 }
 //火车
 private function huoche($data, $time = ''){
+    $this -> behaviordata('huoche', '', '1');
     $data = array_merge($data);
     $data[2] = date('Y', time()) . $time;
     if(count($data) != 3){
@@ -1102,6 +1109,7 @@ private function huoche($data, $time = ''){
 // 第二种 翻译 我爱你
 private function fanyi($name){
     
+    $this -> behaviordata('fanyi', '', '1');
     $name = array_merge($name);
     // addWeixinLog($name,"翻译".count($name));
     if(count($name) >= 2){
@@ -1147,6 +1155,7 @@ private function fanyi($name){
 //彩票
 private function caipiao($name){
 
+    $this -> behaviordata('caipiao', '', '1');
     // $name = array_merge($name);
     $date = '';
 
@@ -1173,6 +1182,7 @@ private function caipiao($name){
 }
 //周公解梦
 private function mengjian($name){
+    $this -> behaviordata('mengjian', '', '1');
     $name = array_merge($name);
     if(empty($name)) return '周公睡着了,无法解此梦,这年头神仙也偷懒';
 
@@ -1193,6 +1203,7 @@ function getmp3($data){
 }
 //笑话
 function xiaohua(){
+    $this -> behaviordata('xiaohua', '', '1');
     $name = implode('', $n);
     $str ="http://apix.sinaapp.com/joke/?appkey=gooraye";    
     $str = file_get_contents($str);
@@ -1200,11 +1211,13 @@ function xiaohua(){
 }
 //聊天
 private function liaotian($name){
+    $this -> behaviordata('liaotian', '', '1');
     $name = array_merge($name);
     $this -> chat($name[0]);
 }
-//聊天
+//智能机器人聊天
 private function chat($name){
+    $this -> behaviordata('chat', '', '1');
     $function = M('Function') -> where(array('funname' => 'liaotian')) -> find();
     if (!$function['status']){
         return '';
@@ -1227,7 +1240,7 @@ private function chat($name){
         return "【" . C('site_name') . "】\n" . C('site_name') . "\n【" . C('site_name') . "服务宗旨】\n化繁为简,让菜鸟也能使用强大的系统!";
     }
 
-    $str = chat_robot($name);
+    // $str = chat_robot($name);
 
     // addWeixinLog($str,"chat_robot");
 
@@ -1545,6 +1558,7 @@ private function getWeatherInfo($cityName)
 //获取音乐信息
 private function getMusicInfo($musicname)
 {
+    
      // addWeixinLog($name,"getMusicInfo");
      $musicname = trim($musicname);
      $music = "没找到相关歌曲! V V ";

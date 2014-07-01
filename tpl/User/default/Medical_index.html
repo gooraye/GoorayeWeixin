@@ -62,7 +62,7 @@ display: none;
       <input id="picurl" type="text" class="span4" name="picurl" class="input-xlarge"  schoolSet  value="{gooraye:$reslist['picurl']|default='tpl/User/default/common/images/medical_default.png'}" data-validation-engine="validate[required,custom[url]]"
                     data-errormessage-value-missing="必须上传图片!"  data-errormessage-custom-error="如果是手动填写,正确的网址,如: http://www.baidu.com/images/demo.png"/>
           <span class="help-inline">
-               <script src="{gooraye::STATICS}/upyun.js"></script><a href="###" onclick="upyunPicUpload('picurl',720,400,'{gooraye:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('picurl')">预览</a>
+               <script src="{gooraye::STATICS}/upyun.js"></script><a href="###" onclick="upyunPicUpload('picurl',720,400,'{gooraye:$token}')" class="a_upload btn btn-small btn-inverse">上传</a> <a href="###" onclick="viewImg('picurl')" class="btn btn-small btn-inverse">预览</a>
               <span class="help-inline">建议尺寸：宽720像素，高400像素</span>
           </span>
        </div>
@@ -76,7 +76,7 @@ display: none;
                     data-errormessage-value-missing="必须上传图片!"  data-errormessage-custom-error="如果是手动填写,正确的网址,如: http://www.baidu.com/images/demo.png"/>
             <span class="maroon">*</span>
             <span class="help-inline">
-            <a href="###" onclick="upyunPicUpload('headpic',640,109,'{gooraye:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('headpic')">预览</a>
+            <a href="###" onclick="upyunPicUpload('headpic',640,109,'{gooraye:$token}')" class="a_upload btn btn-small btn-inverse">上传</a> <a href="###" onclick="viewImg('headpic')" class="btn btn-small btn-inverse">预览</a>
             <span class="help-inline">建议尺寸：宽640像素，高109像素</span>
          </div>
         <script>
@@ -98,7 +98,7 @@ function setlatlng(longitude,latitude){
           <span class="maroon">注意：这个只是模糊定位，准确位置请地图上标注！</span><br />
                 经度 <input type="text" id="longitude"  name="lng" size="14" class="span4" value="{gooraye:$reslist['lng']}" />
                 纬度 <input type="text"  name="lat" size="14" id="latitude" class="span4" value="{gooraye:$reslist['lat']}" />
-                <a href="###" onclick="setlatlng($('#longitude').val(),$('#latitude').val())">在地图中查看/设置</a>
+                <a class="btn btn-small btn-inverse" href="###" onclick="setlatlng($('#longitude').val(),$('#latitude').val())">在地图中查看/设置</a>
          </div>
     </div>
 
@@ -301,7 +301,7 @@ function sdoaddit(i) {
     <input name="value3" class="px" id="value1" type="text" value="{gooraye:$reslist['value3']}"></td>
 
 <td>
-<p><if condition="$reslist['txt4'] eq ''"><a class="btnGrayS vm" id="add2" href="javascript:doaddit(2)">添加</a></if>　<a href="javascript:dodelit(1)">删除</a><span class="tooltips"><img src="/tpl/Home/gooraye/common/images/price_help.png" align="absmiddle"><span>                 <font color='red'>如果添加的项想删除,<br/>把[字段名称]\[初始内容]里的值清空<br/>提交即可</font>
+<p><if condition="$reslist['txt4'] eq ''"><a class="btn btn-small btn-inverse" id="add2" href="javascript:doaddit(2)">添加</a></if>　<a class="btn btn-small btn-inverse" href="javascript:dodelit(1)">删除</a><span class="tooltips"><img src="/tpl/Home/gooraye/common/images/price_help.png" align="absmiddle"><span>                 <font color='red'>如果添加的项想删除,<br/>把[字段名称]\[初始内容]里的值清空<br/>提交即可</font>
                 </span></span></p>
 </td> </tr>
                                             <tr id="trtxt2" <if condition="$reslist['txt4'] eq ''"> style="display: none"</if> >
@@ -311,7 +311,7 @@ function sdoaddit(i) {
                                                 <td>
                                                     <input name="value4" class="px" id="value2" type="text" value="{gooraye:$reslist['value4']}"></td>
                                                 <td>
-                                                    <p><if condition="$reslist['txt5'] eq ''"><a class="btnGrayS vm" id="add3" href="javascript:doaddit(3)">添加</a> </if>　<a href="javascript:dodelit(2)">删除</a> <span class="tooltips"><img src="/tpl/Home/gooraye/common/images/price_help.png" align="absmiddle"><span>                 <font color='red'>如果添加的项想删除,<br/>把[字段名称]\[初始内容]里的值清空<br/>提交即可</font>
+                                                    <p><if condition="$reslist['txt5'] eq ''"><a class="btn btn-small btn-inverse" id="add3" href="javascript:doaddit(3)">添加</a> </if>　<a href="javascript:dodelit(2)" class="btn btn-small btn-inverse">删除</a> <span class="tooltips"><img src="/tpl/Home/gooraye/common/images/price_help.png" align="absmiddle"><span>                 <font color='red'>如果添加的项想删除,<br/>把[字段名称]\[初始内容]里的值清空<br/>提交即可</font>
                 </span></span></p>
                                                 </td>
                                             </tr>
@@ -323,7 +323,7 @@ function sdoaddit(i) {
                                                     <input name="value5" class="px" id="value3" type="text" value="{gooraye:$reslist['value5']}"></td>
 
                                                 <td>
-                                                    <p><a href="javascript:dodelit(3)">删除</a><span class="tooltips"><img src="/tpl/Home/gooraye/common/images/price_help.png" align="absmiddle"><span>                 <font color='red'>如果添加的项想删除,<br/>把[字段名称]\[初始内容]里的值清空<br/>提交即可</font>
+                                                    <p><a href="javascript:dodelit(3)" class="btn btn-small btn-inverse">删除</a><span class="tooltips"><img src="/tpl/Home/gooraye/common/images/price_help.png" align="absmiddle"><span>                 <font color='red'>如果添加的项想删除,<br/>把[字段名称]\[初始内容]里的值清空<br/>提交即可</font>
                 </span></span></p>
                                                 </td>
                                             </tr>
@@ -369,7 +369,7 @@ function sdoaddit(i) {
                                                     <input name="svalue4" class="px" id="svalue" type="text" value="{gooraye:$reslist['svalue4']}" placeholder="选项之间以英文“|”分割"></td>
 
                                                 <td>
-                                                    <p><if condition="$reslist['select5'] eq ''"><a class="btnGrayS vm" id="sadd2" href="javascript:sdoaddit(2)">添加</a></if>　<a href="javascript:sdodelit(1)">删除</a><span class="tooltips"><img src="/tpl/Home/gooraye/common/images/price_help.png" align="absmiddle"><span>                 <font color='red'>如果添加的项想删除,<br/>把[字段名称]\[初始内容]里的值清空<br/>提交即可</font>
+                                                    <p><if condition="$reslist['select5'] eq ''"><a class="btn btn-small btn-inverse" id="sadd2" href="javascript:sdoaddit(2)">添加</a></if>　<a href="javascript:sdodelit(1)" class="btn btn-small btn-inverse">删除</a><span class="tooltips"><img src="/tpl/Home/gooraye/common/images/price_help.png" align="absmiddle"><span>                 <font color='red'>如果添加的项想删除,<br/>把[字段名称]\[初始内容]里的值清空<br/>提交即可</font>
                 </span></span></p>
                                                 </td>
                                             </tr>
@@ -381,7 +381,7 @@ function sdoaddit(i) {
                                                     <input name="svalue5" id="svalue2" class="px" type="text" value="{gooraye:$reslist['svalue5']}" placeholder="选项之间以英文“|”分割"></td>
 
                                                 <td>
-                                                    <p><a href="javascript:sdodelit(2)">删除</a><span class="tooltips"><img src="/tpl/Home/gooraye/common/images/price_help.png" align="absmiddle"><span>                 <font color='red'>如果添加的项想删除,<br/>把[字段名称]\[初始内容]里的值清空<br/>提交即可</font>
+                                                    <p><a href="javascript:sdodelit(2)" class="btn btn-small btn-inverse">删除</a><span class="tooltips"><img src="/tpl/Home/gooraye/common/images/price_help.png" align="absmiddle"><span>                 <font color='red'>如果添加的项想删除,<br/>把[字段名称]\[初始内容]里的值清空<br/>提交即可</font>
                 </span></span></p>
                                                 </td>
                                             </tr>

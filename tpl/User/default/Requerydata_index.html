@@ -18,9 +18,9 @@
             <option value="11" <if condition="$month eq 11">selected</if>>11月</option>
             <option value="12" <if condition="$month eq 12">selected</if>>12月</option>
             </select></h4>
-                <script>
+<script>
 function doit(month){
-location.href= '/index.php?g=User&m=Requerydata&a=index&token={gooraye:$token}&month='+month+'&year='+$('#year').val();
+	location.href= '{gooraye::U('User/Requerydata/index',array('token'=>getToken()))}'+'&month='+month+'&year='+$('#year').val();
 }
 </script>
 <div class="msgWrap">

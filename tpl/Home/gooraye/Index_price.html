@@ -1,146 +1,659 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-<title>资费说明－{gooraye:$f_siteTitle}</title>
-<meta name="keywords" content="微通汇，微信帮手 微信公众账号 微信公众平台 微信公众账号开发 微信二次开发 微信接口开发 微信托管服务 微信营销 微信公众平台接口开发"/>
-<meta name="description" content="微通汇，微信公众平台接口开发、托管、营销活动、二次开发"/>
-<include file="$includeHeaderPath"/>
-<link rel="stylesheet" type="text/css" href="{gooraye::RES}/css/style-price.css"/>
-<div class="banner jbanner"></div>
-<div class="main">
-   <div class="pos">&nbsp;&nbsp;&nbsp;当前位置: <a href="{gooraye:$f_siteUrl}">{gooraye:$f_siteName}</a> &raquo; <a href="{gooraye:$f_siteUrl}">资费说明</a></div>
-<div class="abody" style="margin-top:0;padding-top:0">
-             <div class="qtcontent">
-        <div class="document faq" style="margin-top:0;padding-top:0">
-            <div class="normalTitle"><h2>资费</h2></div>
-            <div class="normalContent">
-                <div class="section lastSection">
-                	<table width="100%" border="0" cellpadding="0" cellspacing="0" class=" ListProduct8">
-<thead>
-                			<tr>
-                				<th class="lefttitle"><strong>微信号流量套餐</strong></th>
-                				<goorayelist array="groups" foreach="g">
-                				<th width="100" <goorayeif where="$i eq $count"> class="norightborder"</goorayeif>>{gooraye:$g.name}</th>
-                				</goorayelist>
-               				</tr>
-</thead>
-<tbody>
-                			<tr>
-                				<td height="60" valign="middle" class="lefttitle">VIP价格
-                					<a  class="tooltips" ><img src="{gooraye::RES}/images/price_help.png" align="absmiddle" /><span>
-<p>VIP只是流量套餐！</p>
-</span></a></td>
-<goorayelist array="prices" foreach="g">
-                				<td <goorayeif where="$i eq $count"> class="norightborder"</goorayeif>><span class="price">{gooraye:$g}<p>元 / 月</p></span></td>
-                				</goorayelist>
-               				</tr>
-               				<tr>
-                				<td height="33" valign="middle" class="lefttitle">允许创建公众号数量
-                					<a  class="tooltips" ><img src="{gooraye::RES}/images/price_help.png" align="absmiddle" /><span>
-<p>最多允许创建公众号的数量</p>
-</span></a></td>
-<goorayelist array="wechatNums" foreach="g">
-                				<td <goorayeif where="$i eq $count"> class="norightborder"</goorayeif>>{gooraye:$g}</td>
-                				</goorayelist>
-               				</tr>
-                			<tr>
-                				<td height="33" valign="middle" class="lefttitle">自定义图文条数
-                					<a  class="tooltips" ><img src="{gooraye::RES}/images/price_help.png" align="absmiddle" /><span>
-<p>每个月可以创建的图文回复数量</p>
-</span></a></td>
-<goorayelist array="diynums" foreach="g">
-                				<td <goorayeif where="$i eq $count"> class="norightborder"</goorayeif>>{gooraye:$g}</td>
-                				</goorayelist>
-               				</tr>
-                			<tr>
-                				<td height="33" valign="middle" class="lefttitle">请求数
-                					<a  class="tooltips" ><img src="{gooraye::RES}/images/price_help.png" align="absmiddle" /><span>
-<p>每个月可以进行多少次回复请求</p>
-</span></a></td>
-<goorayelist array="connectnums" foreach="g">
-                				<td <goorayeif where="$i eq $count"> class="norightborder"</goorayeif>>{gooraye:$g}</td>
-                				</goorayelist>
-               				</tr>
-                		
-               				</tr>
-                            <tr >
-                				<td height="33" class="lefttitle">每月活动创建费次数<span class="tooltips"><img src="{gooraye::RES}/images/price_help.png" align="absmiddle" />
-<span>
-<p><strong>什么是活动创建数量？</strong></p>
-<p>每月允许创建的大转盘等互动活动数量</p>
-</span></span></td>
-                			<goorayelist array="activitynums" foreach="g">
-                				<td <goorayeif where="$i eq $count"> class="norightborder"</goorayeif>>{gooraye:$g}</td>
-                				</goorayelist>
-               				</tr>
-               				<tr >
-                				<td height="33" class="lefttitle">每月会员卡开卡数量<span class="tooltips"><img src="{gooraye::RES}/images/price_help.png" align="absmiddle" />
-<span>
-<p><strong>什么是每月会员卡开卡数量？</strong></p>
-<p>每个月允许创建多少张会员卡提供给会员领取</p>
-</span></span></td>
-                			<goorayelist array="create_card_nums" foreach="g">
-                				<td <goorayeif where="$i eq $count"> class="norightborder"</goorayeif>>{gooraye:$g}</td>
-                				</goorayelist>
-               				</tr>
-                             <tr >
-                				<td height="33" class="lefttitle">自定义版权信息<span class="tooltips"><img src="{gooraye::RES}/images/price_help.png" align="absmiddle" />
-<span>
-<p><strong>自定义版权信息？</strong></p>
-<p>如果不能自定义，将在微网站底部显示页面有:此页面是由【<a href="{gooraye:$f_siteUrl}">{gooraye:$f_siteName}接口平台</a>】系统生成 版权信息</p>
-</span></span></td>
-<goorayelist array="copyrights" foreach="g">
-<td <goorayeif where="$i eq $count"> class="norightborder"</goorayeif>><goorayeif where="g">可以<else/>不能</goorayeif></td>
-                				</goorayelist>
-               				</tr>
-                			<tr >
-                				<td height="50" class="lefttitle"> <span class="red">购买VIP套餐</span><span class="tooltips"><img src="{gooraye::RES}/images/price_help.png" align="absmiddle" />
-<span>
-<p><strong>简单购买流程提醒</strong></p>
-<p></p>
-</span></span></td>
-<goorayelist array="create_card_nums" foreach="g">
-                				<td <goorayeif where="$i eq $count"> class="norightborder"</goorayeif>><a class="btnGreens"  href="{gooraye::U('User/Alipay/index',array('gid'=>0))}"><em>立即充值</em></a></td>
-                				</goorayelist>
-               				</tr>
-                			<tr>
-                				<td height="36" class="lefttitle"><strong>功能列表及套餐对比</strong></td>
-                				<goorayelist array="create_card_nums" foreach="g">
-                				<td <goorayeif where="$i eq $count"> class="norightborder"</goorayeif>></td>
-                				</goorayelist>
-               				</tr>
-               				<goorayelist foreach="f" array="funs">
-                			<tr>
-                				<td class="lefttitle" height="33" valign="middle"><a href="###">{gooraye:$f.name}</a> <a class="tooltips" href="###"><img src="{gooraye::RES}/images/price_help.png" align="absmiddle" />
-<span>
-<p>{gooraye:$f.info}</p>
-</span></a></td>
-<?php 
-if ($f['access']){
-	$i=1;
-	foreach ($f['access'] as $v){
-		
-
-?>
-                				<td class="<?php if ($v){echo 'checked';}else{echo 'error';}?><?php if ($i==$count){echo ' norightborder';}?>">&nbsp;</td>
- <?php 
- $i++;
- 	}
-}
-?>
-                				</tr>
-                				</goorayelist>
-</tbody>
-               			</table>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <title>各版本</title>
+    <style type="text/css">
+            html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video
+            {
+                margin: 0;
+                padding: 0;
+                border: 0;
+                font-size: 12px;
+            }
+    </style>   
+    <link href="{gooraye::RES}/css/version.css" rel="stylesheet" type="text/css" />    
+</head>
+<body>
+    <div id="mainContent" style="width: 100%;">
+    <div class="newPay">
+        <div class="edit">
+            <div class="editTitle">
+                <table cellpadding="0" cellspacing="0" width="100%">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <h3>
+                                    版本对比</h3>
+                                <p>
+                                    有"
+                                    <img align="absmiddle" alt="" src="{gooraye::RES}/images/add.jpg" />
+                                    "标记代表拥有此功能，"
+                                    <img align="absmiddle" alt="" src="{gooraye::RES}/images/del.jpg" />
+                                    "代表无此功能
+                                </p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div style="height: 20px;">
+            </div>
+            <div class="editionAll">
+                <table cellpadding="0" cellspacing="0" class="edition" width="100%">
+                    <tr>
+                        <td colspan="2">
+                        </td>
+                        <td class="td1">
+                            <b style="color: #119877;">标准版</b>
+                        </td>
+                        <td class="td2">
+                            <b style="color: #1f57be;">会员版</b>
+                        </td>
+                        <td class="td3">
+                            <b style="color: #e96c10;">至尊版</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th width="15%">
+                            <p>
+                                <b>功能列表</b></p>
+                            <p>
+                                （<em>绿色</em>为核心功能）</p>
+                        </th>
+                        <th width="40%">
+                            <b>功能说明</b>
+                        </th>
+                        <th width="15%" style="background: #7fcdad;">
+                            <div class="xbuy2"></div>
+                        </th>
+                        <th width="15%" style="background: #6a99d5;">
+                                <!-- <div class="xbuy"><a href="javascript:void(0)" onclick="ChkDaiLi('会员版',1)" class="active">立即升级</a></div> -->
+                        </th>
+                        <th width="15%" style="background: #ebbe68;">
+                                <!-- <div class="xbuy"><a href="javascript:void(0)" onclick="ChkDaiLi('至尊版',2)" class="active">立即升级</a></div> -->
+                        </th>
+                    </tr>
+                </table>
+                <div class="editionScroll">
+                    <table cellpadding="0" cellspacing="0" class="edition" width="100%">
+                        <tr>
+                            <td width="15%">
+                                <strong>微菜单</strong>
+                            </td>
+                            <td width="40%">
+                                <p>
+                                    人性化引导，让客户更容易使用。</p>
+                                <p>
+                                    订阅号使用指令菜单；服务号使用底部菜单。</p>
+                            </td>
+                            <td width="15%">
+                                <img align="absmiddle" alt="" src="{gooraye::RES}/images/add.jpg" />
+                            </td>
+                            <td width="15%">
+                                <img align="absmiddle" alt="" src="{gooraye::RES}/images/add.jpg" />
+                            </td>
+                            <td width="15%">
+                                <img align="absmiddle" alt="" src="{gooraye::RES}/images/add.jpg" />
+                            </td>
+                        </tr>
+                        <tr class="back">
+                            <td>
+                                <strong>微官网</strong>
+                            </td>
+                            <td>
+                                在手机里面展示您的企业官网，模版丰富多彩。
+                            </td>
+                            <td>
+                                <em>既定标准模版5套</em>
+                            </td>
+                            <td>
+                                <em>标准模板不限</em>
+                            </td>
+                            <td>
+                                <em>标准模板不限</em>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <strong style="color: #313131;">微商品</strong>
+                            </td>
+                            <td>
+                                发布和展示您的企业产品
+                            </td>
+                            <td>
+                                <em>有，5个以内</em>
+                            </td>
+                            <td>
+                                <em>有，不限</em>
+                            </td>
+                            <td>
+                                <em>有，不限</em>
+                            </td>
+                        </tr>
+                        <tr class="back">
+                            <td>
+                                <strong style="color: #313131;">微请求</strong>
+                            </td>
+                            <td>
+                                与微信API对接交互
+                            </td>
+                            <td>
+                                <em>每月3万条</em>
+                            </td>
+                            <td>
+                                <em>每月6万条</em>
+                            </td>
+                            <td>
+                                <em>每月18万条</em>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <strong style="color: #313131;">微回复</strong>
+                            </td>
+                            <td>
+                                文字回复、图文回复、语音回复、LBS回复
+                            </td>
+                            <td>
+                                <em>可设置200条</em>
+                            </td>
+                            <td>
+                                <em>可设置800条</em>
+                            </td>
+                            <td>
+                                <em>可设置3000条</em>
+                            </td>
+                        </tr>
+                        <tr class="back">
+                            <td>
+                                <strong style="color: #313131;">微导航</strong>
+                            </td>
+                            <td>
+                                帮助客户立刻知道如何到达您这里
+                            </td>
+                            <td>
+                                <img align="absmiddle" alt="" src="{gooraye::RES}/images/add.jpg" />
+                            </td>
+                            <td>
+                                <img align="absmiddle" alt="" src="{gooraye::RES}/images/add.jpg" />
+                            </td>
+                            <td>
+                                <img align="absmiddle" alt="" src="{gooraye::RES}/images/add.jpg" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <strong style="color: #313131;">微拨号</strong>
+                            </td>
+                            <td>
+                                一键拨号，直通企业客服热线。
+                            </td>
+                            <td>
+                                <img align="absmiddle" alt="" src="{gooraye::RES}/images/add.jpg" />
+                            </td>
+                            <td>
+                                <img align="absmiddle" alt="" src="{gooraye::RES}/images/add.jpg" />
+                            </td>
+                            <td>
+                                <img align="absmiddle" alt="" src="{gooraye::RES}/images/add.jpg" />
+                            </td>
+                        </tr>
+                        <tr class="back">
+                            <td>
+                                <strong>微抽奖</strong>
+                            </td>
+                            <td>
+                                刮刮乐、大转盘，让客户体验愉快的抽奖过程
+                            </td>
+                            <td>
+                                <img align="absmiddle" alt="" src="{gooraye::RES}/images/add.jpg" />
+                            </td>
+                            <td>
+                                <img align="absmiddle" alt="" src="{gooraye::RES}/images/add.jpg" />
+                            </td>
+                            <td>
+                                <img align="absmiddle" alt="" src="{gooraye::RES}/images/add.jpg" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <strong style="color: #313131;">微应用</strong>
+                            </td>
+                            <td>
+                                城市天气、彩票查询、百度百科、快递查询、即时翻译、火车查询、航班查询、股票查询、周边商家
+                            </td>
+                            <td>
+                                <img align="absmiddle" alt="" src="{gooraye::RES}/images/add.jpg" />
+                            </td>
+                            <td>
+                                <img align="absmiddle" alt="" src="{gooraye::RES}/images/add.jpg" />
+                            </td>
+                            <td>
+                                <img align="absmiddle" alt="" src="{gooraye::RES}/images/add.jpg" />
+                            </td>
+                        </tr>
+                        <tr class="back">
+                            <td>
+                                <strong>微预约</strong>
+                            </td>
+                            <td>
+                                客户对公司的产品或者服务进行预订
+                            </td>
+                            <td>
+                                <em>每月30条</em>
+                            </td>
+                            <td>
+                                <em>每月150条</em>
+                            </td>
+                            <td>
+                                <em>不限</em>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <strong>电子券</strong>
+                            </td>
+                            <td>
+                                代金券、优惠券、团购券、礼品券
+                            </td>
+                            <td>
+                                <em>每月总数2000张</em>
+                            </td>
+                            <td>
+                                <em>每月总数5000张</em>
+                            </td>
+                            <td>
+                                <em>不限</em>
+                            </td>
+                        </tr>
+                        <tr class="back">
+                            <td>
+                                <strong style="color: #313131;">微留言</strong>
+                            </td>
+                            <td>
+                                收集建议、反馈和需求
+                            </td>
+                            <td>
+                                <img align="absmiddle" alt="" src="{gooraye::RES}/images/add.jpg" />
+                            </td>
+                            <td>
+                                <img align="absmiddle" alt="" src="{gooraye::RES}/images/add.jpg" />
+                            </td>
+                            <td>
+                                <img align="absmiddle" alt="" src="{gooraye::RES}/images/add.jpg" />
+                            </td>
+                        </tr>
+                       <!--  <tr>
+                            <td>
+                                <strong style="color: #313131;">微签到</strong>
+                            </td>
+                            <td>
+                                签到就能得积分，提高用户粘性
+                            </td>
+                            <td>
+                                <img align="absmiddle" alt="" src="{gooraye::RES}/images/add.jpg" />
+                            </td>
+                            <td>
+                                <img align="absmiddle" alt="" src="{gooraye::RES}/images/add.jpg" />
+                            </td>
+                            <td>
+                                <img align="absmiddle" alt="" src="{gooraye::RES}/images/add.jpg" />
+                            </td>
+                        </tr> -->
+                        <tr class="back">
+                            <td>
+                                <strong style="color: #313131;">微投票</strong>
+                            </td>
+                            <td>
+                                发起在线投票，收集反馈信息
+                            </td>
+                            <td>
+                                <img align="absmiddle" alt="" src="{gooraye::RES}/images/add.jpg" />
+                            </td>
+                            <td>
+                                <img align="absmiddle" alt="" src="{gooraye::RES}/images/add.jpg" />
+                            </td>
+                            <td>
+                                <img align="absmiddle" alt="" src="{gooraye::RES}/images/add.jpg" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <strong style="color: #313131;">微调研</strong>
+                            </td>
+                            <td>
+                                自助式问卷调查、回收答卷、数据分析
+                            </td>
+                            <td>
+                                <img align="absmiddle" alt="" src="{gooraye::RES}/images/add.jpg" />
+                            </td>
+                            <td>
+                                <img align="absmiddle" alt="" src="{gooraye::RES}/images/add.jpg" />
+                            </td>
+                            <td>
+                                <img align="absmiddle" alt="" src="{gooraye::RES}/images/add.jpg" />
+                            </td>
+                        </tr>
+                        <tr class="back">
+                            <td>
+                                <strong style="color: #313131;">微游戏</strong>
+                            </td>
+                            <td>
+                                幸运机、切水果、一战到底、砸金蛋
+                            </td>
+                            <td>
+                                <img align="absmiddle" alt="" src="{gooraye::RES}/images/add.jpg" />
+                            </td>
+                            <td>
+                                <img align="absmiddle" alt="" src="{gooraye::RES}/images/add.jpg" />
+                            </td>
+                            <td>
+                                <img align="absmiddle" alt="" src="{gooraye::RES}/images/add.jpg" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <strong>微团购</strong>
+                            </td>
+                            <td>
+                                用团购形式推出某个让用户血拼的爆款产品。
+                            </td>
+                            <td>
+                                <p class="pnote">
+                                    -</p>
+                            </td>
+                            <td>
+                                <em>有，每月5条</em>
+                            </td>
+                            <td>
+                                <em>数量不限</em>
+                            </td>
+                        </tr>
+                        <tr class="back">
+                            <td>
+                                <strong>微专题</strong>
+                            </td>
+                            <td>
+                                组织双11，儿童节等专题促销活动
+                            </td>
+                            <td>
+                                <p class="pnote">
+                                    -</p>
+                            </td>
+                            <td>
+                                <em>有，每月3条</em>
+                            </td>
+                            <td>
+                                <em>数量不限</em>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <strong>微会员</strong>
+                            </td>
+                            <td>
+                                会员卡管理和积分管理
+                            </td>
+                            <td>
+                                <p class="pnote">
+                                    -</p>
+                            </td>
+                            <td>
+                                <em>有，会员总数在1万以内</em>
+                            </td>
+                            <td>
+                                <em>会员数量不限</em>
+                            </td>
+                        </tr>
+                        <tr class="back">
+                            <td>
+                                <strong>微相册</strong>
+                            </td>
+                            <td>
+                                多个产品相片介绍
+                            </td>
+                            <td>
+                                <p class="pnote">
+                                    -</p>
+                            </td>
+                            <td>
+                                <em>有，200M以内</em>
+                            </td>
+                            <td>
+                                <em>有，500M以内</em>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <strong>微视频</strong>
+                            </td>
+                            <td>
+                                多个产品视频介绍
+                            </td>
+                            <td>
+                                <p class="pnote">
+                                    -</p>
+                            </td>
+                            <td>
+                                <em>有，200M以内</em>
+                            </td>
+                            <td>
+                                <em>有，500M以内</em>
+                            </td>
+                        </tr>
+                     <!--    <tr class="back">
+                            <td>
+                                <strong>微支付</strong>
+                            </td>
+                            <td>
+                                对接财付通支付，对接"微支付"
+                            </td>
+                            <td>
+                                <p class="pnote">
+                                    -</p>
+                            </td>
+                            <td>
+                                <em>有，每月支付不超过50笔</em>
+                            </td>
+                            <td>
+                                <em>有，支付数量不限</em>
+                            </td>
+                        </tr> -->
+                        <tr>
+                            <td>
+                                <strong>微客服</strong>
+                            </td>
+                            <td>
+                                实现人工在线客服、销售咨询。
+                            </td>
+                            <td>
+                                <p class="pnote">
+                                    -</p>
+                            </td>
+                            <td>
+                                <em>有，5个以内</em>
+                            </td>
+                            <td>
+                                <em>有，20个以内</em>
+                            </td>
+                        </tr>
+                       <!--  <tr class="back">
+                            <td>
+                                <strong>微助手</strong>
+                            </td>
+                            <td>
+                                管理员从此不需要再傻傻守在PC后台，也能进行相关后台工作。
+                            </td>
+                            <td>
+                                <p class="pnote">
+                                    -</p>
+                            </td>
+                            <td>
+                                <img align="absmiddle" alt="" src="{gooraye::RES}/images/add.jpg" />
+                            </td>
+                            <td>
+                                <img align="absmiddle" alt="" src="{gooraye::RES}/images/add.jpg" />
+                            </td>
+                        </tr> -->
+                       <!--  <tr>
+                            <td>
+                                <strong>多账号登录</strong>
+                            </td>
+                            <td>
+                                除了管理员，管理员授权范围内的其他人员也能进行登录管理。
+                            </td>
+                            <td>
+                                <p class="pnote">
+                                    -</p>
+                            </td>
+                            <td>
+                                <em>有，3个以内</em>
+                            </td>
+                            <td>
+                                <em>有，数量不限</em>
+                            </td>
+                        </tr> -->
+                        <tr class="back">
+                            <td>
+                                <strong>行业功能</strong>
+                            </td>
+                            <td>
+                                加入了符合行业特性的功能。
+                            </td>
+                            <td>
+                                <p class="pnote">
+                                    -</p>
+                            </td>
+                            <td>
+                                <em>有，局部功能限制</em>
+                            </td>
+                            <td>
+                                <em>有，不限</em>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <strong>微统计</strong>
+                            </td>
+                            <td>
+                                掌握各类运营数据报表，运营效果一览无余
+                            </td>
+                            <td>
+                                <p class="pnote">
+                                    -</p>
+                            </td>
+                            <td>
+                                <em>不含高级统计报表</em>
+                            </td>
+                            <td>
+                                <em>有，不限</em>
+                            </td>
+                        </tr>
+                       <!--  <tr class="back">
+                            <td>
+                                <strong>微推送</strong>
+                            </td>
+                            <td>
+                                基于用户行为进行数据分析，实现商业智能，精准营销。
+                            </td>
+                            <td>
+                                <p class="pnote">
+                                    -</p>
+                            </td>
+                            <td>
+                                <em>有，每月精准营销推送50条</em>
+                            </td>
+                            <td>
+                                <em>有，每月精准营销推送200条</em>
+                            </td>
+                        </tr> -->
+                        <tr>
+                            <td>
+                                <strong style="color: #313131;">个性化开发</strong>
+                            </td>
+                            <td>
+                                企业ERP系统对接，标准产品功能外的其他个性化需求
+                            </td>
+                            <td colspan="3">
+                                <em>视企业需求而定</em>
+                            </td>
+                        </tr>
+                        <tr class="back">
+                            <td>
+                                <strong style="color: #313131;">运营</strong>
+                            </td>
+                            <td>
+                                <p style="text-align: left; margin-left: 20%;">
+                                    1、微信运营和推广策略（需要地推广告或者pc端网络广告投入，由甲方承担）<br />
+                                    2、微网站及商城的架构设计<br />
+                                    3、内容建设和更新（原始素材由甲方提供）<br />
+                                    4、微信平台建设<br />
+                                    5、会员运作和推广方案<br />
+                                    6、新闻和文案撰稿
+                                </p>
+                            </td>
+                            <td colspan="3">
+                                <em>视企业需求而定</em>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
-            <div class="section lastSection">
-<p>有疑问的请QQ{gooraye:$f_qq}提问。</p>
-               		</div>
             </div>
         </div>
     </div>
+</div>
+<script type="text/javascript">
+    function UpgradeToTop(CurrentVersionCode) {
+        // $.ajax({
+        //     url: '/home/UpgradeToTop',
+        //     data: { currentVersionCode: CurrentVersionCode },
+        //     type: 'post',
+        //     success: function (data) {
+        //         if (data.ErrCode == 0) {
+        //             alert("您的升级请求我们已收到，当地代理商会尽快与您联系。");
+        //             location.href = "/Home/Index";
+        //         } else {
+        //             alert("联系客服失败，请重试！");
+        //         }
+        //     }
+        // });
+    }
+
+    //检查客户所在地区有没有代理
+    function ChkDaiLi(versionName, flg) {
+            // alert("");
+        // $.ajax({
+        //     url: '/home/ChkDaiLi',
+        //     data: { versionName: versionName, flag: flg },
+        //     type: 'post',
+        //     success: function (data) {
+        //         if (data.ErrCode == 0) {
+        //             //如果当地有代理
+        //             alert("您的申请已提交，当地代理商会尽快与您联系！");
+        //             location.href = "/home/index";
+        //         } else if (data.ErrCode == 1) {
+        //             alert("您的申请已提交，我们尽快与您联系！");
+        //             location.href = "/home/index";
+        //             //如果当地没有代理，跳转到支付页面
+        //             //location.href = "/Home/UpgradeTip?id=" + data.Message;
+        //         }
+        //         else {
+        //             alert("升级失败，请重新点击购买！");
+        //         }
+        //     }
+        // });
+    }
+</script>
+
+    <div id="copyright" style="display: none; width: 100%; text-align: center; position: fixed;
+        bottom: 0;">
+        <p style="text-align: center; font-size: 12px; color: #ababab;">
+            Copyright&copy;&nbsp;&nbsp;[微通汇].&nbsp;&nbsp;All Rights Reserved.</p>
     </div>
-    </div>
-<script type="text/javascript">try{Dd('webpage_6').className='left_menu_on';}catch(e){}</script>
-<include file="$includeFooterPath"/>
+    
+
+    <input type="hidden" id="domain" value="wx.gooraye.net" />
+    
+</body>
+</html>

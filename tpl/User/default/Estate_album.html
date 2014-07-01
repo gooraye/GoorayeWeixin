@@ -48,8 +48,8 @@
                                         <td style="text-align:center;">{gooraye:$list['title']}</td>
                                         <td style="text-align:center;">{gooraye:$list['info']}</td> 
                                         <td style="text-align:center;">
-                                        <a href="{gooraye::U('Estate/album_add',array('poid'=>$list['id'],'token'=>$list['token']))}" class="btn">编辑</a>
-                                        <a href="{gooraye::U('Estate/album_del',array('id'=>$list['mid'],'token'=>$list['token']))}" onclick="return(confirm('确定要删除吗？'))" class="btn">删除</a></a>
+                                        <a href="{gooraye::U('Estate/album_add',array('poid'=>$list['id'],'token'=>$list['token']))}" class="btn btn-small btn-inverse">编辑</a>
+                                        <a href="{gooraye::U('Estate/album_del',array('id'=>$list['mid'],'token'=>$list['token']))}" onclick="return(confirm('确定要删除吗？'))" class="btn btn-small btn-inverse">删除</a></a>
 </td>
                                         </tr>
                                     </volist>
