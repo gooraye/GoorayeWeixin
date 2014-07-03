@@ -64,10 +64,10 @@
                   <input type="text" name="money" value="0" class="px" style="width:40px;">
                   <input type="hidden" name="wecha_id" value="{gooraye:$list.wecha_id}">
                    </TD>
-                   <TD>  <button type="submit" style="cursor:pointer">设置</button></TD>
+                   <TD>  <button type="submit" style="cursor:pointer" class="btn btn-small btn-inverse">设置</button></TD>
 </form>
                   <TD class="norightborder">				  
-				                <a href="/index.php?g=User&m=Member_card&a=member&token={gooraye:$Think.get.token}&id={gooraye:$thisCard.id}&itemid={gooraye:$list.id}"><strong>消费记录</strong></a>  <a href="/index.php?g=User&m=Member_card&a=signrecords&token={gooraye:$Think.get.token}&id={gooraye:$thisCard.id}&itemid={gooraye:$list.id}"><strong>签到记录</strong></a>  <a href="javascript:drop_confirm('您确定要删除吗?', '/index.php?g=User&m=Member_card&a=member_del&token={gooraye:$Think.get.token}&itemid={gooraye:$list.id}&id={gooraye:$thisCard.id}');"><strong>删除</strong></a> 
+				                <a href="/index.php?g=User&m=Member_card&a=member&token={gooraye:$Think.get.token}&id={gooraye:$thisCard.id}&itemid={gooraye:$list.id}" class="btn btn-small btn-inverse">消费记录</a>  <a href="/index.php?g=User&m=Member_card&a=signrecords&token={gooraye:$Think.get.token}&id={gooraye:$thisCard.id}&itemid={gooraye:$list.id}" class="btn btn-small btn-inverse">签到记录</a>  <a href="javascript:drop_confirm('您确定要删除吗?', '/index.php?g=User&m=Member_card&a=member_del&token={gooraye:$Think.get.token}&itemid={gooraye:$list.id}&id={gooraye:$thisCard.id}');" class="btn btn-small btn-inverse">删除</a> 
                   </TD>
                 </TR>
 				</volist>

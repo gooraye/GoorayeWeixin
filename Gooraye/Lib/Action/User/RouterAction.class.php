@@ -5,7 +5,7 @@ class RouterAction extends UserAction{
 	public function _initialize() {
 		parent::_initialize();
 		$this->tokenWhere=array('token'=>$this->token);
-		$this->server='http://wifi.gooraye.cn/';
+		$this->server='http://wifi.gooraye.net/';
 	}
 	public function index(){
 		$db=D('Router');

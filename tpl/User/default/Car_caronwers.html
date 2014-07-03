@@ -52,9 +52,9 @@
                        <td>{gooraye:$vo['car_care_lastCost']}</td>
 
                        <td class="input-medium">
-                            <a href="###" onclick="showIntroDetail({gooraye:$vo.id})">费用详细</a>
+                            <a class="btn btn-small btn-inverse" href="###" onclick="showIntroDetail({gooraye:$vo.id})">费用详细</a>
                             &nbsp;&nbsp;&nbsp;&nbsp;
-                            <a class="btn" href="{gooraye::U('Car/del_carowner',array('token'=>$token,'id'=>$vo['id']))}" title="删除" onclick="return(confirm('确定要删除吗？'))" >删除</a></td>
+                            <a class="btn btn-small btn-inverse" href="{gooraye::U('Car/del_carowner',array('token'=>$token,'id'=>$vo['id']))}" title="删除" onclick="return(confirm('确定要删除吗？'))" >删除</a></td>
                     </tr>
                 </volist>
 

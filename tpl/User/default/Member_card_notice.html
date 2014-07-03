@@ -117,7 +117,7 @@ display:block; width:213px; border:0;
 <TD>{gooraye:$item.endtime|date="Y-m-d",###}</TD>
 <TD>{gooraye:$item.time|date="Y-m-d H:i:s",###}</TD>
 <TD class="norightborder">
-<a href="/index.php?g=User&m=Member_card&a=noticeSet&token={gooraye:$token}&id={gooraye:$thisCard.id}&noticeid={gooraye:$item.id}">编辑</a> <a href="javascript:drop_confirm('您确定要删除吗?', '/index.php?g=User&m=Member_card&a=noticeDelete&token={gooraye:$token}&noticeid={gooraye:$item.id}&id={gooraye:$thisCard.id}');">删除</a></TD>
+<a class="btn btn-small btn-inverse" href="/index.php?g=User&m=Member_card&a=noticeSet&token={gooraye:$token}&id={gooraye:$thisCard.id}&noticeid={gooraye:$item.id}">编辑</a> <a class="btn btn-small btn-inverse" href="javascript:drop_confirm('您确定要删除吗?', '/index.php?g=User&m=Member_card&a=noticeDelete&token={gooraye:$token}&noticeid={gooraye:$item.id}&id={gooraye:$thisCard.id}');">删除</a></TD>
 </TR>
 </volist>
 </TBODY>

@@ -37,7 +37,7 @@
 					  <td>{gooraye:$staff.tel}</td>
 					  <td>{gooraye:$staff.time|date='Y-m-d',###}</td>
 					  <td class="norightborder">
-						<a href="{gooraye::U('Member_card/staffSet',array('itemid'=>$staff['id'],'id'=>$thisCard['id']))}">编辑</a> <a href="{gooraye::U('Member_card/staffDelete',array('itemid'=>$staff['id'],'id'=>$thisCard['id']))}">删除</a>
+						<a class="btn btn-small btn-inverse" href="{gooraye::U('Member_card/staffSet',array('itemid'=>$staff['id'],'id'=>$thisCard['id']))}">编辑</a> <a  class="btn btn-small btn-inverse" href="{gooraye::U('Member_card/staffDelete',array('itemid'=>$staff['id'],'id'=>$thisCard['id']))}">删除</a>
 					  </td>
                 </tr>
 				</volist>

@@ -22,7 +22,8 @@
 </div>
 <!--tab end-->
 <div class="cLine">
-<div class="pageNavigator left"> <a href="{gooraye::U('Groupon/add',array('token'=>$token))}" title="添加" class="btnGrayS vm bigbtn"><img src="{gooraye::RES}/images/product/add.png" width="16" class="vm">添加团购</a></div>
+<div class="pageNavigator left"> <a href="{gooraye::U('Groupon/add',array('token'=>$token))}" title="添加" class="btnGrayS vm bigbtn">
+	<i class="fa fa-plus"></i>添加团购</a></div>
 <div class="clr"></div>
 </div>
 <div class="msgWrap">
@@ -52,7 +53,7 @@
 <td>{gooraye:$hostlist.keyword}</td>
 <td>{gooraye:$hostlist.time|date="Y-m-d",###} / {gooraye:$hostlist.endtime|date="Y-m-d",###}</td> 
 <td align="center">{gooraye:$hostlist.salecount}</td>
-<td class="norightborder"><a href="{gooraye::U('Groupon/set',array('id'=>$hostlist['id'],'token'=>$token))}">修改</a> <a href="javascript:drop_confirm('您确定要删除吗?', '{gooraye::U('Groupon/del',array('id'=>$hostlist['id'],'token'=>$token))}');">删除</a></td>
+<td class="norightborder"><a class="btn btn-small btn-inverse" href="{gooraye::U('Groupon/set',array('id'=>$hostlist['id'],'token'=>$token))}">修改</a> <a href="javascript:drop_confirm('您确定要删除吗?', '{gooraye::U('Groupon/del',array('id'=>$hostlist['id'],'token'=>$token))}');" class="btn btn-small btn-inverse">删除</a></td>
 </tr>
 </volist>
 </tbody>

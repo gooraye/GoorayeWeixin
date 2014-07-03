@@ -39,7 +39,7 @@
     						<td class="select">{gooraye:$i}</td>
     						<td>{gooraye:$record.sn}</td>
 							<td>
-                <if condition="$record['sendstutas'] eq 0">否<else/>是</if>
+                <if condition="$record['sendstatus'] eq 0">否<else/>是</if>
                 </td>
                 <td><if condition="$record['sendtime'] eq 0"> <else/>{gooraye:$record.sendtime|date='Y-m-d H:i:s',###}</if>
                 </td>
@@ -48,7 +48,7 @@
     						<td>{gooraye:$record.prize}</td>
     						<td>{gooraye:$record.time|date='Y-m-d H:i:s',###}</td>
     						<td>
-               <if condition="$record['sendstutas'] eq 0"> 
+               <if condition="$record['sendstatus'] eq 0"> 
                  <a href="index.php?g=User&m=Coupon&a=sendprize&id={gooraye:$record.id}">发奖</a>
               <else/>
                <a href="index.php?g=User&m=Coupon&a=sendnull&id={gooraye:$record.id}">取消发奖</a>

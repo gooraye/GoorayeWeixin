@@ -125,7 +125,7 @@ document.getElementById("vipname").innerHTML=document.getElementById("cardname")
 <tr>
 <td colspan="2">会员卡的图标：
 <input type="text" name="logo" id="logo" value="{gooraye:$card.logo}" class="px" style="width:200px;"> 
-<input type="button" onclick="document.getElementById(&#39;cardlogo&#39;).src=document.getElementById(&#39;logo&#39;).value;" value="显示效果" class="btnGrayS"> <script src="{gooraye::STATICS}/upyun.js"></script><a href="###" onclick="upyunPicUpload('logo',1000,600,'{gooraye:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('logo')">预览</a></td>
+<input type="button" onclick="document.getElementById(&#39;cardlogo&#39;).src=document.getElementById(&#39;logo&#39;).value;" value="显示效果" class="btnGrayS btn btn-small btn-inverse"> <script src="{gooraye::STATICS}/upyun.js"></script><a href="###" onclick="upyunPicUpload('logo',1000,600,'{gooraye:$token}')" class="a_upload btn btn-small btn-inverse">上传</a> <a href="###" onclick="viewImg('logo')" class="btn btn-small btn-inverse">预览</a></td>
 </tr>
 <tr>
 <td colspan="2">会员卡的背景：
@@ -150,8 +150,8 @@ document.getElementById("vipname").innerHTML=document.getElementById("cardname")
 <tr>
 <td colspan="2">自己设计背景：
 	<input type="text" name="diybg" id="bg" class="px" value="{gooraye:$card.diybg}" style="width:200px;"> 
-	<input type="button" onclick="document.getElementById(&#39;cardbg&#39;).src=document.getElementById(&#39;bg&#39;).value;" value="显示效果" class="btnGrayS"> 
-	  <script src="{gooraye::STATICS}/upyun.js"></script><a href="###" onclick="upyunPicUpload('bg',1000,600,'{gooraye:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('bg')">预览</a> 背景图
+	<input type="button" onclick="document.getElementById(&#39;cardbg&#39;).src=document.getElementById(&#39;bg&#39;).value;" value="显示效果" class="btnGrayS btn btn-small btn-inverse"> 
+	  <script src="{gooraye::STATICS}/upyun.js"></script><a href="###" onclick="upyunPicUpload('bg',1000,600,'{gooraye:$token}')" class="a_upload btn btn-small btn-inverse">上传</a> <a href="###" onclick="viewImg('bg')" class="btn btn-small btn-inverse">预览</a> 背景图
 </td>
 </tr>
 <tr>
@@ -227,16 +227,16 @@ document.getElementById("tishi").innerHTML=document.getElementById("tishi2").val
 </tr>
 <tr>
 	<td align="center">
-		<textarea name="Lastmsg" class="px" id="news2" style="width:210px; height:36px" onblur="document.getElementById('news2_src').src=document.getElementById('news2').value;">{gooraye:$card.Lastmsg}</textarea><br><script src="{gooraye::STATICS}/upyun.js"></script><a href="###" onclick="upyunPicUpload('news2',700,420,'{gooraye:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('news2')">预览</a>
+		<textarea name="Lastmsg" class="px" id="news2" style="width:210px; height:36px" onblur="document.getElementById('news2_src').src=document.getElementById('news2').value;">{gooraye:$card.Lastmsg}</textarea><br><script src="{gooraye::STATICS}/upyun.js"></script><a href="###" onclick="upyunPicUpload('news2',700,420,'{gooraye:$token}')" class="a_upload btn btn-small btn-inverse">上传</a> <a href="###" onclick="viewImg('news2')" class="btn btn-small btn-inverse">预览</a>
 	</td>
 	<td align="center">
-		<textarea name="vip" class="px" id="vippower2" style="width:210px; height:36px" onblur="document.getElementById('vippower2_src').src=document.getElementById('vippower2').value;">{gooraye:$card.vip}</textarea><br><script src="{gooraye::STATICS}/upyun.js"></script><a href="###" onclick="upyunPicUpload('vippower2',700,420,'{gooraye:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('vippower2')">预览</a>
+		<textarea name="vip" class="px" id="vippower2" style="width:210px; height:36px" onblur="document.getElementById('vippower2_src').src=document.getElementById('vippower2').value;">{gooraye:$card.vip}</textarea><br><script src="{gooraye::STATICS}/upyun.js"></script><a href="###" onclick="upyunPicUpload('vippower2',700,420,'{gooraye:$token}')" class="a_upload btn btn-small btn-inverse">上传</a> <a href="###" onclick="viewImg('vippower2')" class="btn btn-small btn-inverse">预览</a>
 	</td>
 	<td align="center">
-		<textarea name="qiandao" class="px" id="qiandao2" style="width:210px; height:36px" onblur="document.getElementById('qiandao2_scr').src=document.getElementById('qiandao2').value;">{gooraye:$card.qiandao}</textarea><br><script src="{gooraye::STATICS}/upyun.js"></script><a href="###" onclick="upyunPicUpload('qiandao2',700,420,'{gooraye:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('qiandao2')">预览</a>
+		<textarea name="qiandao" class="px" id="qiandao2" style="width:210px; height:36px" onblur="document.getElementById('qiandao2_scr').src=document.getElementById('qiandao2').value;">{gooraye:$card.qiandao}</textarea><br><script src="{gooraye::STATICS}/upyun.js"></script><a href="###" onclick="upyunPicUpload('qiandao2',700,420,'{gooraye:$token}')" class="a_upload btn btn-small btn-inverse">上传</a> <a href="###" onclick="viewImg('qiandao2')" class="btn btn-small btn-inverse">预览</a>
 	</td>
 	<td align="center">
-		<textarea name="shopping" class="px" id="shopping2" style="width:210px; height:36px" onblur="document.getElementById('shopping2_src').src=document.getElementById('shopping2').value;">{gooraye:$card.shopping}</textarea><br><script src="{gooraye::STATICS}/upyun.js"></script><a href="###" onclick="upyunPicUpload('shopping2',700,420,'{gooraye:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('shopping2')">预览</a>
+		<textarea name="shopping" class="px" id="shopping2" style="width:210px; height:36px" onblur="document.getElementById('shopping2_src').src=document.getElementById('shopping2').value;">{gooraye:$card.shopping}</textarea><br><script src="{gooraye::STATICS}/upyun.js"></script><a href="###" onclick="upyunPicUpload('shopping2',700,420,'{gooraye:$token}')" class="a_upload btn btn-small btn-inverse">上传</a> <a href="###" onclick="viewImg('shopping2')" class="btn btn-small btn-inverse">预览</a>
 	</td>
  </tr>
 <tr>
@@ -279,13 +279,13 @@ document.getElementById("tishi").innerHTML=document.getElementById("tishi2").val
 </tr>
 <tr>
 <td align="center">
-	<textarea name="memberinfo" class="px" id="user2" style="width:210px; height:36px" onblur="document.getElementById('user2_src').src=document.getElementById('user2').value;">{gooraye:$card.memberinfo}</textarea><br><script src="{gooraye::STATICS}/upyun.js"></script><a href="###" onclick="upyunPicUpload('user2',700,420,'{gooraye:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('user2')">预览</a>
+	<textarea name="memberinfo" class="px" id="user2" style="width:210px; height:36px" onblur="document.getElementById('user2_src').src=document.getElementById('user2').value;">{gooraye:$card.memberinfo}</textarea><br><script src="{gooraye::STATICS}/upyun.js"></script><a href="###" onclick="upyunPicUpload('user2',700,420,'{gooraye:$token}')" class="a_upload btn btn-small btn-inverse" >上传</a> <a href="###" onclick="viewImg('user2')" class="btn btn-small btn-inverse">预览</a>
 </td>
 <td align="center">
-	<textarea name="membermsg" class="px" id="info2" style="width:210px; height:36px" onblur="document.getElementById('info2_src').src=document.getElementById('info2').value;">{gooraye:$card.membermsg}</textarea><br><script src="{gooraye::STATICS}/upyun.js"></script><a href="###" onclick="upyunPicUpload('info2',700,420,'{gooraye:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('info2')">预览</a>
+	<textarea name="membermsg" class="px" id="info2" style="width:210px; height:36px" onblur="document.getElementById('info2_src').src=document.getElementById('info2').value;">{gooraye:$card.membermsg}</textarea><br><script src="{gooraye::STATICS}/upyun.js"></script><a href="###" onclick="upyunPicUpload('info2',700,420,'{gooraye:$token}')" class="a_upload btn btn-small btn-inverse">上传</a> <a href="###" onclick="viewImg('info2')" class="btn btn-small btn-inverse">预览</a>
 </td>
 <td align="center">
-	<textarea name="contact" class="px" id="addr2" style="width:210px; height:36px" onblur="document.getElementById('addr2_src').src=document.getElementById('addr2').value;">{gooraye:$card.contact}</textarea><br><script src="{gooraye::STATICS}/upyun.js"></script><a href="###" onclick="upyunPicUpload('addr2',700,420,'{gooraye:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('addr2')">预览</a>
+	<textarea name="contact" class="px" id="addr2" style="width:210px; height:36px" onblur="document.getElementById('addr2_src').src=document.getElementById('addr2').value;">{gooraye:$card.contact}</textarea><br><script src="{gooraye::STATICS}/upyun.js"></script><a href="###" onclick="upyunPicUpload('addr2',700,420,'{gooraye:$token}')" class="a_upload btn btn-small btn-inverse">上传</a> <a href="###" onclick="viewImg('addr2')" class="btn btn-small btn-inverse">预览</a>
 </td>
 <td><button type="submit" name="button" class="btnGreen">保存</button></td>
 </tr>

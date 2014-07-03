@@ -87,7 +87,7 @@ function selectall(name) {
 	<else /><span style="color:green">货到付款</span></if>
 </td>
 <td>{gooraye:$o.time|date="Y-m-d H:i:s",###}</td> 
-<td class="norightborder"><a href="###" onclick="showIntroDetail({gooraye:$o.id})">详细</a> <a href="javascript:drop_confirm('您确定要删除吗?', '{gooraye::U('Store/deleteOrder',array('token'=>$token,'id'=>$o['id'],'dining'=>$isDining))}');">删除</a></td>
+<td class="norightborder"><a class="btn btn-small btn-inverse" href="###" onclick="showIntroDetail({gooraye:$o.id})">详细</a> <a class="btn btn-small btn-inverse" href="javascript:drop_confirm('您确定要删除吗?', '{gooraye::U('Store/deleteOrder',array('token'=>$token,'id'=>$o['id'],'dining'=>$isDining))}');">删除</a></td>
 </tr>
 </volist>
 </tbody>

@@ -165,13 +165,7 @@ class IndexAction extends BaseAction{
 		}
 		return str_replace('=', '',base64_encode($str));
 	}
-	function text(){
-		$domain=$_GET['domain'];
-		$domains=explode('.',$domain);
-
-		echo '<a href="http://'.$domain.'/index.php?g=Home&m=T&a=test&n='.$this->think_encrypt($domains[1].'.'.$domains[2]).'" target="_blank">http://'.$domain.'/index.php?g=Home&m=T&a=test&n='.$this->think_encrypt($domains[1].'.'.$domains[2]).'</a><br>';
-		echo '<a href="http://'.$domain.'/index.php?g=User&m=Create&a=index" target="_blank">http://'.$domain.'/index.php?g=User&m=Create&a=index</a><br>';
-	}
+	
 	function common(){
 		$where['status']=1;
 		if (C('agent_version')){

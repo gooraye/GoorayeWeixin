@@ -402,7 +402,7 @@ class LotteryBaseAction extends WapAction{
 		 		echo'{"success":0,"msg":"兑奖密码不正确"}';exit;
 		 	}else {
 		 		$data['sendtime']		= time(); 
-		 		$data['sendstutas']	= 1;
+		 		$data['sendstatus']	= 1;
 		 		$this->lottory_record_db->where(array('id'=> intval($_POST['rid'])))->save($data);
 		 		echo'{"success":1,"msg":"兑奖成功","changed":1}';
 		 	}

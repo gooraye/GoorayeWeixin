@@ -15,9 +15,9 @@ class LotteryBaseAction extends UserAction{
 		$this->assign('list',$list);
 	}
 	public function add($type){
-		if(session('gid')==1){
-			$this->error('vip0无法使用',U('Home/Index/price'));
-		}
+		// if(session('gid')==1){
+		// 	$this->error('vip0无法使用',U('Home/Index/price'));
+		// }
 		switch ($type){
 			case 1:
 				$activeType='Lottery';
@@ -158,7 +158,7 @@ class LotteryBaseAction extends UserAction{
 		$recordcount=$data['fistlucknums']+$data['secondlucknums']+$data['thirdlucknums']+$data['fourlucknums']+$data['fivelucknums']+$data['sixlucknums'];
 		$datacount=$data['fistnums']+$data['secondnums']+$data['thirdnums']+$data['fournums']+$data['fivenums']+$data['sixnums'];
 		//
-		$sendCount=$Lottery_record_db->where(array('lid'=>$id,'sendstutas'=>1,'islottery'=>1))->count();
+		$sendCount=$Lottery_record_db->where(array('lid'=>$id,'sendstatus'=>1,'islottery'=>1))->count();
 		$this->assign('sendCount',$sendCount);
 		$this->assign('datacount',$datacount);
 		$this->assign('recordcount',$recordcount);
@@ -197,7 +197,7 @@ class LotteryBaseAction extends UserAction{
 		$id=intval($this->_get('id'));
 		$where=array('id'=>$id,'token'=>$this->token);
 		$data['sendtime'] = '';
-		$data['sendstutas'] = 0;
+		$data['sendstatus'] = 0;
 		$back = M('Lottery_record')->where($where)->save($data);
 		if($back==true){
 			$this->success('已经取消');
@@ -209,7 +209,7 @@ class LotteryBaseAction extends UserAction{
 		$id=$this->_get('id');
 		$where=array('id'=>$id,'token'=>$this->token);
 		$data['sendtime'] = time();
-		$data['sendstutas'] = 1;
+		$data['sendstatus'] = 1;
 		$back = M('Lottery_record')->where($where)->save($data);
 		if($back==true){
 			$this->success('操作成功');
@@ -319,7 +319,7 @@ class LotteryBaseAction extends UserAction{
 		$arr=array(
 		array('en'=>'sn','cn'=>'SN码(中奖号)'),
 		array('en'=>'prize','cn'=>'奖项'),
-		array('en'=>'sendstutas','cn'=>'是否已发奖品'),
+		array('en'=>'sendstatus','cn'=>'是否已发奖品'),
 		array('en'=>'sendtime','cn'=>'奖品发送时间'),
 		array('en'=>'phone','cn'=>'中奖者手机号'),
 		array('en'=>'wecha_name','cn'=>'中奖者微信码'),

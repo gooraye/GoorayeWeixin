@@ -376,7 +376,7 @@ function getMenu1(){
 	        array('name'=>'祝福贺卡','link'=>U('Greeting_card/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Greeting_card')),
 	        array('name'=>'摇一摇','link'=>U('Shake/index',array('token'=>$token)),'new'=>0,'test'=>0,'selectedCondition'=>array('m'=>'Shake')),
 	        array('name'=>'微信墙','link'=>U('Wall/index',array('token'=>$token)),'new'=>0,'test'=>0,'selectedCondition'=>array('m'=>'Wall')),
-	        array('name'=>'微路由','link'=>U('Router/index',array('token'=>$token)),'new'=>0,'test'=>0,'selectedCondition'=>array('m'=>'Router')),
+	        // array('name'=>'微路由','link'=>U('Router/index',array('token'=>$token)),'new'=>0,'test'=>0,'selectedCondition'=>array('m'=>'Router')),
 	        )),
 
 	        array(

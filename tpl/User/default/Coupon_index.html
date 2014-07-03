@@ -44,17 +44,17 @@
 				 </TD>
                   <TD>优惠券 {gooraye:$list.id}</TD>
                    <TD class="norightborder">
-				   <a href="index.php?g=User&m=Coupon&a=sn&id={gooraye:$list.id}&type=3">SN码管理</a> 
-				   <a href="index.php?g=User&m=Lottery&a=cheat&id={gooraye:$list.id}">作弊</a> 
-				   <a href="index.php?g=User&m=Coupon&a=edit&id={gooraye:$list.id}">编辑</a>  
-				   <a href="
+				   <a class="btn btn-small btn-inverse"  href="index.php?g=User&m=Coupon&a=sn&id={gooraye:$list.id}&type=3">SN码管理</a> 
+				   <a class="btn btn-small btn-inverse"  href="index.php?g=User&m=Lottery&a=cheat&id={gooraye:$list.id}">作弊</a> 
+				   <a class="btn btn-small btn-inverse"  href="index.php?g=User&m=Coupon&a=edit&id={gooraye:$list.id}">编辑</a>  
+				   <a class="btn btn-small btn-inverse"  href="
 				   <if condition="$list['status'] eq 1">				   
 				   javascript:drop_confirm('你确定要结束活动吗，结束后不可再开启本活动!', 'index.php?g=User&m=Coupon&a=endLottery&id={gooraye:$list.id}');<else/>index.php?g=User&m=Coupon&a=startLottery&id={gooraye:$list.id}   
 				   </if>">
 				   <if condition="$list['status'] eq 0">开始<else/>结束</if>				   
 				   </a>
 				  
-				   <a href="index.php?g=User&m=Coupon&a=del&id={gooraye:$list.id}">删除</a></TD>
+				   <a class="btn btn-small btn-inverse" href="index.php?g=User&m=Coupon&a=del&id={gooraye:$list.id}">删除</a></TD>
                 </TR>
 				</volist>
               </TBODY>

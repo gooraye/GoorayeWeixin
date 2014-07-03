@@ -110,16 +110,23 @@ function searchComplete(){
 	var result = local.getResults();
 	if(result && result.getPoi(0) ){
 	var pp = local.getResults().getPoi(0).point;    //获取第一个智能搜索的结果
+	// console.log(pp);
         	map.centerAndZoom(pp, 18);
-       	marker = new BMap.Marker(pp);
+        	
+    	map.clearOverlays(); 
+          	marker = new BMap.Marker(pp);
         	map.addOverlay(marker);    //添加标注
 	marker.setAnimation(BMAP_ANIMATION_BOUNCE);
+	$('#longitude').attr('value',pp.lng);
+	$('#latitude').attr('value',pp.lat);
 	}
 }
 
 //创建标注
 var marker = {};
 function createAniMarker(result){
+
+    	// map.clearOverlays(); 
 	if(result){
 		var cityName = result.name;
 	}

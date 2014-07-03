@@ -1,5 +1,5 @@
 <include file="Public:head"/>
-<script src="./tpl/User/default/common/js/date/WdatePicker.js"></script>
+<script src="{gooraye::RES}/js/date/WdatePicker.js"></script>
 <script src="{gooraye::STATICS}/artDialog/jquery.artDialog.js?skin=default"></script>
 <script src="{gooraye::STATICS}/artDialog/plugins/iframeTools.js"></script>
  <script src="{gooraye::STATICS}/upyun.js"></script>
@@ -51,12 +51,12 @@
     <tr>
 	 <th>选择背景动画：</th>
 	  <td>
-		<select name="type"> 
-			<option value="" <if condition="$greeting_card['type'] eq ''">selected</if>>请选择</option>
-			 <option value="1" <if condition="$greeting_card['type'] eq 1">selected</if>>下落的枫叶</option>
-			 <option value="2" <if condition="$greeting_card['type'] eq 2">selected</if>>飘雪</option>
-			 <option style="display:none" value="3" <if condition="$greeting_card['type'] eq 3">selected</if>>驱驴</option
-			 <option value="4" <if condition="$greeting_card['type'] eq 4">selected</if>>飘玫瑰</option
+		<select name="style"> 
+			<option value="" <if condition="$greeting_card['style'] eq ''">selected</if>>请选择</option>
+			 <option value="1" <if condition="$greeting_card['style'] eq 1">selected</if>>下落的枫叶</option>
+			 <option value="2" <if condition="$greeting_card['style'] eq 2">selected</if>>飘雪</option>
+			 <option style="display:none" value="3" <if condition="$greeting_card['style'] eq 3">selected</if>>驱驴</option
+			 <option value="4" <if condition="$greeting_card['style'] eq 4">selected</if>>飘玫瑰</option
 			</select> 
 		</td>
 	</tr>

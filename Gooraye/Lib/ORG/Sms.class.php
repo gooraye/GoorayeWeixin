@@ -77,7 +77,7 @@ final class Sms {
 				$post .= $k.'='.$v.'&';
 			}
 			//短信发送地址
-			$smsapi_senturl = 'http://up.gooraye.cn/oa/admin.php?m=sms&c=sms&a=send';
+			$smsapi_senturl = 'http://api.gooraye.net/index.php?m=sms&c=sms&a=send';
 
 			$return = Sms::_post($smsapi_senturl, 0, $post);
 			$arr = explode('#',$return);

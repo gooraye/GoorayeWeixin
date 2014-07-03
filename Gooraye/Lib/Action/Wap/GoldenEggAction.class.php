@@ -39,7 +39,7 @@ class GoldenEggAction extends LotteryBaseAction{
 			if (!$record['phone']){
 				$this->assign('isLotteryButNotInputTel',1);
 			}else {
-				if ($record['sendstutas']==0){
+				if ($record['sendstatus']==0){
 					$this->assign('isLotteryButNotSend',1);
 				}else{
 					$this->assign('isLotteryAndSend',1);

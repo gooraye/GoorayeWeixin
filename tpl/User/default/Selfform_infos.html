@@ -2,7 +2,7 @@
 <link rel="stylesheet" type="text/css" href="{gooraye::RES}/css/cymain.css" />
         <div class="content">
 <div class="cLineB">
-<h4>“{gooraye:$thisForm.name}”信息列表 <if condition="$page">({gooraye:$page})</if> &nbsp;&nbsp;&nbsp;&nbsp;<a href="{gooraye::U('Selfform/index',array('token'=>$token))}">返回</a> </h4>
+<h4>“{gooraye:$thisForm.name}”信息列表 <if condition="$page">({gooraye:$page})</if> &nbsp;&nbsp;&nbsp;&nbsp;<a class=" btn btn-inverse" href="{gooraye::U('Selfform/index',array('token'=>$token))}">返回</a> </h4>
 
 <div class="searchbar right">
 <form method="post" action="">
@@ -10,7 +10,7 @@
 <input type="hidden" name="ac" value="hotels-list">
 <input type="hidden" name="id" value="9878">
 <input type="hidden" name="wxid" value="gh_423dwjkewad">
-<input type="submit" value="搜索" id="msgSearchBtn" href="" class="btnGrayS" title="搜索">
+<input type="submit" value="搜索" id="msgSearchBtn" href="" class="btn btn-small btn-inverse" title="搜索">
 </form>
 </div>
 <div class="clr"></div>
@@ -31,7 +31,7 @@
 <volist name="fields" id="item">
 <th>{gooraye:$item.displayname}</th>
 </volist>
-<th width="30" class="norightborder">操作</th>
+<th width="60" class="norightborder">操作</th>
 </tr>
 </thead>
 <tbody>
@@ -41,7 +41,7 @@
 <volist name="item" id="citem">
 <td>{gooraye:$citem}</td>
 </volist>
-<td class="norightborder"><a href="javascript:drop_confirm('您确定要删除吗?', '{gooraye::U('Selfform/infoDelete',array('id'=>$item['id'],'token'=>$token))}');">删除</a></td>
+<td class="norightborder"><a class="btn btn-small btn-inverse" href="javascript:drop_confirm('您确定要删除吗?', '{gooraye::U('Selfform/infoDelete',array('id'=>$item['id'],'token'=>$token))}');">删除</a></td>
 </tr>
 </volist>
 </tbody>

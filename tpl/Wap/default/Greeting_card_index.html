@@ -156,19 +156,25 @@ $(document).ready(function(){
 
    document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
         
+
         // 发送给好友
         WeixinJSBridge.on('menu:share:appmessage', function (argv) {
-        	$.ajax({url: "/index.php?g=Wap&m=Greeting_card&a=shareData&token={gooraye:$greeting_card['token']}&id=<?php echo $_GET['id'];?>",dataType: "json"});
+        	 
+
             WeixinJSBridge.invoke('sendAppMessage', { 
                 "img_url": "<if condition="$greeting_card['bakcground_url'] eq ''">tpl/Wap/default/common/greetiong_card/images/srkl009.jpg <else/>{gooraye:$greeting_card['bakcground_url']}</if>",
                 "img_width": "640",
                 "img_height": "640",
-                "link": "{gooraye::C('site_url')}/index.php?g=Wap&m=Greeting_card&a=index&id={gooraye:$greeting_card['id']}&name="+encodeURIComponent($.trim($(".name").html()))+"&type=<?php echo $xgtype;?>&info=<?php echo $info;?>",
+                "link": "{gooraye::C('site_url')}/index.php?g=Wap&m=Greeting_card&a=index&id={gooraye:$greeting_card['id']}&name="+encodeURIComponent($.trim($(".name").html()))+"&type="+$("#bjdh").val()+"&info="+encodeURIComponent($.trim($(".message").html())),
+//                "&type=<?php echo $xgtype;?>&info=<?php echo $info;?>",
                 "desc":  "<?php echo $info;?>",
                 "title": "{gooraye:$greeting_card.title}"
             }, function (res) {
                 _report('send_msg', res.err_msg);
-            })
+                // alert(res.err_msg);
+            });
+
+            $.ajax({url: "/index.php?g=Wap&m=Greeting_card&a=shareData&token={gooraye:$greeting_card['token']}&id=<?php echo $_GET['id'];?>",dataType: "json"});
         });
 
         // 分享到朋友圈
@@ -178,7 +184,7 @@ $(document).ready(function(){
                 "img_url": "<if condition="$greeting_card['bakcground_url'] eq ''">tpl/Wap/default/common/greetiong_card/images/srkl009.jpg <else/>{gooraye:$greeting_card['bakcground_url']}</if>",
                 "img_width": "640",
                 "img_height": "640",
-                 "link": "{gooraye::C('site_url')}/index.php?g=Wap&m=Greeting_card&a=index&id={gooraye:$greeting_card['id']}&name="+encodeURIComponent($.trim($(".name").html()))+"&type=<?php echo $xgtype;?>&info=<?php echo $info;?>",
+                  "link": "{gooraye::C('site_url')}/index.php?g=Wap&m=Greeting_card&a=index&id={gooraye:$greeting_card['id']}&name="+encodeURIComponent($.trim($(".name").html()))+"&type="+$("#bjdh").val()+"&info="+encodeURIComponent($.trim($(".message").html())),
                 "desc":  "<?php echo $info;?>",
                 "title": "{gooraye:$greeting_card.title}"
             }, function (res) {
@@ -191,7 +197,8 @@ $(document).ready(function(){
         	$.ajax({url: "/index.php?g=Wap&m=Greeting_card&a=shareData&token={gooraye:$greeting_card['token']}&id=<?php echo $_GET['id'];?>",dataType: "json"});
             WeixinJSBridge.invoke('shareWeibo', {
                 "content": "<?php echo $info;?>",
-                "url": "{gooraye::C('site_url')}/index.php?g=Wap&m=Greeting_card&a=index&id={gooraye:$greeting_card['id']}&name="+encodeURIComponent($.trim($(".name").html()))+"&type="+$("#bjdh").val()+"&info="+encodeURIComponent($.trim($(".message").html()))
+                  "url": "{gooraye::C('site_url')}/index.php?g=Wap&m=Greeting_card&a=index&id={gooraye:$greeting_card['id']}&name="+encodeURIComponent($.trim($(".name").html()))+"&type="+$("#bjdh").val()+"&info="+encodeURIComponent($.trim($(".message").html()))
+              
             }, function (res) {
                 _report('weibo', res.err_msg);
             });

@@ -50,7 +50,7 @@
 					  <td>{gooraye:$data_vip.create_time|date='Y-m-d H:i:s',###}</td>
 					  <td><if condition="$data_vip['type'] eq 1">无时间限制<else/>{gooraye:$data_vip.enddate|date='Y-m-d',###}</if></td>
 					  <td class="norightborder">
-						<a href="{gooraye::U('Member_card/useRecords',array('id'=>$thisCard['id'],'type'=>'vip','itemid'=>$data_vip['id']))}">使用统计</a> <a href="{gooraye::U('Member_card/privilege_add',array('id'=>$thisCard['id'],'itemid'=>$data_vip['id']))}">编辑</a> <a href="{gooraye::U('Member_card/privilege_del',array('itemid'=>$data_vip['id'],'id'=>$thisCard['id']))}">删除</a>
+						<a class="btn btn-small btn-inverse" href="{gooraye::U('Member_card/useRecords',array('id'=>$thisCard['id'],'type'=>'vip','itemid'=>$data_vip['id']))}">使用统计</a> <a class="btn btn-small btn-inverse" href="{gooraye::U('Member_card/privilege_add',array('id'=>$thisCard['id'],'itemid'=>$data_vip['id']))}">编辑</a> <a class="btn btn-small btn-inverse" href="{gooraye::U('Member_card/privilege_del',array('itemid'=>$data_vip['id'],'id'=>$thisCard['id']))}">删除</a>
 					  </td>
                 </tr>
 				</volist>

@@ -34,7 +34,7 @@
 <td>{gooraye:$item.displayname}</td>
 <td>{gooraye:$item.fieldname}</td>
 <td>{gooraye:$item.inputtype}</td>
-<td class="norightborder"><a href="{gooraye::U('Selfform/inputSet',array('id'=>$item['id'],'token'=>$token))}">修改</a>&nbsp;&nbsp;<a href="javascript:drop_confirm('您确定要删除吗?', '{gooraye::U('Selfform/inputDelete',array('id'=>$item['id'],'token'=>$token))}');">删除</a></td>
+<td class="norightborder"><a class="btn btn-small btn-inverse" href="{gooraye::U('Selfform/inputSet',array('id'=>$item['id'],'token'=>$token))}">修改</a>&nbsp;&nbsp;<a class="btn btn-small btn-inverse"  href="javascript:drop_confirm('您确定要删除吗?', '{gooraye::U('Selfform/inputDelete',array('id'=>$item['id'],'token'=>$token))}');">删除</a></td>
 </tr>
 </volist>
 </tbody>
