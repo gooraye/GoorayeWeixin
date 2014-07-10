@@ -10,6 +10,7 @@ class BusinessbarAction extends BusinessAction{
         $this->type = 'bar';
 
     }
+    
     public function index(){
         parent::fitness($this->type);
         $this->display();

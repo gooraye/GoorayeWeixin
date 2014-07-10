@@ -7,16 +7,17 @@ class BusinessAction extends UserAction{
 
         $type = filter_var($this->_get('type'),FILTER_SANITIZE_STRING);
         $arrAllow = array('fitness','gover','food','travel','flower','property','ktv','bar','fitment','wedding','affections','housekeeper','lease');
-        if(!in_array($type,$arrAllow)){
-            $this->error('抱歉,您的参数不合法!',U('Function/index',array('token'=>$this->token)));
-        }
-        $this->assign('type',$type);
+        // if(!in_array($type,$arrAllow)){
+        //     $this->error('抱歉,您的参数不合法!',U('Function/index',array('token'=>$this->token)));
+        // }
+        // $this->assign('type',$type);
         $_POST['token'] = session('token');
         // $function=M('Function')->where(array('funname'=>'car'))->find();
         // if (intval($this->user['gid'])<intval($function['gid'])){
         //     $this->error('您还开启该模块的使用权,请到功能模块中添加',U('Function/index',array('token'=>$this->token)));
         // }
     }
+
 
     public function fitness($type){
         $data       = D('busines');
@@ -28,7 +29,7 @@ class BusinessAction extends UserAction{
         $busines     = $data->where($where)->order('sort desc')->limit($Page->firstRow.','.$Page->listRows)->select();
         $this->assign('page',$show);
         $this->assign('busines',$busines);
-        //$this->display();
+        // $this->display();
     }
 
     /**

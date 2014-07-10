@@ -88,8 +88,20 @@ class UserAction extends BaseAction{
         // $menus = S('gr_menus');
         // if(empty($menus)){
             $vipid = $this -> userGroup['id'];
-            $menus =  getMenu($vipid);
 
+          if($this->_get('cid')){
+
+            $menus = array( array(
+            'name'=>'行业应用',
+            'display'=>0,
+            'subs'=>array(
+                array('name'=>'订餐（无线打印）','link'=>U('Repast/index',array('token'=>getToken(),'cid'=>$this->_get('cid'))),
+                  'new'=>0,'selectedCondition'=>array('m'=>'Repast')
+                ))));
+        }else{
+
+            $menus =  getMenu($vipid);
+      }
         //     S('gr_menus',$menus);
         // }
         $menuhtml = $this->createHTMLMenu($menus);
@@ -113,6 +125,7 @@ class UserAction extends BaseAction{
           }
         }
 
+        // var_dump($parmsArr);
         //查询当前激活菜单
         $subMenus=array();
         $t=0;
@@ -124,15 +137,17 @@ class UserAction extends BaseAction{
             $st=0;
             foreach ($m['subs'] as $s){
              
-              $includeArr=1;
+              $includeArr=0;
               if ($s['selectedCondition']){
-                foreach ($s['selectedCondition'] as $condition){
-                  if (!in_array($condition,$parmsArr)){
-                    $includeArr=0;
-                    break;
+                foreach ($s['selectedCondition'] as $key=>$condition){
+                  // var_dump($key);
+                  if ($condition == $parmsArr[$key]){
+                  // if (!in_array($condition,$parmsArr)){
+                        $includeArr=1;
                   }
                 }
               }
+
               if ($includeArr){
                 if ($s['exceptCondition']){
                   foreach ($s['exceptCondition'] as $eptCondition){
