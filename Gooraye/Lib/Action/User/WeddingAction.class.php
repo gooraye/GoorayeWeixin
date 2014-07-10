@@ -45,10 +45,14 @@ class WeddingAction extends UserAction{
 	public function info(){
 		$data=D('Wedding_info');
 		$where['fid']=$this->_get('id','intval');
-		$where['type']=$this->_get('type','intval')?1:2;
+		$where['type']=$this->_get('type','intval');
+		if(empty($where['type'])){
+			$where['type'] = 1;
+		}
 		$count=$data->where($where)->count();
 		$page=new Page($count,25);
 		$info=$data->where($where)->limit($page->firstRow.','.$page->listRows)->select();
+		$this->assign('type',$where['type']);
 		$this->assign('page',$page->show());
 		$this->assign('wedding',$info);
 		$this->display();

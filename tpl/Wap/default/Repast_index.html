@@ -1,5 +1,5 @@
 <include file="Repast:header"/>
-<link rel="stylesheet" type="text/css" href="..{gooraye::STATICS}/repast/css/style.css" media="all">
+<link rel="stylesheet" type="text/css" href="{gooraye::STATICS}/repast/css/style.css" media="all">
 <body id="cardunion" class="mode_webapp2">
 <div style="float:none;width:100%;" class="headselect">
 	<a class="link_tel icon-phone">请选择订餐门店</a>
@@ -13,11 +13,11 @@
   </a><!-- 详情 -->
   <div class="ft table">
       <a class="td" href="{gooraye::U('Repast/select', array('token'=>$token, 'wecha_id'=>$wecha_id, 'cid'=>$com['id']))}">
-        <img src="..{gooraye::STATICS}/repast/css/img/ico-wine.png">订餐
+        <img src="{gooraye::STATICS}/repast/css/img/ico-wine.png">订餐
       </a>
-      <a class="td order" href="tel:{gooraye:$com['tel']}"><img src="..{gooraye::STATICS}/repast/css/img/ico-call.png">电话</a>
+      <a class="td order" href="tel:{gooraye:$com['tel']}"><img src="{gooraye::STATICS}/repast/css/img/ico-call.png">电话</a>
       <a class="td" href="{gooraye::U('Card/companyMap', array('token'=>$token, 'wecha_id'=>$wecha_id, 'companyid'=>$com['id']))}">
-        <img src="..{gooraye::STATICS}/repast/css/img/ico-location.png">导航
+        <img src="{gooraye::STATICS}/repast/css/img/ico-location.png">导航
       </a>
   </div>
 </div>
