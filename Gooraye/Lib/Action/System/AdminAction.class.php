@@ -2,9 +2,9 @@
 
 class AdminAction extends Action{
 	
-	public function index(){
+	public function admin(){
 		define('RES',THEME_PATH.'common');
-		$this->display();
+		$this->display("index");
 	}
 	
 	public function insert(){
