@@ -56,7 +56,7 @@ class CrAction extends BaseAction{
         }
         $Model = new Model();
         //检查system表是否存在
-		$rt=$Model->query("CREATE TABLE IF NOT EXISTS `tp_system_info` (`lastsqlupdate` INT( 10 ) NOT NULL ,`version` VARCHAR( 10 ) NOT NULL) ENGINE = MYISAM CHARACTER SET utf8");
+		$rt=$Model->query("CREATE TABLE IF NOT EXISTS `gooraye_system_info` (`lastsqlupdate` INT( 10 ) NOT NULL ,`version` VARCHAR( 10 ) NOT NULL) ENGINE = MYISAM CHARACTER SET utf8");
 		//程序的最新时间
 		$updateArr=$this->sqls();
 		//

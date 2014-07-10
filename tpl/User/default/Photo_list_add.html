@@ -35,7 +35,9 @@
 	<td><input type="text" name="sort" value="0"  class="px" style="width:50px;" /></td>
 	<td>
 		<div class="cateimg"></div>
-		<input class="px" style="width:250px;" type="text" name="picurl" id="picurl" value=""  /> <script src="{gooraye::STATICS}/upyun.js"></script><a href="###" onclick="upyunPicUpload('picurl',1500,1000,'{gooraye:$token}')" class="a_upload btn btn-small btn-inverse">上传</a> <a href="###" onclick="viewImg('picurl')" class="btn btn-small btn-inverse">预览</a>
+		<input class="px" style="width:250px;" type="text" name="picurl" id="picurl" value=""  />
+		 <script src="{gooraye::STATICS}/upyun.js"></script>
+		 <a href="###" onclick="upyunPicUpload('picurl',1500,1000,'{gooraye:$token}')" class="a_upload btn btn-small btn-inverse">上传</a> <a href="###" onclick="viewImg('picurl')" class="btn btn-small btn-inverse">预览</a>
 		<input type="hidden"   name="pid" value="{gooraye:$Think.get.id}"  />
 	</td>
 	<td><input class="px" type="text"  style="width:250px;"  name="info" value=""  /></td>
@@ -72,7 +74,7 @@
 	<td><div class="cateimg"></div><input class="px"  style="width:250px;"   type="text"   name="picurl" id="picurl{gooraye:$i}" value="{gooraye:$photo.picurl}"  /> <script src="{gooraye::STATICS}/upyun.js"></script><a href="###" onclick="upyunPicUpload('picurl{gooraye:$i}',1500,1000,'{gooraye:$token}')" class="a_upload btn btn-small btn-inverse">上传</a> <a href="###" class="btn btn-small btn-inverse" onclick="viewImg('picurl{gooraye:$i}')">预览</a></td>
 	<td><input class="px" type="text"  style="width:250px;"  name="info" value="{gooraye:$photo.info}"  /></td>
 	<td>
-		<input class="checkbox" type="checkbox" name="status" value="1"  <if condition="$list['status'] eq 1">checked</if> >
+		<input class="checkbox" type="checkbox" name="status" value="1"  <if condition="$photo['status'] eq 1">checked</if> >
 		<input type="hidden"   name="id" value="{gooraye:$photo.id}"  /></td>
 	<td class="norightborder">
 		<button type="submit" name="edit" value="true" class="btnGreen btn btn-small btn-inverse" >

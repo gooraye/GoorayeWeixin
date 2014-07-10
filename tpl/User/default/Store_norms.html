@@ -47,8 +47,8 @@
 <td>{gooraye:$catData.name}</td>
 <td>{gooraye:$hostlist.value}</td>
 <td class="norightborder">
-	<a href="{gooraye::U('Store/normsAdd',array('token' => $token, 'id' => $hostlist['id'], 'catid' => $catid, 'type' => $type))}">修改</a>
-	<a href="javascript:drop_confirm('您确定要删除吗?', '{gooraye::U('Store/normsDel',array('token' => $token, 'id' => $hostlist['id'], 'catid' => $catid, 'type' => $type))}');">删除</a>
+	<a class="btn btn-small btn-inverse" href="{gooraye::U('Store/normsAdd',array('token' => $token, 'id' => $hostlist['id'], 'catid' => $catid, 'type' => $type))}">修改</a>
+	<a class="btn btn-small btn-inverse"  href="javascript:drop_confirm('您确定要删除吗?', '{gooraye::U('Store/normsDel',array('token' => $token, 'id' => $hostlist['id'], 'catid' => $catid, 'type' => $type))}');">删除</a>
 </td>
 </tr>
 </volist>

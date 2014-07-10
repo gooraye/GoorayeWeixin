@@ -49,7 +49,7 @@
 					  <td><if condition="$data_vip['type'] eq 1">无时间限制<else/>{gooraye:$data_vip.statdate|date='Y-m-d',###}</if></td>
 					  <td><if condition="$data_vip['type'] eq 1">无时间限制<else/>{gooraye:$data_vip.enddate|date='Y-m-d',###}</if></td>
 					  <td class="norightborder">
-						<a href="{gooraye::U('Member_card/useRecords',array('id'=>$thisCard['id'],'type'=>'coupon','itemid'=>$data_vip['id']))}">使用统计</a> <a href="{gooraye::U('Member_card/coupon_edit',array('itemid'=>$data_vip['id'],'id'=>$thisCard['id']))}">编辑</a> <a href="{gooraye::U('Member_card/coupon_del',array('itemid'=>$data_vip['id'],'id'=>$thisCard['id']))}">删除</a>
+						<a class="btn btn-small btn-inverse" href="{gooraye::U('Member_card/useRecords',array('id'=>$thisCard['id'],'type'=>'coupon','itemid'=>$data_vip['id']))}">使用统计</a> <a  class="btn btn-small btn-inverse" href="{gooraye::U('Member_card/coupon_edit',array('itemid'=>$data_vip['id'],'id'=>$thisCard['id']))}">编辑</a> <a class="btn btn-small btn-inverse"  href="{gooraye::U('Member_card/coupon_del',array('itemid'=>$data_vip['id'],'id'=>$thisCard['id']))}">删除</a>
 					  </td>
                 </tr>
 				</volist>

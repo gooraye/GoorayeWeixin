@@ -39,9 +39,9 @@ class WeixinAction extends Action{
         $this -> apiServer = apiServer :: getServerUrl();
         $open = M('Token_open') -> where(array('token' => $this -> _get('token'))) -> find();
         $this -> fun = $open['queryname'];
-         addWeixinLog($data,"在 reply 之前");
+        // addWeixinLog($data,"在 reply 之前");
         list($content, $type) = $this -> reply($data);
-        // addWeixinLog($content,$type);
+        addWeixinLog($content,$type);
         // var_dump($content);
         $weixin -> response($content, $type);
     }
@@ -192,7 +192,7 @@ class WeixinAction extends Action{
                 }
             }
         }
-        // addWeixinLog($data,"附近");
+         // addWeixinLog($data,"附近");
         //附近查找
         if(!(strpos($data['Content'], '附近') === FALSE)){
             $this -> recordLastRequest($data['Content']);
@@ -252,7 +252,7 @@ class WeixinAction extends Action{
 
 
 
-        // addWeixinLog($data,"cheat");
+        addWeixinLog($data,"cheat");
         if(!empty($return)){
             if(is_array($return)){
                 return $return;

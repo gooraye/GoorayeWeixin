@@ -103,7 +103,7 @@ class Wechat {
 			// $articles[$key]['Description'] = $value['Description'];
 			// $articles[$key]['PicUrl'] = $value['PicUrl'];
 			// $articles[$key]['Url'] = $value['Url'];
-			if($key >= 9) { break; } //最多只允许10调新闻
+			if($key >= 9) { break; } //最多只允许10条新闻
 			// addWeixinLog($value['Title'],$key);
 		}
 		

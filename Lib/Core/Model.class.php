@@ -660,6 +660,9 @@ class Model {
      * @return boolean
      */
     public function setInc($field,$step=1) {
+        if(empty($step) && $step != 0){
+                $step = 0;  
+        }
         return $this->setField($field,array('exp',$field.'+'.$step));
     }
 
@@ -671,6 +674,9 @@ class Model {
      * @return boolean
      */
     public function setDec($field,$step=1) {
+        if(empty($step) && $step != 0){
+                $step = 0;  
+        }
         return $this->setField($field,array('exp',$field.'-'.$step));
     }
 

@@ -25,7 +25,7 @@ ul.modules li div.mright{float:right;width:55%;text-align:right;}
 <ul class="modules">
 <volist name="modules" id="m">
 <?php if (!intval($_GET['iskeyword']) || (intval($_GET['iskeyword'])&&$m['askeyword'])){?>
-<li><div class="mleft">{gooraye:$m.name}</div><div class="mright"><if condition="$m['sub']"><a href="?g=User&m=Link&a={gooraye:$m.module}&iskeyword=<?php echo intval($_GET['iskeyword']);?>">详细</a></if><if condition="$m['canselected']"><a href="###" onclick="returnHomepage('<?php if (!intval($_GET['iskeyword'])){?>{gooraye:$m.linkcode}<?php }else{?>{gooraye:$m.keyword}<?php }?>')" style="margin-left:14px;">选中</a></if></div><div style="clear:both"></div></li>
+<li><div class="mleft">{gooraye:$m.name}</div><div class="mright"><if condition="$m['sub']"><a class="btn btn-small btn-inverse"  href="?g=User&m=Link&a={gooraye:$m.module}&iskeyword=<?php echo intval($_GET['iskeyword']);?>">详细</a></if><if condition="$m['canselected']"><a class="btn btn-small btn-inverse"  href="###" onclick="returnHomepage('<?php if (!intval($_GET['iskeyword'])){?>{gooraye:$m.linkcode}<?php }else{?>{gooraye:$m.keyword}<?php }?>')" style="margin-left:14px;">选中</a></if></div><div style="clear:both"></div></li>
 <?php }?>
 </volist>
 <div style="clear:both"></div>

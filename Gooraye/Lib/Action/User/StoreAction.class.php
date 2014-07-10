@@ -345,9 +345,9 @@ class StoreAction extends UserAction{
 		$id = intval($_GET['id']);
 		if($productCatData = M('Product_cat')->where(array('id' => $catid, 'token' => session('token')))->find()){
 			$this->assign('catData', $productCatData);
-        } else {
-        	$this->error("没有选择相应的分类.", U('Store/index'));
-        }
+	        } else {
+	        	$this->error("没有选择相应的分类.", U('Store/index'));
+	        }
         //产品的规格
         $normsData = M("Norms")->where(array('catid' => $catid))->select();
         $colorData = $formatData = array();
@@ -521,6 +521,7 @@ class StoreAction extends UserAction{
         }        
 	}
 	
+	//详细
 	public function orders(){
 		$product_cart_model=M('product_cart');
 		if (IS_POST){
@@ -531,9 +532,9 @@ class StoreAction extends UserAction{
 				if (isset($_POST['id_'.$i])){
 					$thiCartInfo=$product_cart_model->where(array('id'=>intval($_POST['id_'.$i])))->find();
 					if ($thiCartInfo['handled']){
-					$product_cart_model->where(array('id'=>intval($_POST['id_'.$i])))->save(array('handled'=>0));
+					$product_cart_model->where(array('id'=>intval($_POST['id_'.$i])))->save(array('handled'=>0,'handledtime'=>time(),'handleduid'=>session('uid')));
 					}else {
-						$product_cart_model->where(array('id'=>intval($_POST['id_'.$i])))->save(array('handled'=>1));
+						$product_cart_model->where(array('id'=>intval($_POST['id_'.$i])))->save(array('handled'=>1,'handledtime'=>time(),'handleduid'=>session('uid')));
 					}
 				}
 			}
@@ -562,7 +563,7 @@ class StoreAction extends UserAction{
 			}
 
 
-			$unHandledCount=$product_cart_model->where(array('token'=>$this->_session('token'),'handled'=>0))->count();
+			$unHandledCount=$product_cart_model->where(array('token'=>$this->_session('token'),'handled'=>0,'groupon'=>0))->count();
 			$this->assign('unhandledCount',$unHandledCount);
 
 
@@ -630,7 +631,7 @@ class StoreAction extends UserAction{
 				$thisTable=$product_diningtable_model->where(array('id'=>$thisOrder['tableid']))->find();
 				$thisOrder['tableName']=$thisTable['name'];
 			}
-			//
+			
 			$this->assign('thisOrder',$thisOrder);
 			$carts=unserialize($thisOrder['info']);
 

@@ -28,11 +28,11 @@
                   <td>{gooraye:$list.title}</td>
                   <td>{gooraye:$list.attention_num}</td>
                   <td>{gooraye:$list.keyword}</td>
-                  <td><goorayeif where="$list['code_url'] neq ''"><a href="https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket={gooraye:$list.code_url}" target="_blank">点击查看</a><else/><a href="{gooraye::U('Recognition/get_code',array('id'=>$list['id']))}">获取二维码</a> </goorayeif></td>
+                  <td><goorayeif where="$list['code_url'] neq ''"><a class="btn btn-small btn-inverse" href="https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket={gooraye:$list.code_url}" target="_blank">点击查看</a><else/><a class="btn btn-small btn-inverse" href="{gooraye::U('Recognition/get_code',array('id'=>$list['id']))}">获取二维码</a> </goorayeif></td>
 				   <td><goorayeif where="$list['status'] eq 0">启用<else/>暂停</goorayeif></td>
                   <td class="norightborder">
-						<goorayeif where="$list['status'] eq 0"><a href="{gooraye::U('Recognition/status',array('type'=>1,'id'=>$list['id']))}">停用</a><else/><a href="{gooraye::U('Recognition/status',array('type'=>0,'id'=>$list['id']))}">启用</a></goorayeif> | 
-						<a href="{gooraye::U('Recognition/del',array('id'=>$list['id']))}">删除</a>　
+						<goorayeif where="$list['status'] eq 0"><a class="btn btn-small btn-inverse" href="{gooraye::U('Recognition/status',array('type'=>1,'id'=>$list['id']))}">停用</a><else/><a class="btn btn-small btn-inverse" href="{gooraye::U('Recognition/status',array('type'=>0,'id'=>$list['id']))}">启用</a></goorayeif> | 
+						<a class="btn btn-small btn-inverse" href="{gooraye::U('Recognition/del',array('id'=>$list['id']))}">删除</a>　
 				   </td>
                 </tr>
       			</goorayelist>

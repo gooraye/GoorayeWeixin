@@ -26,8 +26,8 @@ function selectall(name) {
           <div class="cLine">
 			<div class="pageNavigator left">
 			
-				<a href="{gooraye::U('Member_card/create_add',array('token'=>$token,'id'=>$thisCard['id']))}" title="创建会员卡号" class="add">创建会员卡号
-				</a>&nbsp;&nbsp;<a class="delete" href="###" onclick="if(confirm('确定删除吗')){$('#info').submit()}">删除</a>&nbsp;&nbsp; <strong>已经领取 <span style="color:red">{gooraye:$usecount}</span> 张，剩余<span style="color:red">{gooraye:$ucount}</span>张未领取，一共 <span style="color:red">{gooraye:$count}</span>张</strong>
+				<a  class="btn btn-small btn-inverse" href="{gooraye::U('Member_card/create_add',array('token'=>$token,'id'=>$thisCard['id']))}" title="创建会员卡号" class="add">创建会员卡号
+				</a>&nbsp;&nbsp;<a class="btn btn-small btn-inverse"  href="###" onclick="if(confirm('确定删除吗')){$('#info').submit()}">删除</a>&nbsp;&nbsp; <strong>已经领取 <span style="color:red">{gooraye:$usecount}</span> 张，剩余<span style="color:red">{gooraye:$ucount}</span>张未领取，一共 <span style="color:red">{gooraye:$count}</span>张</strong>
 			</div>
 			<a href="javascript:history.go(-1);" class="right btnGrayS vm" style="margin-top:10px">返回</a>          
 			<div class="clr"></div>
@@ -59,7 +59,7 @@ function selectall(name) {
                       <td> 
                       <if condition="$data_vip['wecha_id'] neq false">
                             
-                    <a href="index.php?g=User&m=Member_card&a=member&itemid={gooraye:$data_vip.id}&id={gooraye:$thisCard.id}">查看详情</a>
+                    <a  class="btn btn-small btn-inverse"  href="index.php?g=User&m=Member_card&a=member&itemid={gooraye:$data_vip.id}&id={gooraye:$thisCard.id}">查看详情</a>
                        
                       </if>
                     

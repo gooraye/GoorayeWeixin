@@ -513,7 +513,7 @@ class StoreAction extends WapAction{
 		} 
 	}
 	
-	
+	//下单
 	public function orderCart() {
 		if (empty($this->wecha_id)) {
 			unset($_SESSION[$this->session_cart_name]);

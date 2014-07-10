@@ -325,7 +325,8 @@ $(document).ready(function(){
 		var i = 0;
 		var tnum = 0;
 		$(".tnorms").each(function(){
-			tnum += parseInt($(this).children('td').eq(3).children('input').val());
+			tnum += parseInt($(this).children('td').eq(4).children('input').val());
+			console.log(tnum);
 			norms[i]= {'color':$(this).children('td').eq(0).children('input').val(), 'format':$(this).children('td').eq(1).children('input').val(), 'price':$(this).children('td').eq(2).children('input').val(), 'vprice':$(this).children('td').eq(3).children('input').val(), 'num':$(this).children('td').eq(4).children('input').val(), 'id':$(this).children('td').eq(5).children('input').val()};
 			i ++;
 		});

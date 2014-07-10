@@ -205,7 +205,7 @@ class IndexAction extends UserAction{
 			$img_db=M($data['module']);
 			$back=$img_db->field('id,text,pic,url,title')->limit(9)->order('id desc')->where($like)->select();
 			//
-			$rt=$Model->query("CREATE TABLE IF NOT EXISTS `tp_system_info` (`lastsqlupdate` INT( 10 ) NOT NULL ,`version` VARCHAR( 10 ) NOT NULL) ENGINE = MYISAM CHARACTER SET utf8");
+			$rt=$Model->query("CREATE TABLE IF NOT EXISTS `gooraye_system_info` (`lastsqlupdate` INT( 10 ) NOT NULL ,`version` VARCHAR( 10 ) NOT NULL) ENGINE = MYISAM CHARACTER SET utf8");
 			$this->success('关键词处理中:'.$row['des'],'?g=User&m=Create&a=index');
 		}else {
 			exit('更新完成，请测试关键词回复');

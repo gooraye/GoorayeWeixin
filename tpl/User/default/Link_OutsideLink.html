@@ -34,9 +34,9 @@ ul.modules li div.mright{float:right;width:55%;text-align:right;}
 <volist name="list" id="m">
 <tr><td>{gooraye:$m.name}</td><td class="norightborder">
 <if condition="$_GET['c'] != ''">
-	<a href="{gooraye:$m.url}" target="_blank">预览</a>&nbsp;&nbsp;<a href="###" onclick="returnHomepage('{gooraye:$m.url}')">选中</a>
+	<a class="btn btn-small btn-inverse" href="{gooraye:$m.url}" target="_blank">预览</a>&nbsp;&nbsp;<a href="###" class="btn btn-small btn-inverse"  onclick="returnHomepage('{gooraye:$m.url}')">选中</a>
 <else />
-	<a href="?g=User&m=Link&a=outsideLinkDetail&c={gooraye:$m.code}">详细列表</a>
+	<a class="btn btn-small btn-inverse"  href="?g=User&m=Link&a=outsideLinkDetail&c={gooraye:$m.code}">详细列表</a>
 </if>
 
 </td></tr>

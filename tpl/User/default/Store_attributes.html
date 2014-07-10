@@ -42,7 +42,7 @@
 <td><input type="checkbox" name="del_id[]" value="285" class="checkitem"></td>
 <td>{gooraye:$attributeData.name}</td>
 <td>{gooraye:$attributeData.value}</td>
-<td class="norightborder"><a href="{gooraye::U('Store/attributeAdd',array('token' => $token, 'id' => $attributeData['id'], 'catid' => $attributeData['catid']))}">修改</a> <a href="javascript:drop_confirm('您确定要删除吗?', '{gooraye::U('Store/attributeDel',array('id' => $attributeData['id'], 'token'=> $token, 'catid' => $attributeData['catid']))}');">删除</a></td>
+<td class="norightborder"><a  class="btn btn-small btn-inverse"  href="{gooraye::U('Store/attributeAdd',array('token' => $token, 'id' => $attributeData['id'], 'catid' => $attributeData['catid']))}">修改</a> <a  class="btn btn-small btn-inverse"  href="javascript:drop_confirm('您确定要删除吗?', '{gooraye::U('Store/attributeDel',array('id' => $attributeData['id'], 'token'=> $token, 'catid' => $attributeData['catid']))}');">删除</a></td>
 </tr>
 </volist>
 </tbody>

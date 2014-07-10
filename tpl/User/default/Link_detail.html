@@ -32,7 +32,7 @@ ul.modules li div.mright{float:right;width:55%;text-align:right;}
 </tr>
 </thead>
 <volist name="list" id="m">
-<tr><td>{gooraye:$m.name}</td><td class="norightborder"><a href="###" onclick="returnHomepage('<?php if (!intval($_GET['iskeyword'])){?>{gooraye:$m.linkcode}<?php }else{?>{gooraye:$m.keyword}<?php }?>')">选中</a></td></tr>
+<tr><td>{gooraye:$m.name}</td><td class="norightborder"><a class="btn btn-small btn-inverse"  href="###" onclick="returnHomepage('<?php if (!intval($_GET['iskeyword'])){?>{gooraye:$m.linkcode}<?php }else{?>{gooraye:$m.keyword}<?php }?>')">选中</a></td></tr>
 </volist>
 </table>
 <div class="footactions" style="padding-left:10px">
