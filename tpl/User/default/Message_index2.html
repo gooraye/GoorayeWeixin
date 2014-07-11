@@ -50,7 +50,7 @@
        </tr> 
               		<TR>
   <TH>媒体文件</TH>
-  <TD><input type="input" class="px" id="media" name="mediasrc" style="width:250px"> <script src="{gooraye::STATICS}/upyun.js"></script><a href="###" onclick="chooseFile('media','background')" class="a_upload">选择</a>&nbsp;&nbsp;&nbsp;<a href="###" onclick="upyunPicUpload('media',1500,1000,'{gooraye:$token}')" class="a_upload">上传</a> 仅发送图片消息、语音消息或视频消息的时候填写</TD>
+  <TD><input type="input" class="px" id="media" name="mediasrc" style="width:250px"> <script src="{gooraye::STATICS}/upyun.js"></script><a href="###" onclick="chooseFile('media','background')" class="a_upload  btn btn-small btn-inverse">选择</a>&nbsp;&nbsp;&nbsp;<a href="###" onclick="upyunPicUpload('media',1500,1000,'{gooraye:$token}')" class="a_upload btn btn-small btn-inverse">上传</a> 仅发送图片消息、语音消息或视频消息的时候填写</TD>
 </TR>
 <tr> 
         <th><span class="red"></span>文本消息/简介</th> 
@@ -584,7 +584,7 @@ a {
 <div style="clear:both"></div>
 
  <input type="hidden" class="px" id="imgids" value="" name="imgids" style="width:300px" >  <br>
- <a href="###" onclick="addImgMessage()" class="a_choose">选择图文消息</a>&nbsp;&nbsp;<a style="display:none" href="###" onclick="clearMessage()" class="a_clear">清空重选</a>
+ <a href="###" onclick="addImgMessage()" class="a_choose btn btn-small btn-inverse">选择图文消息</a>&nbsp;&nbsp;<a style="display:none" href="###" onclick="clearMessage()" class="a_clear btn btn-small btn-inverse">清空重选</a>
  
 
   </TD>

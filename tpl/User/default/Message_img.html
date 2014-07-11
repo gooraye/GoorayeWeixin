@@ -55,16 +55,27 @@ function returnHomepage(id,title,pic,info){
 	//
 	dom.innerHTML='<div class="mediaPanel"><div class="mediaHead"><span class="title" id="zbt">'+title+'</span><span class="time"><?php echo date('Y-m-d',time());?></span><div class="clr"></div></div><div class="mediaImg"><img id="suicaipic1" src="'+pic+'"></div><div class="mediaContent mediaContentP"><p id="zinfo">'+info+'</p></div><div class="mediaFooter"><span class="mesgIcon right"></span><span style="line-height:50px;" class="left">查看全文</span><div class="clr"></div></div></div>';
 	
-	if(multione.innerHTML==''){
-		singlenews.style.display="";
-		multinews.style.display="none";
+	if(multione && multione.innerHTML==''){
+		if(singlenews){
+			singlenews.style.display="";
+		}
+
+		if(multinews){
+			multinews.style.display="none";
+		}
 		
 		multione.innerHTML=' <h4 class="appmsg_title"><a href="javascript:void(0);" onClick="return false;" target="_blank">'+title+'</a></h4><div class="appmsg_thumb_wrp"><img style="border:1px solid #ddd" class="js_appmsg_thumb appmsg_thumb" src="'+pic+'"><i class="appmsg_thumb default" style="background:url('+pic+');background-size:100% 100%">&nbsp;</i></div>';
 		
 	}else{
-		singlenews.style.display="none";
-		multinews.style.display="";
+		if(singlenews){
+			singlenews.style.display="none";
+		}
+		if(multinews){
+			multinews.style.display="";
+		}
+		if(js_appmsg_preview ){
 		js_appmsg_preview.innerHTML=js_appmsg_preview.innerHTML+'<div id="appmsgItem4" data-fileid="" data-id="4" class="appmsg_item js_appmsg_item "><img class="js_appmsg_thumb appmsg_thumb" src="'+pic+'"><i class="appmsg_thumb default" style="background:url('+pic+');background-size:100% 100%">&nbsp;</i><h4 class="appmsg_title"><a onClick="return false;" href="javascript:void(0);" target="_blank">'+title+'</a></h4></div>';
+		}
 	}
 	dom.style.display="";
 	imgidsdom.value+=','+id;

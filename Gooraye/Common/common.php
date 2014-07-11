@@ -39,6 +39,8 @@ function getLotteryInfo($lottery,$date=''){
 	$supportLotter["新3D"] = 3;
 	$supportLotter["七乐彩"] = 4;
 	$supportLotter["超级大乐透"] = 5;
+	$supportLotter["大乐透"] = 5;
+	$supportLotter["乐透"] = 5;
 	$supportLotter["七星彩"] = 6;
 	$supportLotter["双色球"] = 7;
 	$supportLotter["排列5"] = 8;
@@ -302,6 +304,7 @@ function getMenu1(){
 	        array('name'=>'微信－语音回复','link'=>U('Voiceresponse/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Voiceresponse')),
 	        array('name'=>'自定义LBS回复','link'=>U('Company/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Company')),
 	        array('name'=>'回答不上来的配置','link'=>U('Other/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Other')),
+	        array('name'=>'人工客服','link'=>U('ServiceUser/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'ServiceUser')),
 	        array('name'=>'自定义菜单','link'=>U('Diymen/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Diymen')),
 	        )),
 
@@ -324,9 +327,9 @@ function getMenu1(){
 	        'display'=>0,
 	        'subs'=>array(
 	        array('name'=>'订餐（无线打印）','link'=>U('Repast/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Repast')),
-	        array('name'=>'360°全景','link'=>U('Panorama/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Panorama','infotype'=>'panorama')),
+	        array('name'=>'360°全景','link'=>U('Panorama/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Panorama')),
 	        array('name'=>'婚庆喜帖','link'=>U('Wedding/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Wedding')),
-	        array('name'=>'3G微投票','link'=>U('Vote/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Vote')),
+	        array('name'=>'微投票','link'=>U('Vote/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Vote')),
 	        array('name'=>'微汽车','link'=>U('Car/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Car')),
 	        array('name'=>'楼盘房产','link'=>U('Estate/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Estate')),
 	        array('name'=>'微教育','link'=>U('School/index',array('token'=>$token,'type'=>'semester')),'new'=>0,'selectedCondition'=>array('m'=>'School')),
@@ -334,7 +337,7 @@ function getMenu1(){
 	        array('name'=>'酒店宾馆','link'=>U('Hotels/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Hotels')),
 	        array('name'=>'万能表单,报名,留言,预约','link'=>U('Selfform/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Selfform')),
 	        array('name'=>'通用订单(酒吧KTV)','link'=>U('Host/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Host')),
-	        array('name'=>'微健身','link'=>U('Businessfitness/index',array('token'=>$token,'type'=>'fitness')),'new'=>1,'selectedCondition'=>array('m'=>'Businessfitness')),
+	        // array('name'=>'微健身','link'=>U('Businessfitness/index',array('token'=>$token,'type'=>'fitness')),'new'=>1,'selectedCondition'=>array('m'=>'Businessfitness')),
 
 	        )),
 
@@ -361,7 +364,6 @@ function getMenu1(){
 	        array('name'=>'分组管理','link'=>U('Wechat_group/groups',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Wechat_group','a'=>'groups')),
 	        // array('name'=>'粉丝行为分析','link'=>U('Wechat_behavior/statistics',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Wechat_behavior','a'=>'statistics')),
 	        array('name'=>'渠道二维码','link'=>U('Recognition/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Recognition')),
-	        array('name'=>'人工客服','link'=>U('ServiceUser/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'ServiceUser')),
 	        array('name'=>'群发消息','link'=>U('Message/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Message')),
 	        array('name'=>'分享管理','link'=>U('Share/index',array('token'=>$token)),'new'=>0,'selectedCondition'=>array('m'=>'Share')),
 	        )),

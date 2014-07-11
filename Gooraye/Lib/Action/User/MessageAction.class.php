@@ -234,6 +234,7 @@ class MessageAction extends UserAction{
                 case 'music': $data = '{"touser":"' . $fan['openid'] . '","msgtype":"' . $thisMessage['msgtype'] . '","' . $thisMessage['msgtype'] . '":{"media_id":"' . $thisMessage['mediaid'] . '"}}';
                     break;
                 case 'news': $imgids = explode(',', $thisMessage['imgids']);
+               
                     $imgID = 0;
                     if ($imgids){
                         foreach ($imgids as $ii){
@@ -251,13 +252,14 @@ class MessageAction extends UserAction{
                     $data = '{"touser":"' . $fan['openid'] . '","msgtype":"' . $thisMessage['msgtype'] . '","news":{"articles":[{"title":"' . $thisNews['title'] . '","description":"' . $thisNews['text'] . '","url":"' . $url . '","picurl":"' . $thisNews['pic'] . '"}]}}';
                     break;
                 }
+                
                 $rt = $this -> curlPost('https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=' . $json -> access_token, $data, 0);
                 if($rt['rt'] == false){
-            }else{
-                M('Send_message') -> where(array('id' => intval($thisMessage['id']))) -> setInc('reachcount');
-            }
-            $i++;
-            $this -> success('发送中:' . $i . '/' . $count, U('Message/send', array('id' => $thisMessage['id'], 'i' => $i)));
+                }else{
+                    M('Send_message') -> where(array('id' => intval($thisMessage['id']))) -> setInc('reachcount');
+                }
+                $i++;
+                $this -> success('发送中:' . $i . '/' . $count, U('Message/send', array('id' => $thisMessage['id'], 'i' => $i)));
         }else{
             $this -> error('获取access_token发生错误：错误代码' . $json -> errcode . ',微信返回错误信息：' . $json -> errmsg);
         }

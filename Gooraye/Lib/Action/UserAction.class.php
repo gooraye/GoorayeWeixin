@@ -27,14 +27,16 @@ class UserAction extends BaseAction{
         $token_open = M('token_open') -> field('queryname') -> where(array('token' => $this -> token)) -> find();
         $this -> userFunctions = explode(',', $token_open['queryname']);
         $this -> assign('userinfo', $userinfo);
+
         if(session('uid') == false){
             if (MODULE_NAME != 'Upyun'){
                 $this -> redirect('Home/Index/login');
             }
         }
-        // if (session('companyLogin') == 1 && !in_array(MODULE_NAME, array('Attachment', 'Repast', 'Upyun', 'Hotels'))){
-        //     $this -> redirect(U('User/Repast/index', array('cid' => session('companyid'))));
-        // }
+        if (session('companyLogin') == 1 && !in_array(MODULE_NAME, array('Attachment', 'Repast', 'Upyun', 'Hotels'))){
+            $this -> redirect(U('User/Repast/index', array('cid' => session('companyid'))));
+        }
+
         define('UNYUN_BUCKET', C('up_bucket'));
         define('UNYUN_USERNAME', C('up_username'));
         define('UNYUN_PASSWORD', C('up_password'));
@@ -89,7 +91,7 @@ class UserAction extends BaseAction{
         // if(empty($menus)){
             $vipid = $this -> userGroup['id'];
 
-          if($this->_get('cid')){
+          if(session('companyLogin') == 1){
 
             $menus = array( array(
             'name'=>'行业应用',
@@ -97,7 +99,9 @@ class UserAction extends BaseAction{
             'subs'=>array(
                 array('name'=>'订餐（无线打印）','link'=>U('Repast/index',array('token'=>getToken(),'cid'=>$this->_get('cid'))),
                   'new'=>0,'selectedCondition'=>array('m'=>'Repast')
-                ))));
+                ),
+              array('name'=>'酒店宾馆','link'=>U('Hotels/index',array('token'=>getToken(),'cid'=>$this->_get('cid'))),'new'=>0,'selectedCondition'=>array('m'=>'Hotels')),
+          )));
         }else{
 
             $menus =  getMenu($vipid);
@@ -137,13 +141,14 @@ class UserAction extends BaseAction{
             $st=0;
             foreach ($m['subs'] as $s){
              
-              $includeArr=0;
+              $includeArr=1;
               if ($s['selectedCondition']){
                 foreach ($s['selectedCondition'] as $key=>$condition){
                   // var_dump($key);
-                  if ($condition == $parmsArr[$key]){
+                  if ($condition != $parmsArr[$key]){
                   // if (!in_array($condition,$parmsArr)){
-                        $includeArr=1;
+                        $includeArr = 0;
+                        break;
                   }
                 }
               }

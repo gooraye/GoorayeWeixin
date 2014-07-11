@@ -37,8 +37,9 @@ a:hover{
 	/*margin-top: 3px;*/
 	/*background: #f8f8f8;*/
 	/*background: #D8D8D8;*/
-	background: #fff;
-	background: #5d5d5d;
+	/*background: #fff;*/
+	/*background: #5d5d5d;*/
+	background: #008eb7;
 }
 .memberinfo{
 	font-size: 16px;
@@ -83,7 +84,8 @@ a:hover{
 }
 .IndexFoot {
 	height: 150px;
-	background-color: #5d5d5d; 
+	/*background-color: #5d5d5d; */
+	background-color: #008eb7;
 }
 .foot{padding: 20px;  margin:0px auto; font-size:12px; line-height:39px;position: relative;}
 .foot .foot_page{ float:right; color:white;}
@@ -324,7 +326,8 @@ color:#fff;
 .sideBar .catalogList ul .nav-header{	
 	/*background-color: #f40;*/
 	/*background-color: #C0550D;*/
-	background-color:#616161;
+	/*background-color:#616161;*/
+	background-color: #00a2ca;
 }
 
 /* 百分比宽度*/
