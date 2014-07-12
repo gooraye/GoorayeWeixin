@@ -30,11 +30,11 @@ class GrouponAction extends ProductAction{
 		}
 		if (IS_POST){
 			$key = $this->_post('search_name');
-            $this->redirect('?g=Wap&m=Groupon&a=grouponIndex&token='.$this->token.'&keyword='.$key);
+            		$this->redirect('?g=Wap&m=Groupon&a=grouponIndex&token='.$this->token.'&keyword='.$key);
 		}
 		if (isset($_GET['keyword'])){
-            $where['name|intro|keyword'] = array('like',"%".$_GET['keyword']."%");
-            $this->assign('isSearch',1);
+		          $where['name|intro|keyword'] = array('like',"%".$_GET['keyword']."%");
+		          $this->assign('isSearch',1);
 		}
 		$count = $this->product_model->where($where)->count();
 		$this->assign('count',$count); 

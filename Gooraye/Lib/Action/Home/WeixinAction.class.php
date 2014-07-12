@@ -122,8 +122,13 @@ class WeixinAction extends Action{
             }
         }
 
+        //新版摇一摇
+        if(trim($data['Content']) == "摇"){
+            $this->oauth2();
+        }
+
+        //旧版摇一摇
         // addWeixinLog($data,"shake");
-        //摇一摇
         if((!(strpos($data['Content'], 'shake') === FALSE) || !(strpos(strtolower($data['Content']), 'shake') === FALSE)) && strlen($data['Content']) == 16){
             $mp = str_replace('shake', '', strtolower($data['Content']));
             $thisShake = M('Shake') -> where(array('isopen' => 1, 'token' => $this -> token)) -> find();
@@ -252,7 +257,7 @@ class WeixinAction extends Action{
 
 
 
-        addWeixinLog($data,"cheat");
+        // addWeixinLog($data,"cheat");
         if(!empty($return)){
             if(is_array($return)){
                 return $return;
@@ -1632,6 +1637,14 @@ function dianying($name){
     }else{
         return "";
     }
+}
+
+//oauth授权链接
+function oauth2(){
+
+        import("ORG.OAuth2");
+        $oauth2 = new \OAuth2();
+        return array($oauth2->getLink(C('site_url').U('Index/oauth2'),'shake'), 'text');
 }
 
 function renpin($name)

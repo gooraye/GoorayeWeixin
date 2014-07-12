@@ -14,7 +14,42 @@ class IndexAction extends BaseAction{
 		$this->assign('includeFooterPath',$this->includePath.'Public_footer.html');
 		
 	}
+	/*微信oauth2的回发处理方法*/
+	public function oauth2(){
 
+		$code = $this->_get('code');
+		$state = $this->_get('state');
+		import("ORG.OAuth2");
+		$oauth2 = new \OAuth2();
+		$errmsg = $oauth2->getInfo($code);
+		if($errmsg == ""){
+
+			//成功获取
+			$userinfo = $oauth2->getUserInfo();
+			if(empty($userinfo->errcode)){
+
+				switch ($state) {
+					case 'shake':
+						//针对摇一摇处理获得的用户信息
+						// $userinfo
+						break;
+					
+					default:
+						# code...
+						break;
+				}
+				
+				//用户信息
+				// var_dump($userinfo);
+
+			}else{
+				$this->show("<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><meta name='viewport' content='width=device-width,height=device-height,maximum-scale=1.0,user-scalable=no'><meta name='apple-mobile-web-app-capable' content='yes'><meta name='apple-mobile-web-app-status-bar-style' content='black'><meta name='format-detection' content='telephone=no'></head><body><p style='font-size:18px;color:red;text-align:center;width:100%;'>出错了：".$userinfo->errmsg."。请重新尝试！</p></body></html>");
+			}
+		}else{
+				$this->show("<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><meta name='viewport' content='width=device-width,height=device-height,maximum-scale=1.0,user-scalable=no'><meta name='apple-mobile-web-app-capable' content='yes'><meta name='apple-mobile-web-app-status-bar-style' content='black'><meta name='format-detection' content='telephone=no'></head><body><p style='font-size:18px;color:red;text-align:center;width:100%;'>".$errmsg."请重新尝试！</p></body></html>");
+		}
+		// var_dump($oauth2);
+	}
 	/*公司员工登录*/
 	public function clogin()
 	{
