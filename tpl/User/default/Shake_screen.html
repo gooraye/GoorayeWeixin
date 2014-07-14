@@ -1,381 +1,880 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>{gooraye:$info.title}</title>
-<script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
-<script>
-$(function(){
-	var hoko;
-	var ss={gooraye:$info.starttime}+1;
-	var tt;
-	var anitime=800/{gooraye:$info.endshake};
-	var stime={gooraye:$info.showtime}*1000;
-	function rScreen(){
-		$.ajax({
-			type: "post",
-			url : "{gooraye::U('Shake/getCount')}",
-			dataType:'json',
-			data: 'token={gooraye:$info.token}&id={gooraye:$info.id}',
-			success: function(json){
-				/*
-				var i=0;
-				$.each(json,function(index,el){
-					$("#ranking div:eq("+i+")").children('span').html(json[i]['phone']);
-					if(json[i]['point']*anitime>800)
-					$("#ranking div:eq("+i+")").children('span').css("width",800);
-					else
-					$("#ranking div:eq("+i+")").children('span').css("width",json[i]['point']*anitime);
-					i++;
-				});
-				*/
-				
-				for(i=0;i<{gooraye:$info.shownum};i++){
-					if(json[i]){
-					$("#ranking div:eq("+i+")").children('span').html(json[i]['phone']);
-					if(json[i]['count']*anitime>800)
-					$("#ranking div:eq("+i+")").children('span').css("width",800);
-					else
-					$("#ranking div:eq("+i+")").children('span').css("width",json[i]['count']*anitime);
-					}
-				}
-				
-			}
-		});
-		if($("#ranking div:eq(0)").children('span').width()>=800){echo();$("#final").show("fast");clearTimeout(hoko);return false;}
-		hoko=setTimeout(rScreen,stime) ;
-
-	}
-    
-	
-	function start(){
-
-		$.ajax({
-			type: "post",
-			url : "{gooraye::U('Shake/startShake')}",
-			dataType:'text',
-			data: 'token={gooraye:$info.token}&id={gooraye:$info.id}',
-			success: function(data){}});
-	}
-	 
-	 
-	 function getConnectNum(){
-	 	$.ajax({
-	 		type: "post",
-	 		url : "{gooraye::U('Shake/getConnectNum')}",
-	 		dataType:'text',
-	 		data: 'token={gooraye:$info.token}&id={gooraye:$info.id}',
-	 		success: function(data){
-	 			$("#connectcount").html(data);
-	 		}
-
-	 	});
-	 }
-	  	   
-   
-   function count(){
-	  $("#bignum").html(ss);
-      ss=ss-1  
-	  tt=setTimeout(count,1000)
-	  if(ss==-1){
-		  $("#bignum").hide("fast");
-		  $("#ranking").show();
-		  clearTimeout(tt);
-		  start();
-		  rScreen();
-		  }
-	}
-	function echo(){
-		var str="";
-		for(i=0;i<3;i++){
-			score=parseInt($("#ranking div:eq("+i+")").children('span').width())/anitime;
-			score = parseInt(score);
-			if(isNaN(score)){
-				score = '';
-			}
-			str += "<tr>";
-			str += "<td>第"+(i+1)+"名</td>";
-			str += "<td>"+$("#ranking div:eq("+i+")").children('span').html();+"</td>";
-			str += "<td>"+score+"</td>";
-			str += "</tr>"
-			}
-		 $("#finaltable").append(str);
+	<meta charset="UTF-8">
+	<title>摇一摇</title>
+	<style type="text/css">
+		body{
+			background-color: #000;
+			background: url({gooraye:$info['background']}) no-repeat;
+			margin: 0;
+			padding: 0;
+			min-height: 768px;
+			min-width: 1024px;
+			background-repeat: repeat;
+			background-size: cover;
+			overflow: hidden;
 		}
-   $("#c").click(function(){
-	   clearInterval(yuni);
-	   count()
-	   })
-	$("#qrcode").click(function(){
-		$(this).hide();
-		$('#d').show();
-		})
-	 
-	 var yuni=setInterval(getConnectNum,1000);
-	 
-})
-</script>
-<style>
-body,div,ul,li,p { padding:0; margin:0;}
-.page { width:1000px; margin:0 auto; position:relative}
-h1 { font-size:50px; text-align:center; color:#CCC;}
-#ranking { width:800px; margin:0 auto; display:none}
-#ranking div { background:#ccc; margin-bottom:8px; clear:both; line-height:35px; font-weight:bold}
+		@-webkit-keyframes round{
+			0{-webkit-transform:rotate(0)}
+			100%{-webkit-transform:rotate(360deg)}
+		}
+		@-moz-keyframes round{
+			0{-moz-transform:rotate(0)}100%{-moz-transform:rotate(360deg)}
+		}
+		@-o-keyframes round{
+			0{-o-transform:rotate(0)}100%{-o-transform:rotate(360deg)}
+		}
+		@keyframes round{
+			0{transform:rotate(0) } 100%{transform:rotate(360deg)}
+		}
+		.join_num{height:80px;line-height:80px;color:#fff;text-align:center;font-size:30px}
+		.join_num em{color:#c63435}
+		.round{border:1px solid rgba(255,255,255,0.5);margin:50px auto}
+		.w300 {
+			width: 298px;
+			height: 298px;
+			border-radius: 298px;
+			margin-top: 0;
+			overflow: hidden;
+		}
 
-#bignum,#final { font-size:400px; width:1000px; color:#888; position:absolute; left:0 ; top:0;  z-index:99; text-align:center; padding-top:170px; cursor:pointer;}
-#final { display:none; color:#960; z-index:99; background:#FFF; padding-top:100px}
-#final .finalbox{ width:600px; margin:0 auto; font-size:60px; color:#930}
-#dd { position:absolute; left:0; top:0; z-index:9999}
-#bignum .biginner{}
-#bignum .biginner a#c{  text-align:center; display:block; width:750px; height:200px; margin:0 auto; text-decoration:none; background:#900; border:2px #c00 solid; font-size:110px; line-height:200px; color:#fff
--webkit-box-shadow: 0 1px 0 #FFFFFF inset, 0 1px 0 #960;
-	-moz-box-shadow: 0 1px 0 #FFFFFF inset, 0 1px 0 #960;
-	box-shadow: 0 1px 0 #FFFFFF inset, 0 1px 0 #960;
-	-webkit-border-radius: 15px 15px 15px 15px;
-	-moz-border-radius: 15px 15px 15px 15px;
-	-o-border-radius: 15px 15px 15px 15px;
-	border-radius: 15px 15px 15px 15px;
-}
-#bignum .biginner a:hover { color:#CCC; background:#000;border:2px #960 solid;}
-#bignum .manbox { text-align:center;  width:250px; height:30px; margin:0 auto; color:#999; font-size:16px; line-height:30px; font-weight:bold;margin-top:20px;border-top:none;font-size:18px;}
-#connectcount { color:#900; font-size:18px;}
-#bignum .manbox a#d { font-size:12px; padding:0 10px}
-#finaltable { font-size:16px;; width:600px; margin:0 auto; text-align:center; line-height:24px;; margin-bottom:100px}
-        body {
-            background: <if condition="$info['background'] eq ''"> url("/merry.jpg") no-repeat center top<else />url("{gooraye:$info.background}") no-repeat center top</if>; 
-			font: 13px '微软雅黑',Arial,Helvetica;
-			background-attachment:fixed;
-			background-size:100%;
-        }
-	
-		h2, p {
+		.w200 {
+			width: 200px;
+			height: 200px;
+			border-radius: 200px;
+		}
+
+		.w100 {
+			width: 100px;
+			height: 100px;
+			border-radius: 100px;
+		}
+
+		.w1 {
+			width: 1px;
+			height: 1px;
+			border-radius: 1px;
+			background-color: #fff;
+			position: relative;
+			top: -4px;
+		}
+		
+		.line {
+			width: 150px;
+			height: 150px;
+			border-left: 1px solid rgba(255,255,255,0.6);
+			border-radius: 0 0 150px 0;
+			background: -moz-linear-gradient(top,rgba(255,255,255,0),rgba(255,255,255,0.5));
+			background: -ms-linear-gradient(top,rgba(255,255,255,0),rgba(255,255,255,0.5));
+			background: -webkit-gradient(linear,40% 0,0 100%,from(rgba(255,255,255,0)),to(rgba(255,255,255,0.5)));
+			position: absolute;
+			left: 0;
+			top: 0;
+			-moz-transform: rotate(0);
+			-moz-transform-origin: 0 0;
+			-webkit-transform: rotate(0);
+			-webkit-transform-origin: 0 0;
+			-o-transform: rotate(0);
+			-o-transform-origin: 0 0;
+			transform: rotate(0);
+			transform-origin: 0 0;
+		}
+
+		.roundMove {
+			-webkit-animation: round 3s both linear infinite;
+			-moz-animation: round 3s both linear infinite;
+			-o-animation: round 3s both linear infinite;
+			animation: round 3s both linear infinite;
+		}
+		
+		.radar {
+			width: 400px;
+			height: 400px;
+			overflow: hidden;
+			position: absolute;
+			left: 50%;
+			/*margin-left: -200	px;*/
+			top: 50%;
+			margin-top: -185px;
+			z-index: 100;
+			/*display: none;*/
+		}
+		
+		.user-item{position:absolute;left:20px;top:70px;width:50px;height:70px;overflow:hidden;text-align:center;opacity:0;}
+		.user-item:nth-child(1){left:50px;top:150px}
+		.user-item:nth-child(2){left:120px;top:70px}
+		.user-item:nth-child(3){left:180px;top:100px}
+		.user-item:nth-child(4){left:280px;top:90px}
+		.user-item:nth-child(5){left:120px;top:180px}
+		.user-item:nth-child(6){left:250px;top:200px}
+		.user-item:nth-child(7){left:60px;top:260px}
+		.user-item:nth-child(8){left:180px;top:240px}
+		.user-item:nth-child(9){left:175px;top:320px}
+		.user-item:nth-child(10){left:270px;top:280px}
+		.user-item .user-img{width:50px;height:50px;overflow:hidden;border-radius:50px;background-color:#fff}
+		.user-item .user-img img{width:44px;height:44px;border-radius:44px;overflow:hidden;display:block;margin:3px auto}
+		.user-item p{height:20px;line-height:20px;overflow:hidden;text-align:center;color:#fff;font-size:12px;margin:0}
+
+		.signup{
+			position: absolute;
+			left: 0;
+			top: -91%;
+			width: 100%;
+			height: 91%;
+			overflow: hidden;
+			background-size: cover;
+			z-index: 99999;
+
+			top:0px;
+			display: block;
+			margin-left: 0px;
+		}
+		
+		.signup .codeImg{
+			display: block;
+			width: 380px;
+			height: 380px;
+			position: absolute;
+			left: 50%;
+			margin-left: -190px;
+			top: 50%;
+			margin-top: -175px;
+			z-index: 101;
+			margin-left: -380px;
+		}
+
+		.start_btn{
+			z-index: 999;
+			position: absolute;
+			width: 200px;
+			height: 40px;
+			line-height: 40px;
+			overflow: hidden;
 			text-align: center;
-			color: #fafafa;
-			text-shadow: 0 1px 0 #111;	
-		}
-		
-		a {
-			color: #777;
-		}
-
-		/*---------------------------*/			
-        
-        .progress-bar {
-            background-color: #1a1a1a;
-            height: 35px;
-            padding: 5px;
-            width: 800px;
-            margin: 15px 0 20px 0;			
-            -moz-border-radius: 5px;
-			-webkit-border-radius: 5px;
-			border-radius: 5px;
-            -moz-box-shadow: 0 1px 5px #000 inset, 0 1px 0 #444;
-			-webkit-box-shadow: 0 1px 5px #000 inset, 0 1px 0 #444;
-			box-shadow: 0 1px 5px #000 inset, 0 1px 0 #444;
-			overflow:hidden;        
-        }
-        
-        .progress-bar span {
-			color:#666;
-            display: inline-block;
-            height: 100%;
-			width:0;
-			padding-left:0px;
-			background-color: #777;
-            -moz-border-radius: 3px;
-			-webkit-border-radius: 3px;
+			font-size: 24px;
+			color: #ff0;
+			background-color: #c63435;
 			border-radius: 3px;
-            -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, .5) inset;
-			-webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, .5) inset;
-			box-shadow: 0 1px 0 rgba(255, 255, 255, .5) inset;
-			-webkit-transition: width .4s ease-in-out;
-			-moz-transition: width .4s ease-in-out;
-			-ms-transition: width .4s ease-in-out;
-			-o-transition: width .4s ease-in-out;
-			transition: width .4s ease-in-out;		
-        }
-		
-		/*---------------------------*/			
-		
-        .blue span {
-            background-color: #34c2e3;   
-        }
-
-        .orange span {
-			  background-color: #fecf23;
-			  background-image: -webkit-gradient(linear, left top, left bottom, from(#fecf23), to(#fd9215));
-			  background-image: -webkit-linear-gradient(top, #fecf23, #fd9215);
-			  background-image: -moz-linear-gradient(top, #fecf23, #fd9215);
-			  background-image: -ms-linear-gradient(top, #fecf23, #fd9215);
-			  background-image: -o-linear-gradient(top, #fecf23, #fd9215);
-			  background-image: linear-gradient(top, #fecf23, #fd9215);  
-        }	
-
-        .green span {
-			  background-color: #a5df41;
-			  background-image: -webkit-gradient(linear, left top, left bottom, from(#a5df41), to(#4ca916));
-			  background-image: -webkit-linear-gradient(top, #a5df41, #4ca916);
-			  background-image: -moz-linear-gradient(top, #a5df41, #4ca916);
-			  background-image: -ms-linear-gradient(top, #a5df41, #4ca916);
-			  background-image: -o-linear-gradient(top, #a5df41, #4ca916);
-			  background-image: linear-gradient(top, #a5df41, #4ca916);  
-        }		
-		
-		/*---------------------------*/		
-		
-		.stripes span {
-            -webkit-background-size: 30px 30px;
-            -moz-background-size: 30px 30px;
-            background-size: 30px 30px;			
-			background-image: -webkit-gradient(linear, left top, right bottom,
-								color-stop(.25, rgba(255, 255, 255, .15)), color-stop(.25, transparent),
-								color-stop(.5, transparent), color-stop(.5, rgba(255, 255, 255, .15)),
-								color-stop(.75, rgba(255, 255, 255, .15)), color-stop(.75, transparent),
-								to(transparent));
-            background-image: -webkit-linear-gradient(135deg, rgba(255, 255, 255, .15) 25%, transparent 25%,
-                                transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%,
-                                transparent 75%, transparent);
-            background-image: -moz-linear-gradient(135deg, rgba(255, 255, 255, .15) 25%, transparent 25%,
-                                transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%,
-                                transparent 75%, transparent);
-            background-image: -ms-linear-gradient(135deg, rgba(255, 255, 255, .15) 25%, transparent 25%,
-                                transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%,
-                                transparent 75%, transparent);
-            background-image: -o-linear-gradient(135deg, rgba(255, 255, 255, .15) 25%, transparent 25%,
-                                transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%,
-                                transparent 75%, transparent);
-            background-image: linear-gradient(135deg, rgba(255, 255, 255, .15) 25%, transparent 25%,
-                                transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%,
-                                transparent 75%, transparent);            
-            
-            -webkit-animation: animate-stripes 3s linear infinite;
-            -moz-animation: animate-stripes 3s linear infinite;       		
+			position: absolute;
+			bottom: 10px;
+			left: 50%;
+			margin-left: -100px;
+			cursor: pointer;
 		}
-        
-        @-webkit-keyframes animate-stripes { 
-			0% {background-position: 0 0;} 100% {background-position: 60px 0;}
-        }
-        
-        
-        @-moz-keyframes animate-stripes {
-			0% {background-position: 0 0;} 100% {background-position: 60px 0;}
-        }
+		.top{			
+			position: absolute;
+			top:0px;
+			height: 15%;
+			width: 100%;
+			margin: 0 auto;
+			border-top: 1px solid rgba(255,255,255,0.5);
+			border-bottom: 1px solid rgba(255,255,255,0.5);
+			color: #fff;
+			height: 80px;
+			line-height: 80px;
+			text-align: center;
+			font-size: 34px;
+			background-color: rgba(255,255,255,0.3);
+		}
+		.strong{
+			color:#ffff00;
+			font-weight: bold;
+		}
 		
-		/*---------------------------*/	 
-
-		.shine span {
+		/*游戏跑道界面*/
+		.gamepanel div{			
+			transition: all 800ms ease-out;
+			-webkit-transition: all 800ms ease-out;
+		}
+		.gamepanel{
+			display: none;
+			position: absolute;
+			top: 15%;
+			height:60%;
+			left: 0;
+			width: 90%;
+			left: 50%;
+			margin-left: -45%;
+			transition: all 800ms ease-out;
+			-webkit-transition: all 800ms ease-out;
+		}
+		.tracklist{
+			overflow: hidden;
+			width: 100%;
 			position: relative;
 		}
-		
-		.shine span::after {
-			content: '';
-			opacity: 0;
+		.trackline{
+			position: relative;
+			width: 100%;
+			background: url({gooraye::STATICS}/shake/track.jpg) repeat-x;
+			background-size: contain;
+		}
+		.track-start{
 			position: absolute;
+			background: url({gooraye::STATICS}/shake/track_line.png) right center no-repeat;
+			background-size: contain;
+			top: 0;
+			left: 0;
+			text-align: center;
+			color: #fff;
+			font-family: Arial,Helvetica,sans-serif;
+		}
+
+		.track-end{
+			position: absolute;
+			background: url({gooraye::STATICS}/shake/track_line.png) left center no-repeat;
+			background-size: contain;
 			top: 0;
 			right: 0;
-			bottom: 0;
-			left: 0;
-			background: #fff;
-            -moz-border-radius: 3px;
-			-webkit-border-radius: 3px;
-			border-radius: 3px;			
-			
-            -webkit-animation: animate-shine 2s ease-out infinite;
-            -moz-animation: animate-shine 2s ease-out infinite; 			
 		}
 
-        @-webkit-keyframes animate-shine { 
-			0% {opacity: 0; width: 0;}
-			50% {opacity: .5;}
-			100% {opacity: 0; width: 95%;}
-        }
-        
-        
-        @-moz-keyframes animate-shine {
-			0% {opacity: 0; width: 0;}
-			50% {opacity: .5;}
-			100% {opacity: 0; width: 95%;}
-        }
+		.leftfadein{
+			-webkit-animation:leftfadein-keyframes .5s .2s ease both;
+		}
+		/* 玩家样式 */
+		.player {
+		position: absolute;
+		width: 64px;
+		height: 64px;
+		overflow: visible;
+		transition: all 1s;
+		-webkit-transition: all .5s;
+		-webkit-transition: all .5s;
+		}
+		.player .head {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		background: #fff no-repeat;
+		background-size: contain;
+		transition: all 1s;
+		-webkit-transition: all .5s;
+		-webkit-transition: all .5s;
+		}
+		.player .nickname {
+		position: absolute;
+		height: 70px;
+		width: 200px;
+		font-size: 20px;
+		line-height: 70px;
+		text-align: right;
+		top: 50%;
+		margin-top: -35px;
+		left: -250px;
+		color: #fff;
+		}
+		.shake {
+		-webkit-backface-visibility: visible;
+		-webkit-transform-origin: 50% 100%;
+		-webkit-animation: shake_frames .3s 0 infinite ease normal none;
+		}
 
-		/*---------------------------*/	 
+		/* 晃动 */
+		@-webkit-keyframes shake_frames{
+			0{-webkit-transform:rotate(3deg)}
+			24%{-webkit-transform:rotate(0)}
+			49%{-webkit-transform:rotate(-3deg)}
+			74%{-webkit-transform:rotate(0)}100%{-webkit-transform:rotate(3deg)}
+		}
+		/* 抖动 */
+		@-webkit-keyframes leftfadein-keyframes{
+			0{opacity:0;-webkit-transform:translateX(-100px)}
+			60%{opacity:1;-webkit-transform:translateX(0)}
+			80%{-webkit-transform:translateX(-10px)}
+			100%{-webkit-transform:translateX(0)}
+		}
 		
-		.glow span {
-            -moz-box-shadow: 0 5px 5px rgba(255, 255, 255, .7) inset, 0 -5px 5px rgba(255, 255, 255, .7) inset;
-			-webkit-box-shadow: 0 5px 5px rgba(255, 255, 255, .7) inset, 0 -5px 5px rgba(255, 255, 255, .7) inset;
-			box-shadow: 0 5px 5px rgba(255, 255, 255, .7) inset, 0 -5px 5px rgba(255, 255, 255, .7) inset;
-			
-            -webkit-animation: animate-glow 1s ease-out infinite;
-            -moz-animation: animate-glow 1s ease-out infinite; 			
+		/*倒计时*/
+		.countdown {
+			position: absolute;
+			width: 50%;
+			height: 50%;
+			top: 50%;
+			left: 50%;
+			display: none;
+			text-align: center;
+			color: #fff;
+			z-index: 999;
+		}
+		.countdown-animation {
+			-webkit-animation: cutdownan-keyframes 1000ms infinite ease both;
+			-moz-animation: cutdownan-keyframes 1000ms infinite ease bot;
+		}
+		@-webkit-keyframes cutdownan-keyframes{
+			0{opacity:0;-webkit-transform:scale(.3)}
+			50%{opacity:1;-webkit-transform:scale(1.05)}
+			70%{-webkit-transform:scale(.9)}
+			100%{-webkit-transform:scale(6);opacity:0}
 		}
 
-		@-webkit-keyframes animate-glow {
-		 0% { -webkit-box-shadow: 0 5px 5px rgba(255, 255, 255, .7) inset, 0 -5px 5px rgba(255, 255, 255, .7) inset;} 
-		 50% { -webkit-box-shadow: 0 5px 5px rgba(255, 255, 255, .3) inset, 0 -5px 5px rgba(255, 255, 255, .3) inset;} 
-		 100% { -webkit-box-shadow: 0 5px 5px rgba(255, 255, 255, .7) inset, 0 -5px 5px rgba(255, 255, 255, .7) inset;}
-		 }
+		/*奖台*/
+		.prizeset-masklayer{
+			display: none;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 91%;
+			background-color: rgba(0,0,0,0.6);
+			z-index: 999;
+		}
+		.prizeset-label{
+			display: none;
+			text-align: center;
+			width: 100%;
+			height: 80px;
+			line-height: 80px;
+			font-size: 80px;
+			position: absolute;
+			left: 0;
+			top: 50%;
+			margin-top: -40px;
+			color: #ff0;
+			text-shadow: 0 0 5px #fff,0 0 10px #fff,0 0 15px #fff,0 0 40px #ffa225,0 0 70px #ffa342;
+		}
+		.prizeset-cup{
+			display: none;
+			position: absolute;
+			width: 500px;
+			height: 300px;
+			background: url({gooraye::STATICS}/shake/shake_cup.png) center bottom no-repeat;
+			top: 50%;
+			margin-top: -150px;
+			left: 50%;
+			margin-left: -250px;
+			text-align: center;
+		}
+		.button {
+			font-size: 18px;
+			position: relative;
+			margin: 16px 5px;
+			bottom: -300px;
+			color: #fff;
+			display: inline-block;
+			padding: 12px;
+			border: 1px solid #fff;
+			cursor: pointer;
+			border-radius: 12px;
+			-moz-border-radius: 12px;
+			-webkit-border-radius: 12px;
+			background-color: #4f4b4b;
+			background: -moz-linear-gradient(top,#4f4b4b,#0f070a);
+			background: -ms-linear-gradient(top,#4f4b4b,#0f070a);
+			background: -webkit-gradient(linear,0 0,0 100%,from(#4f4b4b),to(#0f070a));
+		}
+		.prizeset-cup .nickname{
+			display: none;
+		}
+	</style>	
 
-		@-moz-keyframes animate-glow {
-		 0% { -moz-box-shadow: 0 5px 5px rgba(255, 255, 255, .7) inset, 0 -5px 5px rgba(255, 255, 255, .7) inset;} 
-		 50% { -moz-box-shadow: 0 5px 5px rgba(255, 255, 255, .3) inset, 0 -5px 5px rgba(255, 255, 255, .3) inset;} 
-		 100% { -moz-box-shadow: 0 5px 5px rgba(255, 255, 255, .7) inset, 0 -5px 5px rgba(255, 255, 255, .7) inset;}
-		 }
-    table,th,td, caption{ margin:0px; padding:0px; line-height:18px; color:#000; font-size:12px;}
-   #finaltable th{  background:#BCE774; text-align:left; font-weight:normal; width:150px;  padding:6px;}
-   #finaltable caption{ background:#328AA4; color:#FFF; line-height:30px; border:1px solid #FFF;}
-   #finaltable td{background:#ECFBD4; padding:3px;  }
-   #finaltable th,#finaltable td{border-top:1px solid #FFF;border-left:1px solid #FFF; }
-   #finaltable{border-bottom:1px solid #FFF;border-right:1px solid #FFF;}
-</style>
-<script>
-function closeFinal(){
-	$('#final').css('display','none');
-}
-function showFinal(){
-	$("#final").show("fast");
-}
-</script>
+	<script type="text/javascript" src="http://libs.useso.com/js/jquery/1.10.2/jquery.min.js"></script>
+	<script type="text/javascript">
+
+
+		var Shake  = {};
+
+		Shake.goal =  {gooraye:$info.endshake} ;
+		
+		Shake.playersTop = [];
+
+		Shake.trackWidth = 640;
+
+		Shake.trackHeight = 64;
+
+		Shake.showplayers = {gooraye:$info.shownum};
+
+		//状态 0：未开始/重新开始 1：已开始 2：进行中 3：展示结果 4：结束
+		Shake.state = 0;
+
+		//刷新频率2个像素
+		Shake.velocityX = 2;
+
+		//轮询时间
+		Shake.loopGetDelta = [];
+
+		Shake.loopGetDelta['pollingPlayers'] = 1500;
+		Shake.loopGetDelta['joinuser'] = 2000;
+		Shake.loopGetDelta['countdown'] = 1000;
+
+		Shake.audio = [];
+
+		function readyAudio(){	
+			if(!Shake.audio["countdown"]){
+				Shake.audio["countdown"] =document.getElementById('audio_countdown');		
+			}
+			if(!Shake.audio["gameover"]){
+				Shake.audio["gameover"] = document.getElementById('audio_gameover');			
+			}
+			if(!Shake.audio['topchange']){
+				Shake.audio["topchange"] = document.getElementById('audio_topchange');				
+			}
+
+		}
+		Shake.audioPlayTopChange = function(){
+			Shake.audio["topchange"].play();
+		}
+		Shake.ready = function(){ 
+			Shake.state = 0;
+			$('.prizeset-masklayer').hide();	
+			$('.top').show();
+			$('.signup').show();
+			$('.gamepanel').hide();
+			pollingJoinUser();
+			readyAudio();
+		}
+
+		Shake.start = function(){ 
+			Shake.state = 1;
+			start();
+			readyAudio();
+		}
+
+		Shake.isStart = function() { return Shake.state === 1; }
+
+		Shake.running = function(){ Shake.state = 2; }		
+
+		Shake.isRunning = function() { return Shake.state === 2; }
+
+		Shake.gameover = function(){ Shake.state = 4; }
+
+		Shake.isGameover = function() { return Shake.state === 4; }
+
+		//再玩一次
+
+		function playAgian(){
+			$.ajax({
+			type: "post",
+			url : "{gooraye::U('Shake/restart')}",
+			dataType:'text',
+			data: 'token={gooraye:$info.token}&id={gooraye:$info.id}',
+			}).fail(function(){
+				alert("重新开始失败，请重试！");
+			}).done(function(data){
+
+				if(data == ''){
+					Shake.ready();					
+				}else{
+					alert("重新开始失败，请重试！");
+				}
+				
+			});
+			
+		}
+
+		//设置前三名位置
+		function setPrize(clone,data){
+			var len = data.length;
+			$(".prizeset-cup .player").hide();
+			if(len >= 1){
+				var first = $(".prizeset-cup .player").get(0) || $(clone).clone();
+
+				first = $(first).appendTo(".prizeset-cup").css({"height": "140px","width": "140px","top":"5px","left": "200px"}).show();
+				$(".nickname",first).text(data[0].nickname);
+				$(".head",first).css("background-image","url("+data[0].headurl+")");
+			}
+			if(len >= 2){
+				var second = $(".prizeset-cup .player").get(1) || $(clone).clone();
+				second = $(second).appendTo(".prizeset-cup").css({"height": "120px","width": "120px","top":"60px","left": "20px"}).show();
+				$(".nickname",second).text(data[1].nickname);
+				$(".head",second).css("background-image","url("+data[1].headurl+")");
+			}
+			
+			if(len >= 3){
+				var third = $(".prizeset-cup .player").get(2) || $(clone).clone();
+				third = $(third).appendTo(".prizeset-cup").css({"height": "100px","width": " 100px","top":"100px","left": "390px"}).show();	
+				$(".nickname",third).text(data[2].nickname);
+				$(".head",third).css("background-image","url("+data[2].headurl+")");					
+			}
+
+		}
+
+		//展示结果
+		function ShowResult(){
+			$.ajax({
+			type: "post",
+			url : "{gooraye::U('Shake/getResult')}",
+			dataType:'json',
+			data: 'token={gooraye:$info.token}&id={gooraye:$info.id}',
+			}).fail(function(){
+			}).done(function(data){
+				 console.log(data);
+				setPrize($("div.player").get(0),data);
+			})
+			//
+			$('.prizeset-masklayer').slideDown(500);
+			$('.prizeset-cup').show(1500);
+		}
+
+
+		//游戏结束
+		function GameOver(){
+			Shake.audio["gameover"].play();
+			//展示奖台，以及重新开始一轮，保存结果
+			ShowResult();
+		}
+
+		//游戏倒计时
+		function countDown(cnt){
+			if(cnt == -1){
+
+				$(".countdown").hide();
+				// startShake();
+
+				Shake.running();
+
+				pollingPlayers();
+				return;
+			}
+			if(cnt == 0){
+				$(".countdown").text("GO!");
+			}else{
+				$(".countdown").text(cnt).show();
+
+				Shake.audio["countdown"].play();
+			}
+			cnt--;
+			setTimeout(function(){countDown(cnt)},Shake.loopGetDelta['countdown']);
+		}
+
+		//更新加入的用户
+		function updateJoinuser(users){
+			$divs = $(".users div.user-item");
+			var opacity =0 ;
+			for(var i=0;i<$divs.length;i++){
+				 // console.log($users[i],users[i]);
+				 if( i < users.length){
+				 	if($($divs[i]).attr("id") == users[i].id){
+				 		opacity = $($divs[i]).css("opacity");
+				 		if(parseFloat(opacity) - 0.3 < 0){	
+							$($divs[i]).css("opacity","0.7");
+						}else{
+							$($divs[i]).css("opacity",parseFloat(opacity) - 0.1);
+						}
+				 		continue;
+				 	}
+					$($divs[i]).attr("id",users[i].id);
+					$("img",$divs[i]).prop("src",users[i].headurl);
+					$("p",$divs[i]).text(users[i].nickname);
+					$($divs[i]).css("opacity","0.7");
+				 	
+				 }else{
+				 	$($divs[i]).removeAttr("id");
+				 	$($divs[i]).css("opacity","0");
+				 }
+			}
+		}
+
+		function pollingJoinUser(){
+
+			//向服务器请求数据，获取加入用户的信息，大于当前数据id的前几个
+			//服务器返回，头像图片地址，昵称。
+			$.ajax({
+		 		type: "post",
+		 		url : "{gooraye::U('Shake/getJoinUser')}",
+		 		dataType:'json',
+		 		data: 'token={gooraye:$info.token}&id={gooraye:$info.id}',
+		 		success: function(data){
+		 			//
+		 			if(data){
+		 				$(".join_num em").text(data.count);
+		 				updateJoinuser(data.users);
+		 			}
+		 			// console.log(data);
+		 		}
+	 		});
+
+			if(Shake.state === 0){
+				setTimeout(pollingJoinUser,Shake.loopGetDelta['joinuser']);
+			}
+
+		}
+
+		//开始游戏
+		function start(){	
+			$.ajax({
+			type: "post",
+			url : "{gooraye::U('Shake/start')}",
+			dataType:'text',
+			data: 'token={gooraye:$info.token}&id={gooraye:$info.id}',
+			}).fail(function(){
+				alert("开始失败，请重试！");
+			}).done(function(data){
+				// console.log(data);
+				startShake();
+				countDown({gooraye:$info.showtime});
+				// if(data.result == "0"){
+				// 	startShake();					
+				// }else{
+				// 	alert(data);
+				// }
+				//启动成功后，才继续
+			});
+		}
+
+		//创建一个div
+		function createPlayer(id,qlogo,nickname){
+			var div = '<div class="player" uid="'+id+'"><div class="head shake" style="background-image: url('+qlogo+');"></div><div class="nickname" >'+nickname+'</div></div>';
+			return div;
+		}
+
+		//更新排名前十的玩家的信息
+		function updatePlayers(players){
+			$players = $(".gamepanel .player");
+			if(players && players.length){
+				var curPlayer = '';
+				for(var i=0;i<players.length;i++){
+					if(i == 0){
+						if(Shake.playersTop[0] != players[i].id){							
+							Shake.playersTop[0] = players[i].id;
+							Shake.audioPlayTopChange();
+						}
+					}
+					if(i < $players.length){
+						$($players[i]).attr("uid",players[i].id);
+						$(".nickname",$players[i]).text(players[i].nickname);
+						$(".head",$players[i]).css("background-image","url("+players[i].headurl+")");
+						curPlayer = $players[i];
+					}else{
+						var div = createPlayer(players[i].id,players[i].headurl,players[i].nickname);
+						curPlayer = $(div).appendTo(".tracklist");
+						$(curPlayer).css("height",Shake.trackHeight-10).css("width",Shake.trackHeight-10);
+
+					}
+
+					$(curPlayer).css("top",(i*Shake.trackHeight+5)+"px");
+
+					if(Shake.isGameover()){
+						$(curPlayer).css("left",(Shake.trackWidth )+"px");
+					}else{						
+						$(curPlayer).css("left",(players[i].count*Shake.velocityX)+"px");
+					}
+
+				}
+			}
+			
+		}
+
+		// 轮询
+		function pollingPlayers(){
+			//更新位置
+			// Shake.playersTopTen[0];
+			//拉取10个摇次数最多的用户，记录到Shake.playersTopTen
+			//记录用户id，wecha_id, 摇次数，当前位置，clone。
+			$.ajax({
+			type: "post",
+			url : "{gooraye::U('Shake/getTopUsersAndResult')}",
+			dataType:'json',
+			data: 'token={gooraye:$info.token}&id={gooraye:$info.id}&top='+Shake.showplayers,
+			}).fail(function(){
+			}).done(function(data){
+				// console.log(data);
+				if(Shake.isGameover()){//防止多次gameover
+					return ;
+				}
+				if(data.gameover == 1){
+					Shake.gameover();
+					GameOver();
+				}
+				updatePlayers(data.users);
+				if(Shake.isRunning()){	
+					setTimeout(pollingPlayers , Shake.loopGetDelta['pollingPlayers']);
+				}
+				
+			}).always(function(){
+
+			});
+
+		}
+		
+
+		//开始摇一摇
+		function startShake(){
+
+			//Shake.start();
+			$('.top').hide();
+			$('.signup').hide();
+			$('.gamepanel').show();
+			var tl = "";
+			$(".tracklist").empty();
+			for(var i=0;i < Shake.showplayers;i++){
+			tl += '<div class="trackline"><div class="track-start" style="width: 40px; ">'+(i+1)+'</div><div class="track-end" style="width: 40px; "></div></div>';
+			}
+
+	    		$(tl).appendTo(".tracklist").hide().each(function(index,item){
+   			var d=$(this);
+	    window.setTimeout(function(){d.show().addClass("leftfadein")},100*index);
+	    		});
+			recalHeight();
+
+
+		}
+		
+		function recalHeight(){		
+			var gH = $('.gamepanel').height();
+			var eachH = gH / Shake.showplayers;
+			// console.log(gH);
+			$('.tracklist .trackline').each(function(){
+				$(this).css("height",eachH+"px");
+				$(this).css("font-size",(eachH-12)+"px");
+				$("div",this).css("width",eachH+"px");
+				$("div",this).css("height",eachH+"px");
+				$("div",this).css("line-height",eachH+"px");
+			});
+			var trackWidth = $('.gamepanel').width() - eachH;
+			//摇一次，移动像素大小
+			Shake.velocityX = trackWidth / Shake.goal ;
+			Shake.trackHeight = eachH;
+			Shake.trackWidth = trackWidth;
+			$(".gamepanel .player").css("height",Shake.trackHeight-10).css("width",Shake.trackHeight-10);
+		}
+		//添加监听方法
+		function addEventListener(){
+			$('.start_btn').bind("click" , start);
+			// window.onresize = function(){ alert(1);};
+			window.onresize = recalHeight;
+			$('.button.reset').click(playAgian);
+		}
+
+		$(function(){	
+
+			$act = {gooraye:$info.isact};
+			if($act == 1){				
+				Shake.start();
+			}else{
+				Shake.ready();
+			}
+			addEventListener();
+		})
+	</script>
 </head>
-
 <body>
-<div class="page">
-  <h1>{gooraye:$info.title}</h1>
-  
-  <div id="ranking">
-     <php>
-     $ka=$info['shownum'];
-     $class=array('blue stripes','orange shine','green glow','blue stripes','orange shine','green glow','blue stripes','orange shine','green glow','green glow');
-     for($i=0;$i<$ka;$i++){
-      echo "<div class='progress-bar ".$class[$i]."'>
-    <span></span> </div>";
-     }
-     </php>
-      
-<div style="padding:10px 0;text-align:center"><a href="###" onclick="showFinal()">显示结果</a></div>
-  </div>
-
-  <div id="bignum">
-    <div class="biginner">
-      <a id="c" href="javascript:void(0)">准备开始</a>
-      <div class="manbox">已连接人数<span id="connectcount"> 0 </span><br><if condition="$info['qrcode'] neq ''"><a id="d" href="javascript:void(0)" onclick="$('#qrcode').show();$('#d').hide()">显示二维码</a></if></div>
-    </div>
-    <div id="qrcode" style="z-index:99; position:absolute; left:0; top:0; display:none; text-align:center; width:100%">
-       <img style="width:80%;" src="{gooraye:$info.qrcode}">
-    </div>
-  </div>
-  <div id="final">
-    <div class="finalbox">比赛结束！ <a href="###" onclick="closeFinal()" style="font-size:14px;font-weight:normal;text-decoration:none">关闭</a></div>
-    <table id="finaltable">
-       <tr>
-          <th style="text-align:center">名次</th>
-          <th style="text-align:center">电话</th>
-          <th style="text-align:center">摇晃次数</th>
-       </tr>
-    </table>
-    
-  </div>
-  
+<audio id="audio_topchange" src="{gooraye::STATICS}/shake/shake_outride.mp3" preload="preload"></audio>
+<audio id="audio_countdown" src="{gooraye::STATICS}/shake/shake_cutdown.mp3" preload="preload"></audio>
+<audio id="audio_gameover" src="{gooraye::STATICS}/shake/shake_gameover.mp3" preload="preload"></audio>
+<div class="top">
+	微信扫一扫 发送 <span class="strong">{gooraye:$info.keyword}</span> 即可参与
 </div>
+<!-- 倒计时 -->
+<div class="countdown countdown-animation" style="margin-left: -341.5px; margin-top: -166.5px; font-size: 233.1px; line-height: 333px;">{gooraye:$info.showtime}</div>
+<!-- 倒计时 END -->
 
-<audio autoplay src="{gooraye:$info.backgroundmusic}" loop></audio>
+<!-- 摇一摇结果 START -->
+<div class="result-panel">
+	<div class="title">
+		<div class="close">X</div>
+	</div>
+	<div class="content">
+		
+	</div>
+</div>
+<!-- 摇一摇结果 END -->
 
+<!-- 奖台 START -->
+<div class="prizeset-masklayer">
+    <div class="prizeset-cup">
+        <span class="button reset">再玩一次</span>
+        <!-- <span class="button save">保存结果</span> -->
+        <span class="button result">查看结果</span>
+    </div>
+</div>
+<!-- 奖台 END -->
+
+<!-- 游戏进行界面  -->
+<div class="gamepanel">
+<!-- 跑道 开始-->
+	<div class="round-num"></div>
+	<div class="tracklist">
+	    	
+	</div>
+<!-- 跑道 结束-->
+</div>
+<!-- 游戏进行界面  END -->
+
+<!-- 报名界面 -->
+<div class="signup" style="top:0px">
+        	<img class="codeImg" src="{gooraye:$info.qrcode}">
+	<div class="radar"  >
+	        <div class="join_num">当前已有<em>0</em>人加入</div>
+	        <div class="round w300">
+	            <div class="round w200">
+	                <div class="round w100">
+	                    <div class="round w1">
+	                        <div class="line roundMove"></div>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	        <div class="users">
+	        	 <div  class="user-item" >
+	         		<div class="user-img">
+	         			<img src="">
+	         		</div>
+	         		<p></p>
+	           </div>
+	            <div  class="user-item" >
+	         		<div class="user-img">
+	         			<img src="">
+	         		</div>
+	         		<p></p>
+	           </div>
+	            <div  class="user-item" >
+	         		<div class="user-img">
+	         			<img src="">
+	         		</div>
+	         		<p></p>
+	           </div> 
+	           <div  class="user-item">
+	         		<div class="user-img">
+	         			<img src="">
+	         		</div>
+	         		<p></p>
+	           </div> 
+	           <div  class="user-item">
+	         		<div class="user-img">
+	         			<img src="">
+	         		</div>
+	         		<p></p>
+	           </div>
+	           <div class="user-item">
+	         		<div class="user-img">
+	         			<img src="">
+	         		</div>
+	         		<p></p>
+	           </div> 
+	           <div  class="user-item">
+	         		<div class="user-img">
+	         			<img src="">
+	         		</div>
+	         		<p></p>
+	           </div>
+	            <div  class="user-item">
+	         		<div class="user-img">
+	         			<img src="">
+	         		</div>
+	         		<p></p>
+	           </div>
+	            <div  class="user-item">
+	         		<div class="user-img">
+	         			<img src="">
+	         		</div>
+	         		<p></p>
+	           </div>
+	            <div  class="user-item">
+	         		<div class="user-img">
+	         			<img src="">
+	         		</div>
+	         		<p></p>
+	           </div>
+
+	        </div>
+	</div>
+	<div class="start_btn ">开始游戏</div>
+</div>
+  <!-- 报名界面 END -->
+
+<!-- <audio autoplay src="{gooraye:$info.backgroundmusic}" loop></audio> -->
 </body>
 </html>

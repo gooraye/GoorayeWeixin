@@ -124,7 +124,7 @@ class WeixinAction extends Action{
 
         //新版摇一摇
         if(trim($data['Content']) == "摇"){
-            $this->oauth2();
+            return $this->shakeOAuth2();
         }
 
         //旧版摇一摇
@@ -132,14 +132,18 @@ class WeixinAction extends Action{
         if((!(strpos($data['Content'], 'shake') === FALSE) || !(strpos(strtolower($data['Content']), 'shake') === FALSE)) && strlen($data['Content']) == 16){
             $mp = str_replace('shake', '', strtolower($data['Content']));
             $thisShake = M('Shake') -> where(array('isopen' => 1, 'token' => $this -> token)) -> find();
+            //有开启状态的摇一摇活动
             if ($thisShake){
+
                 $shakeRt = M('Shake_rt') -> where(array('isopen' => 1, 'shakeid' => $thisShake['id'], 'token' => $this -> token, 'wecha_id' => $this -> data['FromUserName'])) -> find();
                 $data = array();
                 $data['token'] = $this -> token;
                 $data['wecha_id'] = $this -> data['FromUserName'];
                 $data['shakeid'] = $thisShake['id'];
                 $data['phone'] = htmlspecialchars($mp);
+
                 if ($shakeRt){
+                    //用户已经参加
                     $srt = M('Shake_rt') -> where(array('shakeid' => $thisShake['id'], 'wecha_id' => $this -> data['FromUserName'])) -> save($data);
                     if ($srt){
                         return array(array(array($thisShake['title'] . '，点击参与活动', $thisShake['intro'] . '。您的手机号设置成功，点击即可参与活动', $thisShake['thumb'], C('site_url') . '/index.php?g=Wap&m=Shake&a=index&id=' . $thisShake['id'] . '&token=' . $this -> token . '&wecha_id=' . $this -> data['FromUserName'])), 'news');
@@ -147,12 +151,14 @@ class WeixinAction extends Action{
                         return array('摇一摇活动手机号修改失败', 'text');
                     }
                 }else{
+                    //用户未参加
                     $srt = M('Shake_rt') -> add($data);
                     if ($srt){
                         return array(array(array($thisShake['title'] . '，点击参与活动', $thisShake['intro'] . '。您的手机号设置成功，点击即可参与活动', $thisShake['thumb'], C('site_url') . '/index.php?g=Wap&m=Shake&a=index&id=' . $thisShake['id'] . '&token=' . $this -> token . '&wecha_id=' . $this -> data['FromUserName'])), 'news');
                     }else{
                         return array('摇一摇活动手机号设置失败', 'text');
                     }
+                    
                 }
             }
         }
@@ -1640,11 +1646,31 @@ function dianying($name){
 }
 
 //oauth授权链接
-function oauth2(){
+function shakeOAuth2(){
+        $token = $this -> token;
+        
+        $wecha_id = $this -> data['FromUserName'];
+        $thisShake = M('Shake') -> where(array('isopen' => 1, 'token' => $token)) -> find();
+        if($thisShake)
+        {
 
-        import("ORG.OAuth2");
-        $oauth2 = new \OAuth2();
-        return array($oauth2->getLink(C('site_url').U('Index/oauth2'),'shake'), 'text');
+            $shakeid = $thisShake['id'];
+            return array('<a href="'.C('site_url').U('Wap/Shake/checkJoin',array('token'=>$token,'wecha_id'=>$wecha_id,'id'=>$shakeid)).'" >点击我进入摇一摇</a>', 'text');
+            // $map['wecha_id'] = $this -> data['FromUserName'];
+            // $map['token'] = $this->token;
+            // $map['shakeid'] = $thisShake['id'];
+
+            // $user = M('Shake_user')->where($map)->find();
+            // if($user){              
+            //     return array('<a href="'.C('site_url').U('Wap/Shake/index',array('token'=>$token,'wecha_id'=>$userinfo->openid,'id'=>$shakeid)).'" >点击我进入摇一摇</a>', 'text');
+            // }else{
+            //     import("ORG.OAuth2");
+            //     $oauth2 = new \OAuth2();
+            //     return array('<a href="'.$oauth2->getLink(C('site_url').U('Index/oauth2' , array('token' => $this -> token,'shakeid'=>$thisShake['id'])),'shake').'" >点击我进入摇一摇</a>', 'text');
+            // }
+        }else{
+            return array('摇一摇未开启！', 'text');
+        }
 }
 
 function renpin($name)

@@ -16,9 +16,10 @@ class IndexAction extends BaseAction{
 	}
 	/*微信oauth2的回发处理方法*/
 	public function oauth2(){
-
+		$token = $this->_get('token');
 		$code = $this->_get('code');
 		$state = $this->_get('state');
+		$shakeid = $this->_get('shakeid');
 		import("ORG.OAuth2");
 		$oauth2 = new \OAuth2();
 		$errmsg = $oauth2->getInfo($code);
@@ -26,22 +27,35 @@ class IndexAction extends BaseAction{
 
 			//成功获取
 			$userinfo = $oauth2->getUserInfo();
+
 			if(empty($userinfo->errcode)){
+			
+				$map['token'] = $token;
+				$map['shakeid'] = $shakeid;
+				$map['wecha_id'] = $userinfo->openid;
+				$user = M('Shake_user')->where($map)->find();
+				if($user == FALSE){
+					//针对摇一摇处理获得的用户信息
+					$data['headurl'] = $userinfo->headimgurl;
+					$data['wecha_id'] = $userinfo->openid;
+					$data['nickname'] = $userinfo->nickname;
+					$data['sex'] = $userinfo->sex;
+					$data['jointime'] = time();
+					$data['token'] = getToken();
+					$data['shakeid'] = $shakeid;
+					M('Shake_user')->add($data);
+					// $this->show(U('Wap/Shake/index',array('token'=>$token,'wecha_id'=>$userinfo->openid,'id'=>$shakeid)));
+					// $this->show()
+					redirect(C('site_url').U('Wap/Shake/index',array('token'=>$token,'wecha_id'=>$userinfo->openid,'id'=>$shakeid)));
+//					exit();
+					// $this->redirect(C('site_url').U('Wap/Shake/index',array('token'=>$token,'wecha_id'=>$userinfo->openid,'id'=>$shakeid)),2,'页面跳转中');
+				 }//End 1IF
+				 else{
+				 	redirect(C('site_url').U('Wap/Shake/index',array('token'=>$token,'wecha_id'=>$userinfo->openid,'id'=>$shakeid)));
+				 }
+					//End 2IF}
 
-				switch ($state) {
-					case 'shake':
-						//针对摇一摇处理获得的用户信息
-						// $userinfo
-						break;
-					
-					default:
-						# code...
-						break;
-				}
-				
-				//用户信息
-				// var_dump($userinfo);
-
+				// }//End 3IF
 			}else{
 				$this->show("<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><meta name='viewport' content='width=device-width,height=device-height,maximum-scale=1.0,user-scalable=no'><meta name='apple-mobile-web-app-capable' content='yes'><meta name='apple-mobile-web-app-status-bar-style' content='black'><meta name='format-detection' content='telephone=no'></head><body><p style='font-size:18px;color:red;text-align:center;width:100%;'>出错了：".$userinfo->errmsg."。请重新尝试！</p></body></html>");
 			}

@@ -14,6 +14,9 @@ class ShakeAction extends UserAction{
         $count = $this -> shake_model -> where($this -> token_where) -> count();
         $page = new Page($count, 20);
         $info = $this -> shake_model -> where($this -> token_where) -> order('id desc') -> limit($page -> firstRow . ',' . $page -> listRows) -> select();
+        if(empty($info['background'])){
+            $info['background'] = '/tpl/static/images/shakebg.jpg';
+        }
         $this -> assign('page', $page -> show());
         $this -> assign('info', $info);
         $this -> display();
@@ -109,5 +112,73 @@ class ShakeAction extends UserAction{
         $js = json_encode($result);
         echo $js;
     }
+
+    //===================NEW===========
+
+
+    //返回，指定数目的用户信息
+    public function getJoinUser(){
+                
+               $users = M('Shake_user')->where(array('token' => $this -> _post('token'), 'shakeid' => intval($this -> _post('id'))))->order('jointime desc')->limit(10)->select();
+
+
+               $count = M('Shake_user')->where(array('token' => $this -> _post('token'), 'shakeid' => intval($this -> _post('id'))))->count();
+
+               echo "{\"count\":\"".$count."\" ,\"users\":".json_encode($users)." }";
+    }
+
+    //开始
+    public function start(){
+
+        $result = $this -> shake_model -> where(array('token' => $this -> _post('token'), 'id' => intval($this -> _post('id')))) -> save(array('isact' => '1','gameisover' => 0));
+
+         M('Shake_user')->where(array('token' => $this -> _post('token'), 'shakeid' => intval($this -> _post('id'))))->save(array("count"=>0));
+
+        echo "{\"result\":\"1\" }";
+    }
+
+    //重新开始
+    public function restart(){
+        $result = $this -> shake_model -> where(array('token' => $this -> _post('token'), 'id' => intval($this -> _post('id')))) -> save(array('isact' => '1','gameisover' => 0));
+
+         M('Shake_user')->where(array('token' => $this -> _post('token'), 'shakeid' => intval($this -> _post('id'))))->save(array("count"=>0));
+        if($result === FALSE){                    
+            echo "1";
+        }else{
+            echo "";
+        }
+    }
+    
+
+    //开始
+    public function getTopUsersAndResult(){
+        $users = M('Shake_user')->where(array('token' => $this -> _post('token'), 'shakeid' => intval($this -> _post('id'))))->order('count desc')->limit(10)->select();        
+        $shake = $this -> shake_model ->field('gameisover') -> where(array('token' => $this -> _post('token'), 'id' => intval($this -> _post('id')))) -> find();
+        if($shake === FALSE){            
+            $shake['gameisover'] = 0;
+        }
+        echo "{\"gameover\":\"".$shake['gameisover']."\" ,\"users\":".json_encode($users)." }";
+    }
+
+    //获取结果
+    public function getResult(){
+            $result = $this -> shake_model ->field('result')->where(array('token' => $this -> _post('token'), 'id' => intval($this -> _post('id'))))->find();
+            if($result === FALSE){
+                echo "{\"errmsg\":\"获取失败！\"}";
+            }else{
+                $result = unserialize($result['result']);
+                $cnt = count($result);
+                // $resArr[]  = array('id' =>1);
+                // $resArr[]  = array('id' =>2);
+                // $resArr[]  = array('id' =>3);
+                // echo json_encode($resArr);
+                if($cnt >= 1){
+                    echo json_encode($result[$cnt-1]);
+                }else{
+                    echo "";
+                }
+            }
+    }
+
 }
 ?>
