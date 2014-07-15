@@ -3,6 +3,7 @@
  *项目公共配置
  **/
 return array(
+	
 	'LOAD_EXT_CONFIG' 		=> 'db,info,email,safe,upfile,cache,route,app,alipay,sms',		
 	'APP_AUTOLOAD_PATH'     =>'@.ORG',
 	'OUTPUT_ENCODE'         =>  true, 			//页面压缩输出

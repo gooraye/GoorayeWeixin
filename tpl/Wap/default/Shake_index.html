@@ -11,8 +11,8 @@
 <meta name="format-detection" content="telephone=no"/>
 <script language="javascript"> 
 var t1 = new Date().getTime(); 
-</script> 
-	<script type="text/javascript" src="http://libs.useso.com/js/jquery/1.10.2/jquery.min.js"></script>
+</script>
+<script type="text/javascript" src="http://libs.useso.com/js/jquery/1.10.2/jquery.min.js"></script>
 <script>
 var Shake = {};
 Shake.audio = [];
@@ -54,7 +54,6 @@ function TimerStart(sec,TextID)
 		
         if (n<100) {
 			n=0;
-			$("#yaoyiyaoyes").hide();
 			$("#yaoyiyaoresult").show().text("赶紧摇吧！");
 			// GamesOver(SHAKE_TIMES,'yaoyiyaoyes');
 			return;
@@ -97,7 +96,7 @@ function init(){
 		gameIsOver = false ;
 		//移动浏览器支持运动传感事件
 		window.addEventListener('devicemotion', deviceMotionHandler, false);
-		$("#yaoyiyaoyes").show();
+		// $("#yaoyiyaoyes").show();
 		$("#nostart").hide();
 		$("#loadingrt").hide();
 		// $("#Percentage").show();
@@ -110,7 +109,7 @@ function init(){
 //震动监听
 function deviceMotionHandler(eventData) {
 	if (gameIsOver) {
-		
+		count=0;
 		return ;
 	}
 	// 获取含重力的加速度
@@ -130,7 +129,7 @@ if (diffTime > SHAKE_SPACE) {
 	if (<?php echo intval($info['isact']);?>) {
 		if (speed > SHAKE_THRESHOLD) {
 			// TODO:摇一摇之后所要进行的数据逻辑操作
-			$("#yaoyiyaoyes").hide();
+			// $("#yaoyiyaoyes").hide();
 			$("#yaoyiyaoresult").show();
 			$("#loadingrt").hide();
 			count++;
@@ -142,7 +141,7 @@ if (diffTime > SHAKE_SPACE) {
 
 		}
 	}else{
-		$("#yaoyiyaoyes").hide();
+		// $("#yaoyiyaoyes").hide();
 		$("#loadingrt").hide();
 		$("#yaoyiyaoresult").show();
 		$("#yaoyiyaoresult").html("您已加入，请等待主持人指挥！");
@@ -167,15 +166,21 @@ function ShakeAudio(){
 
 	}
 }
+
+function reload(){
+	 window.location.reload();
+}
+
 function ShowGameOver(){
+	last_count = -1;
+	count=0;//重新设置为0
 	$("#yaoyiyaoresult").show();
-	$("#yaoyiyaoresult").html("游戏已结束！");
+	$("#yaoyiyaoresult").html("游戏已结束！<a style='color:red;font-weight:bold;' href='javascript:reload();'>刷新</a>");
 }
 //2秒更新一次数据
 function  updata(){
 	if (gameIsOver) {
 		ShowGameOver();
-		checkStart();
 		return;
 	}
 	if(last_count < count){
@@ -202,6 +207,8 @@ function  updata(){
 			}
 		});
 		last_count=count;
+	}else{
+		// count = count+3;
 	}
 	setTimeout('updata()',2000);
 }
@@ -212,7 +219,11 @@ function checkStart(){
     };
     $.post('index.php?g=Wap&m=Shake&a=shakeActivityStatus&id={gooraye:$info.id}&token={gooraye:$info.token}', submitData,
     function(data) {
-
+        if (data.isact == 0 && data.gameisover == 0) {
+           	$("#loadingrt").hide();
+		$("#yaoyiyaoresult").show();
+		$("#yaoyiyaoresult").html("您已加入，请等待主持人指挥！");
+        } 
         if (data.isact == 1 && data.gameisover == 0) {
            window.location.reload();
         } else {
@@ -242,9 +253,12 @@ $(document).ready(function(){
 	}
 	if(!isAct){
 		setInterval('checkStart()',1500);
-	}else{
+	}else {
 		TimerStart(loadtime,'lefttime');
 	}
+
+	
+
 	
 });
 //尽可能屏弊按扭,避免误操作退出
@@ -353,9 +367,7 @@ a:hover{color:#333;text-decoration:underline; /*end color*/background-color:#8AD
 		<div id="yaoyiyaono" style="font-size:20px;margin:10px;line-height:35px;display:none;">
 　　		您的手机太落后了，该换了！！
 		</div>
-		<div id="yaoyiyaoyes" style="font-size:20px;margin:10px;line-height:50px;display:none;">
-			正在加载...
-		</div>
+		
 		<div id="loadingrt" style="font-size:20px;margin:10px;line-height:50px;">
 			正在加载...
 		</div>

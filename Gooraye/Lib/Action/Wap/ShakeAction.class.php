@@ -1,6 +1,7 @@
 <?php
 class ShakeAction extends BaseAction{
 	public $shake_model;
+	public $savedTops = 10;
 	public function __construct(){
 		parent::__construct();
 		$this->token		= $this->_get('token');
@@ -11,7 +12,9 @@ class ShakeAction extends BaseAction{
 		}
 		$this->assign('wecha_id',$this->wecha_id);
 		$this->shake_model=M('Shake');
+		$this->savedTops = 10;
 	}
+
 	// public function index(){
 	// 	$info=array();
 	// 	// $info['phone'] 		= $this->_get('phone');
@@ -113,21 +116,26 @@ public function index(){
 			if ($shakeRt){
 				//检测数目是否达到条件
 				if($data['count'] >= $thisShake['endshake']){
+
+       					 // $this->shake_model->where(array('id'=>intval($_POST['id']),'token'=>$this->_post('token')))->save(array('isact'=>1,'gameisover'=>1));
 					//查找前三名
-					$top3User = M('Shake_user')->field('id,wecha_id,headurl,nickname')->where(array('shakeid'=>$where['id'],'token'=>$this->_post('token')))->limit(3)->order('count desc')->select();
+					$top3User = M('Shake_user')->field('id,wecha_id,headurl,nickname')->where(array('shakeid'=>$where['id'],'token'=>$this->_post('token')))->limit($this->savedTops)->order('count desc')->select();
 					$this->SaveResult($top3User,$thisShake['result']);
 					// echo "{\"endshake\":\"".$data['endshake']."\"}";
-					
+					M('Shake_user')->where(array('shakeid'=>$where['id'],'wecha_id'=>$this->_post('wecha_id')))->save($data);
+					echo "{\"gameisover\":\"1\"}";
+					exit();
 				}
 				M('Shake_user')->where(array('shakeid'=>$where['id'],'wecha_id'=>$this->_post('wecha_id')))->save($data);
-
-			}else{
+				
+			}
+			else{
 				// M('Shake_user')->add($data);
 			}
 
 			echo "{\"gameisover\":\"0\"}";
 		}else{
-			$shakeUser=M('Shake_user')->where(array('shakeid'=>$where['id'],'wecha_id'=>$this->_post('wecha_id')))->find();
+			// $shakeUser=M('Shake_user')->where(array('shakeid'=>$where['id'],'wecha_id'=>$this->_post('wecha_id')))->find();
 			// $map['shakeid'] = $where['id'];
 			// $map['wecha_id'] = $this->_post('wecha_id');
 
@@ -145,26 +153,14 @@ public function index(){
 		//二维数组
 		//[[],[],[]]
 		$resArr = array();
-		if(! empty($resArr)){	
-			$resArr[] = unserialize($result);		
+		
+		if(! empty($result)){	
+			$resArr = unserialize($result);		
 		}
 
-		$resArr[] = $top3User;
+		array_push($resArr,$top3User);
 
-		// $cnt = M('Shake_user')->where(array('shakeid'=>$where['id'],'wecha_id'=>$this->_post('wecha_id')))->count();
-
-		//GAME OVER,'result'=>json_encode($resArr)
-
-		$this->shake_model->where(array('id'=>intval($_POST['id']),'wecha_id'=>$this->_post('wecha_id')))->save(array('isact'=>0,'gameisover'=>1,'result'=>serialize($resArr)));
-
-		// $data['mark'] = json_encode($resArr);
-		// $data['aid'] = intval($_POST['id']);
-		// $data['token'] = $this->_post('token');
-		// $data['endtime'] = time();
-		// $joinnum = ;
-
-		//GAME OVER
-		// M('shakelog')->lock(true)->add($data);
+		$this->shake_model->where(array('id'=>intval($_POST['id']),'token'=>$this->_post('token')))->save(array('isact'=>1,'gameisover'=>1,'result'=>serialize($resArr)));
 		
 	}
 

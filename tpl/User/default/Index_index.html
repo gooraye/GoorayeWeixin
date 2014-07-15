@@ -25,7 +25,7 @@
       padding: 7px;
       background: #fff;
       box-sizing: border-box;
-
+      word-wrap:break-word;
   }
 
 .publiclist .ctrlbtns{
@@ -89,6 +89,9 @@ padding: 0 20px;
   font-size: 1.4em;
   background-color: #6d6d6d;
 }
+.btn.btn-red{
+  background-color: #ff3300;
+}
 .btn.btn-red:hover{
   background-color: #fe3300;
   margin-right: 10px;
@@ -99,7 +102,8 @@ padding: 0 20px;
 
 }
 .box{
-  background:  url('{gooraye::RES}/images/radio_iphone2.png');
+  /*background:  url('{gooraye::RES}/images/radio_iphone2.png');*/
+  background: #555;
   float: left;
   border-radius: 20px;
   padding-top: 60px;
@@ -183,9 +187,10 @@ if (window.top != self){
         到期时间：<br/>{gooraye:$viptime|date="Y-m-d",###} <a href="###" onclick="alert('请联系经销商')" id="smemberss" class=" btn btn-small btn-inverse">我要续费</a>
       </div>
         
-      <div class="row">
-         接口配置地址：<br/>
-        {gooraye:$f_siteUrl}/index.php/api/{gooraye::$vo['token']}
+      <div class="row" style="text-align:center;">
+        <a class="btn btn-small btn-red" href='{gooraye:$f_siteUrl}/index.php/g=Home&m=Index&a=bind&token={gooraye::$vo["token"]}'>绑定公众号</a>
+       <!--  URL: {gooraye:$f_siteUrl}/index.php/api/{gooraye::$vo['token']}<br/>
+        token: -->
         </div>
 
         <div class="row ctrlbtns">
@@ -224,7 +229,8 @@ if (window.top != self){
            <!--  <TD><p>图文：<php>echo $_SESSION['diynum'].'/'.$group[$_SESSION['gid']]['did'];</php></p></TD> -->
             <!--  <TD><p>总请求数:<php>echo $_SESSION['connectnum']</php></p><p> 本月请求数:<php>echo $group[$_SESSION['gid']]['cid'];</php></p></TD> -->
             <td>
-              {gooraye:$f_siteUrl}/index.php/api/{gooraye::$vo['token']}
+              URL: {gooraye:$f_siteUrl}/index.php/api/{gooraye::$vo['token']}
+              token:{gooraye::$vo['token']}
             </td>
             <TD class="norightborder">　
             <a  class=" btn btn-small btn-inverse" href="{gooraye::U('Index/edit',array('id'=>$vo['id']))}">编辑</a>　<a   href="javascript:drop_confirm('您确定要删除吗?', '{gooraye::U('Index/del',array('id'=>$vo['id']))}');" class=" btn btn-small btn-inverse">删除</a>　

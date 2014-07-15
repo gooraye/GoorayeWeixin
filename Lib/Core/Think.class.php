@@ -49,7 +49,6 @@ class Think {
     static private function buildApp() {
         // 加载底层惯例配置文件
         C(include THINK_PATH.'Conf/convention.php');
-
         // 读取运行模式
         if(defined('MODE_NAME')) { // 模式的设置并入核心模式
             $mode   = include MODE_PATH.strtolower(MODE_NAME).'.php';
@@ -65,7 +64,6 @@ class Think {
         // 加载项目配置文件
         if(is_file(CONF_PATH.'config.php'))
             C(include CONF_PATH.'config.php');
-
         // 加载框架底层语言包
         L(include THINK_PATH.'Lang/'.strtolower(C('DEFAULT_LANG')).'.php');
 

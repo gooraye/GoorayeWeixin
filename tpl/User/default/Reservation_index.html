@@ -45,9 +45,9 @@
 							<td></td>
 							<td>{gooraye:$vo['date']}</td>
 						   <td > 
-								<a href="{gooraye::U('Reservation/manage',array('token'=>$vo['token'],'id'=>$vo['id']))}" class="btn" title="订单管理">订单管理</a>
-								<a class="btn" href="{gooraye::U('Reservation/edit',array('token'=>$vo['token'],'id'=>$vo['id']))}" title="编辑">编辑</a> 
-								<a class="btn" href="{gooraye::U('Reservation/del',array('token'=>$vo['token'],'id'=>$vo['id']))}" onclick="return(confirm('确定要删除吗？'))"  title="删除">删除</a></td>
+								<a href="{gooraye::U('Reservation/manage',array('token'=>$vo['token'],'id'=>$vo['id']))}" class="btn btn-small btn-inverse" title="订单管理">订单管理</a>
+								<a class="btn btn-small btn-inverse" href="{gooraye::U('Reservation/edit',array('token'=>$vo['token'],'id'=>$vo['id']))}" title="编辑">编辑</a> 
+								<a class="btn btn-small btn-inverse" href="{gooraye::U('Reservation/del',array('token'=>$vo['token'],'id'=>$vo['id']))}" onclick="return(confirm('确定要删除吗？'))"  title="删除">删除</a></td>
 						</tr>
 						</volist>
 					</tbody>

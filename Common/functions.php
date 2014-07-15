@@ -642,6 +642,7 @@ function load_ext_file() {
             if(is_file($file)) include $file;
         }
     }
+
     // 加载自定义的动态配置文件
     if(C('LOAD_EXT_CONFIG')) {
         $configs    =  C('LOAD_EXT_CONFIG');
@@ -653,6 +654,7 @@ function load_ext_file() {
             }
         }
     }
+
 }
 
 /**

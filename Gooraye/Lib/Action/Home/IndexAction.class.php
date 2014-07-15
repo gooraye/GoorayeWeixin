@@ -14,6 +14,7 @@ class IndexAction extends BaseAction{
 		$this->assign('includeFooterPath',$this->includePath.'Public_footer.html');
 		
 	}
+
 	/*微信oauth2的回发处理方法*/
 	public function oauth2(){
 		$token = $this->_get('token');
@@ -63,6 +64,12 @@ class IndexAction extends BaseAction{
 				$this->show("<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><meta name='viewport' content='width=device-width,height=device-height,maximum-scale=1.0,user-scalable=no'><meta name='apple-mobile-web-app-capable' content='yes'><meta name='apple-mobile-web-app-status-bar-style' content='black'><meta name='format-detection' content='telephone=no'></head><body><p style='font-size:18px;color:red;text-align:center;width:100%;'>".$errmsg."请重新尝试！</p></body></html>");
 		}
 		// var_dump($oauth2);
+	}
+	//绑定公众号
+	public function bind(){
+		$this->assign("site_url",C('site_url'));
+		$this->assign("token",$this->_get('token'));
+		$this->display();
 	}
 	/*公司员工登录*/
 	public function clogin()

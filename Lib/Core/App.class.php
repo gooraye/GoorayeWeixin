@@ -27,10 +27,18 @@ class App {
     static public function init() {
         // 设置系统时区
         date_default_timezone_set(C('DEFAULT_TIMEZONE'));
+        // var_dump("App.class.php init");
+
         // 加载动态项目公共文件和配置
         load_ext_file();
+        // var_dump("App.class.php load_ext_file");
+
+        // var_dump("App.class.php 之前dispathc");
+
         // URL调度
         Dispatcher::dispatch();
+
+        // var_dump("App.class.php dispathc"); 
 
         // 定义当前请求的系统常量
         define('NOW_TIME',      $_SERVER['REQUEST_TIME']);
@@ -49,10 +57,11 @@ class App {
             if(is_file(COMMON_PATH.GROUP_NAME.'/function.php'))
                 include COMMON_PATH.GROUP_NAME.'/function.php';
         }
+
         // 页面压缩输出支持
         if(C('OUTPUT_ENCODE')){
-            $zlib = ini_get('zlib.output_compression');
-            if(empty($zlib)) ob_start('ob_gzhandler');
+            // $zlib = ini_get('zlib.output_compression');
+            // if(empty($zlib)) ob_start('ob_gzhandler');
         }
         // 系统变量安全过滤
         if(C('VAR_FILTERS')) {
@@ -196,16 +205,20 @@ class App {
      * @return void
      */
     static public function run() {
+
         // 项目初始化标签
         tag('app_init');
         App::init();
+
         // 项目开始标签
         tag('app_begin');
         // Session初始化
         session(C('SESSION_OPTIONS'));
         // 记录应用初始化时间
         G('initTime');
+        
         App::exec();
+
         // 项目结束标签
         tag('app_end');
         // 保存日志记录

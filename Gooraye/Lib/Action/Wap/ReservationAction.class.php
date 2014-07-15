@@ -31,9 +31,9 @@ class ReservationAction extends BaseAction{
         $rid         = (int)$this->_get('rid');
         $this->assign('token',$token);
         $this->assign('wecha_id',$wecha_id);
-        $where = array('token'=>$token);
-        //$rid = M('Estate')->where($where)->getField('res_id');
-
+        // $where = array('token'=>$token,'addtype'=>'house_book');
+        // $rid = $data ->where($where)->getField('id');
+        
         if($rid != ''){
 
             $this->assign('rid',$rid);

@@ -15,7 +15,7 @@
  * @package  Common
  * @author   liu21st <liu21st@gmail.com>
  */
-function gfddddafumds($string){return base64_decode(base64_decode(base64_decode(base64_decode(base64_decode($string)))));}
+
 defined('THINK_PATH') or exit();
 if(version_compare(PHP_VERSION,'5.2.0','<'))  die('require PHP > 5.2.0 !');
 
@@ -260,24 +260,4 @@ function getTopDomain(){
         $domain=$host;
     }
     return $domain;
-}
-function goorayed($string){
-	$d=C('server_topdomain');
-	if (!$d){
-		$d=getTopDomain();
-	}
-	$d=str_replace(array('-','.'),array('',''),$d);
-	$dLetters=array();
-	$dLength=strlen($d);
-	for ($i=0;$i<$dLength;$i++){
-		array_push($dLetters,ord(substr($d,$i,1)));
-	}
-	$dLetters=array_unique($dLetters);
-	sort($dLetters,1);
-	foreach ($dLetters as $dl){
-		$substr=substr($string,$dl,$dl);
-		$string=str_replace($substr,'',$string);
-	}
-	$string=base64_decode($string);
-	return $string;
 }

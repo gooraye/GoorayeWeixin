@@ -14,10 +14,11 @@ class ShakeAction extends UserAction{
         $count = $this -> shake_model -> where($this -> token_where) -> count();
         $page = new Page($count, 20);
         $info = $this -> shake_model -> where($this -> token_where) -> order('id desc') -> limit($page -> firstRow . ',' . $page -> listRows) -> select();
-        if(empty($info['background'])){
-            $info['background'] = '/tpl/static/images/shakebg.jpg';
-        }
+        // if(empty($info['background'])){
+        //     $info['background'] = '/tpl/static/images/shakebg.jpg';
+        // }
         $this -> assign('page', $page -> show());
+        // var_dump($info[1]['id']);
         $this -> assign('info', $info);
         $this -> display();
     }
@@ -139,7 +140,7 @@ class ShakeAction extends UserAction{
 
     //重新开始
     public function restart(){
-        $result = $this -> shake_model -> where(array('token' => $this -> _post('token'), 'id' => intval($this -> _post('id')))) -> save(array('isact' => '1','gameisover' => 0));
+        $result = $this -> shake_model -> where(array('token' => $this -> _post('token'), 'id' => intval($this -> _post('id')))) -> save(array('isact' => '0','gameisover' => 0));
 
          M('Shake_user')->where(array('token' => $this -> _post('token'), 'shakeid' => intval($this -> _post('id'))))->save(array("count"=>0));
         if($result === FALSE){                    
@@ -179,6 +180,51 @@ class ShakeAction extends UserAction{
                 }
             }
     }
+
+    //获取所有轮次的结果
+    public function getAllResult(){
+        $result = $this -> shake_model ->field('result')->where(array('token' => $this -> _post('token'), 'id' => intval($this -> _post('id'))))->find();
+            if($result === FALSE){
+                echo "{\"errmsg\":\"获取失败！\"}";
+            }else{
+                $result = unserialize($result['result']);
+
+                echo json_encode($result);
+            }
+    }
+
+    //保存此次结果
+    // public function saveThisResult(){
+
+    //     $where['token']=$this->_post('token');
+    //     $where['id']=intval($_POST['id']);
+    //     $where['gameisover']=1;
+    //     $where['isact']=1;
+    //     $thisShake=$this->shake_model->where($data)->find();
+    //     if($thisShake){
+    //     //查找前3名
+    //     $top3User = M('Shake_user')->field('id,wecha_id,headurl,nickname')->where(array('shakeid'=>$where['id'],'token'=>$this->_post('token')))->limit(10)->order('count desc')->select();
+    //     $result = $thisShake['result'];
+    //      $resArr = array();
+
+    //     if(! empty($result)){   
+    //         $resArr = unserialize($result);     
+    //     }
+        
+    //     array_push($resArr,$top3User);
+
+    //     // $cnt = M('Shake_user')->where(array('shakeid'=>$where['id'],'wecha_id'=>$this->_post('wecha_id')))->count();
+
+    //     //GAME OVER,'result'=>json_encode($resArr)
+
+    //     $this->shake_model->where(array('id'=>intval($_POST['id']),'token'=>$this->_post('token')))->save(array('isact'=>1,'gameisover'=>1,'result'=>serialize($resArr)));
+    //     echo "保存成功！";
+    // }else{
+    //     echo "保存失败！";
+    // }
+
+    // }
+
 
 }
 ?>

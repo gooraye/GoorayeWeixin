@@ -18,18 +18,24 @@
 <th style=" width:150px;" class="norightborder">操作</th>
 </tr>
 </thead>
+
 <volist name="info" id="actinfo">
+
 <tr>
 <td>{gooraye:$actinfo.title}</td>
-<td><if condition="$actinfo['isopen'] eq 0"> 
+<td>
+  <if condition="$actinfo['isopen'] eq 0"> 
     <span style="color:red">关闭中</span>
     <else /><span style="color:green">开启中</span>
-    </if></td>
+    </if>
+  </td>
 <td class="norightborder">
     <if condition="$actinfo['isopen'] eq 0"> 
-    <else /><a target="_blank" href="{gooraye::U('Shake/screen',array('id'=>$actinfo['id'],'token'=>$_SESSION['token']))}" class="btn btn-small btn-inverse">大屏幕</a> 
+    <else />
+    <a target="_blank" href="{gooraye::U('Shake/screen',array('id'=>$actinfo['id'],'token'=>$_SESSION['token']))}" class="btn btn-small btn-inverse">大屏幕</a> 
     </if>
-    <a class="btn btn-small btn-inverse" href="{gooraye::U('Shake/edit',array('id'=>$actinfo['id'],'token'=>$_SESSION['token']))}" >编辑</a>  <a class="btn btn-small btn-inverse" href="javascript:drop_confirm('您确定要删除吗?', '{gooraye::U('Shake/del',array('token'=>$token,'id'=>$actinfo['id']))}');">删除</a>
+    <a class="btn btn-small btn-inverse" href="{gooraye::U('Shake/edit',array('id'=>$actinfo['id'],'token'=>$_SESSION['token']))}" >编辑</a>  
+    <a class="btn btn-small btn-inverse" href="javascript:drop_confirm('您确定要删除吗?', '{gooraye::U('Shake/del',array('token'=>$token,'id'=>$actinfo['id']))}');">删除</a>
 </td>
 </volist>
 </tr>
