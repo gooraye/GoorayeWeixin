@@ -193,6 +193,20 @@ class ShakeAction extends UserAction{
             }
     }
 
+     //删除最后一次结果
+    public function delLastResult(){
+            $result = $this -> shake_model ->field('result')->where(array('token' => $this -> _post('token'), 'id' => intval($this -> _post('id'))))->find();
+            if($result === FALSE){
+                echo "获取失败！";
+            }else{
+                $result = unserialize($result['result']);
+                $res = array_pop($result);
+                if(!is_null($res)){
+                $this-> shake_model ->where(array('id'=>intval($_POST['id']),'token'=>$this->_post('token')))->save(array('result'=>serialize($result)));
+                }
+            }
+    }
+
     //保存此次结果
     // public function saveThisResult(){
 

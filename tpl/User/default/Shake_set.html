@@ -21,7 +21,7 @@
         <th>图文回复图片：</th>
         <td><input type="text" name="thumb" value="{gooraye:$info.thumb}" class="px" id="thumb" style="width:400px;" />  <script src="{gooraye::STATICS}/upyun.js"></script><a href="###" onclick="upyunPicUpload('thumb',700,420,'{gooraye:$token}')" class="btn btn-small btn-inverse">上传</a> <a href="###" onclick="viewImg('thumb')" class="btn btn-small btn-inverse">预览</a></td> 
        </tr>
-<tr> 
+<tr style="display:none"> 
         <th><span class="red"></span>简介：</th> 
         <td><textarea name="intro" class="px" style="width:400px;height:80px;">{gooraye:$info.intro}</textarea></td> 
        </tr>
@@ -33,13 +33,14 @@
   <TH valign="top">状态：</TH>
   <TD><label for="radio3"><input id="radio3" class="radio" type="radio" name="isopen" value="1"  <eq name="info.isopen" value="1">checked="checked"</eq> /> 开启</label><br /><label for="radio4"><input class="radio" id="radio4" type="radio" name="isopen" value="0" <eq name="info.isopen" value="0">checked="checked"</eq> /> 关闭</label></TD>
 </TR>
-<TR>
+<TR style="display:none;">
   <TH valign="top">活动开始：</TH>
-  <TD><label for="radio5"><input id="radio5" class="radio" type="radio" name="isact" value="1"  <eq name="info.isact" value="1">checked="checked"</eq> /> 开始</label><br /><label for="radio6"><input class="radio" id="radio6" type="radio" name="isact" value="0" <eq name="info.isact" value="0">checked="checked"</eq> /> 关闭</label></TD>
+  <TD><label for="radio5">
+    <input id="radio5" class="radio" type="radio" name="isact" value="1"  <eq name="info.isact" value="1">checked="checked"</eq> /> 开始</label><br /><label for="radio6"><input class="radio" id="radio6" type="radio" name="isact" value="0" checked="checked" <eq name="info.isact" value="0">checked="checked"</eq> /> 关闭</label></TD>
 </TR>
 </THEAD>
   <TBODY>
-<TR>
+<TR  style="display:none">
   <TH valign="top"><label for="text">手机端传输间隔：</label></TH>
   <TD><input type="input" class="px" id="clienttime"  name="clienttime" style="width:50px" value="{gooraye:$info.clienttime}" >  数字越大大屏幕上更新的越慢!
  
@@ -47,11 +48,9 @@
 </TD>
   <TD rowspan="2" valign="top"></TD>
 </TR> 
-<TR>
+<TR  style="display:none">
   <TH valign="top"><label for="text">大屏幕页面传输间隔：</label></TH>
   <TD><input type="input" class="px" id="showtime"  name="showtime" style="width:50px" value="{gooraye:$info.showtime}" >  数字越大大屏幕上更新的越慢!
- 
-
 </TD>
   <TD rowspan="2" valign="top"></TD>
 </TR>
@@ -63,7 +62,7 @@
 </TD>
   <TD rowspan="2" valign="top"></TD>
 </TR>
-<TR>
+<TR  style="display:none">
   <TH valign="top"><label for="text">摇晃时间：</label></TH>
   <TD><input type="input" class="px" id="usetime"  name="usetime" style="width:50px" value="{gooraye:$info.usetime}" > 秒  每个用户只能摇约定秒数，尽量设置时间长一点。
 </TD>
@@ -100,7 +99,7 @@
 </TD>
   <TD rowspan="2" valign="top"></TD>
 </TR>
-<TR>
+<TR  style="display:none;">
   <TH valign="top"><label for="text">客户端起始音效：</label></TH>
   <TD><input type="input" class="px" id="music" value="{gooraye:$info.music}" name="music" style="width:250px" value="" > <a href="###" onclick="chooseFile('music','music')" class="btn btn-small btn-inverse">选择</a> 提醒用户开始摇一摇的音效效果
  
@@ -116,7 +115,7 @@
 </TD>
   <TD rowspan="2" valign="top"></TD>
 </TR>
-<tr> 
+<tr style="display:none;"> 
         <th><span class="red"></span>规则说明：</th> 
         <td><textarea name="rule" class="px" style="width:400px;height:80px;">{gooraye:$info.rule}</textarea></td> 
        </tr>    

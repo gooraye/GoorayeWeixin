@@ -109,7 +109,7 @@ class HostAction extends BaseAction{
             if($order){
                 echo'{"success":1,"msg":"恭喜,预定成功。"}';
             }else{
-                echo'{"success":0,"msg":"请从新预定。"}';
+                echo'{"success":0,"msg":"请重新预定。"}';
             }            
             exit;
         }    

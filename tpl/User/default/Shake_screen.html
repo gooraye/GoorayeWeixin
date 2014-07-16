@@ -368,7 +368,84 @@
 		.prizeset-cup .nickname{
 			display: none;
 		}
+
+		/* alert 重写后的样式 */
+		 .mask{
+		      width: 99999px;
+		      height: 99999px;
+		      background: rgba(85, 85, 85, 0.55);
+		      position: absolute;
+		      z-index: 10000;
+		      top: 0px;
+
+		}
+		.goorayealert{
+		      display: none;
+		      background: #f8f8f8;
+		      padding: 15px;
+		      top:100px;
+		      width:460px;
+		      position: absolute;
+		      left: 50%;
+		      z-index: 15;
+		      margin-left: -230px;
+
+		}
+		.alertcontent{
+		      background-color: #fff;
+		}
+		.close:hover{
+		      color:#000;
+		}
+		.close{
+		      float: right;
+		      font-size: 21px;
+		      font-weight: bold;
+		      line-height: 1;
+		      color: #000;
+		      top:-6px;
+		      text-shadow: 0 1px 0 #fff;
+		      opacity: .2;
+		      filter: alpha(opacity=20);
+		      cursor: pointer;
+		      position: relative;
+		}
 	</style>	
+
+	<script type="text/javascript">
+		/* TODO */
+window.alert = function (cont){
+	cont = cont || argument[0];
+      if(!$(".goorayealert") || $(".goorayealert").length == 0){
+         $alert = "<div class='mask'><div class='goorayealert'><span class='alertcontent'>警告</span><button type='button' class='close' >×</button></div></div>";
+        $("body").append($alert);
+        $(".mask").css("width",$(window).width());
+        $(".mask").click(function(ev){
+                if(ev.target && ev.target.className.indexOf("mask") == -1){
+                          return ;
+                }
+                $(".mask").hide();
+                $alert.slideUp(800);
+        });
+        $(".goorayealert .close").click(function(ev){
+                $(".mask").hide();
+                $alert.slideUp(800);
+                ev.stopPropagation();
+        });
+       $(".goorayealert .alertcontent").text(cont);
+        $alert = $(".goorayealert");
+        $alert.slideDown(800);
+
+      }else{
+      	$(".goorayealert .alertcontent").text(cont);
+          $(".mask").show();
+          $(".goorayealert").slideDown(800);
+      }
+
+        $(".goorayealert").css("top",$(window).scrollTop()+50);
+    }
+
+	</script>
 
 	<style type="text/css">
 		body{
@@ -484,16 +561,41 @@
 		* html .clearfix { height: 1%; }
 		.clearfix { display: block; }
 
+		.btns{
+			position: absolute;
+			left: 50%;
+			margin-left: -50px;
+			color: #fff;
+			bottom: 10px;
+		}
+		.btndel{
+			text-decoration: none;
+			/*position: initial;*/
+			background-color: #f40;
+			background: -webkit-gradient(linear,0 0,0 100%,from(#f40),to(#f00));
+			margin: 0px;
+		}
+
 		.disabled{
 			background: #777;
 			cursor: not-allowed;
 		}
+
+		.ewm{
+			position: absolute;
+			left: 10%;
+			top: 10px;
+		}
+
+		.ewm img{
+			width: 64px;
+			height: 64px;
+		}
 	</style>
-
+	
 	<script type="text/javascript" src="http://libs.useso.com/js/jquery/1.10.2/jquery.min.js"></script>
-
-	<script type="text/javascript">
-
+	
+	<script type="text/javascript" >
 
 		var Shake  = {};
 
@@ -542,9 +644,20 @@
 			$('.prizeset-masklayer').hide();	
 			$('.top').show();
 			$('.signup').show();
-			$('.gamepanel').hide();
+			$('.gamepanel').hide();			
 			pollingJoinUser();
 			readyAudio();
+			$('.button.btndel').removeClass("disabled").bind("click",delLastResult);
+			$.ajax({
+			type: "post",
+			url : "{gooraye::U('Shake/restart')}",
+			dataType:'text',
+			data: 'token={gooraye:$info.token}&id={gooraye:$info.id}',
+			}).fail(function(){
+				// alert("重新开始失败，请重试！");
+			}).done(function(data){
+				
+			});
 		}
 
 		Shake.start = function(){ 
@@ -565,20 +678,61 @@
 
 		Shake.isGameover = function() { return Shake.state === 4; }
 
+		//
+		function removeLastResult(){
+			$(".tablist li").last().remove();
+			$(".tabcontent>div").last().remove();
+		}
+
+		function delLastResult(){
+			// $($(".tablist li").get(round)).empty();
+			// $($(".tabcontent>div").get(round)).empty();
+
+			if(window.confirm("确定删除此次结果！")){
+				
+			$.ajax({
+				type:"post",
+				url:"{gooraye::U('Shake/delLastResult')}",
+				dataType:'text',
+				data: '&token={gooraye:$info.token}&id={gooraye:$info.id}',
+				beforeSend:function(){
+					$('.button.btndel').addClass("disabled").unbind("click");
+				}
+			}).done(function(data){
+				if(data){
+					$('.button.btndel').removeClass("disabled").bind("click",delLastResult);
+					alert(data);
+				}else{
+					
+					removeLastResult();
+					alert("删除成功！");
+				}
+			}).fail(function(){
+				alert("操作失败！");
+			});
+
+			}
+
+		}
 		//cache
 		// Shake.cache = [];
 
 		function initTab(){
 			$(".tabcontent>div").hide();
 			var index = $(".tablist li").index($(".tablist li.active"));
-			$($(".tabcontent>div").get(index)).addClass("active").show();	
-			
+			$($(".tabcontent>div").get(index)).addClass("active").show();
+			// if(index >= 0){
+			// 	$(".btns .btndel").show().text("删除第"+ (index+1) +"轮结果").attr("data-round",index);
+			// }else{
+			// 	$(".btns .btndel").hide();
+			// }
 			$(".tablist li").click(function(){
 				$(".tablist li.active").removeClass("active");
 				$(this).addClass("active");
-				$(".tabcontent .active").hide();
+				$(".tabcontent .active").hide().removeClass("active");
 				index = $(".tablist li").index(this);
-				// console.log(index);
+				// $(".btns .btndel").text("删除第"+(index+1)+"轮结果").attr("data-round",index);
+				
 				$($(".tabcontent>div").get(index)).addClass("active").show();				
 			});
 
@@ -631,7 +785,7 @@
 			}).done(function(data){
 				
 				var prevCount = $(".result-mask .tablist ul li").length;
-				console.log(data);
+				// console.log(data);
 				for(var i=prevCount;i<data.length;i++){
 					var players = '';
 
@@ -712,7 +866,7 @@
 			data: 'token={gooraye:$info.token}&id={gooraye:$info.id}',
 			}).fail(function(){
 			}).done(function(data){
-				console.log(data);
+				// console.log(data);
 				setPrize($("div.player").get(0),data);
 			})
 			//
@@ -907,7 +1061,7 @@
 		function startShake(){
 
 			//Shake.start();
-			$('.top').hide();
+			$('.top').show();
 			$('.signup').hide();
 			$('.gamepanel').show();
 			var tl = "";
@@ -950,13 +1104,16 @@
 			window.onresize = recalHeight;
 			$('.button.reset').click(playAgian);
 			$('.button.result').click(showAllResult);
+			$('.button.btndel').bind("click",delLastResult);
 			// $('.button.save').bind("click",saveThisResult);
 		}
 
 		$(function(){	
 
 			$act = {gooraye:$info.isact};
-			if($act == 1){				
+			gameover = {gooraye:$info.gameisover};
+			// console.log();
+			if($act == 1 && gameover == 0){
 				Shake.start();
 			}else{
 				Shake.ready();
@@ -964,22 +1121,13 @@
 			addEventListener();
 		})
 	</script>
-
-	<script type="text/javascript">
-		
-
-		// $(function(){
-		// 	initTab();
-		// })
-	</script>
-
+	
 </head>
 <body>
-<audio id="audio_topchange" src="{gooraye::STATICS}/shake/shake_outride.mp3" preload="preload"></audio>
-<audio id="audio_countdown" src="{gooraye::STATICS}/shake/shake_cutdown.mp3" preload="preload"></audio>
-<audio id="audio_gameover" src="{gooraye::STATICS}/shake/shake_gameover.mp3" preload="preload"></audio>
+
 <div class="top">
 	微信扫一扫 发送 <span class="strong">{gooraye:$info.keyword}</span> 即可参与
+	 <div class="ewm"><img src="{gooraye:$info.qrcode}" /></div>
 </div>
 <!-- 倒计时 -->
 <div class="countdown countdown-animation" style="margin-left: -341.5px; margin-top: -166.5px; font-size: 233.1px; line-height: 333px;">{gooraye:$info.showtime}</div>
@@ -988,6 +1136,9 @@
 <!-- 摇一摇结果 START -->
 <div class="result-mask">
 	<div class="result-panel">
+		<div class="btns">
+    			<a href="#" onclick="" class="button btndel" >删除第轮结果</a>
+ 		</div>
 		<div class="title">
 			比赛结果
 			<div class="close">X</div>
@@ -1010,6 +1161,8 @@
         <span class="button reset">再玩一次</span>
         <!-- <span class="button save">保存结果</span> -->
         <span class="button result">查看结果</span>
+
+        <span class="button btndel">删除结果</span>
     </div>
 </div>
 <!-- 奖台 END -->
@@ -1107,6 +1260,9 @@
 </div>
   <!-- 报名界面 END -->
 
-<!-- <audio autoplay src="{gooraye:$info.backgroundmusic}" loop></audio> -->
+<audio autoplay src="{gooraye:$info.backgroundmusic}" loop></audio>
+<audio id="audio_topchange" src="{gooraye::STATICS}/shake/shake_outride.mp3" preload="preload"></audio>
+<audio id="audio_countdown" src="{gooraye::STATICS}/shake/shake_cutdown.mp3" preload="preload"></audio>
+<audio id="audio_gameover" src="{gooraye::STATICS}/shake/shake_gameover.mp3" preload="preload"></audio>
 </body>
 </html>

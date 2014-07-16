@@ -14,5 +14,12 @@ return array(
 	/*定义模版标签*/
 	'TMPL_L_DELIM'   		=>'{gooraye:',			//模板引擎普通标签开始标记
 	'TMPL_R_DELIM'			=>'}',				//模板引擎普通标签结束标记
+	
+	//海岩短信接口配置
+	'HAIYAN_SMS' => array(
+        		'userid' => '8570', 
+        		'account' => 'gooraye' , 
+        		'pwd' => 'gooraye136799711', 
+    	),
 );
 ?>

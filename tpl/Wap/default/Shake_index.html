@@ -176,6 +176,7 @@ function ShowGameOver(){
 	count=0;//重新设置为0
 	$("#yaoyiyaoresult").show();
 	$("#yaoyiyaoresult").html("游戏已结束！<a style='color:red;font-weight:bold;' href='javascript:reload();'>刷新</a>");
+	setInterval('checkStart()',1500);
 }
 //2秒更新一次数据
 function  updata(){
@@ -392,7 +393,7 @@ a:hover{color:#333;text-decoration:underline; /*end color*/background-color:#8AD
 	
 	
 	
-	<div class="mobile-div img-rounded">
+	<div style="display:none;" class="mobile-div img-rounded">
 		<div class="mobile-hd">玩法</div>
 		<div class="mobile-content">{gooraye:$info.rule}</div>
 	</div>

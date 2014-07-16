@@ -8,7 +8,6 @@ class WeixinAction extends Action{
     public $wxuser;
     public $apiServer;
     public function index(){
-
         if (!class_exists('SimpleXMLElement')){
             exit('SimpleXMLElement class not exist');
         }
@@ -24,6 +23,7 @@ class WeixinAction extends Action{
     
         // var_dump($weixin);
         $data = $weixin -> request();
+        addWeixinLog($data,"在 reply 之前");
         $this -> data = $weixin -> request();
         $this -> fans = S('fans_' . $this -> token . '_' . $this -> data['FromUserName']);
         if (!$this -> fans || 1){
@@ -39,18 +39,20 @@ class WeixinAction extends Action{
         $this -> apiServer = apiServer :: getServerUrl();
         $open = M('Token_open') -> where(array('token' => $this -> _get('token'))) -> find();
         $this -> fun = $open['queryname'];
-        // addWeixinLog($data,"在 reply 之前");
+        addWeixinLog($data,"在 reply 之前");
         list($content, $type) = $this -> reply($data);
-        addWeixinLog($content,$type);
+         addWeixinLog($content,$type);
         // var_dump($content);
         $weixin -> response($content, $type);
     }
+    
     private function reply($data){
         if('CLICK' == $data['Event']){
             $data['Content'] = $data['EventKey'];
             $this -> data['Content'] = $data['EventKey'];
         }elseif($data['Event'] == 'SCAN'){
             $data['Content'] = $this -> getRecognition($data['EventKey']);
+            // addWeixinLog($data['Content'],"SCAN");
             $this -> data['Content'] = $data['Content'];
         }elseif($data['Event'] == 'MASSSENDJOBFINISH'){
             //群发任务结束
@@ -64,6 +66,13 @@ class WeixinAction extends Action{
             if(!(strpos($data['EventKey'], 'qrscene_') === FALSE)){
                 //如果是二维码关注
                 $follow_data['keyword'] = $this -> getRecognition(str_replace('qrscene_', '', $data['EventKey']));
+
+                //新版摇一摇
+                $thisShake = M('Shake') -> where(array('isopen' => 1, 'token' => $this -> token)) -> find();
+                if($thisShake && trim($follow_data['keyword']) == trim($thisShake['keyword'])){
+                    return $this->shakeOAuth2();
+                }
+
             }
 
             if($follow_data['home'] == 1){
@@ -72,7 +81,7 @@ class WeixinAction extends Action{
                 }elseif(trim($follow_data['keyword']) == '我要上网'){
                     return $this -> wysw();
                 }
-                // addWeixinLog($follow_data,'subscribe关注时');
+
                 return $this -> keyword($follow_data['keyword']);
             }else{
                 return array(html_entity_decode($follow_data['content']), 'text');
@@ -88,9 +97,10 @@ class WeixinAction extends Action{
             $data['Content'] = $data['Recognition'];
             $this -> data['Content'] = $data['Recognition'];
         }
-        if($data['Content'] == 'wechat ip'){
-            return array($_SERVER['REMOTE_ADDR'], 'text');
-        }
+
+        // if($data['Content'] == 'wechat ip'){
+        //     return array($_SERVER['REMOTE_ADDR'], 'text');
+        // }
 
         // addWeixinLog($data,"api");
 
@@ -122,53 +132,64 @@ class WeixinAction extends Action{
             }
         }
 
+
         //新版摇一摇
-        if(trim($data['Content']) == "摇"){
+        $thisShake = M('Shake') -> where(array('isopen' => 1, 'token' => $this -> token)) -> find();
+        if($thisShake && trim($data['Content']) == trim($thisShake['keyword'])){
             return $this->shakeOAuth2();
         }
 
         //旧版摇一摇
         // addWeixinLog($data,"shake");
-        if((!(strpos($data['Content'], 'shake') === FALSE) || !(strpos(strtolower($data['Content']), 'shake') === FALSE)) && strlen($data['Content']) == 16){
-            $mp = str_replace('shake', '', strtolower($data['Content']));
-            $thisShake = M('Shake') -> where(array('isopen' => 1, 'token' => $this -> token)) -> find();
-            //有开启状态的摇一摇活动
-            if ($thisShake){
+        // if((!(strpos($data['Content'], 'shake') === FALSE) || !(strpos(strtolower($data['Content']), 'shake') === FALSE)) && strlen($data['Content']) == 16){
+        //     $mp = str_replace('shake', '', strtolower($data['Content']));
+        //     $thisShake = M('Shake') -> where(array('isopen' => 1, 'token' => $this -> token)) -> find();
+        //     //有开启状态的摇一摇活动
+        //     if ($thisShake){
 
-                $shakeRt = M('Shake_rt') -> where(array('isopen' => 1, 'shakeid' => $thisShake['id'], 'token' => $this -> token, 'wecha_id' => $this -> data['FromUserName'])) -> find();
-                $data = array();
-                $data['token'] = $this -> token;
-                $data['wecha_id'] = $this -> data['FromUserName'];
-                $data['shakeid'] = $thisShake['id'];
-                $data['phone'] = htmlspecialchars($mp);
+        //         $shakeRt = M('Shake_rt') -> where(array('isopen' => 1, 'shakeid' => $thisShake['id'], 'token' => $this -> token, 'wecha_id' => $this -> data['FromUserName'])) -> find();
+        //         $data = array();
+        //         $data['token'] = $this -> token;
+        //         $data['wecha_id'] = $this -> data['FromUserName'];
+        //         $data['shakeid'] = $thisShake['id'];
+        //         $data['phone'] = htmlspecialchars($mp);
 
-                if ($shakeRt){
-                    //用户已经参加
-                    $srt = M('Shake_rt') -> where(array('shakeid' => $thisShake['id'], 'wecha_id' => $this -> data['FromUserName'])) -> save($data);
-                    if ($srt){
-                        return array(array(array($thisShake['title'] . '，点击参与活动', $thisShake['intro'] . '。您的手机号设置成功，点击即可参与活动', $thisShake['thumb'], C('site_url') . '/index.php?g=Wap&m=Shake&a=index&id=' . $thisShake['id'] . '&token=' . $this -> token . '&wecha_id=' . $this -> data['FromUserName'])), 'news');
-                    }else{
-                        return array('摇一摇活动手机号修改失败', 'text');
-                    }
-                }else{
-                    //用户未参加
-                    $srt = M('Shake_rt') -> add($data);
-                    if ($srt){
-                        return array(array(array($thisShake['title'] . '，点击参与活动', $thisShake['intro'] . '。您的手机号设置成功，点击即可参与活动', $thisShake['thumb'], C('site_url') . '/index.php?g=Wap&m=Shake&a=index&id=' . $thisShake['id'] . '&token=' . $this -> token . '&wecha_id=' . $this -> data['FromUserName'])), 'news');
-                    }else{
-                        return array('摇一摇活动手机号设置失败', 'text');
-                    }
+        //         if ($shakeRt){
+        //             //用户已经参加
+        //             $srt = M('Shake_rt') -> where(array('shakeid' => $thisShake['id'], 'wecha_id' => $this -> data['FromUserName'])) -> save($data);
+        //             if ($srt){
+        //                 return array(array(array($thisShake['title'] . '，点击参与活动', $thisShake['intro'] . '。您的手机号设置成功，点击即可参与活动', $thisShake['thumb'], C('site_url') . '/index.php?g=Wap&m=Shake&a=index&id=' . $thisShake['id'] . '&token=' . $this -> token . '&wecha_id=' . $this -> data['FromUserName'])), 'news');
+        //             }else{
+        //                 return array('摇一摇活动手机号修改失败', 'text');
+        //             }
+        //         }else{
+        //             //用户未参加
+        //             $srt = M('Shake_rt') -> add($data);
+        //             if ($srt){
+        //                 return array(array(array($thisShake['title'] . '，点击参与活动', $thisShake['intro'] . '。您的手机号设置成功，点击即可参与活动', $thisShake['thumb'], C('site_url') . '/index.php?g=Wap&m=Shake&a=index&id=' . $thisShake['id'] . '&token=' . $this -> token . '&wecha_id=' . $this -> data['FromUserName'])), 'news');
+        //             }else{
+        //                 return array('摇一摇活动手机号设置失败', 'text');
+        //             }
                     
-                }
-            }
-        }
+        //         }
+        //     }
+        // }
 
         //微上墙模块
-        if(strtolower($data['Content']) == 'wx#open'){
-            M('Userinfo') -> where(array('token' => $this -> token, 'wecha_id' => $this -> data['FromUserName'])) -> save(array('wallopen' => 1));
-            S('fans_' . $this -> token . '_' . $this -> data['FromUserName'], NULL);
-            return array('您已进入微信墙对话模式，您下面发送的所有文字和图片信息都将会显示在大屏幕上，如需退出微信墙模式，请输入“wx#quit”', 'text');
-        }elseif(strtolower($data['Content']) == 'wx#quit'){
+        if(strtolower($data['Content']) == 'wxopen'){
+            $thisItem = M('Wall') -> where(array('token' => $this -> token, 'isopen' => 1)) -> find();
+            $memberRecord = M('Wall_member') -> where(array('wallid' => $thisItem['id'], 'wecha_id' => $this -> data['FromUserName'])) -> find();
+            if (!$memberRecord){
+                    //
+                    return $this->wallOAuth2();
+            }else{
+                M('Userinfo') -> where(array('token' => $this -> token, 'wecha_id' => $this -> data['FromUserName'])) -> save(array('wallopen' => 1));
+                return array('您已进入微信墙对话模式，您下面发送的文字和图片信息将会显示在大屏幕上，如需退出微信墙模式，请输入“wxquit”', 'text');
+            }
+            // M('Userinfo') -> where(array('token' => $this -> token, 'wecha_id' => $this -> data['FromUserName'])) -> save(array('wallopen' => 1));
+            // S('fans_' . $this -> token . '_' . $this -> data['FromUserName'], NULL);
+            // return array('您已进入微信墙对话模式，您下面发送的所有文字和图片信息都将会显示在大屏幕上，如需退出微信墙模式，请输入“wxquit”', 'text');
+        }elseif(strtolower($data['Content']) == 'wxquit'){
             M('Userinfo') -> where(array('token' => $this -> token, 'wecha_id' => $this -> data['FromUserName'])) -> save(array('wallopen' => 0));
             S('fans_' . $this -> token . '_' . $this -> data['FromUserName'], NULL);
             return array('成功退出微信墙对话模式', 'text');
@@ -176,11 +197,14 @@ class WeixinAction extends Action{
         if ($this -> fans['wallopen']){
             $thisItem = M('Wall') -> where(array('token' => $this -> token, 'isopen' => 1)) -> find();
             if (!$thisItem){
-                return array('微信墙活动不存在,如需退出微信墙模式，请输入“wx#quit”', 'text');
+                return array('微信墙活动不存在,如需退出微信墙模式，请输入“wxquit”', 'text');
             }else{
                 $memberRecord = M('Wall_member') -> where(array('wallid' => $thisItem['id'], 'wecha_id' => $this -> data['FromUserName'])) -> find();
                 if (!$memberRecord){
-                    return array('<a href="' . C('site_url') . '/index.php?g=Wap&m=Wall&a=index&token=' . $this -> token . '&wecha_id=' . $this -> data['FromUserName'] . '">点击这里完善信息后再参加此活动</a>', 'text');
+                    //
+                    return $this->wallOAuth2();
+//                    return array('<a href="' . C('site_url') . '/index.php?g=Wap&m=Wall&a=index&token=' . $this -> token . '&wecha_id=' . $this -> data['FromUserName'] . '">点击这里完善信息后再参加此活动</a>', 'text');
+
                 }else{
                     $row = array();
                     if ('image' != $data['MsgType']){
@@ -199,10 +223,11 @@ class WeixinAction extends Action{
                     $row['uid'] = $thisMember['id'];
                     $row['time'] = time();
                     M('Wall_message') -> add($row);
-                    return array('上墙成功，如需退出微信墙模式，请输入“wx#quit”', 'text');
+                    return array('上墙成功，如需退出微信墙模式，请输入“wxquit”', 'text');
                 }
             }
         }
+
          // addWeixinLog($data,"附近");
         //附近查找
         if(!(strpos($data['Content'], '附近') === FALSE)){
@@ -639,24 +664,24 @@ class WeixinAction extends Action{
         case 'medicalSet': $thisItem = M('Medical_set') -> where(array('id' => $data['pid'])) -> find();
             return array(array(array($thisItem['title'], str_replace(array('&nbsp;', 'br /', '&amp;', 'gt;', 'lt;'), '', strip_tags(htmlspecialchars_decode($thisItem['info']))), $thisItem['head_url'], C('site_url') . '/index.php?g=Wap&m=Medical&a=index&token=' . $this -> token . '&wecha_id=' . $this -> data['FromUserName'])), 'news');
             break;
-        case 'Shake': $thisItem = M('Shake') -> where(array('id' => $data['pid'])) -> find();
-            $shakeRecord = M('Shake_rt') -> where(array('shakeid' => $data['pid'], 'wecha_id' => $this -> data['FromUserName'])) -> find();
-            if (!$shakeRecord){
-                if ($this -> fans['tel']){
-                    $shakeRtRow = array();
-                    $shakeRtRow['token'] = $this -> token;
-                    $shakeRtRow['wecha_id'] = $this -> data['FromUserName'];
-                    $shakeRtRow['shakeid'] = $thisItem['id'];
-                    $shakeRtRow['phone'] = htmlspecialchars($this -> fans['tel']);
-                    M('Shake_rt') -> add($shakeRtRow);
-                    return array(array(array($thisItem['title'], $thisItem['intro'] . '。您的电话为：' . $shakeRtRow['phone'] . ',如需修改请回复"shake+您的手机号"', $thisItem['thumb'], C('site_url') . '/index.php?g=Wap&m=Shake&a=index&id=' . $thisItem['id'] . '&token=' . $this -> token . '&wecha_id=' . $this -> data['FromUserName'])), 'news');
-                }else{
-                    return array('请回复shake加您的手机号参与活动', 'text');
-                }
-            }else{
-                return array(array(array($thisItem['title'], $thisItem['intro'] . '。您的电话为：' . $this -> fans['tel'] . ',如需修改请回复"shake+您的手机号"', $thisItem['thumb'], C('site_url') . '/index.php?g=Wap&m=Shake&a=index&id=' . $thisItem['id'] . '&token=' . $this -> token . '&wecha_id=' . $this -> data['FromUserName'])), 'news');
-            }
-            break;
+        // case 'Shake': $thisItem = M('Shake') -> where(array('id' => $data['pid'])) -> find();
+        //     $shakeRecord = M('Shake_rt') -> where(array('shakeid' => $data['pid'], 'wecha_id' => $this -> data['FromUserName'])) -> find();
+        //     if (!$shakeRecord){
+        //         if ($this -> fans['tel']){
+        //             $shakeRtRow = array();
+        //             $shakeRtRow['token'] = $this -> token;
+        //             $shakeRtRow['wecha_id'] = $this -> data['FromUserName'];
+        //             $shakeRtRow['shakeid'] = $thisItem['id'];
+        //             $shakeRtRow['phone'] = htmlspecialchars($this -> fans['tel']);
+        //             M('Shake_rt') -> add($shakeRtRow);
+        //             return array(array(array($thisItem['title'], $thisItem['intro'] . '。您的电话为：' . $shakeRtRow['phone'] . ',如需修改请回复"shake+您的手机号"', $thisItem['thumb'], C('site_url') . '/index.php?g=Wap&m=Shake&a=index&id=' . $thisItem['id'] . '&token=' . $this -> token . '&wecha_id=' . $this -> data['FromUserName'])), 'news');
+        //         }else{
+        //             return array('请回复shake加您的手机号参与活动', 'text');
+        //         }
+        //     }else{
+        //         return array(array(array($thisItem['title'], $thisItem['intro'] . '。您的电话为：' . $this -> fans['tel'] . ',如需修改请回复"shake+您的手机号"', $thisItem['thumb'], C('site_url') . '/index.php?g=Wap&m=Shake&a=index&id=' . $thisItem['id'] . '&token=' . $this -> token . '&wecha_id=' . $this -> data['FromUserName'])), 'news');
+        //     }
+        //     break;
         case 'Wall': $thisItem = M('Wall') -> where(array('id' => $data['pid'])) -> find();
             if (!$thisItem['isopen']){
                 return array('微信墙活动已关闭', 'text');
@@ -688,7 +713,7 @@ class WeixinAction extends Action{
         }
     }else{
         if ($this -> wxuser['transfer_customer_service']){
-            return array('turn on transfer_customer_service', 'transfer_customer_service');
+             return array('turn on transfer_customer_service', 'transfer_customer_service');
         }
         $chaFfunction = M('Function') -> where(array('funname' => 'liaotian')) -> find();
         if(!strpos($this -> fun, 'liaotian') || !$chaFfunction['status']){
@@ -1643,6 +1668,24 @@ function dianying($name){
     }else{
         return "";
     }
+}
+
+//微上墙oauth授权链接
+function wallOAuth2(){
+        $token = $this -> token;
+        
+        $wecha_id = $this -> data['FromUserName'];
+        $thisWall = M('Wall') -> where(array('isopen' => 1, 'token' => $token)) -> find();
+        if($thisWall)
+        {
+           
+            import("ORG.OAuth2");
+            $oauth2 = new \OAuth2();
+            return array('<a href="'.$oauth2->getLink(C('site_url').U('Home/Index/oauth2' , array('token' => $this -> token,'wallid'=> $thisWall ['id'] )),'wall').'" >请先完善信息！</a>', 'text');
+            
+        }else{
+            return array('微上墙未开启！', 'text');
+        }
 }
 
 //oauth授权链接

@@ -14,6 +14,9 @@ class WallAction extends WapAction{
 		$this->assign('wecha_id',$this->wecha_id);
 		$this->wall_model=M('Wall');
 	}
+
+	
+
 	public function index(){
 		if (!$this->wecha_id){
 			$this->error('您无权参与微信墙','');

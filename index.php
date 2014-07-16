@@ -25,12 +25,12 @@ define('APP_PATH','./Gooraye/');
 
 define('RUNTIME_PATH','./Conf/logs/');
 
-define('APP_DEBUG',FALSE);
+define('APP_DEBUG',TRUE);
 
 $runtime = defined('MODE_NAME')?'~'.strtolower(MODE_NAME).'_runtime.php':'~runtime.php';
 defined('RUNTIME_FILE') or define('RUNTIME_FILE',RUNTIME_PATH.$runtime);
 // var_dump(RUNTIME_FILE);
-if(FALSE && !APP_DEBUG && is_file(RUNTIME_FILE)) {
+if(!APP_DEBUG && is_file(RUNTIME_FILE)) {
 	// var_dump(RUNTIME_FILE);
    	require RUNTIME_FILE;
 }else{

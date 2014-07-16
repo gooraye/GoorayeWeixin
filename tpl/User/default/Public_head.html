@@ -6,19 +6,16 @@
 <meta name="keywords" content="{gooraye:$f_metaKeyword}" />
 <meta name="description" content="{gooraye:$f_metaDes}" />
 <meta http-equiv="MSThemeCompatible" content="Yes" />
-<!-- <link rel="stylesheet" type="text/css" href="{gooraye::RES}/css/style_2_common.css" /> -->
 <script>var SITEURL='';</script>
-<!-- <script src="{gooraye::RES}/js/common.js" type="text/javascript"></script> -->
 <link href="{gooraye::STATICS}/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 <link href="{gooraye::RES}/css/style.css" rel="stylesheet" type="text/css" />
 <link href="{gooraye::RES}/css/user.css" rel="stylesheet" type="text/css" />
+<!-- <link href="{gooraye::RES}/css/user-blue.css" rel="stylesheet" type="text/css" /> -->
 <script src="{gooraye::STATICS}/jquery-1.4.2.min.js" type="text/javascript"></script>
 <script src="{gooraye::RES}/js/index.js" type="text/javascript"></script>
-<style type="text/css">
-  
+<style type="text/css">  
 a.nav-header{background:url({gooraye::STATICS}/images/arrow_click.png) center right no-repeat;cursor:pointer}
 a.nav-header-current{background:url({gooraye::STATICS}/images/arrow_unclick.png) center right no-repeat;}
-
 </style>
 <script type="text/javascript">
   $(function(){
@@ -65,53 +62,13 @@ a.nav-header-current{background:url({gooraye::STATICS}/images/arrow_unclick.png)
            <li><a href="{gooraye::U('User/Index/index')}" ><i class="fa fa-exchange"></i>切换公众号</a>
            <li><a href="{gooraye::U('User/Index/useredit')}" ><i class="fa fa-key"></i>修改密码</a>
           </li>
-           <!-- <li><a href="{gooraye::U('User/Index/index')}" >更改密码</a> -->
           </li>
          </ul>
 
-      
-    <!-- <if condition="$_SESSION[uid]==false"> -->
-      <!-- <a href="{gooraye::U('Index/login')}">登录</a> -->
-      <!-- <else/> -->
-     <!--  你好,<a href="/#" hidefocus="true"  ><span style="color:#f40">{gooraye:$Think.session.uname}</span></a>（uid:{gooraye:$Think.session.uid}） -->
-      <!-- <a class="btn btn-small btn-inverse" href="{gooraye::U('System/Admin/logout')}" >退出</a> -->
-     
       </div>
-<!--   </if>  -->
   </div>
 </div> 
-<!--
-  <div class="appTitle">
-        <div class="vipuser" style="float:right;width:auto;">
-        <div class="logo">
-        <img src="{gooraye:$wecha.headerpic}" width="100" height="100">
-        </div>
-        <div id="nickname">
-        <strong>{gooraye:$wecha.wxname}</strong><a href="#" target="_blank" class="vipimg vip-icon<php>echo $userinfo['taxisid']-1;</php>" title=""></a></div>
-        <div id="weixinid">微信号:{gooraye:$wecha.weixin}</div>
-        </div>
-
-        <div class="accountInfo">
-<table class="vipInfo" width="100%" border="0" cellpadding="0" cellspacing="0">
-<tr>
-<td><strong>VIP有效期：</strong>{gooraye:$thisUser.viptime|date="Y-m-d",###}</td>
-<td><strong>图文自定义：</strong>{gooraye:$thisUser.diynum}/{gooraye:$userinfo.diynum}</td>
-<td><strong>活动创建数：</strong>{gooraye:$thisUser.activitynum}/{gooraye:$userinfo.activitynum}</td>
-<td><strong>请求数：</strong>{gooraye:$thisUser.connectnum}/{gooraye:$userinfo.connectnum}</td>
-</tr>
-<tr>
-<td><strong>请求数剩余：</strong><php>echo ($userinfo['connectnum']-$_SESSION['connectnum']);</php></td>
-<td><strong>已使用：</strong><php>echo $_SESSION['diynum'];</php></td>
-<td><strong>当月赠送请求数：</strong>{gooraye:$userinfo.connectnum}</td>
-<td><strong>当月剩余请求数：</strong><php>echo $userinfo['connectnum']-$_SESSION['connectnum'];</php></td>
-</tr>
-
-</table>
-    </div> 
-        <div class="clr"></div>
-      </div>-->
 </div>
-<!-- <div id="aaa"></div> -->
 
 <div id="wp" class="wp">
   <!--中间内容-->
@@ -134,14 +91,9 @@ a.nav-header-current{background:url({gooraye::STATICS}/images/arrow_unclick.png)
 <script type="text/javascript">
 $(document).ready(function(){
   $(".nav-header").mouseover(function(){
-    // $(this).css('background-color','#126CA9');
-    // $(this).css('background-color','#b5714a');    
     $(this).addClass("nav-over");
   }).mouseout(function(){
-    // $(this).css('background-color','#4d4d4d');
-    // $(this).css('background-color','#646262');
     $(this).removeClass("nav-over");
-    // $(this).css('background-color','#2f8bc9');
   }).click(function(){
     $(this).toggleClass('nav-header-current');
     $(this).next('.ckit').slideToggle();

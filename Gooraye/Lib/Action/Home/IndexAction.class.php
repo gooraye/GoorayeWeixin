@@ -14,13 +14,29 @@ class IndexAction extends BaseAction{
 		$this->assign('includeFooterPath',$this->includePath.'Public_footer.html');
 		
 	}
+	public function whenWall($userinfo){
 
+		M('Userinfo') -> where(array('token' => $this -> token, 'wecha_id' => $this -> data['FromUserName'])) -> save(array('wallopen' => 1));
+            // S('fans_' . $this -> token . '_' . $this -> data['FromUserName'], NULL);
+            // return array('您已进入微信墙对话模式，您下面发送的所有文字和图片信息都将会显示在大屏幕上，如需退出微信墙模式，请输入“wxquit”', 'text');
+		$token = $this->_get('token');
+		$wallid = $this->_get('wallid');
+		$data['portrait'] = $userinfo->headimgurl;
+		$data['wecha_id'] = $userinfo->openid;
+		$data['nickname'] = $userinfo->nickname;
+		$data['sex'] = $userinfo->sex;
+		$data['time'] = time();
+		$data['token'] = $token;
+		$data['wallid'] = $wallid;
+		// addWeixinLog($token,$wallid);
+		M('Wall_member')->add($data);
+		$this->show("<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><meta name='viewport' content='width=device-width,height=device-height,maximum-scale=1.0,user-scalable=no'><meta name='apple-mobile-web-app-capable' content='yes'><meta name='apple-mobile-web-app-status-bar-style' content='black'><meta name='format-detection' content='telephone=no'></head><body><p style='font-size:18px;color:red;text-align:center;width:100%;'>您已进入微信墙对话模式，请返回微信界面！</p></body></html>");
+	}
 	/*微信oauth2的回发处理方法*/
 	public function oauth2(){
 		$token = $this->_get('token');
 		$code = $this->_get('code');
 		$state = $this->_get('state');
-		$shakeid = $this->_get('shakeid');
 		import("ORG.OAuth2");
 		$oauth2 = new \OAuth2();
 		$errmsg = $oauth2->getInfo($code);
@@ -30,30 +46,35 @@ class IndexAction extends BaseAction{
 			$userinfo = $oauth2->getUserInfo();
 
 			if(empty($userinfo->errcode)){
-			
-				$map['token'] = $token;
-				$map['shakeid'] = $shakeid;
-				$map['wecha_id'] = $userinfo->openid;
-				$user = M('Shake_user')->where($map)->find();
-				if($user == FALSE){
-					//针对摇一摇处理获得的用户信息
-					$data['headurl'] = $userinfo->headimgurl;
-					$data['wecha_id'] = $userinfo->openid;
-					$data['nickname'] = $userinfo->nickname;
-					$data['sex'] = $userinfo->sex;
-					$data['jointime'] = time();
-					$data['token'] = getToken();
-					$data['shakeid'] = $shakeid;
-					M('Shake_user')->add($data);
-					// $this->show(U('Wap/Shake/index',array('token'=>$token,'wecha_id'=>$userinfo->openid,'id'=>$shakeid)));
-					// $this->show()
-					redirect(C('site_url').U('Wap/Shake/index',array('token'=>$token,'wecha_id'=>$userinfo->openid,'id'=>$shakeid)));
-//					exit();
-					// $this->redirect(C('site_url').U('Wap/Shake/index',array('token'=>$token,'wecha_id'=>$userinfo->openid,'id'=>$shakeid)),2,'页面跳转中');
-				 }//End 1IF
-				 else{
-				 	redirect(C('site_url').U('Wap/Shake/index',array('token'=>$token,'wecha_id'=>$userinfo->openid,'id'=>$shakeid)));
-				 }
+				
+				if($state == "shake"){
+					$shakeid = $this->_get('shakeid');
+					$map['token'] = $token;
+					$map['shakeid'] = $shakeid;
+					$map['wecha_id'] = $userinfo->openid;
+					$user = M('Shake_user')->where($map)->find();
+					if($user == FALSE){
+						//针对摇一摇处理获得的用户信息
+						$data['headurl'] = $userinfo->headimgurl;
+						$data['wecha_id'] = $userinfo->openid;
+						$data['nickname'] = $userinfo->nickname;
+						$data['sex'] = $userinfo->sex;
+						$data['jointime'] = time();
+						$data['token'] = getToken();
+						$data['shakeid'] = $shakeid;
+						M('Shake_user')->add($data);
+						// $this->show(U('Wap/Shake/index',array('token'=>$token,'wecha_id'=>$userinfo->openid,'id'=>$shakeid)));
+						// $this->show()
+						redirect(C('site_url').U('Wap/Shake/index',array('token'=>$token,'wecha_id'=>$userinfo->openid,'id'=>$shakeid)));
+	//					exit();
+						// $this->redirect(C('site_url').U('Wap/Shake/index',array('token'=>$token,'wecha_id'=>$userinfo->openid,'id'=>$shakeid)),2,'页面跳转中');
+					 }//End 1IF
+					 else{
+					 	redirect(C('site_url').U('Wap/Shake/index',array('token'=>$token,'wecha_id'=>$userinfo->openid,'id'=>$shakeid)));
+					 }
+					}elseif($state == "wall"){
+						$this->whenWall($userinfo);
+					}
 					//End 2IF}
 
 				// }//End 3IF
