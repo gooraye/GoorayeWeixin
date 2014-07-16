@@ -29,8 +29,7 @@ class App {
         date_default_timezone_set(C('DEFAULT_TIMEZONE'));
         // var_dump("App.class.php init");
 
-        // 加载动态项目公共文件和配置
-        load_ext_file();
+       
         // var_dump("App.class.php load_ext_file");
 
         // var_dump("App.class.php 之前dispathc");
