@@ -1681,7 +1681,7 @@ function wallOAuth2(){
            
             import("ORG.OAuth2");
             $oauth2 = new \OAuth2();
-            return array('<a href="'.$oauth2->getLink(C('site_url').U('Home/Index/oauth2' , array('token' => $this -> token,'wallid'=> $thisWall ['id'] )),'wall').'" >请先完善信息！</a>', 'text');
+            return array('<a href="'.$oauth2->getLink(C('site_url').U('Home/Index/oauth2' , array('token' => $this -> token,'wallid'=> $thisWall ['id'] )),'wall').'" >点击我开启微信墙！</a>', 'text');
             
         }else{
             return array('微上墙未开启！', 'text');
@@ -1699,18 +1699,7 @@ function shakeOAuth2(){
 
             $shakeid = $thisShake['id'];
             return array('<a href="'.C('site_url').U('Wap/Shake/checkJoin',array('token'=>$token,'wecha_id'=>$wecha_id,'id'=>$shakeid)).'" >点击我进入摇一摇</a>', 'text');
-            // $map['wecha_id'] = $this -> data['FromUserName'];
-            // $map['token'] = $this->token;
-            // $map['shakeid'] = $thisShake['id'];
-
-            // $user = M('Shake_user')->where($map)->find();
-            // if($user){              
-            //     return array('<a href="'.C('site_url').U('Wap/Shake/index',array('token'=>$token,'wecha_id'=>$userinfo->openid,'id'=>$shakeid)).'" >点击我进入摇一摇</a>', 'text');
-            // }else{
-            //     import("ORG.OAuth2");
-            //     $oauth2 = new \OAuth2();
-            //     return array('<a href="'.$oauth2->getLink(C('site_url').U('Index/oauth2' , array('token' => $this -> token,'shakeid'=>$thisShake['id'])),'shake').'" >点击我进入摇一摇</a>', 'text');
-            // }
+            
         }else{
             return array('摇一摇未开启！', 'text');
         }

@@ -17,8 +17,8 @@ class IndexAction extends BaseAction{
 	public function whenWall($userinfo){
 
 		M('Userinfo') -> where(array('token' => $this -> token, 'wecha_id' => $this -> data['FromUserName'])) -> save(array('wallopen' => 1));
-            // S('fans_' . $this -> token . '_' . $this -> data['FromUserName'], NULL);
-            // return array('您已进入微信墙对话模式，您下面发送的所有文字和图片信息都将会显示在大屏幕上，如需退出微信墙模式，请输入“wxquit”', 'text');
+            	S('fans_' . $this -> token . '_' . $this -> data['FromUserName'], NULL);
+            	
 		$token = $this->_get('token');
 		$wallid = $this->_get('wallid');
 		$data['portrait'] = $userinfo->headimgurl;
@@ -28,9 +28,15 @@ class IndexAction extends BaseAction{
 		$data['time'] = time();
 		$data['token'] = $token;
 		$data['wallid'] = $wallid;
-		// addWeixinLog($token,$wallid);
-		M('Wall_member')->add($data);
-		$this->show("<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><meta name='viewport' content='width=device-width,height=device-height,maximum-scale=1.0,user-scalable=no'><meta name='apple-mobile-web-app-capable' content='yes'><meta name='apple-mobile-web-app-status-bar-style' content='black'><meta name='format-detection' content='telephone=no'></head><body><p style='font-size:18px;color:red;text-align:center;width:100%;'>您已进入微信墙对话模式，请返回微信界面！</p></body></html>");
+		$map['wallid'] = $wallid;
+		$map['wecha_id'] = $userinfo->openid;
+		$map['token'] = $token;
+		$wallMember = M('Wall_member')->where($map)->find();
+		if(!$wallMember){
+			M('Wall_member')->add($data);
+		}
+		// $this->show("<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><meta name='viewport' content='width=device-width,height=device-height,maximum-scale=1.0,user-scalable=no'><meta name='apple-mobile-web-app-capable' content='yes'><meta name='apple-mobile-web-app-status-bar-style' content='black'><meta name='format-detection' content='telephone=no'></head><body><p style='font-size:18px;color:red;text-align:center;width:100%;'>您已进入微信墙对话模式，请返回微信界面！</p></body></html>");
+		$this->show('<!DOCTYPE html><html ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width,height=device-height,maximum-scale=1.0,user-scalable=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"><title>进入成功</title><style type="text/css">.countdown{font-weight: bold;text-align: center;}</style></head><body><p class="countdown">您已进入微信墙对话模式，您在微信上发送的信息都将发送到大屏幕上，<em id="cnt" style="color:red;"></em>秒后返回公众号。若不能自动返回，请点击左上角返回</p><script type="text/javascript">function close(){if(typeof(WeixinJSBridge)!="undefined"){WeixinJSBridge.call("closeWindow");}}function countdown(i){if(i == 0){close();}else{document.getElementById("cnt").innerHTML = i;setTimeout(function(){countdown(i-1)},1000);}}/*** 检测微信JsAPI* @param callback*/function detectWeixinApi(callback){if(typeof window.WeixinJSBridge == "undefined" || typeof window.WeixinJSBridge.invoke == "undefined"){setTimeout(function(){detectWeixinApi(callback);},200);}else{callback();}}detectWeixinApi(function(){countdown(5);});</script></body></html>');
 	}
 	/*微信oauth2的回发处理方法*/
 	public function oauth2(){
